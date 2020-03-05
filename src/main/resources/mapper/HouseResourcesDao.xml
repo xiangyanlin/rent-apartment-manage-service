@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xyl.rental.dao.HouseResourcesDao">
+
+    <resultMap type="com.xyl.rental.entity.HouseResources" id="HouseResourcesMap">
+        <result property="id" column="id" jdbcType="INTEGER"/>
+        <result property="title" column="title" jdbcType="VARCHAR"/>
+        <result property="estateId" column="estate_id" jdbcType="INTEGER"/>
+        <result property="buildingNum" column="building_num" jdbcType="VARCHAR"/>
+        <result property="buildingUnit" column="building_unit" jdbcType="VARCHAR"/>
+        <result property="buildingFloorNum" column="building_floor_num" jdbcType="VARCHAR"/>
+        <result property="rent" column="rent" jdbcType="INTEGER"/>
+        <result property="rentMethod" column="rent_method" jdbcType="INTEGER"/>
+        <result property="paymentMethod" column="payment_method" jdbcType="INTEGER"/>
+        <result property="houseType" column="house_type" jdbcType="VARCHAR"/>
+        <result property="coveredArea" column="covered_area" jdbcType="VARCHAR"/>
+        <result property="useArea" column="use_area" jdbcType="VARCHAR"/>
+        <result property="floor" column="floor" jdbcType="VARCHAR"/>
+        <result property="orientation" column="orientation" jdbcType="VARCHAR"/>
+        <result property="decoration" column="decoration" jdbcType="INTEGER"/>
+        <result property="facilities" column="facilities" jdbcType="VARCHAR"/>
+        <result property="pic" column="pic" jdbcType="VARCHAR"/>
+        <result property="houseDesc" column="house_desc" jdbcType="VARCHAR"/>
+        <result property="contact" column="contact" jdbcType="VARCHAR"/>
+        <result property="mobile" column="mobile" jdbcType="VARCHAR"/>
+        <result property="time" column="time" jdbcType="INTEGER"/>
+        <result property="propertyCost" column="property_cost" jdbcType="VARCHAR"/>
+        <result property="created" column="created" jdbcType="TIMESTAMP"/>
+        <result property="updated" column="updated" jdbcType="TIMESTAMP"/>
+    </resultMap>
+
+    <!--查询单个-->
+    <select id="queryById" resultMap="HouseResourcesMap">
+        select
+          id, title, estate_id, building_num, building_unit, building_floor_num, rent, rent_method, payment_method, house_type, covered_area, use_area, floor, orientation, decoration, facilities, pic, house_desc, contact, mobile, time, property_cost, created, updated
+        from rental.house_resources
+        where id = #{id}
+    </select>
+
+    <!--查询指定行数据-->
+    <select id="queryAllByLimit" resultMap="HouseResourcesMap">
+        select
+          id, title, estate_id, building_num, building_unit, building_floor_num, rent, rent_method, payment_method, house_type, covered_area, use_area, floor, orientation, decoration, facilities, pic, house_desc, contact, mobile, time, property_cost, created, updated
+        from rental.house_resources
+        limit #{offset}, #{limit}
+    </select>
+
+    <!--通过实体作为筛选条件查询-->
+    <select id="queryAll" resultMap="HouseResourcesMap">
+        select
+          id, title, estate_id, building_num, building_unit, building_floor_num, rent, rent_method, payment_method, house_type, covered_area, use_area, floor, orientation, decoration, facilities, pic, house_desc, contact, mobile, time, property_cost, created, updated
+        from rental.house_resources
+        <where>
+            <if test="id != null">
+                and id = #{id}
+            </if>
+            <if test="title != null and title != ''">
+                and title = #{title}
+            </if>
+            <if test="estateId != null">
+                and estate_id = #{estateId}
+            </if>
+            <if test="buildingNum != null and buildingNum != ''">
+                and building_num = #{buildingNum}
+            </if>
+            <if test="buildingUnit != null and buildingUnit != ''">
+                and building_unit = #{buildingUnit}
+            </if>
+            <if test="buildingFloorNum != null and buildingFloorNum != ''">
+                and building_floor_num = #{buildingFloorNum}
+            </if>
+            <if test="rent != null">
+                and rent = #{rent}
+            </if>
+            <if test="rentMethod != null">
+                and rent_method = #{rentMethod}
+            </if>
+            <if test="paymentMethod != null">
+                and payment_method = #{paymentMethod}
+            </if>
+            <if test="houseType != null and houseType != ''">
+                and house_type = #{houseType}
+            </if>
+            <if test="coveredArea != null and coveredArea != ''">
+                and covered_area = #{coveredArea}
+            </if>
+            <if test="useArea != null and useArea != ''">
+                and use_area = #{useArea}
+            </if>
+            <if test="floor != null and floor != ''">
+                and floor = #{floor}
+            </if>
+            <if test="orientation != null and orientation != ''">
+                and orientation = #{orientation}
+            </if>
+            <if test="decoration != null">
+                and decoration = #{decoration}
+            </if>
+            <if test="facilities != null and facilities != ''">
+                and facilities = #{facilities}
+            </if>
+            <if test="pic != null and pic != ''">
+                and pic = #{pic}
+            </if>
+            <if test="houseDesc != null and houseDesc != ''">
+                and house_desc = #{houseDesc}
+            </if>
+            <if test="contact != null and contact != ''">
+                and contact = #{contact}
+            </if>
+            <if test="mobile != null and mobile != ''">
+                and mobile = #{mobile}
+            </if>
+            <if test="time != null">
+                and time = #{time}
+            </if>
+            <if test="propertyCost != null and propertyCost != ''">
+                and property_cost = #{propertyCost}
+            </if>
+            <if test="created != null">
+                and created = #{created}
+            </if>
+            <if test="updated != null">
+                and updated = #{updated}
+            </if>
+        </where>
+    </select>
+
+    <!--新增所有列-->
+    <insert id="insert" keyProperty="id" useGeneratedKeys="true">
+        insert into rental.house_resources(title, estate_id, building_num, building_unit, building_floor_num, rent, rent_method, payment_method, house_type, covered_area, use_area, floor, orientation, decoration, facilities, pic, house_desc, contact, mobile, time, property_cost, created, updated)
+        values (#{title}, #{estateId}, #{buildingNum}, #{buildingUnit}, #{buildingFloorNum}, #{rent}, #{rentMethod}, #{paymentMethod}, #{houseType}, #{coveredArea}, #{useArea}, #{floor}, #{orientation}, #{decoration}, #{facilities}, #{pic}, #{houseDesc}, #{contact}, #{mobile}, #{time}, #{propertyCost}, #{created}, #{updated})
+    </insert>
+
+    <!--通过主键修改数据-->
+    <update id="update">
+        update rental.house_resources
+        <set>
+            <if test="title != null and title != ''">
+                title = #{title},
+            </if>
+            <if test="estateId != null">
+                estate_id = #{estateId},
+            </if>
+            <if test="buildingNum != null and buildingNum != ''">
+                building_num = #{buildingNum},
+            </if>
+            <if test="buildingUnit != null and buildingUnit != ''">
+                building_unit = #{buildingUnit},
+            </if>
+            <if test="buildingFloorNum != null and buildingFloorNum != ''">
+                building_floor_num = #{buildingFloorNum},
+            </if>
+            <if test="rent != null">
+                rent = #{rent},
+            </if>
+            <if test="rentMethod != null">
+                rent_method = #{rentMethod},
+            </if>
+            <if test="paymentMethod != null">
+                payment_method = #{paymentMethod},
+            </if>
+            <if test="houseType != null and houseType != ''">
+                house_type = #{houseType},
+            </if>
+            <if test="coveredArea != null and coveredArea != ''">
+                covered_area = #{coveredArea},
+            </if>
+            <if test="useArea != null and useArea != ''">
+                use_area = #{useArea},
+            </if>
+            <if test="floor != null and floor != ''">
+                floor = #{floor},
+            </if>
+            <if test="orientation != null and orientation != ''">
+                orientation = #{orientation},
+            </if>
+            <if test="decoration != null">
+                decoration = #{decoration},
+            </if>
+            <if test="facilities != null and facilities != ''">
+                facilities = #{facilities},
+            </if>
+            <if test="pic != null and pic != ''">
+                pic = #{pic},
+            </if>
+            <if test="houseDesc != null and houseDesc != ''">
+                house_desc = #{houseDesc},
+            </if>
+            <if test="contact != null and contact != ''">
+                contact = #{contact},
+            </if>
+            <if test="mobile != null and mobile != ''">
+                mobile = #{mobile},
+            </if>
+            <if test="time != null">
+                time = #{time},
+            </if>
+            <if test="propertyCost != null and propertyCost != ''">
+                property_cost = #{propertyCost},
+            </if>
+            <if test="created != null">
+                created = #{created},
+            </if>
+            <if test="updated != null">
+                updated = #{updated},
+            </if>
+        </set>
+        where id = #{id}
+    </update>
+
+    <!--通过主键删除-->
+    <delete id="deleteById">
+        delete from rental.house_resources where id = #{id}
+    </delete>
+
+</mapper>
