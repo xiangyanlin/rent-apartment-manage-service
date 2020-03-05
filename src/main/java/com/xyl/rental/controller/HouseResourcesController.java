@@ -32,4 +32,14 @@ public class HouseResourcesController {
         return this.houseResourcesService.queryById(id);
     }
 
+    /**
+     * 新增房源
+     * @return
+     */
+    @RequestMapping("save")
+    public HouseResources saveHouseResources(@RequestBody HouseResources houseResources){
+        HouseResources insert = houseResourcesService.insert(houseResources);
+        return insert;
+    }
+
 }
