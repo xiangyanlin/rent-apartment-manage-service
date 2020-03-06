@@ -2,6 +2,7 @@ package com.xyl.rental.controller;
 
 import com.xyl.rental.entity.HouseResources;
 import com.xyl.rental.service.HouseResourcesService;
+import com.xyl.rental.utils.R;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
@@ -37,9 +38,10 @@ public class HouseResourcesController {
      * @return
      */
     @RequestMapping("save")
-    public HouseResources saveHouseResources(@RequestBody HouseResources houseResources){
+    public R saveHouseResources(@RequestBody HouseResources houseResources){
+
         HouseResources insert = houseResourcesService.insert(houseResources);
-        return insert;
+        return R.success(insert);
     }
 
 }
