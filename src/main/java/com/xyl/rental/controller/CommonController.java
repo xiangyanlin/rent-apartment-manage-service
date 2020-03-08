@@ -17,7 +17,7 @@ public class CommonController {
      * * @return
      ** @throws Exception
      * */
-    @PostMapping
+    @PostMapping("picUpload")
     @ResponseBody
     public PicUploadResult upload(
             @RequestParam("file") MultipartFile uploadFile) throws Exception {
