@@ -6,7 +6,11 @@ import org.springframework.stereotype.Service;
 import org.apache.commons.lang3.RandomUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.web.multipart.MultipartFile;
+
+import javax.servlet.ServletOutputStream;
+import javax.servlet.http.HttpServletResponse;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Date;
 
@@ -14,17 +18,15 @@ import java.util.Date;
 public class PicUploadFileSystemService {
 
     // 允许上传的格式
-    private static final String[] IMAGE_TYPE = new String[]{".bmp", ".jpg",
-            ".jpeg", ".gif", ".png"};
+    private static final String[] IMAGE_TYPE = new String[]{".bmp", ".jpg", ".jpeg", ".gif", ".png"};
+
+
 
     public PicUploadResult upload(MultipartFile uploadFile) {
         // 校验图片格式
         boolean isLegal = false;
         for (String type : IMAGE_TYPE) {
-            if (StringUtils.endsWithIgnoreCase(uploadFile.getOriginalFilename(),
-
-
-                    type)) {
+            if (StringUtils.endsWithIgnoreCase(uploadFile.getOriginalFilename(), type)) {
                 isLegal = true;
                 break;
             }
@@ -79,4 +81,31 @@ public class PicUploadFileSystemService {
                 StringUtils.substringAfterLast(sourceFileName, ".");
         return fileFolder + File.separator + fileName;
     }
+
+    //从本地读取文件并返回到网页中
+    public void getImage(String filename, HttpServletResponse response){
+        FileInputStream in = null;
+        ServletOutputStream out = null;
+        try {
+            File file = new File("D:\\code\\xyl-rental\\upload"+filename);
+            in = new FileInputStream(file);
+            out = response.getOutputStream();
+            byte[] bytes = new byte[1024 * 10];
+            int len = 0;
+            while ((len = in.read(bytes)) != -1) {
+                out.write(bytes,0,len);
+            }
+            out.flush();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                in.close();
+                out.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
 }

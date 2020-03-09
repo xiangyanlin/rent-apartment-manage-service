@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.servlet.http.HttpServletResponse;
+
 @RestController
 @RequestMapping("common")
 public class CommonController {
@@ -23,4 +25,16 @@ public class CommonController {
             @RequestParam("file") MultipartFile uploadFile) throws Exception {
         return this.picUploadService.upload(uploadFile);
     }
+
+    /**
+     *
+     * @param filename
+     * @param response
+     */
+    @ResponseBody
+    @RequestMapping(value = "/getImage", method = RequestMethod.GET, produces = "application/json;charset=utf-8")
+    public void getImage(String filename, HttpServletResponse response){
+        picUploadService.getImage(filename,response);
+    }
+
 }
