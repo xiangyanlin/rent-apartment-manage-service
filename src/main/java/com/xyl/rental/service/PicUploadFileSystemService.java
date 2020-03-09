@@ -87,7 +87,8 @@ public class PicUploadFileSystemService {
         FileInputStream in = null;
         ServletOutputStream out = null;
         try {
-            File file = new File("D:\\code\\xyl-rental\\upload"+filename);
+            File file = new File(
+                    "D:\\code\\xyl-rental\\upload"+filename);
             in = new FileInputStream(file);
             out = response.getOutputStream();
             byte[] bytes = new byte[1024 * 10];
