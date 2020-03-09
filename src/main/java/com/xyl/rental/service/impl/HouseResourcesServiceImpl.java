@@ -3,9 +3,11 @@ package com.xyl.rental.service.impl;
 import com.xyl.rental.entity.HouseResources;
 import com.xyl.rental.dao.HouseResourcesDao;
 import com.xyl.rental.service.HouseResourcesService;
+import com.xyl.rental.vo.PageInfo;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -40,6 +42,26 @@ public class HouseResourcesServiceImpl implements HouseResourcesService {
     @Override
     public List<HouseResources> queryAllByLimit(int offset, int limit) {
         return this.houseResourcesDao.queryAllByLimit(offset, limit);
+    }
+
+    /**
+     * 分页查询
+     * @param currentPage
+     * @param pageSize
+     * @return
+     */
+    @Override
+    public PageInfo queryByPage(int currentPage, int pageSize) {
+        PageInfo pi=new PageInfo();
+
+        int start=(currentPage-1)*pageSize;
+        int total=houseResourcesDao.countTotal();
+        List<HouseResources> list = houseResourcesDao.queryAllByLimit(start, pageSize);
+        pi.setPageNum(currentPage);
+        pi.setPageSize(pageSize);
+        pi.setTotal(total);
+        pi.setRecords(list);
+        return pi;
     }
 
     /**

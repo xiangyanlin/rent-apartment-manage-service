@@ -12,7 +12,7 @@ import java.util.List;
  * @date 2020/3/9 11:06
  */
 @Data
-@AllArgsConstructor
+
 public class PageInfo<T> implements java.io.Serializable {
     /*** 总条数 */
     private Integer total;
@@ -22,4 +22,5 @@ public class PageInfo<T> implements java.io.Serializable {
     private Integer pageSize;
     /*** 数据列表 */
     private List<T> records = Collections.emptyList();
+
 }

@@ -214,4 +214,85 @@
         delete from rental.house_resources where id = #{id}
     </delete>
 
+
+    <!-- 查询条数 -->
+    <select id="countTotal" resultType="int"  >
+        SELECT count(*) FROM rental.house_resources
+    <where>
+        <if test="id != null">
+            and id = #{id}
+        </if>
+        <if test="title != null and title != ''">
+            and title = #{title}
+        </if>
+        <if test="estateId != null">
+            and estate_id = #{estateId}
+        </if>
+        <if test="buildingNum != null and buildingNum != ''">
+            and building_num = #{buildingNum}
+        </if>
+        <if test="buildingUnit != null and buildingUnit != ''">
+            and building_unit = #{buildingUnit}
+        </if>
+        <if test="buildingFloorNum != null and buildingFloorNum != ''">
+            and building_floor_num = #{buildingFloorNum}
+        </if>
+        <if test="rent != null">
+            and rent = #{rent}
+        </if>
+        <if test="rentMethod != null">
+            and rent_method = #{rentMethod}
+        </if>
+        <if test="paymentMethod != null">
+            and payment_method = #{paymentMethod}
+        </if>
+        <if test="houseType != null and houseType != ''">
+            and house_type = #{houseType}
+        </if>
+        <if test="coveredArea != null and coveredArea != ''">
+            and covered_area = #{coveredArea}
+        </if>
+        <if test="useArea != null and useArea != ''">
+            and use_area = #{useArea}
+        </if>
+        <if test="floor != null and floor != ''">
+            and floor = #{floor}
+        </if>
+        <if test="orientation != null and orientation != ''">
+            and orientation = #{orientation}
+        </if>
+        <if test="decoration != null">
+            and decoration = #{decoration}
+        </if>
+        <if test="facilities != null and facilities != ''">
+            and facilities = #{facilities}
+        </if>
+        <if test="pic != null and pic != ''">
+            and pic = #{pic}
+        </if>
+        <if test="houseDesc != null and houseDesc != ''">
+            and house_desc = #{houseDesc}
+        </if>
+        <if test="contact != null and contact != ''">
+            and contact = #{contact}
+        </if>
+        <if test="mobile != null and mobile != ''">
+            and mobile = #{mobile}
+        </if>
+        <if test="time != null">
+            and time = #{time}
+        </if>
+        <if test="propertyCost != null and propertyCost != ''">
+            and property_cost = #{propertyCost}
+        </if>
+        <if test="created != null">
+            and created = #{created}
+        </if>
+        <if test="updated != null">
+            and updated = #{updated}
+        </if>
+    </where>
+    </select>
+
+
 </mapper>

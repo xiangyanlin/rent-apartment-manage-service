@@ -1,6 +1,8 @@
 package com.xyl.rental.service;
 
 import com.xyl.rental.entity.HouseResources;
+import com.xyl.rental.vo.PageInfo;
+
 import java.util.List;
 
 /**
@@ -9,6 +11,7 @@ import java.util.List;
  * @author makejava
  * @since 2020-03-05 14:00:15
  */
+
 public interface HouseResourcesService {
 
     /**
@@ -27,6 +30,8 @@ public interface HouseResourcesService {
      * @return 对象列表
      */
     List<HouseResources> queryAllByLimit(int offset, int limit);
+
+    PageInfo<HouseResources>queryByPage(int currentPage,int pageSize);
 
     /**
      * 新增数据

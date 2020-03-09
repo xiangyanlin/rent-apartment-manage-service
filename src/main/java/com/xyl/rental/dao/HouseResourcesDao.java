@@ -64,4 +64,9 @@ public interface HouseResourcesDao {
      */
     int deleteById(Integer id);
 
+    /**
+     *
+     * @return
+     */
+    int countTotal();
 }

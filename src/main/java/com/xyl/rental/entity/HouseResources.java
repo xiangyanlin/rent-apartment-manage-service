@@ -1,5 +1,7 @@
 package com.xyl.rental.entity;
 
+import lombok.Data;
+
 import java.util.Date;
 import java.io.Serializable;
 
@@ -9,6 +11,7 @@ import java.io.Serializable;
  * @author makejava
  * @since 2020-03-05 14:00:15
  */
+@Data
 public class HouseResources implements Serializable {
     private static final long serialVersionUID = 565710889324694481L;
     
@@ -103,196 +106,6 @@ public class HouseResources implements Serializable {
     private Date updated;
 
 
-    public Integer getId() {
-        return id;
-    }
 
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public Integer getEstateId() {
-        return estateId;
-    }
-
-    public void setEstateId(Integer estateId) {
-        this.estateId = estateId;
-    }
-
-    public String getBuildingNum() {
-        return buildingNum;
-    }
-
-    public void setBuildingNum(String buildingNum) {
-        this.buildingNum = buildingNum;
-    }
-
-    public String getBuildingUnit() {
-        return buildingUnit;
-    }
-
-    public void setBuildingUnit(String buildingUnit) {
-        this.buildingUnit = buildingUnit;
-    }
-
-    public String getBuildingFloorNum() {
-        return buildingFloorNum;
-    }
-
-    public void setBuildingFloorNum(String buildingFloorNum) {
-        this.buildingFloorNum = buildingFloorNum;
-    }
-
-    public Integer getRent() {
-        return rent;
-    }
-
-    public void setRent(Integer rent) {
-        this.rent = rent;
-    }
-
-    public Integer getRentMethod() {
-        return rentMethod;
-    }
-
-    public void setRentMethod(Integer rentMethod) {
-        this.rentMethod = rentMethod;
-    }
-
-    public Integer getPaymentMethod() {
-        return paymentMethod;
-    }
-
-    public void setPaymentMethod(Integer paymentMethod) {
-        this.paymentMethod = paymentMethod;
-    }
-
-    public String getHouseType() {
-        return houseType;
-    }
-
-    public void setHouseType(String houseType) {
-        this.houseType = houseType;
-    }
-
-    public String getCoveredArea() {
-        return coveredArea;
-    }
-
-    public void setCoveredArea(String coveredArea) {
-        this.coveredArea = coveredArea;
-    }
-
-    public String getUseArea() {
-        return useArea;
-    }
-
-    public void setUseArea(String useArea) {
-        this.useArea = useArea;
-    }
-
-    public String getFloor() {
-        return floor;
-    }
-
-    public void setFloor(String floor) {
-        this.floor = floor;
-    }
-
-    public String getOrientation() {
-        return orientation;
-    }
-
-    public void setOrientation(String orientation) {
-        this.orientation = orientation;
-    }
-
-    public Integer getDecoration() {
-        return decoration;
-    }
-
-    public void setDecoration(Integer decoration) {
-        this.decoration = decoration;
-    }
-
-    public String getFacilities() {
-        return facilities;
-    }
-
-    public void setFacilities(String facilities) {
-        this.facilities = facilities;
-    }
-
-    public String getPic() {
-        return pic;
-    }
-
-    public void setPic(String pic) {
-        this.pic = pic;
-    }
-
-    public String getHouseDesc() {
-        return houseDesc;
-    }
-
-    public void setHouseDesc(String houseDesc) {
-        this.houseDesc = houseDesc;
-    }
-
-    public String getContact() {
-        return contact;
-    }
-
-    public void setContact(String contact) {
-        this.contact = contact;
-    }
-
-    public String getMobile() {
-        return mobile;
-    }
-
-    public void setMobile(String mobile) {
-        this.mobile = mobile;
-    }
-
-    public Integer getTime() {
-        return time;
-    }
-
-    public void setTime(Integer time) {
-        this.time = time;
-    }
-
-    public String getPropertyCost() {
-        return propertyCost;
-    }
-
-    public void setPropertyCost(String propertyCost) {
-        this.propertyCost = propertyCost;
-    }
-
-    public Date getCreated() {
-        return created;
-    }
-
-    public void setCreated(Date created) {
-        this.created = created;
-    }
-
-    public Date getUpdated() {
-        return updated;
-    }
-
-    public void setUpdated(Date updated) {
-        this.updated = updated;
-    }
 
 }
