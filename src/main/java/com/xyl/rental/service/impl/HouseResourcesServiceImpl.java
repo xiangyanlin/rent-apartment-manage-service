@@ -4,6 +4,8 @@ import com.xyl.rental.entity.HouseResources;
 import com.xyl.rental.dao.HouseResourcesDao;
 import com.xyl.rental.service.HouseResourcesService;
 import com.xyl.rental.vo.PageInfo;
+import com.xyl.rental.vo.Pagination;
+import com.xyl.rental.vo.TableResult;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -51,17 +53,18 @@ public class HouseResourcesServiceImpl implements HouseResourcesService {
      * @return
      */
     @Override
-    public PageInfo queryByPage(int currentPage, int pageSize) {
-        PageInfo pi=new PageInfo();
-
+    public TableResult queryByPage(int currentPage, int pageSize) {
+        TableResult tr=new TableResult();
+        Pagination pagination=new Pagination();
         int start=(currentPage-1)*pageSize;
         int total=houseResourcesDao.countTotal();
         List<HouseResources> list = houseResourcesDao.queryAllByLimit(start, pageSize);
-        pi.setPageNum(currentPage);
-        pi.setPageSize(pageSize);
-        pi.setTotal(total);
-        pi.setRecords(list);
-        return pi;
+        pagination.setCurrent(currentPage);
+        pagination.setPageSize(pageSize);
+        pagination.setTotal(total);
+        tr.setList(list);
+        tr.setPagination(pagination);
+        return tr;
     }
 
     /**

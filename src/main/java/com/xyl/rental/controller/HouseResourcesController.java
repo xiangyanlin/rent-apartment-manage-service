@@ -4,6 +4,7 @@ import com.xyl.rental.entity.HouseResources;
 import com.xyl.rental.service.HouseResourcesService;
 import com.xyl.rental.utils.R;
 import com.xyl.rental.vo.PageInfo;
+import com.xyl.rental.vo.TableResult;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
 
@@ -57,11 +58,11 @@ public class HouseResourcesController {
      */
     @GetMapping("list")
     @ResponseBody
-    public R list(@RequestParam(name = "currentPage", defaultValue = "1") int currentPage,
-                  @RequestParam(name = "pageSize", defaultValue = "10") int pageSize) {
+    public TableResult list(@RequestParam(name = "currentPage", defaultValue = "1") int currentPage,
+                            @RequestParam(name = "pageSize", defaultValue = "10") int pageSize) {
         //System.err.println(houseResources);
-        PageInfo<HouseResources> houseResourcesPageInfo = this.houseResourcesService.queryByPage(currentPage, pageSize);
-        return R.success(houseResourcesPageInfo);
+        TableResult tableResult = this.houseResourcesService.queryByPage(currentPage, pageSize);
+        return tableResult;
     }
 
 }

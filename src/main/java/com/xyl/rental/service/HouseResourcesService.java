@@ -1,7 +1,7 @@
 package com.xyl.rental.service;
 
 import com.xyl.rental.entity.HouseResources;
-import com.xyl.rental.vo.PageInfo;
+import com.xyl.rental.vo.TableResult;
 
 import java.util.List;
 
@@ -31,7 +31,7 @@ public interface HouseResourcesService {
      */
     List<HouseResources> queryAllByLimit(int offset, int limit);
 
-    PageInfo<HouseResources>queryByPage(int currentPage,int pageSize);
+    TableResult queryByPage(int currentPage, int pageSize);
 
     /**
      * 新增数据
