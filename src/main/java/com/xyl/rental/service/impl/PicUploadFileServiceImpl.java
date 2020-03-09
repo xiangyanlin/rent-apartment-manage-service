@@ -1,10 +1,11 @@
-package com.xyl.rental.service;
+package com.xyl.rental.service.impl;
 
+import com.xyl.rental.service.PicUploadFileService;
 import com.xyl.rental.vo.PicUploadResult;
-import org.joda.time.DateTime;
-import org.springframework.stereotype.Service;
 import org.apache.commons.lang3.RandomUtils;
 import org.apache.commons.lang3.StringUtils;
+import org.joda.time.DateTime;
+import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.ServletOutputStream;
@@ -14,9 +15,13 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Date;
 
+/**
+ * @author xyl
+ * @version 1.0
+ * @date 2020/3/9 11:13
+ */
 @Service
-public class PicUploadFileSystemService {
-
+public class PicUploadFileServiceImpl implements PicUploadFileService {
     // 允许上传的格式
     private static final String[] IMAGE_TYPE = new String[]{".bmp", ".jpg", ".jpeg", ".gif", ".png"};
 
@@ -51,7 +56,7 @@ public class PicUploadFileSystemService {
             uploadFile.transferTo(newFile);
         } catch (IOException e) {
             e.printStackTrace();
-        //上传失败
+            //上传失败
             fileUploadResult.setStatus("error");
             return fileUploadResult;
         }
@@ -108,5 +113,4 @@ public class PicUploadFileSystemService {
             }
         }
     }
-
 }

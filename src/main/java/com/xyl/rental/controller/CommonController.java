@@ -1,6 +1,6 @@
 package com.xyl.rental.controller;
 
-import com.xyl.rental.service.PicUploadFileSystemService;
+import com.xyl.rental.service.PicUploadFileService;
 import com.xyl.rental.vo.PicUploadResult;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 @Slf4j
 public class CommonController {
     @Autowired
-    private PicUploadFileSystemService picUploadService;
+    private PicUploadFileService picUploadFileService;
 
     /**
      * @param uploadFile
@@ -25,7 +25,7 @@ public class CommonController {
     @ResponseBody
     public PicUploadResult upload(
             @RequestParam("file") MultipartFile uploadFile) throws Exception {
-        return this.picUploadService.upload(uploadFile);
+        return this.picUploadFileService.upload(uploadFile);
     }
 
     /**
@@ -38,7 +38,7 @@ public class CommonController {
     public void getImage(@RequestParam(value = "filename", required = false)
                                      String filename, HttpServletResponse response){
         log.info("路径："+filename);
-        picUploadService.getImage(filename,response);
+        picUploadFileService.getImage(filename,response);
     }
 
 }

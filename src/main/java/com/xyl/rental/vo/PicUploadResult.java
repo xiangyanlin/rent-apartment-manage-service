@@ -2,6 +2,12 @@ package com.xyl.rental.vo;
 
 import lombok.Data;
 
+
+/**
+ * @author xyl
+ * @version 1.0
+ * @date 2020/3/9 11:06
+ */
 @Data
 public class PicUploadResult {
 
