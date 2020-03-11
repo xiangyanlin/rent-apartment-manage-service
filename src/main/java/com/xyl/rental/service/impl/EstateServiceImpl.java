@@ -42,6 +42,11 @@ public class EstateServiceImpl implements EstateService {
         return this.estateDao.queryAllByLimit(offset, limit);
     }
 
+    @Override
+    public List<Estate> queryAll(Estate estate) {
+        return this.estateDao.queryAll(estate);
+    }
+
     /**
      * 新增数据
      *

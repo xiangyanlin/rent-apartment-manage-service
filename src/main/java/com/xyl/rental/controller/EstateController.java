@@ -2,9 +2,11 @@ package com.xyl.rental.controller;
 
 import com.xyl.rental.entity.Estate;
 import com.xyl.rental.service.EstateService;
+import com.xyl.rental.utils.R;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 /**
  * 楼盘表(Estate)表控制层
@@ -30,6 +32,17 @@ public class EstateController {
     @GetMapping("selectOne")
     public Estate selectOne(Integer id) {
         return this.estateService.queryById(id);
+    }
+
+    /**
+     * 查询所有数据
+     * @return
+     */
+    @ResponseBody
+    @RequestMapping("selectAll")
+    public R selectAll(){
+        List<Estate> estates = this.estateService.queryAll(null);
+        return R.success(estates);
     }
 
 }

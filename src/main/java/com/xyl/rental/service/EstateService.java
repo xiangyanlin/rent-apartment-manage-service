@@ -29,6 +29,11 @@ public interface EstateService {
     List<Estate> queryAllByLimit(int offset, int limit);
 
     /**
+     * 查询所有
+     * @return
+     */
+    public List<Estate> queryAll(Estate estate);
+    /**
      * 新增数据
      *
      * @param estate 实例对象

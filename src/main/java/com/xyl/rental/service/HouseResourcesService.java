@@ -31,6 +31,13 @@ public interface HouseResourcesService {
      */
     List<HouseResources> queryAllByLimit(int offset, int limit);
 
+    /**
+     * 分页条件查询
+     * @param currentPage
+     * @param pageSize
+     * @param queryCondition
+     * @return
+     */
     TableResult queryByPage(int currentPage, int pageSize,HouseResources queryCondition);
 
     /**
