@@ -53,12 +53,12 @@ public class HouseResourcesServiceImpl implements HouseResourcesService {
      * @return
      */
     @Override
-    public TableResult queryByPage(int currentPage, int pageSize) {
+    public TableResult queryByPage(int currentPage, int pageSize,HouseResources queryCondition) {
         TableResult tr=new TableResult();
         Pagination pagination=new Pagination();
         int start=(currentPage-1)*pageSize;
         int total=houseResourcesDao.countTotal();
-        List<HouseResources> list = houseResourcesDao.queryAllByLimit(start, pageSize);
+        List<HouseResources> list = houseResourcesDao.queryPage(start, pageSize,queryCondition);
         pagination.setCurrent(currentPage);
         pagination.setPageSize(pageSize);
         pagination.setTotal(total);

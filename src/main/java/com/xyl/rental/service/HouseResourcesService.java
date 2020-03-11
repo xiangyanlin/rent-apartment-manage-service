@@ -31,7 +31,7 @@ public interface HouseResourcesService {
      */
     List<HouseResources> queryAllByLimit(int offset, int limit);
 
-    TableResult queryByPage(int currentPage, int pageSize);
+    TableResult queryByPage(int currentPage, int pageSize,HouseResources queryCondition);
 
     /**
      * 新增数据

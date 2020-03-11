@@ -49,7 +49,7 @@ public class PicUploadFileServiceImpl implements PicUploadFileService {
         String picUrl = StringUtils.replace(StringUtils.substringAfter(filePath,
                 "D:\\code\\xyl-rental\\upload"),
                 "\\", "/");
-        fileUploadResult.setName(picUrl);
+        fileUploadResult.setName("http://127.0.0.1:8080/common/getImage?filename="+picUrl);
         File newFile = new File(filePath);
         // 写文件到磁盘
         try {

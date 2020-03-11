@@ -59,9 +59,9 @@ public class HouseResourcesController {
     @GetMapping("list")
     @ResponseBody
     public TableResult list(@RequestParam(name = "currentPage", defaultValue = "1") int currentPage,
-                            @RequestParam(name = "pageSize", defaultValue = "10") int pageSize) {
-        //System.err.println(houseResources);
-        TableResult tableResult = this.houseResourcesService.queryByPage(currentPage, pageSize);
+                            @RequestParam(name = "pageSize", defaultValue = "10") int pageSize,HouseResources queryCondition) {
+        System.err.println(queryCondition);
+        TableResult tableResult = this.houseResourcesService.queryByPage(currentPage, pageSize,queryCondition);
         return tableResult;
     }
 
