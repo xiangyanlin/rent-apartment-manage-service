@@ -6,7 +6,10 @@ import com.xyl.rental.service.EstateService;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * 楼盘表(Estate)表服务实现类
@@ -43,8 +46,20 @@ public class EstateServiceImpl implements EstateService {
     }
 
     @Override
-    public List<Estate> queryAll(Estate estate) {
-        return this.estateDao.queryAll(estate);
+    public List queryAll(Estate estate) {
+        List<Estate> estates = this.estateDao.queryAll(estate);
+        List list=new ArrayList();
+        //Map<String,String> estateMap=new HashMap<String,String>();
+        for (Estate state:estates) {
+            List<String> list1=new ArrayList<String>();
+            String key=state.getName();
+            list1.add(key);
+            String value=state.getId()+"|"+state.getProvince()+","+state.getCity()+","+state.getArea()+","+state.getAddress();
+            list1.add(value);
+            list.add(list1);
+
+        }
+        return list;
     }
 
     /**

@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import java.util.List;
+import java.util.Map;
 
 /**
  * 楼盘表(Estate)表控制层
@@ -41,7 +42,7 @@ public class EstateController {
     @ResponseBody
     @RequestMapping("selectAll")
     public R selectAll(){
-        List<Estate> estates = this.estateService.queryAll(null);
+        List estates = this.estateService.queryAll(null);
         return R.success(estates);
     }
 

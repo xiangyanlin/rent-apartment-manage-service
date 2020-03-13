@@ -2,6 +2,7 @@ package com.xyl.rental.service;
 
 import com.xyl.rental.entity.Estate;
 import java.util.List;
+import java.util.Map;
 
 /**
  * 楼盘表(Estate)表服务接口
@@ -32,7 +33,7 @@ public interface EstateService {
      * 查询所有
      * @return
      */
-    public List<Estate> queryAll(Estate estate);
+    public List queryAll(Estate estate);
     /**
      * 新增数据
      *

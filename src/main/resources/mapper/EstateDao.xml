@@ -80,6 +80,7 @@
                 and updated = #{updated}
             </if>
         </where>
+        order by id asc
     </select>
 
     <!--新增所有列-->
