@@ -50,6 +50,13 @@ public class HouseResourcesController {
         return R.success(insert);
     }
 
+    @RequestMapping("update")
+    public R updateHouseResources(@RequestBody HouseResources houseResources) {
+
+        HouseResources update = houseResourcesService.update(houseResources);
+        return R.success(update);
+    }
+
     /**
      * 列表房源
      * @param currentPage
@@ -60,7 +67,7 @@ public class HouseResourcesController {
     @ResponseBody
     public TableResult list(@RequestParam(name = "currentPage", defaultValue = "1") int currentPage,
                             @RequestParam(name = "pageSize", defaultValue = "10") int pageSize,HouseResources queryCondition) {
-        System.err.println(queryCondition);
+        //log.info(queryCondition);
         TableResult tableResult = this.houseResourcesService.queryByPage(currentPage, pageSize,queryCondition);
         return tableResult;
     }
