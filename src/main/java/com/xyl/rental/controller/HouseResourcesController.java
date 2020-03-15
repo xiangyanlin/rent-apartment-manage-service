@@ -6,6 +6,7 @@ import com.xyl.rental.utils.R;
 import com.xyl.rental.vo.PageInfo;
 import com.xyl.rental.vo.TableResult;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
@@ -50,11 +51,23 @@ public class HouseResourcesController {
         return R.success(insert);
     }
 
+    /**
+     * 修改房源
+     * @param houseResources
+     * @return
+     */
     @RequestMapping("update")
     public R updateHouseResources(@RequestBody HouseResources houseResources) {
 
         HouseResources update = houseResourcesService.update(houseResources);
         return R.success(update);
+    }
+
+    @RequestMapping("delete")
+    public void deleteHouseResources(@RequestParam(value = "id") int id) {
+
+        houseResourcesService.deleteById(id);
+
     }
 
     /**

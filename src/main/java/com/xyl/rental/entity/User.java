@@ -6,10 +6,10 @@ import java.io.Serializable;
  * (User)实体类
  *
  * @author makejava
- * @since 2020-03-14 16:43:21
+ * @since 2020-03-15 18:29:54
  */
 public class User implements Serializable {
-    private static final long serialVersionUID = -83159080692365110L;
+    private static final long serialVersionUID = -99058830094089962L;
     /**
     * 主键ID
     */
@@ -34,6 +34,10 @@ public class User implements Serializable {
     * 性别
     */
     private String sex;
+    /**
+    * 真实姓名
+    */
+    private String realName;
     /**
     * 身份证号
     */
@@ -102,6 +106,14 @@ public class User implements Serializable {
 
     public void setSex(String sex) {
         this.sex = sex;
+    }
+
+    public String getRealName() {
+        return realName;
+    }
+
+    public void setRealName(String realName) {
+        this.realName = realName;
     }
 
     public String getIdCard() {

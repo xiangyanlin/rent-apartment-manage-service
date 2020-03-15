@@ -1,7 +1,6 @@
 package com.xyl.rental.dao;
 
 import com.xyl.rental.entity.User;
-import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import java.util.List;
 
@@ -9,9 +8,8 @@ import java.util.List;
  * (User)表数据库访问层
  *
  * @author makejava
- * @since 2020-03-14 16:43:21
+ * @since 2020-03-15 18:29:59
  */
-@Mapper
 public interface UserDao {
 
     /**
