@@ -3,14 +3,12 @@ package com.xyl.rental.controller;
 import com.xyl.rental.entity.HouseResources;
 import com.xyl.rental.service.HouseResourcesService;
 import com.xyl.rental.utils.R;
-import com.xyl.rental.vo.PageInfo;
 import com.xyl.rental.vo.TableResult;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.ibatis.annotations.Param;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
-import java.util.List;
+import java.util.Date;
 
 /**
  * 房源表(HouseResources)表控制层
@@ -46,7 +44,7 @@ public class HouseResourcesController {
      */
     @RequestMapping("save")
     public R saveHouseResources(@RequestBody HouseResources houseResources) {
-
+        houseResources.setCreated(new Date());
         HouseResources insert = houseResourcesService.insert(houseResources);
         return R.success(insert);
     }
@@ -58,7 +56,9 @@ public class HouseResourcesController {
      */
     @RequestMapping("update")
     public R updateHouseResources(@RequestBody HouseResources houseResources) {
-
+        Date date=new Date();
+        houseResources.setUpdated(date);
+        //System.err.println(date);
         HouseResources update = houseResourcesService.update(houseResources);
         return R.success(update);
     }

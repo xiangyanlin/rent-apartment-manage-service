@@ -1,25 +1,25 @@
 package com.xyl.rental.controller;
 
-import com.xyl.rental.entity.User;
-import com.xyl.rental.service.UserService;
+import com.xyl.rental.entity.RentRecord;
+import com.xyl.rental.service.RentRecordService;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 
 /**
- * (User)表控制层
+ * (RentRecord)表控制层
  *
  * @author makejava
- * @since 2020-03-15 19:55:28
+ * @since 2020-03-15 22:52:32
  */
 @RestController
-@RequestMapping("user")
-public class UserController {
+@RequestMapping("rentRecord")
+public class RentRecordController {
     /**
      * 服务对象
      */
     @Resource
-    private UserService userService;
+    private RentRecordService rentRecordService;
 
     /**
      * 通过主键查询单条数据
@@ -28,8 +28,8 @@ public class UserController {
      * @return 单条数据
      */
     @GetMapping("selectOne")
-    public User selectOne(Integer id) {
-        return this.userService.queryById(id);
+    public RentRecord selectOne(Integer id) {
+        return this.rentRecordService.queryById(id);
     }
 
 }

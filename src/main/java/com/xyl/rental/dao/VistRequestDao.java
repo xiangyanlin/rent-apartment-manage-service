@@ -1,6 +1,7 @@
 package com.xyl.rental.dao;
 
 import com.xyl.rental.entity.VistRequest;
+import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import java.util.List;
 
@@ -10,6 +11,7 @@ import java.util.List;
  * @author makejava
  * @since 2020-03-15 18:56:10
  */
+@Mapper
 public interface VistRequestDao {
 
     /**

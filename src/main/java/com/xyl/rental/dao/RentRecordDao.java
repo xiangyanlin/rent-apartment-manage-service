@@ -1,18 +1,18 @@
 package com.xyl.rental.dao;
 
-import com.xyl.rental.entity.User;
+import com.xyl.rental.entity.RentRecord;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import java.util.List;
 
 /**
- * (User)表数据库访问层
+ * (RentRecord)表数据库访问层
  *
  * @author makejava
- * @since 2020-03-15 19:55:26
+ * @since 2020-03-15 22:52:32
  */
 @Mapper
-public interface UserDao {
+public interface RentRecordDao {
 
     /**
      * 通过ID查询单条数据
@@ -20,7 +20,7 @@ public interface UserDao {
      * @param id 主键
      * @return 实例对象
      */
-    User queryById(Integer id);
+    RentRecord queryById(Integer id);
 
     /**
      * 查询指定行数据
@@ -29,32 +29,32 @@ public interface UserDao {
      * @param limit 查询条数
      * @return 对象列表
      */
-    List<User> queryAllByLimit(@Param("offset") int offset, @Param("limit") int limit);
+    List<RentRecord> queryAllByLimit(@Param("offset") int offset, @Param("limit") int limit);
 
 
     /**
      * 通过实体作为筛选条件查询
      *
-     * @param user 实例对象
+     * @param rentRecord 实例对象
      * @return 对象列表
      */
-    List<User> queryAll(User user);
+    List<RentRecord> queryAll(RentRecord rentRecord);
 
     /**
      * 新增数据
      *
-     * @param user 实例对象
+     * @param rentRecord 实例对象
      * @return 影响行数
      */
-    int insert(User user);
+    int insert(RentRecord rentRecord);
 
     /**
      * 修改数据
      *
-     * @param user 实例对象
+     * @param rentRecord 实例对象
      * @return 影响行数
      */
-    int update(User user);
+    int update(RentRecord rentRecord);
 
     /**
      * 通过主键删除数据
