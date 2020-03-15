@@ -14,13 +14,12 @@
         <result property="profession" column="profession" jdbcType="VARCHAR"/>
         <result property="education" column="education" jdbcType="VARCHAR"/>
         <result property="role" column="role" jdbcType="VARCHAR"/>
-        <result property="operation" column="operation" jdbcType="VARCHAR"/>
     </resultMap>
 
     <!--查询单个-->
     <select id="queryById" resultMap="UserMap">
         select
-          id, name, password, email, mobile, sex, real_name, id_card, profession, education, role, operation
+          id, name, password, email, mobile, sex, real_name, id_card, profession, education, role
         from rental.user
         where id = #{id}
     </select>
@@ -28,7 +27,7 @@
     <!--查询指定行数据-->
     <select id="queryAllByLimit" resultMap="UserMap">
         select
-          id, name, password, email, mobile, sex, real_name, id_card, profession, education, role, operation
+          id, name, password, email, mobile, sex, real_name, id_card, profession, education, role
         from rental.user
         limit #{offset}, #{limit}
     </select>
@@ -36,7 +35,7 @@
     <!--通过实体作为筛选条件查询-->
     <select id="queryAll" resultMap="UserMap">
         select
-          id, name, password, email, mobile, sex, real_name, id_card, profession, education, role, operation
+          id, name, password, email, mobile, sex, real_name, id_card, profession, education, role
         from rental.user
         <where>
             <if test="id != null">
@@ -72,16 +71,13 @@
             <if test="role != null and role != ''">
                 and role = #{role}
             </if>
-            <if test="operation != null and operation != ''">
-                and operation = #{operation}
-            </if>
         </where>
     </select>
 
     <!--新增所有列-->
     <insert id="insert" keyProperty="id" useGeneratedKeys="true">
-        insert into rental.user(name, password, email, mobile, sex, real_name, id_card, profession, education, role, operation)
-        values (#{name}, #{password}, #{email}, #{mobile}, #{sex}, #{realName}, #{idCard}, #{profession}, #{education}, #{role}, #{operation})
+        insert into rental.user(name, password, email, mobile, sex, real_name, id_card, profession, education, role)
+        values (#{name}, #{password}, #{email}, #{mobile}, #{sex}, #{realName}, #{idCard}, #{profession}, #{education}, #{role})
     </insert>
 
     <!--通过主键修改数据-->
@@ -117,9 +113,6 @@
             </if>
             <if test="role != null and role != ''">
                 role = #{role},
-            </if>
-            <if test="operation != null and operation != ''">
-                operation = #{operation},
             </if>
         </set>
         where id = #{id}

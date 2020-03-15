@@ -1,15 +1,15 @@
 package com.xyl.rental.service;
 
-import com.xyl.rental.entity.User;
+import com.xyl.rental.entity.VistRequest;
 import java.util.List;
 
 /**
- * (User)表服务接口
+ * (VistRequest)表服务接口
  *
  * @author makejava
- * @since 2020-03-15 18:47:54
+ * @since 2020-03-15 18:56:10
  */
-public interface UserService {
+public interface VistRequestService {
 
     /**
      * 通过ID查询单条数据
@@ -17,7 +17,7 @@ public interface UserService {
      * @param id 主键
      * @return 实例对象
      */
-    User queryById(Integer id);
+    VistRequest queryById(Integer id);
 
     /**
      * 查询多条数据
@@ -26,23 +26,23 @@ public interface UserService {
      * @param limit 查询条数
      * @return 对象列表
      */
-    List<User> queryAllByLimit(int offset, int limit);
+    List<VistRequest> queryAllByLimit(int offset, int limit);
 
     /**
      * 新增数据
      *
-     * @param user 实例对象
+     * @param vistRequest 实例对象
      * @return 实例对象
      */
-    User insert(User user);
+    VistRequest insert(VistRequest vistRequest);
 
     /**
      * 修改数据
      *
-     * @param user 实例对象
+     * @param vistRequest 实例对象
      * @return 实例对象
      */
-    User update(User user);
+    VistRequest update(VistRequest vistRequest);
 
     /**
      * 通过主键删除数据

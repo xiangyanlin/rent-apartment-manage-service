@@ -6,10 +6,10 @@ import java.io.Serializable;
  * (User)实体类
  *
  * @author makejava
- * @since 2020-03-15 18:29:54
+ * @since 2020-03-15 18:47:52
  */
 public class User implements Serializable {
-    private static final long serialVersionUID = -99058830094089962L;
+    private static final long serialVersionUID = 536240156195443594L;
     /**
     * 主键ID
     */
@@ -54,10 +54,6 @@ public class User implements Serializable {
     * 1管理员，2租客，3房东
     */
     private String role;
-    /**
-    * 操作
-    */
-    private String operation;
 
 
     public Integer getId() {
@@ -146,14 +142,6 @@ public class User implements Serializable {
 
     public void setRole(String role) {
         this.role = role;
-    }
-
-    public String getOperation() {
-        return operation;
-    }
-
-    public void setOperation(String operation) {
-        this.operation = operation;
     }
 
 }
