@@ -63,9 +63,11 @@ public class HouseResourcesController {
         return R.success(update);
     }
 
-    @RequestMapping("delete")
-    public void deleteHouseResources(@RequestParam(value = "id") int id) {
 
+    @DeleteMapping("delete")
+    @ResponseBody
+    public void deleteHouseResources(@RequestParam("id") int id) {
+        System.err.println(id);
         houseResourcesService.deleteById(id);
 
     }
