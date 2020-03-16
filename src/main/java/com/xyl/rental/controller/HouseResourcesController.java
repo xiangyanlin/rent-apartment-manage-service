@@ -83,6 +83,7 @@ public class HouseResourcesController {
     public TableResult list(@RequestParam(name = "currentPage", defaultValue = "1") int currentPage,
                             @RequestParam(name = "pageSize", defaultValue = "10") int pageSize,HouseResources queryCondition) {
         //log.info(queryCondition);
+        System.out.println(queryCondition);
         TableResult tableResult = this.houseResourcesService.queryByPage(currentPage, pageSize,queryCondition);
         return tableResult;
     }

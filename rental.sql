@@ -11,7 +11,7 @@
  Target Server Version : 50560
  File Encoding         : 65001
 
- Date: 15/03/2020 23:11:23
+ Date: 16/03/2020 23:14:39
 */
 
 SET NAMES utf8mb4;
@@ -22,7 +22,7 @@ SET FOREIGN_KEY_CHECKS = 0;
 -- ----------------------------
 DROP TABLE IF EXISTS `contract`;
 CREATE TABLE `contract`  (
-  `id` int(10) NOT NULL COMMENT '合约编号',
+  `id` int(10) NOT NULL AUTO_INCREMENT COMMENT '合约编号',
   `status` varchar(10) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '合约状态',
   `address` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '物业地址',
   `house_id` int(10) NULL DEFAULT NULL COMMENT '房源编号',
@@ -31,7 +31,7 @@ CREATE TABLE `contract`  (
   `start_time` datetime NULL DEFAULT NULL COMMENT '签约日期',
   `end_time` datetime NULL DEFAULT NULL COMMENT '到期日期',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Records of contract
@@ -79,6 +79,8 @@ CREATE TABLE `house_resources`  (
   `building_num` varchar(5) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '楼号（栋）',
   `building_unit` varchar(5) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '单元号',
   `building_floor_num` varchar(5) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '门牌号',
+  `used` varchar(10) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '房屋用处1住宅，2商住两用',
+  `status` varchar(10) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '房屋状态1待租，3租出',
   `rent` int(10) NULL DEFAULT NULL COMMENT '租金',
   `rent_method` int(4) NULL DEFAULT NULL COMMENT '租赁方式，1-整租，2-合租',
   `payment_method` int(4) NULL DEFAULT NULL COMMENT '支付方式，1-付一押一，2-付三押一，3-付六押一，4-年付押一，5-其它',
@@ -103,19 +105,19 @@ CREATE TABLE `house_resources`  (
 -- ----------------------------
 -- Records of house_resources
 -- ----------------------------
-INSERT INTO `house_resources` VALUES (1, '测试修改页面', 1, '1', '1', '1', 2000, 1, 1, '1', '120', '1', '1', '1', 1, '1', 'http://127.0.0.1:8080/common/getImage?filename=/images/2020/03/14/2020031410471657904864.jpg', '1', '1', '1', 1, '1', '2020-03-05 14:54:08', '2020-03-05 14:54:11');
-INSERT INTO `house_resources` VALUES (2, '东方曼哈顿 3室2厅 16000 元', 1005, '2', '1', '1', 1111, 1, NULL, ' 1室1厅1卫1厨1阳台', '2', '2', '1/2', '南', NULL, '1,2,3,8,9', NULL, '这个经纪人很懒，没写核心卖 点', '张 三', '11111111111', 1, '11', NULL, '2020-03-15 22:50:51');
-INSERT INTO `house_resources` VALUES (5, '凌海明珠', 1002, '4', '2', '526', 4000, 1, 2, '3室2厅1卫1厨2阳台', '120', '100', '5/12', '南', 1, '1,2,3', NULL, '好', '李四', '13122226666', 2, '1', NULL, NULL);
-INSERT INTO `house_resources` VALUES (6, '天堂湾', 1003, '4', '1', '633', 3500, 1, 1, '4室3厅2卫2厨3阳台', '200', '180', '6/20', '南', 1, '1,2,3,8,7,5,4,6', '', '设备齐全，带车库', '李元霸', '13144445555', 5, '5', NULL, NULL);
-INSERT INTO `house_resources` VALUES (7, '修改时间2', 1005, '10', '5', '101', 4000, 1, 1, '3室2厅1卫1厨2阳台', '120', '100', '10/1', '南', 1, '1,2,3', '', '111', '赵云', '13144445555', 1, '11', NULL, '2020-03-15 22:35:59');
-INSERT INTO `house_resources` VALUES (8, '修改时间问题1', 1002, '1', '1', '11', 1000, 1, 1, '1室1厅1卫1厨1阳台', '100', '100', '1/10', '南', 1, '1,2,3,7', '', '111', '1', '13627441292', 1, '1', NULL, '2020-03-15 14:23:57');
-INSERT INTO `house_resources` VALUES (9, '11', 1002, '1', '1', '11', 1000, 1, 1, '1室1厅1卫1厨1阳台', '100', '100', '1/10', '南', 1, '1,2,3,7', '', '111', '1', '13627441292', 1, '1', NULL, NULL);
-INSERT INTO `house_resources` VALUES (10, '111', 1002, '5', '5', '5', 5000, 1, 1, '1室1厅1卫1厨1阳台', '100', '100', '1/1', '南', 1, '1,2,3', '', '111', '111', '1111', 1, '1', NULL, NULL);
-INSERT INTO `house_resources` VALUES (11, '测试图片上传', 1001, '3', '3', '3', 3000, 1, 1, '3室3厅3卫3厨3阳台', '130', '100', '3/10', '南', 1, '1,2,3', 'http://127.0.0.1:8080/common/getImage?filename=/images/2020/03/08/2020030808090373704632.jpg', '图片', '哈哈', '18774062479', 1, '1', NULL, NULL);
-INSERT INTO `house_resources` VALUES (12, 'hello', 1001, '1', '1', '1', 1, 1, 1, '4室3厅2卫2厨3阳台', '180', '150', '4/20', '南', 1, '1,2,3,5,6', 'http://127.0.0.1:8080/common/getImage?filename=/images/2020/03/11/2020031107290742307462.jpg,http://127.0.0.1:8080/common/getImage?filename=/images/2020/03/11/2020031107291325104751.jpg', '很大，设施齐全', '张三', '18774062479', 1, '5', NULL, NULL);
-INSERT INTO `house_resources` VALUES (13, '测试分页', 1001, '12', '1', '101', 1000, 1, 1, '1室1厅1卫11厨1阳台', '110', '95', '1/10', '南', 1, '1,2,3', '', '测试分页', '张三', '13627441292', 1, '5', NULL, NULL);
-INSERT INTO `house_resources` VALUES (14, '111', 1002, '111', '111', '11', 11, 1, 1, '1室1厅1卫1厨1阳台', '100', '100', '1/1', '南', 1, '1,2,3', '', '1001', '张三', '18774062479', 1, '100', NULL, NULL);
-INSERT INTO `house_resources` VALUES (15, '测试新增bug', 1002, '1', '1', '1', 3000, 1, 1, '2室2厅2卫1厨2阳台', '80', '80', '5/10', '南', 1, '1,2,3', '', '111', '张三', '18774062479', 1, '5', NULL, NULL);
+INSERT INTO `house_resources` VALUES (1, '测试修改页面', 1, '1', '1', '1', NULL, NULL, 2000, 1, 1, '1', '120', '1', '1', '1', 1, '1', 'http://127.0.0.1:8080/common/getImage?filename=/images/2020/03/14/2020031410471657904864.jpg', '1', '1', '1', 1, '1', '2020-03-05 14:54:08', '2020-03-05 14:54:11');
+INSERT INTO `house_resources` VALUES (2, '东方曼哈顿 3室2厅 16000 元', 1005, '2', '1', '1', NULL, NULL, 1111, 1, NULL, ' 1室1厅1卫1厨1阳台', '2', '2', '1/2', '南', NULL, '1,2,3,8,9', NULL, '这个经纪人很懒，没写核心卖 点', '张 三', '11111111111', 1, '11', NULL, '2020-03-15 22:50:51');
+INSERT INTO `house_resources` VALUES (5, '凌海明珠', 1002, '4', '2', '526', NULL, NULL, 4000, 1, 2, '3室2厅1卫1厨2阳台', '120', '100', '5/12', '南', 1, '1,2,3', NULL, '好', '李四', '13122226666', 2, '1', NULL, NULL);
+INSERT INTO `house_resources` VALUES (6, '天堂湾', 1003, '4', '1', '633', NULL, NULL, 3500, 1, 1, '4室3厅2卫2厨3阳台', '200', '180', '6/20', '南', 1, '1,2,3,8,7,5,4,6', '', '设备齐全，带车库', '李元霸', '13144445555', 5, '5', NULL, NULL);
+INSERT INTO `house_resources` VALUES (7, '修改时间2', 1005, '10', '5', '101', NULL, NULL, 4000, 1, 1, '3室2厅1卫1厨2阳台', '120', '100', '10/1', '南', 1, '1,2,3', '', '111', '赵云', '13144445555', 1, '11', NULL, '2020-03-15 22:35:59');
+INSERT INTO `house_resources` VALUES (8, '修改时间问题1', 1002, '1', '1', '11', NULL, NULL, 1000, 1, 1, '1室1厅1卫1厨1阳台', '100', '100', '1/10', '南', 1, '1,2,3,7', '', '111', '1', '13627441292', 1, '1', NULL, '2020-03-15 14:23:57');
+INSERT INTO `house_resources` VALUES (9, '11', 1002, '1', '1', '11', NULL, NULL, 1000, 1, 1, '1室1厅1卫1厨1阳台', '100', '100', '1/10', '南', 1, '1,2,3,7', '', '111', '1', '13627441292', 1, '1', NULL, NULL);
+INSERT INTO `house_resources` VALUES (10, '111', 1002, '5', '5', '5', NULL, NULL, 5000, 1, 1, '1室1厅1卫1厨1阳台', '100', '100', '1/1', '南', 1, '1,2,3', '', '111', '111', '1111', 1, '1', NULL, NULL);
+INSERT INTO `house_resources` VALUES (11, '测试图片上传', 1001, '3', '3', '3', NULL, NULL, 3000, 1, 1, '3室3厅3卫3厨3阳台', '130', '100', '3/10', '南', 1, '1,2,3', 'http://127.0.0.1:8080/common/getImage?filename=/images/2020/03/08/2020030808090373704632.jpg', '图片', '哈哈', '18774062479', 1, '1', NULL, NULL);
+INSERT INTO `house_resources` VALUES (12, 'hello', 1001, '1', '1', '1', NULL, NULL, 1, 1, 1, '4室3厅2卫2厨3阳台', '180', '150', '4/20', '南', 1, '1,2,3,5,6', 'http://127.0.0.1:8080/common/getImage?filename=/images/2020/03/11/2020031107290742307462.jpg,http://127.0.0.1:8080/common/getImage?filename=/images/2020/03/11/2020031107291325104751.jpg', '很大，设施齐全', '张三', '18774062479', 1, '5', NULL, NULL);
+INSERT INTO `house_resources` VALUES (13, '测试分页', 1001, '12', '1', '101', NULL, NULL, 1000, 1, 1, '1室1厅1卫11厨1阳台', '110', '95', '1/10', '南', 1, '1,2,3', '', '测试分页', '张三', '13627441292', 1, '5', NULL, NULL);
+INSERT INTO `house_resources` VALUES (14, '111', 1002, '111', '111', '11', NULL, NULL, 11, 1, 1, '1室1厅1卫1厨1阳台', '100', '100', '1/1', '南', 1, '1,2,3', '', '1001', '张三', '18774062479', 1, '100', NULL, NULL);
+INSERT INTO `house_resources` VALUES (15, '测试新增bug', 1002, '1', '1', '1', NULL, NULL, 3000, 1, 1, '2室2厅2卫1厨2阳台', '80', '80', '5/10', '南', 1, '1,2,3', '', '111', '张三', '18774062479', 1, '5', NULL, NULL);
 
 -- ----------------------------
 -- Table structure for information

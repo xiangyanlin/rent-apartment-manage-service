@@ -9,11 +9,11 @@ import java.io.Serializable;
  * 房源表(HouseResources)实体类
  *
  * @author makejava
- * @since 2020-03-05 14:00:15
+ * @since 2020-03-16 23:18:22
  */
 @Data
 public class HouseResources implements Serializable {
-    private static final long serialVersionUID = 565710889324694481L;
+    private static final long serialVersionUID = -34065935107935087L;
     
     private Integer id;
     /**
@@ -36,6 +36,14 @@ public class HouseResources implements Serializable {
     * 门牌号
     */
     private String buildingFloorNum;
+    /**
+    * 房屋用处1住宅，2商住两用
+    */
+    private String used;
+    /**
+    * 房屋状态1待租，3租出
+    */
+    private String status;
     /**
     * 租金
     */
