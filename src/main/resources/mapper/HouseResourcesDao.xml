@@ -230,157 +230,70 @@
     <!-- 查询条数 -->
     <select id="countTotal" resultType="int"  >
     SELECT count(*) FROM rental.house_resources
-    <where>
-        <if test="id != null">
-            and id = #{id}
-        </if>
-        <if test="title != null and title != ''">
-            and title = #{title}
-        </if>
-        <if test="estateId != null">
-            and estate_id = #{estateId}
-        </if>
-        <if test="buildingNum != null and buildingNum != ''">
-            and building_num = #{buildingNum}
-        </if>
-        <if test="buildingUnit != null and buildingUnit != ''">
-            and building_unit = #{buildingUnit}
-        </if>
-        <if test="buildingFloorNum != null and buildingFloorNum != ''">
-            and building_floor_num = #{buildingFloorNum}
-        </if>
-        <if test="rent != null">
-            and rent = #{rent}
-        </if>
-        <if test="rentMethod != null">
-            and rent_method = #{rentMethod}
-        </if>
-        <if test="paymentMethod != null">
-            and payment_method = #{paymentMethod}
-        </if>
-        <if test="houseType != null and houseType != ''">
-            and house_type = #{houseType}
-        </if>
-        <if test="coveredArea != null and coveredArea != ''">
-            and covered_area = #{coveredArea}
-        </if>
-        <if test="useArea != null and useArea != ''">
-            and use_area = #{useArea}
-        </if>
-        <if test="floor != null and floor != ''">
-            and floor = #{floor}
-        </if>
-        <if test="orientation != null and orientation != ''">
-            and orientation = #{orientation}
-        </if>
-        <if test="decoration != null">
-            and decoration = #{decoration}
-        </if>
-        <if test="facilities != null and facilities != ''">
-            and facilities = #{facilities}
-        </if>
-        <if test="pic != null and pic != ''">
-            and pic = #{pic}
-        </if>
-        <if test="houseDesc != null and houseDesc != ''">
-            and house_desc = #{houseDesc}
-        </if>
-        <if test="contact != null and contact != ''">
-            and contact = #{contact}
-        </if>
-        <if test="mobile != null and mobile != ''">
-            and mobile = #{mobile}
-        </if>
-        <if test="time != null">
-            and time = #{time}
-        </if>
-        <if test="propertyCost != null and propertyCost != ''">
-            and property_cost = #{propertyCost}
-        </if>
-        <if test="created != null">
-            and created = #{created}
-        </if>
-        <if test="updated != null">
-            and updated = #{updated}
-        </if>
-    </where>
+        <where>
+            <if test="houseResources.id != null">
+                and id like CONCAT('%',#{houseResources.id},'%')
+            </if>
+            <if test="houseResources.title != null and houseResources.title != ''">
+                and title like CONCAT('%',#{houseResources.title},'%')
+            </if>
+            <if test="houseResources.status != null and houseResources.status != ''">
+                and status = #{houseResources.status}
+            </if>
+            <if test="houseResources.used != null and houseResources.used != ''">
+                and used = #{houseResources.used}
+            </if>
+            <if test=" minRent!= null">
+                and rent <![CDATA[ >= ]]> #{minRent}
+            </if>
+            <if test="maxRent != null">
+                and rent <![CDATA[ <= ]]> #{maxRent}
+            </if>
+            <if test="houseResources.houseType != null and houseResources.houseType != ''">
+                and house_type like  CONCAT('%',#{houseResources.houseType},'%')
+            </if>
+            <if test="houseResources.orientation != null and houseResources.orientation != ''">
+                and orientation like CONCAT('%',#{houseResources.orientation},'%')
+            </if>
+            <if test="houseResources.decoration != null">
+                and decoration = #{houseResources.decoration}
+            </if>
+        </where>
     </select>
     <!--分页条件查询-->
     <select id="queryPage" resultMap="HouseResourcesMap">
         select
         id, title, estate_id, building_num, building_unit, building_floor_num, rent, rent_method, payment_method, house_type, covered_area, use_area, floor, orientation, decoration, facilities, pic, house_desc, contact, mobile, time, property_cost, created, updated
         from rental.house_resources
-        <!--<where>-->
-        <!--<if test="id != null">-->
-        <!--and id like "%"#{id}"%"-->
-        <!--</if>-->
-        <!--<if test="title != null and title != ''">-->
-        <!--and title like "%"#{title}"%"-->
-        <!--</if>-->
-        <!--<if test="estateId != null">-->
-        <!--and estate_id like "%"#{estateId}"%"-->
-        <!--</if>-->
-        <!--<if test="buildingNum != null and buildingNum != ''">-->
-        <!--and building_num like "%"#{buildingNum}"%"-->
-        <!--</if>-->
-        <!--<if test="buildingUnit != null and buildingUnit != ''">-->
-        <!--and building_unit like "%"#{buildingUnit}"%"-->
-        <!--</if>-->
-        <!--<if test="buildingFloorNum != null and buildingFloorNum != ''">-->
-        <!--and building_floor_num like "%"#{buildingFloorNum}"%"-->
-        <!--</if>-->
-        <!--<if test="rent != null">-->
-        <!--and rent like "%"#{rent}"%"-->
-        <!--</if>-->
-        <!--<if test="rentMethod != null">-->
-        <!--and rent_method like "%"#{rentMethod}"%"-->
-        <!--</if>-->
-        <!--<if test="paymentMethod != null">-->
-        <!--and payment_method like "%"#{paymentMethod}"%"-->
-        <!--</if>-->
-        <!--<if test="houseType != null and houseType != ''">-->
-        <!--and house_type like "%"#{houseType}"%"-->
-        <!--</if>-->
-        <!--<if test="coveredArea != null and coveredArea != ''">-->
-        <!--and covered_area like "%"#{coveredArea}"%"-->
-        <!--</if>-->
-        <!--<if test="useArea != null and useArea != ''">-->
-        <!--and use_area like "%"#{useArea}"%"-->
-        <!--</if>-->
-        <!--<if test="floor != null and floor != ''">-->
-        <!--and floor like "%"#{floor}"%"-->
-        <!--</if>-->
-        <!--<if test="orientation != null and orientation != ''">-->
-        <!--and orientation like "%"#{orientation}"%"-->
-        <!--</if>-->
-        <!--<if test="decoration != null">-->
-        <!--and decoration like "%"#{decoration}"%"-->
-        <!--</if>-->
-        <!--<if test="facilities != null and facilities != ''">-->
-        <!--and facilities like "%"#{facilities}"%"-->
-        <!--</if>-->
-        <!--<if test="houseDesc != null and houseDesc != ''">-->
-        <!--and house_desc like "%"#{houseDesc}"%"-->
-        <!--</if>-->
-        <!--<if test="contact != null and contact != ''">-->
-        <!--and contact like "%"#{contact}"%"-->
-        <!--</if>-->
-        <!--<if test="mobile != null and mobile != ''">-->
-        <!--and mobile like "%"#{mobile}"%"-->
-        <!--</if>-->
-        <!--<if test="time != null">-->
-        <!--and time like "%"#{time}"%"-->
-        <!--</if>-->
-        <!--<if test="propertyCost != null and propertyCost != ''">-->
-        <!--and property_cost like "%"#{propertyCost}"%"-->
-        <!--</if>-->
-        <!--<if test="created != null">-->
-        <!--and created like "%"#{created}"%"-->
-        <!--</if>-->
-        <!--<if test="updated != null">-->
-        <!--and updated like "%"#{updated}"%"-->
-        <!--</if>-->
-        <!--</where>-->
+        <where>
+            <if test="houseResources.id != null">
+                and id like CONCAT('%',#{houseResources.id},'%')
+            </if>
+            <if test="houseResources.title != null and houseResources.title != ''">
+                and title like CONCAT('%',#{houseResources.title},'%')
+            </if>
+            <if test="houseResources.status != null and houseResources.status != ''">
+                and status = #{houseResources.status}
+            </if>
+            <if test="houseResources.used != null and houseResources.used != ''">
+                and used = #{houseResources.used}
+            </if>
+            <if test=" minRent!= null">
+                and rent <![CDATA[ >= ]]> #{minRent}
+            </if>
+            <if test="maxRent != null">
+                and rent <![CDATA[ <= ]]> #{maxRent}
+            </if>
+            <if test="houseResources.houseType != null and houseResources.houseType != ''">
+                and house_type like  CONCAT('%',#{houseResources.houseType},'%')
+            </if>
+            <if test="houseResources.orientation != null and houseResources.orientation != ''">
+                and orientation like CONCAT('%',#{houseResources.orientation},'%')
+            </if>
+            <if test="houseResources.decoration != null">
+                and decoration = #{houseResources.decoration}
+            </if>
+        </where>
         limit #{offset}, #{limit}
     </select>
 </mapper>

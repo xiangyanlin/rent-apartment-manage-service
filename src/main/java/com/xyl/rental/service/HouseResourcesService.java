@@ -38,7 +38,7 @@ public interface HouseResourcesService {
      * @param queryCondition
      * @return
      */
-    TableResult queryByPage(int currentPage, int pageSize,HouseResources queryCondition);
+    TableResult queryByPage(int currentPage, int pageSize,HouseResources queryCondition,Integer minRent, Integer maxRent);
 
     /**
      * 新增数据
