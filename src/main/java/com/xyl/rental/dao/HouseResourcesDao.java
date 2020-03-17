@@ -31,6 +31,15 @@ public interface HouseResourcesDao {
      */
     List<HouseResources> queryAllByLimit(@Param("offset") int offset, @Param("limit") int limit);
 
+    /**
+     * 分页条件查询
+     * @param offset
+     * @param limit
+     * @param houseResources
+     * @param minRent
+     * @param maxRent
+     * @return
+     */
     List<HouseResources> queryPage(@Param("offset") int offset, @Param("limit") int limit,HouseResources houseResources, Integer minRent, Integer maxRent);
 
 

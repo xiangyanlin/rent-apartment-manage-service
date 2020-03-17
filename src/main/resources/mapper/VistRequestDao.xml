@@ -95,4 +95,17 @@
         delete from rental.vist_request where id = #{id}
     </delete>
 
+    <!-- 查询条数 -->
+    <select id="countTotal" resultType="int"  >
+        SELECT count(*) FROM rental.vist_request
+    </select>
+    <!--分页条件查询-->
+    <select id="queryPage" resultMap="VistRequestMap">
+        select
+         id, tenant_name, mobile, village, reuest_time, vist_time, status
+        from rental.vist_request
+
+        limit #{offset}, #{limit}
+    </select>
+
 </mapper>

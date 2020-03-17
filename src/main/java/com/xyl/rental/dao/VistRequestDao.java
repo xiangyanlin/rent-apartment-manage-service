@@ -63,5 +63,6 @@ public interface VistRequestDao {
      * @return 影响行数
      */
     int deleteById(Integer id);
-
+    List<VistRequest> queryPage(@Param("offset") int offset, @Param("limit") int limit);
+    int countTotal();
 }
