@@ -95,4 +95,17 @@
         delete from rental.rent_record where id = #{id}
     </delete>
 
+
+    <!-- 查询条数 -->
+    <select id="countTotal" resultType="int"  >
+        SELECT count(*) FROM rental.rent_record
+    </select>
+    <!--分页条件查询-->
+    <select id="queryPage" resultMap="RentRecordMap">
+        select
+        id, house_name, house_id, tenan_id, ower_id, contract_id, status
+        from rental.rent_record
+
+        limit #{offset}, #{limit}
+    </select>
 </mapper>

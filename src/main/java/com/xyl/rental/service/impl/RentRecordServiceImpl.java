@@ -3,6 +3,8 @@ package com.xyl.rental.service.impl;
 import com.xyl.rental.entity.RentRecord;
 import com.xyl.rental.dao.RentRecordDao;
 import com.xyl.rental.service.RentRecordService;
+import com.xyl.rental.vo.Pagination;
+import com.xyl.rental.vo.TableResult;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -40,6 +42,22 @@ public class RentRecordServiceImpl implements RentRecordService {
     @Override
     public List<RentRecord> queryAllByLimit(int offset, int limit) {
         return this.rentRecordDao.queryAllByLimit(offset, limit);
+    }
+
+    @Override
+    public TableResult queryByPage(int currentPage, int pageSize) {
+        TableResult tr=new TableResult();
+        Pagination pagination=new Pagination();
+        int start=(currentPage-1)*pageSize;
+        int total=rentRecordDao.countTotal();
+        List<RentRecord> list = rentRecordDao.queryPage(
+                start, pageSize);
+        pagination.setCurrent(currentPage);
+        pagination.setPageSize(pageSize);
+        pagination.setTotal(total);
+        tr.setList(list);
+        tr.setPagination(pagination);
+        return tr;
     }
 
     /**

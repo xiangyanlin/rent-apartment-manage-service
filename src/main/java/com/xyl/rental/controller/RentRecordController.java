@@ -2,6 +2,7 @@ package com.xyl.rental.controller;
 
 import com.xyl.rental.entity.RentRecord;
 import com.xyl.rental.service.RentRecordService;
+import com.xyl.rental.vo.TableResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
@@ -32,4 +33,20 @@ public class RentRecordController {
         return this.rentRecordService.queryById(id);
     }
 
+    /**
+     * 租房记录列表
+     * @param currentPage
+     * @param pageSize
+     * @return
+     */
+    @GetMapping("list")
+    @ResponseBody
+    public TableResult list(@RequestParam(name = "currentPage", defaultValue = "1") int currentPage,
+                            @RequestParam(name = "pageSize", defaultValue = "10") int pageSize){
+
+        // System.out.println(queryCondition);
+        TableResult tableResult = this.rentRecordService.queryByPage(
+                currentPage, pageSize);
+        return tableResult;
+    }
 }
