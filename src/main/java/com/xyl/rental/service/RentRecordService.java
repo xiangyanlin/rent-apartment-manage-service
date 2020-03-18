@@ -37,6 +37,13 @@ public interface RentRecordService {
      */
     TableResult queryByPage(int currentPage, int pageSize);
     /**
+     * 租房管理
+     * @param currentPage
+     * @param pageSize
+     * @return
+     */
+    TableResult recordList(int currentPage, int pageSize);
+    /**
      * 新增数据
      *
      * @param rentRecord 实例对象

@@ -6,18 +6,14 @@ import java.io.Serializable;
  * (RentRecord)实体类
  *
  * @author makejava
- * @since 2020-03-15 22:52:32
+ * @since 2020-03-18 21:01:40
  */
 public class RentRecord implements Serializable {
-    private static final long serialVersionUID = -73839788264882610L;
+    private static final long serialVersionUID = -15991990870298364L;
     /**
     * 记录编号
     */
     private Integer id;
-    /**
-    * 房源名称
-    */
-    private String houseName;
     /**
     * 房源id
     */
@@ -46,14 +42,6 @@ public class RentRecord implements Serializable {
 
     public void setId(Integer id) {
         this.id = id;
-    }
-
-    public String getHouseName() {
-        return houseName;
-    }
-
-    public void setHouseName(String houseName) {
-        this.houseName = houseName;
     }
 
     public Integer getHouseId() {

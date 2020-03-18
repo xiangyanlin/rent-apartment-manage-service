@@ -4,6 +4,7 @@ import com.xyl.rental.entity.RentRecord;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import java.util.List;
+import java.util.Map;
 
 /**
  * (RentRecord)表数据库访问层
@@ -76,4 +77,16 @@ public interface RentRecordDao {
      * @return
      */
     int countTotal();
+    /**
+     * 分页记录
+     * @param offset
+     * @param limit
+     * @return
+     */
+    List<Map<String,Object>> recordList(@Param("offset") int offset, @Param("limit") int limit);
+    /**
+     * 记录总数
+     * @return
+     */
+    int recordTotal();
 }

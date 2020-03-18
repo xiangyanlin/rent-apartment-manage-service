@@ -4,7 +4,6 @@
 
     <resultMap type="com.xyl.rental.entity.RentRecord" id="RentRecordMap">
         <result property="id" column="id" jdbcType="INTEGER"/>
-        <result property="houseName" column="house_name" jdbcType="VARCHAR"/>
         <result property="houseId" column="house_id" jdbcType="INTEGER"/>
         <result property="tenanId" column="tenan_id" jdbcType="INTEGER"/>
         <result property="owerId" column="ower_id" jdbcType="INTEGER"/>
@@ -15,7 +14,7 @@
     <!--查询单个-->
     <select id="queryById" resultMap="RentRecordMap">
         select
-          id, house_name, house_id, tenan_id, ower_id, contract_id, status
+          id, house_id, tenan_id, ower_id, contract_id, status
         from rental.rent_record
         where id = #{id}
     </select>
@@ -23,7 +22,7 @@
     <!--查询指定行数据-->
     <select id="queryAllByLimit" resultMap="RentRecordMap">
         select
-          id, house_name, house_id, tenan_id, ower_id, contract_id, status
+          id, house_id, tenan_id, ower_id, contract_id, status
         from rental.rent_record
         limit #{offset}, #{limit}
     </select>
@@ -31,14 +30,11 @@
     <!--通过实体作为筛选条件查询-->
     <select id="queryAll" resultMap="RentRecordMap">
         select
-          id, house_name, house_id, tenan_id, ower_id, contract_id, status
+          id, house_id, tenan_id, ower_id, contract_id, status
         from rental.rent_record
         <where>
             <if test="id != null">
                 and id = #{id}
-            </if>
-            <if test="houseName != null and houseName != ''">
-                and house_name = #{houseName}
             </if>
             <if test="houseId != null">
                 and house_id = #{houseId}
@@ -60,17 +56,14 @@
 
     <!--新增所有列-->
     <insert id="insert" keyProperty="id" useGeneratedKeys="true">
-        insert into rental.rent_record(house_name, house_id, tenan_id, ower_id, contract_id, status)
-        values (#{houseName}, #{houseId}, #{tenanId}, #{owerId}, #{contractId}, #{status})
+        insert into rental.rent_record(house_id, tenan_id, ower_id, contract_id, status)
+        values (#{houseId}, #{tenanId}, #{owerId}, #{contractId}, #{status})
     </insert>
 
     <!--通过主键修改数据-->
     <update id="update">
         update rental.rent_record
         <set>
-            <if test="houseName != null and houseName != ''">
-                house_name = #{houseName},
-            </if>
             <if test="houseId != null">
                 house_id = #{houseId},
             </if>
@@ -95,7 +88,6 @@
         delete from rental.rent_record where id = #{id}
     </delete>
 
-
     <!-- 查询条数 -->
     <select id="countTotal" resultType="int"  >
         SELECT count(*) FROM rental.rent_record
@@ -103,9 +95,58 @@
     <!--分页条件查询-->
     <select id="queryPage" resultMap="RentRecordMap">
         select
-        id, house_name, house_id, tenan_id, ower_id, contract_id, status
+       i id, house_id, tenan_id, ower_id, contract_id, status
         from rental.rent_record
 
         limit #{offset}, #{limit}
     </select>
+
+    <!--租房记录-->
+    <select id="recordList" resultType="map">
+            SELECT b.id id,
+            b.house_name houseName,
+            b.tenan_name tenanName,
+            b.mobile,
+            c.start_time startTime,c.end_time endTime,
+            b.rent,
+            b.status
+            from( SELECT
+            a.id id,
+            a.house_name,
+            u.name tenan_name,
+            u.mobile,
+            a.contract_id,
+            a.rent,
+            a.status
+            from(select  r.id id,h.title house_name,r.tenan_id ,r.contract_id,h.rent,h.status
+            from rent_record r
+            LEFT JOIN  house_resources h on r.house_id=h.id)a
+            LEFT JOIN  user u on a.tenan_id=u.id)b
+            LEFT JOIN  contract c on b.contract_id=c.id
+            limit #{offset}, #{limit}
+     </select>
+    <select id="recordTotal" resultType="int">
+          select count(*) from
+          (  SELECT b.id id,
+            b.house_name,
+            b.tenan_name,
+            b.mobile,
+            c.start_time,c.end_time,
+            b.rent,
+            b.status
+            from( SELECT
+            a.id id,
+            a.house_name,
+            u.name tenan_name,
+            u.mobile,
+            a.contract_id,
+            a.rent,
+            a.status
+            from(select  r.id id,h.title house_name,r.tenan_id ,r.contract_id,h.rent,h.status
+            from rent_record r
+            LEFT JOIN  house_resources h on r.house_id=h.id)a
+            LEFT JOIN  user u on a.tenan_id=u.id)b
+            LEFT JOIN  contract c on b.contract_id=c.id
+           ) d
+     </select>
 </mapper>

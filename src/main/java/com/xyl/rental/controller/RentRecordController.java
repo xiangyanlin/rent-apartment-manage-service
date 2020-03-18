@@ -49,4 +49,20 @@ public class RentRecordController {
                 currentPage, pageSize);
         return tableResult;
     }
+    /**
+     * 租房记录列表
+     * @param currentPage
+     * @param pageSize
+     * @return
+     */
+    @GetMapping("manage")
+    @ResponseBody
+    public TableResult manage(@RequestParam(name = "currentPage", defaultValue = "1") int currentPage,
+                            @RequestParam(name = "pageSize", defaultValue = "10") int pageSize){
+
+        // System.out.println(queryCondition);
+        TableResult tableResult = this.rentRecordService.recordList(
+                currentPage, pageSize);
+        return tableResult;
+    }
 }

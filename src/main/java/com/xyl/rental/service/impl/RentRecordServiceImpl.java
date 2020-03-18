@@ -8,7 +8,9 @@ import com.xyl.rental.vo.TableResult;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 /**
  * (RentRecord)表服务实现类
@@ -44,6 +46,12 @@ public class RentRecordServiceImpl implements RentRecordService {
         return this.rentRecordDao.queryAllByLimit(offset, limit);
     }
 
+    /**
+     * 分页查询
+     * @param currentPage
+     * @param pageSize
+     * @return
+     */
     @Override
     public TableResult queryByPage(int currentPage, int pageSize) {
         TableResult tr=new TableResult();
@@ -52,6 +60,39 @@ public class RentRecordServiceImpl implements RentRecordService {
         int total=rentRecordDao.countTotal();
         List<RentRecord> list = rentRecordDao.queryPage(
                 start, pageSize);
+        pagination.setCurrent(currentPage);
+        pagination.setPageSize(pageSize);
+        pagination.setTotal(total);
+        tr.setList(list);
+        tr.setPagination(pagination);
+        return tr;
+    }
+
+    @Override
+    public TableResult recordList(int currentPage, int pageSize) {
+        TableResult tr=new TableResult();
+        Pagination pagination=new Pagination();
+        int start=(currentPage-1)*pageSize;
+        int total=rentRecordDao.recordTotal();
+        List<Map<String, Object>> maps = rentRecordDao.recordList(start, pageSize);
+        List list=new ArrayList();
+        for (Map map:maps) {
+            if(map.get("status").equals("1")){
+                map.put("state","已确认");
+            }else if(map.get("status").equals("2")){
+                map.put("state","待确认");
+            }else if(map.get("status").equals("3")){
+                map.put("state","待付款");
+            }else{
+                map.put("state","未知");
+            }
+
+            if(null!=map.get("startTime")&&null!=map.get("endTime")){
+                map.put("time",map.get("startTime")+"—"+map.get("endTime"));
+            }
+            list.add(map);
+        }
+
         pagination.setCurrent(currentPage);
         pagination.setPageSize(pageSize);
         pagination.setTotal(total);
