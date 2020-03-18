@@ -3,6 +3,8 @@ package com.xyl.rental.service.impl;
 import com.xyl.rental.entity.Contract;
 import com.xyl.rental.dao.ContractDao;
 import com.xyl.rental.service.ContractService;
+import com.xyl.rental.vo.Pagination;
+import com.xyl.rental.vo.TableResult;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -75,5 +77,21 @@ public class ContractServiceImpl implements ContractService {
     @Override
     public boolean deleteById(Integer id) {
         return this.contractDao.deleteById(id) > 0;
+    }
+
+    @Override
+    public TableResult queryByPage(int currentPage, int pageSize) {
+        TableResult tr=new TableResult();
+        Pagination pagination=new Pagination();
+        int start=(currentPage-1)*pageSize;
+        int total=contractDao.countTotal();
+        List<Contract> list = contractDao.queryPage(
+                start, pageSize);
+        pagination.setCurrent(currentPage);
+        pagination.setPageSize(pageSize);
+        pagination.setTotal(total);
+        tr.setList(list);
+        tr.setPagination(pagination);
+        return tr;
     }
 }

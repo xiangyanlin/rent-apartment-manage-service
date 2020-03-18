@@ -1,6 +1,8 @@
 package com.xyl.rental.service;
 
 import com.xyl.rental.entity.Contract;
+import com.xyl.rental.vo.TableResult;
+
 import java.util.List;
 
 /**
@@ -51,5 +53,12 @@ public interface ContractService {
      * @return 是否成功
      */
     boolean deleteById(Integer id);
+    /**
+     * 分页条件查询
+     * @param currentPage
+     * @param pageSize
+     * @return
+     */
+    TableResult queryByPage(int currentPage, int pageSize);
 
 }

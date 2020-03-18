@@ -1,6 +1,8 @@
 package com.xyl.rental.service;
 
 import com.xyl.rental.entity.User;
+import com.xyl.rental.vo.TableResult;
+
 import java.util.List;
 
 /**
@@ -27,7 +29,13 @@ public interface UserService {
      * @return 对象列表
      */
     List<User> queryAllByLimit(int offset, int limit);
-
+    /**
+     * 分页条件查询
+     * @param currentPage
+     * @param pageSize
+     * @return
+     */
+    TableResult queryByPage(int currentPage, int pageSize);
     /**
      * 新增数据
      *

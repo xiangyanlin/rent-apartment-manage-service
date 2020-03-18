@@ -3,6 +3,8 @@ package com.xyl.rental.service.impl;
 import com.xyl.rental.entity.User;
 import com.xyl.rental.dao.UserDao;
 import com.xyl.rental.service.UserService;
+import com.xyl.rental.vo.Pagination;
+import com.xyl.rental.vo.TableResult;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -40,6 +42,29 @@ public class UserServiceImpl implements UserService {
     @Override
     public List<User> queryAllByLimit(int offset, int limit) {
         return this.userDao.queryAllByLimit(offset, limit);
+    }
+
+    /**
+     * 分页查询
+     * @param currentPage
+     * @param pageSize
+     * @return
+     */
+    @Override
+    public TableResult queryByPage(int currentPage, int pageSize) {
+
+            TableResult tr=new TableResult();
+            Pagination pagination=new Pagination();
+            int start=(currentPage-1)*pageSize;
+            int total=userDao.countTotal();
+            List<User> list = userDao.queryPage(
+                    start, pageSize);
+            pagination.setCurrent(currentPage);
+            pagination.setPageSize(pageSize);
+            pagination.setTotal(total);
+            tr.setList(list);
+            tr.setPagination(pagination);
+            return tr;
     }
 
     /**

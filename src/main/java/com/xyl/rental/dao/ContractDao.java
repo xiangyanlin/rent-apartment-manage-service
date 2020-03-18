@@ -63,5 +63,17 @@ public interface ContractDao {
      * @return 影响行数
      */
     int deleteById(Integer id);
+    /**
+     * 分页查询
+     * @param offset
+     * @param limit
+     * @return
+     */
+    List<Contract> queryPage(@Param("offset") int offset, @Param("limit") int limit);
 
+    /**
+     * 查询总数
+     * @return
+     */
+    int countTotal();
 }

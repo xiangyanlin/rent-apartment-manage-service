@@ -2,6 +2,7 @@ package com.xyl.rental.controller;
 
 import com.xyl.rental.entity.Information;
 import com.xyl.rental.service.InformationService;
+import com.xyl.rental.vo.TableResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
@@ -31,5 +32,16 @@ public class InformationController {
     public Information selectOne(Integer id) {
         return this.informationService.queryById(id);
     }
+    @GetMapping("list")
+    @ResponseBody
+    public TableResult list(@RequestParam(name = "currentPage", defaultValue = "1") int currentPage,
+                            @RequestParam(name = "pageSize", defaultValue = "10") int pageSize){
+
+        // System.out.println(queryCondition);
+        TableResult tableResult = this.informationService.queryByPage(
+                currentPage, pageSize);
+        return tableResult;
+    }
+
 
 }

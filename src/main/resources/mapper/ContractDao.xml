@@ -102,4 +102,17 @@
         delete from rental.contract where id = #{id}
     </delete>
 
+    <!-- 查询条数 -->
+    <select id="countTotal" resultType="int"  >
+        SELECT count(*) FROM rental.contract
+    </select>
+    <!--分页条件查询-->
+    <select id="queryPage" resultMap="ContractMap">
+        select
+       id, status, address, house_id, owner_name, tenant_name, start_time, end_time
+        from rental.contract
+
+        limit #{offset}, #{limit}
+    </select>
+
 </mapper>

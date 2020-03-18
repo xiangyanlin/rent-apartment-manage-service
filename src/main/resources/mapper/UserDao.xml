@@ -129,5 +129,16 @@
     <delete id="deleteById">
         delete from rental.user where id = #{id}
     </delete>
+    <!-- 查询条数 -->
+    <select id="countTotal" resultType="int"  >
+        SELECT count(*) FROM rental.user
+    </select>
+    <!--分页条件查询-->
+    <select id="queryPage" resultMap="UserMap">
+        select
+       id, name, password, email, mobile, sex, real_name, id_card, profession, education, role, house_num
+        from rental.user
 
+        limit #{offset}, #{limit}
+    </select>
 </mapper>

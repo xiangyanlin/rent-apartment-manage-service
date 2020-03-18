@@ -3,6 +3,8 @@ package com.xyl.rental.service.impl;
 import com.xyl.rental.entity.Information;
 import com.xyl.rental.dao.InformationDao;
 import com.xyl.rental.service.InformationService;
+import com.xyl.rental.vo.Pagination;
+import com.xyl.rental.vo.TableResult;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -75,5 +77,21 @@ public class InformationServiceImpl implements InformationService {
     @Override
     public boolean deleteById(Integer id) {
         return this.informationDao.deleteById(id) > 0;
+    }
+
+    @Override
+    public TableResult queryByPage(int currentPage, int pageSize) {
+        TableResult tr=new TableResult();
+        Pagination pagination=new Pagination();
+        int start=(currentPage-1)*pageSize;
+        int total=informationDao.countTotal();
+        List<Information> list = informationDao.queryPage(
+                start, pageSize);
+        pagination.setCurrent(currentPage);
+        pagination.setPageSize(pageSize);
+        pagination.setTotal(total);
+        tr.setList(list);
+        tr.setPagination(pagination);
+        return tr;
     }
 }

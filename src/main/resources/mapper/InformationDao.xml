@@ -81,4 +81,17 @@
         delete from rental.information where id = #{id}
     </delete>
 
+    <!-- 查询条数 -->
+    <select id="countTotal" resultType="int"  >
+        SELECT count(*) FROM rental.information
+    </select>
+    <!--分页条件查询-->
+    <select id="queryPage" resultMap="InformationMap">
+        select
+      id, title, content, read_num, publish_time
+        from rental.information
+
+        limit #{offset}, #{limit}
+    </select>
+
 </mapper>
