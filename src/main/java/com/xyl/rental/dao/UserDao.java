@@ -69,7 +69,7 @@ public interface UserDao {
      * @param limit
      * @return
      */
-    List<User> queryPage(@Param("offset") int offset, @Param("limit") int limit);
+    List<User> queryPage(@Param("offset") int offset, @Param("limit") int limit,User queryCondition);
 
     /**
      * 查询总数

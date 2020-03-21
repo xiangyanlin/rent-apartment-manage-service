@@ -51,14 +51,14 @@ public class UserServiceImpl implements UserService {
      * @return
      */
     @Override
-    public TableResult queryByPage(int currentPage, int pageSize) {
+    public TableResult queryByPage(int currentPage, int pageSize,User queryCondition) {
 
             TableResult tr=new TableResult();
             Pagination pagination=new Pagination();
             int start=(currentPage-1)*pageSize;
             int total=userDao.countTotal();
             List<User> list = userDao.queryPage(
-                    start, pageSize);
+                    start, pageSize,queryCondition);
             pagination.setCurrent(currentPage);
             pagination.setPageSize(pageSize);
             pagination.setTotal(total);

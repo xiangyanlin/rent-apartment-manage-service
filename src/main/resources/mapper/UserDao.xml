@@ -15,12 +15,13 @@
         <result property="education" column="education" jdbcType="VARCHAR"/>
         <result property="role" column="role" jdbcType="VARCHAR"/>
         <result property="houseNum" column="house_num" jdbcType="INTEGER"/>
+        <result property="identify" column="identify" jdbcType="VARCHAR"/>
     </resultMap>
 
     <!--查询单个-->
     <select id="queryById" resultMap="UserMap">
         select
-          id, name, password, email, mobile, sex, real_name, id_card, profession, education, role, house_num
+          id, name, password, email, mobile, sex, real_name, id_card, profession, education, role, house_num, identify
         from rental.user
         where id = #{id}
     </select>
@@ -28,7 +29,7 @@
     <!--查询指定行数据-->
     <select id="queryAllByLimit" resultMap="UserMap">
         select
-          id, name, password, email, mobile, sex, real_name, id_card, profession, education, role, house_num
+          id, name, password, email, mobile, sex, real_name, id_card, profession, education, role, house_num, identify
         from rental.user
         limit #{offset}, #{limit}
     </select>
@@ -36,7 +37,7 @@
     <!--通过实体作为筛选条件查询-->
     <select id="queryAll" resultMap="UserMap">
         select
-          id, name, password, email, mobile, sex, real_name, id_card, profession, education, role, house_num
+          id, name, password, email, mobile, sex, real_name, id_card, profession, education, role, house_num, identify
         from rental.user
         <where>
             <if test="id != null">
@@ -75,13 +76,16 @@
             <if test="houseNum != null">
                 and house_num = #{houseNum}
             </if>
+            <if test="identify != null and identify != ''">
+                and identify = #{identify}
+            </if>
         </where>
     </select>
 
     <!--新增所有列-->
     <insert id="insert" keyProperty="id" useGeneratedKeys="true">
-        insert into rental.user(name, password, email, mobile, sex, real_name, id_card, profession, education, role, house_num)
-        values (#{name}, #{password}, #{email}, #{mobile}, #{sex}, #{realName}, #{idCard}, #{profession}, #{education}, #{role}, #{houseNum})
+        insert into rental.user(name, password, email, mobile, sex, real_name, id_card, profession, education, role, house_num, identify)
+        values (#{name}, #{password}, #{email}, #{mobile}, #{sex}, #{realName}, #{idCard}, #{profession}, #{education}, #{role}, #{houseNum}, #{identify})
     </insert>
 
     <!--通过主键修改数据-->
@@ -121,6 +125,9 @@
             <if test="houseNum != null">
                 house_num = #{houseNum},
             </if>
+            <if test="identify != null and identify != ''">
+                identify = #{identify},
+            </if>
         </set>
         where id = #{id}
     </update>
@@ -136,7 +143,7 @@
     <!--分页条件查询-->
     <select id="queryPage" resultMap="UserMap">
         select
-       id, name, password, email, mobile, sex, real_name, id_card, profession, education, role, house_num
+        id, name, password, email, mobile, sex, real_name, id_card, profession, education, role, house_num, identify
         from rental.user
 
         limit #{offset}, #{limit}

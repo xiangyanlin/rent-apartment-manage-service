@@ -1,15 +1,18 @@
 package com.xyl.rental.entity;
 
+import lombok.Data;
+
 import java.io.Serializable;
 
 /**
  * (User)实体类
  *
  * @author makejava
- * @since 2020-03-15 19:55:25
+ * @since 2020-03-21 20:27:11
  */
+@Data
 public class User implements Serializable {
-    private static final long serialVersionUID = -52779804836382721L;
+    private static final long serialVersionUID = 169909515890483442L;
     /**
     * 主键ID
     */
@@ -58,102 +61,9 @@ public class User implements Serializable {
     * 房源数量
     */
     private Integer houseNum;
-
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getMobile() {
-        return mobile;
-    }
-
-    public void setMobile(String mobile) {
-        this.mobile = mobile;
-    }
-
-    public String getSex() {
-        return sex;
-    }
-
-    public void setSex(String sex) {
-        this.sex = sex;
-    }
-
-    public String getRealName() {
-        return realName;
-    }
-
-    public void setRealName(String realName) {
-        this.realName = realName;
-    }
-
-    public String getIdCard() {
-        return idCard;
-    }
-
-    public void setIdCard(String idCard) {
-        this.idCard = idCard;
-    }
-
-    public String getProfession() {
-        return profession;
-    }
-
-    public void setProfession(String profession) {
-        this.profession = profession;
-    }
-
-    public String getEducation() {
-        return education;
-    }
-
-    public void setEducation(String education) {
-        this.education = education;
-    }
-
-    public String getRole() {
-        return role;
-    }
-
-    public void setRole(String role) {
-        this.role = role;
-    }
-
-    public Integer getHouseNum() {
-        return houseNum;
-    }
-
-    public void setHouseNum(Integer houseNum) {
-        this.houseNum = houseNum;
-    }
+    /**
+    * 0未认证，1已认证
+    */
+    private String identify;
 
 }
