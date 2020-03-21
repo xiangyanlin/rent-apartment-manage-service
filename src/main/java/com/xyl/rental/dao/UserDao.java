@@ -69,12 +69,12 @@ public interface UserDao {
      * @param limit
      * @return
      */
-    List<User> queryPage(@Param("offset") int offset, @Param("limit") int limit,User queryCondition);
+    List<User> queryPage(@Param("offset") int offset, @Param("limit") int limit,User queryCondition,String keyWord);
 
     /**
      * 查询总数
      * @return
      */
-    int countTotal();
+    int countTotal(User queryCondition,String keyWord);
 
 }

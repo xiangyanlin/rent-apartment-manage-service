@@ -35,7 +35,7 @@ public interface UserService {
      * @param pageSize
      * @return
      */
-    TableResult queryByPage(int currentPage, int pageSize,User queryCondition);
+    TableResult queryByPage(int currentPage, int pageSize,User queryCondition,String keyWord);
     /**
      * 新增数据
      *

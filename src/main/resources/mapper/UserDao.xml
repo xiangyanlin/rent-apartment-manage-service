@@ -139,13 +139,114 @@
     <!-- 查询条数 -->
     <select id="countTotal" resultType="int"  >
         SELECT count(*) FROM rental.user
+        <where>
+            <if test="queryCondition.id != null">
+                and id like CONCAT('%',#{queryCondition.id},'%')
+            </if>
+            <if test="queryCondition.name != null and queryCondition.name != ''">
+                and name like  CONCAT('%',#{queryCondition.name},'%')
+            </if>
+            <if test="queryCondition.password != null and queryCondition.password != ''">
+                and password = #{queryCondition.password}
+            </if>
+            <if test="queryCondition.email != null and queryCondition.email != ''">
+                and email like CONCAT('%',#{queryCondition.email},'%')
+            </if>
+            <if test="queryCondition.mobile != null and queryCondition.mobile != ''">
+                and mobile like CONCAT('%',#{queryCondition.mobile},'%')
+            </if>
+            <if test="queryCondition.sex != null and queryCondition.sex != ''">
+                and sex = #{queryCondition.sex}
+            </if>
+            <if test="queryCondition.realName != null and queryCondition.realName != ''">
+                and real_name like CONCAT('%',#{queryCondition.email},'%')
+            </if>
+            <if test="queryCondition.idCard != null and queryCondition.idCard != ''">
+                and id_card like CONCAT('%',#{queryCondition.idCard},'%')
+            </if>
+            <if test="queryCondition.profession != null and queryCondition.profession != ''">
+                and profession like CONCAT('%',#{queryCondition.profession},'%')
+            </if>
+            <if test="queryCondition.education != null and queryCondition.education != ''">
+                and education like CONCAT('%',#{queryCondition.education},'%')
+            </if>
+            <if test="queryCondition.role != null and queryCondition.role != ''">
+                and role = #{queryCondition.role}
+            </if>
+            <if test="queryCondition.houseNum != null">
+                and house_num = #{queryCondition.houseNum}
+            </if>
+            <if test="queryCondition.identify != null and queryCondition.identify != ''">
+                and identify = #{queryCondition.identify}
+            </if>
+            <if test="keyWord != null and keyWord != ''">
+                and (id like CONCAT('%',#{keyWord},'%')
+                or name like CONCAT('%',#{keyWord},'%')
+                or email like CONCAT('%',#{keyWord},'%')
+                or mobile like CONCAT('%',#{keyWord},'%')
+                or real_name like CONCAT('%',#{keyWord},'%')
+                or id_card like CONCAT('%',#{keyWord},'%')
+                or profession like CONCAT('%',#{keyWord},'%')
+                or education like CONCAT('%',#{keyWord},'%'))
+            </if>
+        </where>
     </select>
     <!--分页条件查询-->
     <select id="queryPage" resultMap="UserMap">
         select
         id, name, password, email, mobile, sex, real_name, id_card, profession, education, role, house_num, identify
         from rental.user
-
+        <where>
+             <if test="queryCondition.id != null">
+            and id like CONCAT('%',#{queryCondition.id},'%')
+            </if>
+            <if test="queryCondition.name != null and queryCondition.name != ''">
+                and name like  CONCAT('%',#{queryCondition.name},'%')
+            </if>
+            <if test="queryCondition.password != null and queryCondition.password != ''">
+                and password = #{queryCondition.password}
+            </if>
+            <if test="queryCondition.email != null and queryCondition.email != ''">
+                and email like CONCAT('%',#{queryCondition.email},'%')
+            </if>
+            <if test="queryCondition.mobile != null and queryCondition.mobile != ''">
+                and mobile like CONCAT('%',#{queryCondition.mobile},'%')
+            </if>
+            <if test="queryCondition.sex != null and queryCondition.sex != ''">
+                and sex = #{queryCondition.sex}
+            </if>
+            <if test="queryCondition.realName != null and queryCondition.realName != ''">
+                and real_name like CONCAT('%',#{queryCondition.email},'%')
+            </if>
+            <if test="queryCondition.idCard != null and queryCondition.idCard != ''">
+                and id_card like CONCAT('%',#{queryCondition.idCard},'%')
+            </if>
+            <if test="queryCondition.profession != null and queryCondition.profession != ''">
+                and profession like CONCAT('%',#{queryCondition.profession},'%')
+            </if>
+            <if test="queryCondition.education != null and queryCondition.education != ''">
+                and education like CONCAT('%',#{queryCondition.education},'%')
+            </if>
+            <if test="queryCondition.role != null and queryCondition.role != ''">
+                and role = #{queryCondition.role}
+            </if>
+            <if test="queryCondition.houseNum != null">
+                and house_num = #{queryCondition.houseNum}
+            </if>
+            <if test="queryCondition.identify != null and queryCondition.identify != ''">
+                and identify = #{queryCondition.identify}
+            </if>
+            <if test="keyWord != null and keyWord != ''">
+                and (id like CONCAT('%',#{keyWord},'%')
+                or name like CONCAT('%',#{keyWord},'%')
+                or email like CONCAT('%',#{keyWord},'%')
+                or mobile like CONCAT('%',#{keyWord},'%')
+                or real_name like CONCAT('%',#{keyWord},'%')
+                or id_card like CONCAT('%',#{keyWord},'%')
+                or profession like CONCAT('%',#{keyWord},'%')
+                or education like CONCAT('%',#{keyWord},'%'))
+            </if>
+        </where>
         limit #{offset}, #{limit}
     </select>
 </mapper>

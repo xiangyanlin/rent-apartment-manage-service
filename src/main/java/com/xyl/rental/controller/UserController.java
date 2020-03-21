@@ -35,11 +35,12 @@ public class UserController {
     @GetMapping("list")
     @ResponseBody
     public TableResult list(@RequestParam(name = "currentPage", defaultValue = "1") int currentPage,
-                            @RequestParam(name = "pageSize", defaultValue = "10") int pageSize,User queryCondition){
+                            @RequestParam(name = "pageSize", defaultValue = "10") int pageSize,
+                            User queryCondition, String keyWord){
 
-        // System.out.println(queryCondition);
+        System.out.println(queryCondition);
         TableResult tableResult = this.userService.queryByPage(
-                currentPage, pageSize,queryCondition);
+                currentPage, pageSize,queryCondition, keyWord);
         return tableResult;
     }
 
