@@ -4,7 +4,7 @@
 
     <resultMap type="com.xyl.rental.entity.User" id="UserMap">
         <result property="id" column="id" jdbcType="INTEGER"/>
-        <result property="name" column="name" jdbcType="VARCHAR"/>
+        <result property="userName" column="user_name" jdbcType="VARCHAR"/>
         <result property="password" column="password" jdbcType="VARCHAR"/>
         <result property="email" column="email" jdbcType="VARCHAR"/>
         <result property="mobile" column="mobile" jdbcType="VARCHAR"/>
@@ -21,7 +21,7 @@
     <!--查询单个-->
     <select id="queryById" resultMap="UserMap">
         select
-          id, name, password, email, mobile, sex, real_name, id_card, profession, education, role, house_num, identify
+          id, user_name, password, email, mobile, sex, real_name, id_card, profession, education, role, house_num, identify
         from rental.user
         where id = #{id}
     </select>
@@ -29,7 +29,7 @@
     <!--查询指定行数据-->
     <select id="queryAllByLimit" resultMap="UserMap">
         select
-          id, name, password, email, mobile, sex, real_name, id_card, profession, education, role, house_num, identify
+          id, user_name, password, email, mobile, sex, real_name, id_card, profession, education, role, house_num, identify
         from rental.user
         limit #{offset}, #{limit}
     </select>
@@ -37,14 +37,14 @@
     <!--通过实体作为筛选条件查询-->
     <select id="queryAll" resultMap="UserMap">
         select
-          id, name, password, email, mobile, sex, real_name, id_card, profession, education, role, house_num, identify
+          id, user_name, password, email, mobile, sex, real_name, id_card, profession, education, role, house_num, identify
         from rental.user
         <where>
             <if test="id != null">
                 and id = #{id}
             </if>
-            <if test="name != null and name != ''">
-                and name = #{name}
+            <if test="userName != null and userName != ''">
+                and user_name = #{userName}
             </if>
             <if test="password != null and password != ''">
                 and password = #{password}
@@ -84,16 +84,16 @@
 
     <!--新增所有列-->
     <insert id="insert" keyProperty="id" useGeneratedKeys="true">
-        insert into rental.user(name, password, email, mobile, sex, real_name, id_card, profession, education, role, house_num, identify)
-        values (#{name}, #{password}, #{email}, #{mobile}, #{sex}, #{realName}, #{idCard}, #{profession}, #{education}, #{role}, #{houseNum}, #{identify})
+        insert into rental.user(user_name, password, email, mobile, sex, real_name, id_card, profession, education, role, house_num, identify)
+        values (#{userName}, #{password}, #{email}, #{mobile}, #{sex}, #{realName}, #{idCard}, #{profession}, #{education}, #{role}, #{houseNum}, #{identify})
     </insert>
 
     <!--通过主键修改数据-->
     <update id="update">
         update rental.user
         <set>
-            <if test="name != null and name != ''">
-                name = #{name},
+            <if test="userName != null and userName != ''">
+                user_name = #{userName},
             </if>
             <if test="password != null and password != ''">
                 password = #{password},
@@ -143,8 +143,8 @@
             <if test="queryCondition.id != null">
                 and id like CONCAT('%',#{queryCondition.id},'%')
             </if>
-            <if test="queryCondition.name != null and queryCondition.name != ''">
-                and name like  CONCAT('%',#{queryCondition.name},'%')
+            <if test="queryCondition.userName != null and queryCondition.userName != ''">
+                and user_name like  CONCAT('%',#{queryCondition.userName},'%')
             </if>
             <if test="queryCondition.password != null and queryCondition.password != ''">
                 and password = #{queryCondition.password}
@@ -181,7 +181,7 @@
             </if>
             <if test="keyWord != null and keyWord != ''">
                 and (id like CONCAT('%',#{keyWord},'%')
-                or name like CONCAT('%',#{keyWord},'%')
+                or user_name like CONCAT('%',#{keyWord},'%')
                 or email like CONCAT('%',#{keyWord},'%')
                 or mobile like CONCAT('%',#{keyWord},'%')
                 or real_name like CONCAT('%',#{keyWord},'%')
@@ -194,14 +194,14 @@
     <!--分页条件查询-->
     <select id="queryPage" resultMap="UserMap">
         select
-        id, name, password, email, mobile, sex, real_name, id_card, profession, education, role, house_num, identify
+        id, user_name, password, email, mobile, sex, real_name, id_card, profession, education, role, house_num, identify
         from rental.user
         <where>
-             <if test="queryCondition.id != null">
-            and id like CONCAT('%',#{queryCondition.id},'%')
+            <if test="queryCondition.id != null">
+                and id like CONCAT('%',#{queryCondition.id},'%')
             </if>
-            <if test="queryCondition.name != null and queryCondition.name != ''">
-                and name like  CONCAT('%',#{queryCondition.name},'%')
+            <if test="queryCondition.userName != null and queryCondition.userName != ''">
+                and user_name like  CONCAT('%',#{queryCondition.userName},'%')
             </if>
             <if test="queryCondition.password != null and queryCondition.password != ''">
                 and password = #{queryCondition.password}
@@ -238,7 +238,7 @@
             </if>
             <if test="keyWord != null and keyWord != ''">
                 and (id like CONCAT('%',#{keyWord},'%')
-                or name like CONCAT('%',#{keyWord},'%')
+                or user_name like CONCAT('%',#{keyWord},'%')
                 or email like CONCAT('%',#{keyWord},'%')
                 or mobile like CONCAT('%',#{keyWord},'%')
                 or real_name like CONCAT('%',#{keyWord},'%')
