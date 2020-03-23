@@ -113,7 +113,7 @@
             from( SELECT
             a.id id,
             a.house_name,
-            u.name tenan_name,
+            u.user_name tenan_name,
             u.mobile,
             a.contract_id,
             a.rent,
@@ -137,7 +137,7 @@
             from( SELECT
             a.id id,
             a.house_name,
-            u.name tenan_name,
+            u.user_name tenan_name,
             u.mobile,
             a.contract_id,
             a.rent,
