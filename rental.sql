@@ -1,17 +1,17 @@
 /*
  Navicat Premium Data Transfer
 
- Source Server         : xiangyanlin
+ Source Server         : xyl
  Source Server Type    : MySQL
- Source Server Version : 50560
+ Source Server Version : 50726
  Source Host           : localhost:3306
  Source Schema         : rental
 
  Target Server Type    : MySQL
- Target Server Version : 50560
+ Target Server Version : 50726
  File Encoding         : 65001
 
- Date: 23/03/2020 13:07:30
+ Date: 23/03/2020 17:24:37
 */
 
 SET NAMES utf8mb4;
@@ -23,7 +23,7 @@ SET FOREIGN_KEY_CHECKS = 0;
 DROP TABLE IF EXISTS `contract`;
 CREATE TABLE `contract`  (
   `id` int(10) NOT NULL AUTO_INCREMENT COMMENT '合约编号',
-  `status` varchar(10) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '合约状态',
+  `status` varchar(10) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '合约状态1待签约，2履约中，3已结束，4已逾期',
   `address` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '物业地址',
   `house_id` int(10) NULL DEFAULT NULL COMMENT '房源编号',
   `owner_name` varchar(10) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '业主姓名',
@@ -36,7 +36,7 @@ CREATE TABLE `contract`  (
 -- ----------------------------
 -- Records of contract
 -- ----------------------------
-INSERT INTO `contract` VALUES (1, '1', '湖南长沙', 3, '张三', '李四', '2020-01-01', '2020-03-18');
+INSERT INTO `contract` VALUES (1, '3', '湖南长沙', 3, '张三', '李四', '2020-01-01', '2020-03-18');
 
 -- ----------------------------
 -- Table structure for estate
@@ -54,8 +54,8 @@ CREATE TABLE `estate`  (
   `property_cost` varchar(10) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '物业费',
   `property_company` varchar(20) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '物业公司',
   `developers` varchar(20) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '开发商',
-  `created` datetime NULL DEFAULT NULL COMMENT '创建时间',
-  `updated` datetime NULL DEFAULT NULL COMMENT '更新时间',
+  `created` datetime(0) NULL DEFAULT NULL COMMENT '创建时间',
+  `updated` datetime(0) NULL DEFAULT NULL COMMENT '更新时间',
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 1006 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '楼盘表' ROW_FORMAT = Compact;
 
@@ -97,8 +97,8 @@ CREATE TABLE `house_resources`  (
   `mobile` varchar(11) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '手机号',
   `time` int(4) NULL DEFAULT NULL COMMENT '看房时间，1-上午，2-中午，3-下午，4-晚上，5-全天',
   `property_cost` varchar(10) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '物业费',
-  `created` datetime NULL DEFAULT NULL,
-  `updated` datetime NULL DEFAULT NULL,
+  `created` datetime(0) NULL DEFAULT NULL,
+  `updated` datetime(0) NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 18 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '房源表' ROW_FORMAT = Compact;
 
@@ -129,7 +129,7 @@ CREATE TABLE `information`  (
   `title` varchar(20) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '资讯标题',
   `content` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '资讯内容',
   `read_num` int(10) NULL DEFAULT NULL COMMENT '阅读量',
-  `publish_time` datetime NULL DEFAULT NULL COMMENT '发布时间',
+  `publish_time` datetime(0) NULL DEFAULT NULL COMMENT '发布时间',
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
 
@@ -196,8 +196,8 @@ CREATE TABLE `vist_request`  (
   `tenant_name` varchar(10) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '租客姓名',
   `mobile` varchar(10) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '租客电话',
   `village` varchar(10) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '房源小区名',
-  `reuest_time` datetime NULL DEFAULT NULL COMMENT '请求时间',
-  `vist_time` datetime NULL DEFAULT NULL COMMENT '看房时间',
+  `reuest_time` datetime(0) NULL DEFAULT NULL COMMENT '请求时间',
+  `vist_time` datetime(0) NULL DEFAULT NULL COMMENT '看房时间',
   `status` varchar(10) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '请求状态',
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;

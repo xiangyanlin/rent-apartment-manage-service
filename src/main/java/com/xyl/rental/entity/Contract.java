@@ -1,5 +1,7 @@
 package com.xyl.rental.entity;
 
+import lombok.Data;
+
 import java.util.Date;
 import java.io.Serializable;
 
@@ -7,16 +9,17 @@ import java.io.Serializable;
  * (Contract)实体类
  *
  * @author makejava
- * @since 2020-03-15 23:03:42
+ * @since 2020-03-23 17:02:01
  */
+@Data
 public class Contract implements Serializable {
-    private static final long serialVersionUID = 733016288805519302L;
+    private static final long serialVersionUID = 430561169110793708L;
     /**
     * 合约编号
     */
     private Integer id;
     /**
-    * 合约状态
+    * 合约状态1待签约，2履约中，3已结束，4已逾期
     */
     private String status;
     /**
@@ -45,68 +48,6 @@ public class Contract implements Serializable {
     private Date endTime;
 
 
-    public Integer getId() {
-        return id;
-    }
 
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public String getStatus() {
-        return status;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
-    }
-
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
-    public Integer getHouseId() {
-        return houseId;
-    }
-
-    public void setHouseId(Integer houseId) {
-        this.houseId = houseId;
-    }
-
-    public String getOwnerName() {
-        return ownerName;
-    }
-
-    public void setOwnerName(String ownerName) {
-        this.ownerName = ownerName;
-    }
-
-    public String getTenantName() {
-        return tenantName;
-    }
-
-    public void setTenantName(String tenantName) {
-        this.tenantName = tenantName;
-    }
-
-    public Date getStartTime() {
-        return startTime;
-    }
-
-    public void setStartTime(Date startTime) {
-        this.startTime = startTime;
-    }
-
-    public Date getEndTime() {
-        return endTime;
-    }
-
-    public void setEndTime(Date endTime) {
-        this.endTime = endTime;
-    }
 
 }

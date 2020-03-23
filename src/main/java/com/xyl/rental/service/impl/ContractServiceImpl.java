@@ -80,13 +80,13 @@ public class ContractServiceImpl implements ContractService {
     }
 
     @Override
-    public TableResult queryByPage(int currentPage, int pageSize) {
+    public TableResult queryByPage(int currentPage, int pageSize, Contract condition,String keyWord) {
         TableResult tr=new TableResult();
         Pagination pagination=new Pagination();
         int start=(currentPage-1)*pageSize;
-        int total=contractDao.countTotal();
+        int total=contractDao.countTotal(condition,keyWord);
         List<Contract> list = contractDao.queryPage(
-                start, pageSize);
+                start, pageSize,condition,keyWord);
         pagination.setCurrent(currentPage);
         pagination.setPageSize(pageSize);
         pagination.setTotal(total);

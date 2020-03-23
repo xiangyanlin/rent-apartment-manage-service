@@ -32,14 +32,22 @@ public class ContractController {
     public Contract selectOne(Integer id) {
         return this.contractService.queryById(id);
     }
+
+    /**
+     * 合约列表
+     * @param currentPage
+     * @param pageSize
+     * @return
+     */
     @GetMapping("list")
     @ResponseBody
     public TableResult list(@RequestParam(name = "currentPage", defaultValue = "1") int currentPage,
-                            @RequestParam(name = "pageSize", defaultValue = "10") int pageSize){
+                            @RequestParam(name = "pageSize", defaultValue = "10") int pageSize,
+                            Contract condition,String keyWord){
 
-        // System.out.println(queryCondition);
+        System.out.println(keyWord);
         TableResult tableResult = this.contractService.queryByPage(
-                currentPage, pageSize);
+                currentPage, pageSize,condition,keyWord);
         return tableResult;
     }
 

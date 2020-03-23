@@ -59,6 +59,6 @@ public interface ContractService {
      * @param pageSize
      * @return
      */
-    TableResult queryByPage(int currentPage, int pageSize);
+    TableResult queryByPage(int currentPage, int pageSize, Contract condition,String keyWord);
 
 }

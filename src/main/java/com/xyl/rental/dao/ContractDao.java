@@ -69,11 +69,11 @@ public interface ContractDao {
      * @param limit
      * @return
      */
-    List<Contract> queryPage(@Param("offset") int offset, @Param("limit") int limit);
+    List<Contract> queryPage(@Param("offset") int offset, @Param("limit") int limit,Contract condition,String keyWord);
 
     /**
      * 查询总数
      * @return
      */
-    int countTotal();
+    int countTotal(Contract condition,String keyWord);
 }
