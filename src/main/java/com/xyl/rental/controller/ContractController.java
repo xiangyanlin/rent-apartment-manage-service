@@ -45,7 +45,7 @@ public class ContractController {
                             @RequestParam(name = "pageSize", defaultValue = "10") int pageSize,
                             Contract condition,String keyWord){
 
-        System.out.println(keyWord);
+        //System.out.println(keyWord);
         TableResult tableResult = this.contractService.queryByPage(
                 currentPage, pageSize,condition,keyWord);
         return tableResult;

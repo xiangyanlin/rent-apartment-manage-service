@@ -32,14 +32,22 @@ public class InformationController {
     public Information selectOne(Integer id) {
         return this.informationService.queryById(id);
     }
+
+    /**
+     * 资讯列表
+     * @param currentPage
+     * @param pageSize
+     * @return
+     */
     @GetMapping("list")
     @ResponseBody
     public TableResult list(@RequestParam(name = "currentPage", defaultValue = "1") int currentPage,
-                            @RequestParam(name = "pageSize", defaultValue = "10") int pageSize){
+                            @RequestParam(name = "pageSize", defaultValue = "10") int pageSize,
+                            Information condition,String keyWord){
 
-        // System.out.println(queryCondition);
+         //System.out.println(keyWord);
         TableResult tableResult = this.informationService.queryByPage(
-                currentPage, pageSize);
+                currentPage, pageSize,condition,keyWord );
         return tableResult;
     }
 

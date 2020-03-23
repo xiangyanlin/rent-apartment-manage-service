@@ -90,7 +90,28 @@
         select
       id, title, content, read_num, publish_time
         from rental.information
-
+        <where>
+            <if test="condition.id != null">
+                and id like CONCAT('%',#{condition.id},'%')
+            </if>
+            <if test="condition.title != null and condition.title != ''">
+                and title like CONCAT('%',#{condition.title},'%')
+            </if>
+            <if test="condition.content != null and condition.content != ''">
+                and content like CONCAT('%',#{condition.content},'%')
+            </if>
+            <if test="condition.readNum != null">
+                and read_num =#{condition.readNum}
+            </if>
+            <if test="condition.publishTime != null">
+                and publish_time = #{condition.publishTime}
+            </if>
+            <if test="keyWord != null and keyWord != ''">
+                and (id like CONCAT('%',#{keyWord},'%')
+                or title like CONCAT('%',#{keyWord},'%')
+                or content like CONCAT('%',#{keyWord},'%'))
+            </if>
+        </where>
         limit #{offset}, #{limit}
     </select>
 

@@ -69,11 +69,11 @@ public interface InformationDao {
      * @param limit
      * @return
      */
-    List<Information> queryPage(@Param("offset") int offset, @Param("limit") int limit);
+    List<Information> queryPage(@Param("offset") int offset, @Param("limit") int limit,Information condition,String keyWord);
 
     /**
      * 查询总数
      * @return
      */
-    int countTotal();
+    int countTotal(Information condition,String keyWord);
 }

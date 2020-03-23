@@ -80,13 +80,15 @@ public class InformationServiceImpl implements InformationService {
     }
 
     @Override
-    public TableResult queryByPage(int currentPage, int pageSize) {
+    public TableResult queryByPage(int currentPage, int pageSize,Information condition,String keyWord) {
         TableResult tr=new TableResult();
         Pagination pagination=new Pagination();
         int start=(currentPage-1)*pageSize;
-        int total=informationDao.countTotal();
-        List<Information> list = informationDao.queryPage(
-                start, pageSize);
+
+        int total=informationDao.countTotal(condition,keyWord);
+
+        List<Information> list = informationDao.queryPage(start, pageSize,condition,keyWord);
+
         pagination.setCurrent(currentPage);
         pagination.setPageSize(pageSize);
         pagination.setTotal(total);
