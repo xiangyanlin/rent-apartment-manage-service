@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xyl.rental.dao.QuestionsDao">
+
+    <resultMap type="com.xyl.rental.entity.Questions" id="QuestionsMap">
+        <result property="id" column="id" jdbcType="INTEGER"/>
+        <result property="title" column="title" jdbcType="VARCHAR"/>
+        <result property="content" column="content" jdbcType="VARCHAR"/>
+        <result property="publisher" column="publisher" jdbcType="VARCHAR"/>
+        <result property="readNum" column="read_num" jdbcType="INTEGER"/>
+        <result property="replyNum" column="reply_num" jdbcType="INTEGER"/>
+        <result property="publishTime" column="publish_time" jdbcType="TIMESTAMP"/>
+    </resultMap>
+
+    <!--查询单个-->
+    <select id="queryById" resultMap="QuestionsMap">
+        select
+          id, title, content, publisher, read_num, reply_num, publish_time
+        from rental.questions
+        where id = #{id}
+    </select>
+
+    <!--查询指定行数据-->
+    <select id="queryAllByLimit" resultMap="QuestionsMap">
+        select
+          id, title, content, publisher, read_num, reply_num, publish_time
+        from rental.questions
+        limit #{offset}, #{limit}
+    </select>
+
+    <!--通过实体作为筛选条件查询-->
+    <select id="queryAll" resultMap="QuestionsMap">
+        select
+          id, title, content, publisher, read_num, reply_num, publish_time
+        from rental.questions
+        <where>
+            <if test="id != null">
+                and id = #{id}
+            </if>
+            <if test="title != null and title != ''">
+                and title = #{title}
+            </if>
+            <if test="content != null and content != ''">
+                and content = #{content}
+            </if>
+            <if test="publisher != null and publisher != ''">
+                and publisher = #{publisher}
+            </if>
+            <if test="readNum != null">
+                and read_num = #{readNum}
+            </if>
+            <if test="replyNum != null">
+                and reply_num = #{replyNum}
+            </if>
+            <if test="publishTime != null">
+                and publish_time = #{publishTime}
+            </if>
+        </where>
+    </select>
+
+    <!--新增所有列-->
+    <insert id="insert" keyProperty="id" useGeneratedKeys="true">
+        insert into rental.questions(title, content, publisher, read_num, reply_num, publish_time)
+        values (#{title}, #{content}, #{publisher}, #{readNum}, #{replyNum}, #{publishTime})
+    </insert>
+
+    <!--通过主键修改数据-->
+    <update id="update">
+        update rental.questions
+        <set>
+            <if test="title != null and title != ''">
+                title = #{title},
+            </if>
+            <if test="content != null and content != ''">
+                content = #{content},
+            </if>
+            <if test="publisher != null and publisher != ''">
+                publisher = #{publisher},
+            </if>
+            <if test="readNum != null">
+                read_num = #{readNum},
+            </if>
+            <if test="replyNum != null">
+                reply_num = #{replyNum},
+            </if>
+            <if test="publishTime != null">
+                publish_time = #{publishTime},
+            </if>
+        </set>
+        where id = #{id}
+    </update>
+
+    <!--通过主键删除-->
+    <delete id="deleteById">
+        delete from rental.questions where id = #{id}
+    </delete>
+
+</mapper>

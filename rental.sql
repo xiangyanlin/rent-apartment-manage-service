@@ -1,7 +1,7 @@
 /*
  Navicat Premium Data Transfer
 
- Source Server         : xyl
+ Source Server         : xiangyanlin
  Source Server Type    : MySQL
  Source Server Version : 50726
  Source Host           : localhost:3306
@@ -11,7 +11,7 @@
  Target Server Version : 50726
  File Encoding         : 65001
 
- Date: 23/03/2020 17:24:37
+ Date: 23/03/2020 22:34:54
 */
 
 SET NAMES utf8mb4;
@@ -54,19 +54,19 @@ CREATE TABLE `estate`  (
   `property_cost` varchar(10) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '物业费',
   `property_company` varchar(20) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '物业公司',
   `developers` varchar(20) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '开发商',
-  `created` datetime(0) NULL DEFAULT NULL COMMENT '创建时间',
-  `updated` datetime(0) NULL DEFAULT NULL COMMENT '更新时间',
+  `created` datetime(6) NULL DEFAULT NULL COMMENT '创建时间',
+  `updated` datetime(6) NULL DEFAULT NULL COMMENT '更新时间',
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 1006 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '楼盘表' ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Records of estate
 -- ----------------------------
-INSERT INTO `estate` VALUES (1001, '中远两湾城', '上海市', '上海市', '普陀区', '远景路97弄', '2001', '塔楼/板楼', '1.5', '上海中远物业管理发展有限公司', '上海万业企业股份有限公司', '2018-11-06 23:00:20', '2018-11-06 23:00:23');
-INSERT INTO `estate` VALUES (1002, '上海康城', '上海市', '上海市', '闵行区', '莘松路958弄', '2001', '塔楼/板楼', '1.5', '盛孚物业', '闵行房地产', '2018-11-06 23:02:30', '2018-11-27 23:02:33');
-INSERT INTO `estate` VALUES (1003, '保利西子湾', '上海市', '上海市', '松江区', '广富林路1188弄', '2008', '塔楼/板楼', '1.75', '上海保利物业管理', '上海城乾房地产开发有限公司', '2018-11-06 23:04:22', '2018-11-06 23:04:25');
-INSERT INTO `estate` VALUES (1004, '万科城市花园', '上海市', '上海市', '松江区', '广富林路1188弄', '2002', '塔楼/板楼', '1.5', '上海保利物业管理', '上海城乾房地产开发有限公司', '2018-11-13 16:43:40', '2018-11-13 16:43:42');
-INSERT INTO `estate` VALUES (1005, '上海阳城', '上海市', '上海市', '闵行区', '罗锦路888弄', '2002', '塔楼/板楼', '1.5', '上海莲阳物业管理有限公司', '上海莲城房地产开发有限公司', '2018-11-06 23:23:52', '2018-11-06 23:23:55');
+INSERT INTO `estate` VALUES (1001, '中远两湾城', '上海市', '上海市', '普陀区', '远景路97弄', '2001', '塔楼/板楼', '1.5', '上海中远物业管理发展有限公司', '上海万业企业股份有限公司', '2018-11-06 23:00:20.000000', '2018-11-06 23:00:23.000000');
+INSERT INTO `estate` VALUES (1002, '上海康城', '上海市', '上海市', '闵行区', '莘松路958弄', '2001', '塔楼/板楼', '1.5', '盛孚物业', '闵行房地产', '2018-11-06 23:02:30.000000', '2018-11-27 23:02:33.000000');
+INSERT INTO `estate` VALUES (1003, '保利西子湾', '上海市', '上海市', '松江区', '广富林路1188弄', '2008', '塔楼/板楼', '1.75', '上海保利物业管理', '上海城乾房地产开发有限公司', '2018-11-06 23:04:22.000000', '2018-11-06 23:04:25.000000');
+INSERT INTO `estate` VALUES (1004, '万科城市花园', '上海市', '上海市', '松江区', '广富林路1188弄', '2002', '塔楼/板楼', '1.5', '上海保利物业管理', '上海城乾房地产开发有限公司', '2018-11-13 16:43:40.000000', '2018-11-13 16:43:42.000000');
+INSERT INTO `estate` VALUES (1005, '上海阳城', '上海市', '上海市', '闵行区', '罗锦路888弄', '2002', '塔楼/板楼', '1.5', '上海莲阳物业管理有限公司', '上海莲城房地产开发有限公司', '2018-11-06 23:23:52.000000', '2018-11-06 23:23:55.000000');
 
 -- ----------------------------
 -- Table structure for house_resources
@@ -97,20 +97,20 @@ CREATE TABLE `house_resources`  (
   `mobile` varchar(11) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '手机号',
   `time` int(4) NULL DEFAULT NULL COMMENT '看房时间，1-上午，2-中午，3-下午，4-晚上，5-全天',
   `property_cost` varchar(10) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '物业费',
-  `created` datetime(0) NULL DEFAULT NULL,
-  `updated` datetime(0) NULL DEFAULT NULL,
+  `created` datetime(6) NULL DEFAULT NULL,
+  `updated` datetime(6) NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 18 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '房源表' ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Records of house_resources
 -- ----------------------------
-INSERT INTO `house_resources` VALUES (1, '测试修改页面', 1, '1', '1', '1', '1', '1', 2000, 1, 1, '1', '120', '1', '1', '1', 1, '1', 'http://127.0.0.1:8080/common/getImage?filename=/images/2020/03/14/2020031410471657904864.jpg', '1', '1', '1', 1, '1', '2020-03-05 14:54:08', '2020-03-17 18:46:54');
-INSERT INTO `house_resources` VALUES (2, '东方曼哈顿 3室2厅 16000 元', 1005, '2', '1', '1', '1', '1', 1111, 1, NULL, ' 1室1厅1卫1厨1阳台', '2', '2', '1/2', '南', NULL, '1,2,3,8,9', NULL, '这个经纪人很懒，没写核心卖 点', '张 三', '11111111111', 1, '11', NULL, '2020-03-15 22:50:51');
+INSERT INTO `house_resources` VALUES (1, '测试修改页面', 1, '1', '1', '1', '1', '1', 2000, 1, 1, '1', '120', '1', '1', '1', 1, '1', 'http://127.0.0.1:8080/common/getImage?filename=/images/2020/03/14/2020031410471657904864.jpg', '1', '1', '1', 1, '1', '2020-03-05 14:54:08.000000', '2020-03-17 18:46:54.000000');
+INSERT INTO `house_resources` VALUES (2, '东方曼哈顿 3室2厅 16000 元', 1005, '2', '1', '1', '1', '1', 1111, 1, NULL, ' 1室1厅1卫1厨1阳台', '2', '2', '1/2', '南', NULL, '1,2,3,8,9', NULL, '这个经纪人很懒，没写核心卖 点', '张 三', '11111111111', 1, '11', NULL, '2020-03-15 22:50:51.000000');
 INSERT INTO `house_resources` VALUES (5, '凌海明珠', 1002, '4', '2', '526', '2', '1', 4000, 1, 2, '3室2厅1卫1厨2阳台', '120', '100', '5/12', '南', 1, '1,2,3', NULL, '好', '李四', '13122226666', 2, '1', NULL, NULL);
 INSERT INTO `house_resources` VALUES (6, '天堂湾', 1003, '4', '1', '633', '2', '1', 3500, 1, 1, '4室3厅2卫2厨3阳台', '200', '180', '6/20', '南', 1, '1,2,3,8,7,5,4,6', '', '设备齐全，带车库', '李元霸', '13144445555', 5, '5', NULL, NULL);
-INSERT INTO `house_resources` VALUES (7, '修改时间2', 1005, '10', '5', '101', '2', '1', 4000, 1, 1, '3室2厅1卫1厨2阳台', '120', '100', '10/1', '南', 1, '1,2,3', '', '111', '赵云', '13144445555', 1, '11', NULL, '2020-03-15 22:35:59');
-INSERT INTO `house_resources` VALUES (8, '修改时间问题1', 1002, '1', '1', '11', '1', '1', 1000, 1, 1, '1室1厅1卫1厨1阳台', '100', '100', '1/10', '南', 1, '1,2,3,7', '', '111', '1', '13627441292', 1, '1', NULL, '2020-03-15 14:23:57');
+INSERT INTO `house_resources` VALUES (7, '修改时间2', 1005, '10', '5', '101', '2', '1', 4000, 1, 1, '3室2厅1卫1厨2阳台', '120', '100', '10/1', '南', 1, '1,2,3', '', '111', '赵云', '13144445555', 1, '11', NULL, '2020-03-15 22:35:59.000000');
+INSERT INTO `house_resources` VALUES (8, '修改时间问题1', 1002, '1', '1', '11', '1', '1', 1000, 1, 1, '1室1厅1卫1厨1阳台', '100', '100', '1/10', '南', 1, '1,2,3,7', '', '111', '1', '13627441292', 1, '1', NULL, '2020-03-15 14:23:57.000000');
 INSERT INTO `house_resources` VALUES (9, '11', 1002, '1', '1', '11', '1', '1', 1000, 1, 1, '1室1厅1卫1厨1阳台', '100', '100', '1/10', '南', 1, '1,2,3,7', '', '111', '1', '13627441292', 1, '1', NULL, NULL);
 INSERT INTO `house_resources` VALUES (10, '111', 1002, '5', '5', '5', '1', '1', 5000, 1, 1, '1室1厅1卫1厨1阳台', '100', '100', '1/1', '南', 1, '1,2,3', '', '111', '111', '1111', 1, '1', NULL, NULL);
 INSERT INTO `house_resources` VALUES (11, '测试图片上传', 1001, '3', '3', '3', '1', '1', 3000, 1, 1, '3室3厅3卫3厨3阳台', '130', '100', '3/10', '南', 1, '1,2,3', 'http://127.0.0.1:8080/common/getImage?filename=/images/2020/03/08/2020030808090373704632.jpg', '图片', '哈哈', '18774062479', 1, '1', NULL, NULL);
@@ -118,7 +118,7 @@ INSERT INTO `house_resources` VALUES (12, 'hello', 1001, '1', '1', '1', '1', '1'
 INSERT INTO `house_resources` VALUES (13, '测试分页', 1001, '12', '1', '101', '2', '1', 1000, 1, 1, '1室1厅1卫11厨1阳台', '110', '95', '1/10', '南', 1, '1,2,3', '', '测试分页', '张三', '13627441292', 1, '5', NULL, NULL);
 INSERT INTO `house_resources` VALUES (14, '111', 1002, '111', '111', '11', '2', '1', 11, 1, 1, '1室1厅1卫1厨1阳台', '100', '100', '1/1', '南', 1, '1,2,3', '', '1001', '张三', '18774062479', 1, '100', NULL, NULL);
 INSERT INTO `house_resources` VALUES (15, '测试新增bug', 1002, '1', '1', '1', '2', '1', 3000, 1, 1, '2室2厅2卫1厨2阳台', '80', '80', '5/10', '南', 1, '1,2,3', '', '111', '张三', '18774062479', 1, '5', NULL, NULL);
-INSERT INTO `house_resources` VALUES (17, '峥嵘岁月', 1002, '1', '1', '1', '1', '1', 1000, 1, 2, '1室1厅1卫1厨1阳台', '100', '92', '6/12', '南', 1, '1,2,3', 'http://127.0.0.1:8080/common/getImage?filename=/images/2020/03/18/2020031808125870906910.jpg', '11', '张三', '18774062479', 5, '5', '2020-03-18 20:13:06', NULL);
+INSERT INTO `house_resources` VALUES (17, '峥嵘岁月', 1002, '1', '1', '1', '1', '1', 1000, 1, 2, '1室1厅1卫1厨1阳台', '100', '92', '6/12', '南', 1, '1,2,3', 'http://127.0.0.1:8080/common/getImage?filename=/images/2020/03/18/2020031808125870906910.jpg', '11', '张三', '18774062479', 5, '5', '2020-03-18 20:13:06.000000', NULL);
 
 -- ----------------------------
 -- Table structure for information
@@ -129,14 +129,34 @@ CREATE TABLE `information`  (
   `title` varchar(20) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '资讯标题',
   `content` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '资讯内容',
   `read_num` int(10) NULL DEFAULT NULL COMMENT '阅读量',
-  `publish_time` datetime(0) NULL DEFAULT NULL COMMENT '发布时间',
+  `publish_time` datetime(6) NULL DEFAULT NULL COMMENT '发布时间',
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Records of information
 -- ----------------------------
-INSERT INTO `information` VALUES (1, '房价上涨', '上涨了0.7个百分点', 65241, '2020-03-15 23:09:28');
+INSERT INTO `information` VALUES (1, '房价上涨', '上涨了0.7个百分点', 65241, '2020-03-15 23:09:28.000000');
+
+-- ----------------------------
+-- Table structure for questions
+-- ----------------------------
+DROP TABLE IF EXISTS `questions`;
+CREATE TABLE `questions`  (
+  `id` int(11) NOT NULL COMMENT '问答编号',
+  `title` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '问答标题',
+  `content` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '问答内容',
+  `publisher` varchar(10) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '发布者',
+  `read_num` int(10) NULL DEFAULT NULL COMMENT '阅读量',
+  `reply_num` int(10) NULL DEFAULT NULL COMMENT '回复量',
+  `publish_time` datetime(0) NULL DEFAULT NULL COMMENT '发布时间',
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of questions
+-- ----------------------------
+INSERT INTO `questions` VALUES (1, '交通位置', '房子所处交通位置方便吗', '大红', 125, 11, '2019-12-03 22:30:47');
 
 -- ----------------------------
 -- Table structure for rent_record
@@ -196,8 +216,8 @@ CREATE TABLE `vist_request`  (
   `tenant_name` varchar(10) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '租客姓名',
   `mobile` varchar(10) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '租客电话',
   `village` varchar(10) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '房源小区名',
-  `reuest_time` datetime(0) NULL DEFAULT NULL COMMENT '请求时间',
-  `vist_time` datetime(0) NULL DEFAULT NULL COMMENT '看房时间',
+  `reuest_time` datetime(6) NULL DEFAULT NULL COMMENT '请求时间',
+  `vist_time` datetime(6) NULL DEFAULT NULL COMMENT '看房时间',
   `status` varchar(10) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '请求状态',
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
@@ -205,6 +225,6 @@ CREATE TABLE `vist_request`  (
 -- ----------------------------
 -- Records of vist_request
 -- ----------------------------
-INSERT INTO `vist_request` VALUES (1, '租客1', '3355', '天堂港小区', '2020-03-02 18:59:32', '2020-03-04 18:59:36', '1');
+INSERT INTO `vist_request` VALUES (1, '租客1', '3355', '天堂港小区', '2020-03-02 18:59:32.000000', '2020-03-04 18:59:36.000000', '1');
 
 SET FOREIGN_KEY_CHECKS = 1;
