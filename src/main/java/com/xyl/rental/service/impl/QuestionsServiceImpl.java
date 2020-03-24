@@ -3,6 +3,8 @@ package com.xyl.rental.service.impl;
 import com.xyl.rental.entity.Questions;
 import com.xyl.rental.dao.QuestionsDao;
 import com.xyl.rental.service.QuestionsService;
+import com.xyl.rental.vo.Pagination;
+import com.xyl.rental.vo.TableResult;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -75,5 +77,29 @@ public class QuestionsServiceImpl implements QuestionsService {
     @Override
     public boolean deleteById(Integer id) {
         return this.questionsDao.deleteById(id) > 0;
+    }
+
+    /**
+     * 分页条件关键字
+     * @param currentPage
+     * @param pageSize
+     * @param condition
+     * @param keyWord
+     * @return
+     */
+    @Override
+    public TableResult queryByPage(int currentPage, int pageSize, Questions condition, String keyWord) {
+        TableResult tr=new TableResult();
+        Pagination pagination=new Pagination();
+        int start=(currentPage-1)*pageSize;
+        int total=questionsDao.countTotal(condition,keyWord);
+        List<Questions> list = questionsDao.queryPage(
+                start, pageSize,condition,keyWord);
+        pagination.setCurrent(currentPage);
+        pagination.setPageSize(pageSize);
+        pagination.setTotal(total);
+        tr.setList(list);
+        tr.setPagination(pagination);
+        return tr;
     }
 }

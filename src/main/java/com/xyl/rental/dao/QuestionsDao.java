@@ -63,5 +63,18 @@ public interface QuestionsDao {
      * @return 影响行数
      */
     int deleteById(Integer id);
+    /**
+     * 分页条件关键字
+     * @param offset
+     * @param limit
+     * @return
+     */
+    List<Questions> queryPage(@Param("offset") int offset, @Param("limit") int limit,Questions condition,String keyWord);
+
+    /**
+     * 查询总数
+     * @return
+     */
+    int countTotal(Questions condition,String keyWord);
 
 }

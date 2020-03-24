@@ -1,5 +1,7 @@
 package com.xyl.rental.entity;
 
+import lombok.Data;
+
 import java.util.Date;
 import java.io.Serializable;
 
@@ -9,6 +11,7 @@ import java.io.Serializable;
  * @author makejava
  * @since 2020-03-23 22:32:24
  */
+@Data
 public class Questions implements Serializable {
     private static final long serialVersionUID = -11657474566461866L;
     /**
@@ -40,61 +43,5 @@ public class Questions implements Serializable {
     */
     private Date publishTime;
 
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public String getContent() {
-        return content;
-    }
-
-    public void setContent(String content) {
-        this.content = content;
-    }
-
-    public String getPublisher() {
-        return publisher;
-    }
-
-    public void setPublisher(String publisher) {
-        this.publisher = publisher;
-    }
-
-    public Integer getReadNum() {
-        return readNum;
-    }
-
-    public void setReadNum(Integer readNum) {
-        this.readNum = readNum;
-    }
-
-    public Integer getReplyNum() {
-        return replyNum;
-    }
-
-    public void setReplyNum(Integer replyNum) {
-        this.replyNum = replyNum;
-    }
-
-    public Date getPublishTime() {
-        return publishTime;
-    }
-
-    public void setPublishTime(Date publishTime) {
-        this.publishTime = publishTime;
-    }
 
 }

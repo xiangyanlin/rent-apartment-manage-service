@@ -105,6 +105,41 @@
     <!-- 查询条数 -->
     <select id="countTotal" resultType="int"  >
         SELECT count(*) FROM rental.contract
+        <where>
+            <if test="condition.id != null">
+                and id like CONCAT('%',#{condition.id},'%')
+            </if>
+            <if test="condition.status != null and condition.status != ''">
+                and status = #{condition.status}
+            </if>
+            <if test="condition.address != null and condition.address != ''">
+                and address like  CONCAT('%',#{condition.address},'%')
+            </if>
+            <if test="condition.houseId != null">
+                and house_id like  CONCAT('%',#{condition.houseId },'%')
+            </if>
+            <if test="condition.ownerName != null and condition.ownerName != ''">
+                and owner_name like CONCAT('%',#{condition.ownerName },'%')
+            </if>
+            <if test="condition.tenantName != null and condition.tenantName != ''">
+                and tenant_name like CONCAT('%',#{condition.tenantName },'%')
+            </if>
+            <if test="condition.startTime != null">
+                and start_time <![CDATA[ >= ]]> #{condition.startTime}
+            </if>
+            <if test="condition.endTime != null">
+                and end_time <![CDATA[ <= ]]> #{condition.endTime}
+            </if>
+            <if test="keyWord != null and keyWord != ''">
+                and (id like CONCAT('%',#{keyWord},'%')
+                or address like CONCAT('%',#{keyWord},'%')
+                or house_id like CONCAT('%',#{keyWord},'%')
+                or owner_name like CONCAT('%',#{keyWord},'%')
+                or tenant_name like CONCAT('%',#{keyWord},'%')
+                or start_time like CONCAT('%',#{keyWord},'%')
+                or end_time like CONCAT('%',#{keyWord},'%'))
+            </if>
+        </where>
     </select>
     <!--分页条件查询-->
     <select id="queryPage" resultMap="ContractMap">
