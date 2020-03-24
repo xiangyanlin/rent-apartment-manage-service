@@ -34,6 +34,17 @@ public class InformationController {
     }
 
     /**
+     * 删除资讯
+     * @param id
+     */
+    @DeleteMapping("delete")
+    @ResponseBody
+    public void deleteHouseResources(@RequestParam("id") int id) {
+        //System.err.println(id);
+        informationService.deleteById(id);
+
+    }
+    /**
      * 资讯列表
      * @param currentPage
      * @param pageSize

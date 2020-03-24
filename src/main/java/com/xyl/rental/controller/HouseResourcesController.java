@@ -63,11 +63,14 @@ public class HouseResourcesController {
         return R.success(update);
     }
 
-
+    /**
+     * 根据id删除房源
+     * @param id
+     */
     @DeleteMapping("delete")
     @ResponseBody
     public void deleteHouseResources(@RequestParam("id") int id) {
-        System.err.println(id);
+        //System.err.println(id);
         houseResourcesService.deleteById(id);
 
     }

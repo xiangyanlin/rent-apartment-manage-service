@@ -34,6 +34,17 @@ public class QuestionsController {
     }
 
     /**
+     * 根据id删除问答
+     * @param id
+     */
+    @DeleteMapping("delete")
+    @ResponseBody
+    public void deleteHouseResources(@RequestParam("id") int id) {
+        System.err.println(id);
+        questionsService.deleteById(id);
+
+    }
+    /**
      * 问答列表
      * @param currentPage
      * @param pageSize

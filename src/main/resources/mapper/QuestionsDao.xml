@@ -98,7 +98,35 @@
     <!-- 查询条数 -->
     <select id="countTotal" resultType="int"  >
         SELECT count(*) FROM rental.questions
-
+        <where>
+            <if test="condition.id != null">
+                and id like CONCAT('%',#{condition.id},'%')
+            </if>
+            <if test="condition.title != null and condition.title != ''">
+                and title like CONCAT('%',#{condition.title},'%')
+            </if>
+            <if test="condition.content != null and condition.content != ''">
+                and content like CONCAT('%',#{condition.content},'%')
+            </if>
+            <if test="condition.publisher != null and condition.publisher != ''">
+                and publisher like CONCAT('%',#{condition.publisher},'%')
+            </if>
+            <if test="condition.readNum != null">
+                and read_num = #{condition.readNum}
+            </if>
+            <if test="condition.replyNum != null">
+                and reply_num = #{condition.replyNum}
+            </if>
+            <if test="condition.publishTime != null">
+                and publish_time = #{condition.publishTime}
+            </if>
+            <if test="keyWord != null and keyWord != ''">
+                and (id like CONCAT('%',#{keyWord},'%')
+                or title like CONCAT('%',#{keyWord},'%')
+                or content like CONCAT('%',#{keyWord},'%')
+                or publisher like CONCAT('%',#{keyWord},'%'))
+            </if>
+        </where>
     </select>
     <!--分页条件查询-->
     <select id="queryPage" resultMap="QuestionsMap">
