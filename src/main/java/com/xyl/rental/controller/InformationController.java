@@ -2,6 +2,7 @@ package com.xyl.rental.controller;
 
 import com.xyl.rental.entity.Information;
 import com.xyl.rental.service.InformationService;
+import com.xyl.rental.utils.R;
 import com.xyl.rental.vo.TableResult;
 import org.springframework.web.bind.annotation.*;
 
@@ -39,9 +40,10 @@ public class InformationController {
      */
     @DeleteMapping("delete")
     @ResponseBody
-    public void deleteHouseResources(@RequestParam("id") int id) {
+    public R deleteHouseResources(@RequestParam("id") int id) {
         //System.err.println(id);
-        informationService.deleteById(id);
+        boolean b = informationService.deleteById(id);
+        return R.success(b,"success");
 
     }
     /**
