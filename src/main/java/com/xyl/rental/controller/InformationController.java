@@ -40,7 +40,7 @@ public class InformationController {
      */
     @DeleteMapping("delete")
     @ResponseBody
-    public R deleteHouseResources(@RequestParam("id") int id) {
+    public R removeInformation(@RequestParam("id") int id) {
         //System.err.println(id);
         boolean b = informationService.deleteById(id);
         return R.success(b,"success");

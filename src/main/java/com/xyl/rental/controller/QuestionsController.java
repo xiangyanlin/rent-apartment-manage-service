@@ -40,7 +40,7 @@ public class QuestionsController {
      */
     @DeleteMapping("delete")
     @ResponseBody
-    public R deleteHouseResources(@RequestParam("id") int id) {
+    public R removeQuestions(@RequestParam("id") int id) {
         System.err.println(id);
         boolean b = questionsService.deleteById(id);
         return R.success(b,"success");

@@ -60,4 +60,10 @@ public interface UserService {
      */
     boolean deleteById(Integer id);
 
+    /**
+     * 登录
+     * @param condition
+     * @return
+     */
+    User queryByUser(User condition);
 }
