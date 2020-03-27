@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 /**
  * (User)表控制层
  *
- * @author makejava
+ * @author xyl
  * @since 2020-03-15 19:55:28
  */
 @RestController
@@ -52,6 +52,32 @@ public class UserController {
             return R.failed("用户名或密码错误");
         }
 
+    }
+
+    /**
+     * 获取当前登录用户
+     * @param request
+     * @return
+     */
+    @RequestMapping("currentUser")
+    @ResponseBody
+    public R getCurrentUser(HttpServletRequest request){
+
+
+        Object currentUser = request.getSession().getAttribute("user");
+        return R.success(currentUser);
+    }
+
+    /**
+     * 退出登录
+     * @param request
+     * @return
+     */
+    @RequestMapping("loginOut")
+    @ResponseBody
+    public R loginOut(HttpServletRequest request){
+        request.getSession().removeAttribute("user");
+        return R.success("ok");
     }
 
     /**
