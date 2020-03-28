@@ -11,7 +11,7 @@
  Target Server Version : 50726
  File Encoding         : 65001
 
- Date: 23/03/2020 22:34:54
+ Date: 28/03/2020 16:30:13
 */
 
 SET NAMES utf8mb4;
@@ -218,7 +218,7 @@ CREATE TABLE `vist_request`  (
   `village` varchar(10) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '房源小区名',
   `reuest_time` datetime(6) NULL DEFAULT NULL COMMENT '请求时间',
   `vist_time` datetime(6) NULL DEFAULT NULL COMMENT '看房时间',
-  `status` varchar(10) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '请求状态',
+  `status` varchar(10) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '请求状态,1已完成,2待确认,3待看房,4已取消',
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
 

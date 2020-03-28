@@ -118,7 +118,7 @@
             a.contract_id,
             a.rent,
             a.status
-            from(select  r.id id,h.title house_name,r.tenan_id ,r.contract_id,h.rent,h.status
+            from(select  r.id id,h.title house_name,r.tenan_id ,r.contract_id,h.rent,r.status
             from rent_record r
             LEFT JOIN  house_resources h on r.house_id=h.id)a
             LEFT JOIN  user u on a.tenan_id=u.id)b

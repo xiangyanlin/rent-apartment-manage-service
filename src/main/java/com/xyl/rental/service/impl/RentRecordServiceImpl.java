@@ -75,28 +75,13 @@ public class RentRecordServiceImpl implements RentRecordService {
         int start=(currentPage-1)*pageSize;
         int total=rentRecordDao.recordTotal();
         List<Map<String, Object>> maps = rentRecordDao.recordList(start, pageSize);
-        List list=new ArrayList();
-        for (Map map:maps) {
-            if(map.get("status").equals("1")){
-                map.put("state","已确认");
-            }else if(map.get("status").equals("2")){
-                map.put("state","待确认");
-            }else if(map.get("status").equals("3")){
-                map.put("state","待付款");
-            }else{
-                map.put("state","未知");
-            }
 
-            if(null!=map.get("startTime")&&null!=map.get("endTime")){
-                map.put("time",map.get("startTime")+"—"+map.get("endTime"));
-            }
-            list.add(map);
-        }
+
 
         pagination.setCurrent(currentPage);
         pagination.setPageSize(pageSize);
         pagination.setTotal(total);
-        tr.setList(list);
+        tr.setList(maps);
         tr.setPagination(pagination);
         return tr;
     }

@@ -1,5 +1,7 @@
 package com.xyl.rental.entity;
 
+import lombok.Data;
+
 import java.util.Date;
 import java.io.Serializable;
 
@@ -7,10 +9,11 @@ import java.io.Serializable;
  * (VistRequest)实体类
  *
  * @author makejava
- * @since 2020-03-15 18:56:10
+ * @since 2020-03-28 16:32:41
  */
+@Data
 public class VistRequest implements Serializable {
-    private static final long serialVersionUID = 981657042279407577L;
+    private static final long serialVersionUID = -60375855426825079L;
     /**
     * 请求编号
     */
@@ -36,65 +39,11 @@ public class VistRequest implements Serializable {
     */
     private Date vistTime;
     /**
-    * 请求状态
+    * 请求状态,1已完成,2待确认,3待看房,4已取消
     */
     private String status;
 
 
-    public Integer getId() {
-        return id;
-    }
 
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public String getTenantName() {
-        return tenantName;
-    }
-
-    public void setTenantName(String tenantName) {
-        this.tenantName = tenantName;
-    }
-
-    public String getMobile() {
-        return mobile;
-    }
-
-    public void setMobile(String mobile) {
-        this.mobile = mobile;
-    }
-
-    public String getVillage() {
-        return village;
-    }
-
-    public void setVillage(String village) {
-        this.village = village;
-    }
-
-    public Date getReuestTime() {
-        return reuestTime;
-    }
-
-    public void setReuestTime(Date reuestTime) {
-        this.reuestTime = reuestTime;
-    }
-
-    public Date getVistTime() {
-        return vistTime;
-    }
-
-    public void setVistTime(Date vistTime) {
-        this.vistTime = vistTime;
-    }
-
-    public String getStatus() {
-        return status;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
-    }
 
 }
