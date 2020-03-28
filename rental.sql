@@ -11,7 +11,7 @@
  Target Server Version : 50726
  File Encoding         : 65001
 
- Date: 28/03/2020 16:30:13
+ Date: 29/03/2020 00:45:49
 */
 
 SET NAMES utf8mb4;
@@ -185,6 +185,7 @@ CREATE TABLE `user`  (
   `id` int(10) NOT NULL AUTO_INCREMENT COMMENT '主键ID',
   `user_name` varchar(30) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '用户名',
   `password` varchar(10) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '密码',
+  `avatar` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '头像路径',
   `email` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '邮箱',
   `mobile` varchar(20) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '手机号',
   `sex` varchar(4) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '性别0未知，1男性，2女性',
@@ -201,11 +202,11 @@ CREATE TABLE `user`  (
 -- ----------------------------
 -- Records of user
 -- ----------------------------
-INSERT INTO `user` VALUES (1, 'Jone', '123456', 'test1@baomidou.com', '13627441292', '1', 'Jone', '13226519910506112x', '工人', '大专', '1', 0, '0');
-INSERT INTO `user` VALUES (2, 'Jack', '123456', 'test2@baomidou.com', '13611112222', '1', 'Jack', '132265199101026522', '工人', '大专', '2', 0, '0');
-INSERT INTO `user` VALUES (3, 'Tom', '123456', 'test3@baomidou.com', '13122223333', '1', 'Tom', '631265199101026522', '文员', '本科', '2', 0, '0');
-INSERT INTO `user` VALUES (4, 'Sandy', '123456', 'test4@baomidou.com', '13233334444', '2', 'Sandy', '631265199101026533', '教师', '硕士', '3', 4, '1');
-INSERT INTO `user` VALUES (5, 'Billie', '123456', 'test5@baomidou.com', '13455556666', '1', 'Billie', '631265199101026514', '研究员', '硕士', '3', 9, '1');
+INSERT INTO `user` VALUES (1, 'Jone', '123456', NULL, 'test1@baomidou.com', '13627441292', '1', 'Jone', '13226519910506112x', '工人', '大专', '1', 0, '0');
+INSERT INTO `user` VALUES (2, 'Jack', '123456', 'https://gw.alipayobjects.com/zos/rmsportal/BiazfanxmamNRoxxVxka.png', 'test2@baomidou.com', '13611112222', '1', 'Jack', '132265199101026522', '工人', '大专', '2', 0, '0');
+INSERT INTO `user` VALUES (3, 'Tom', '123456', NULL, 'test3@baomidou.com', '13122223333', '1', 'Tom', '631265199101026522', '文员', '本科', '2', 0, '0');
+INSERT INTO `user` VALUES (4, 'Sandy', '123456', NULL, 'test4@baomidou.com', '13233334444', '2', 'Sandy', '631265199101026533', '教师', '硕士', '3', 4, '1');
+INSERT INTO `user` VALUES (5, 'Billie', '123456', NULL, 'test5@baomidou.com', '13455556666', '1', 'Billie', '631265199101026514', '研究员', '硕士', '3', 9, '1');
 
 -- ----------------------------
 -- Table structure for vist_request
@@ -216,8 +217,8 @@ CREATE TABLE `vist_request`  (
   `tenant_name` varchar(10) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '租客姓名',
   `mobile` varchar(10) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '租客电话',
   `village` varchar(10) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '房源小区名',
-  `reuest_time` datetime(6) NULL DEFAULT NULL COMMENT '请求时间',
-  `vist_time` datetime(6) NULL DEFAULT NULL COMMENT '看房时间',
+  `reuest_time` datetime(0) NULL DEFAULT NULL COMMENT '请求时间',
+  `vist_time` datetime(0) NULL DEFAULT NULL COMMENT '看房时间',
   `status` varchar(10) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '请求状态,1已完成,2待确认,3待看房,4已取消',
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
@@ -225,6 +226,6 @@ CREATE TABLE `vist_request`  (
 -- ----------------------------
 -- Records of vist_request
 -- ----------------------------
-INSERT INTO `vist_request` VALUES (1, '租客1', '3355', '天堂港小区', '2020-03-02 18:59:32.000000', '2020-03-04 18:59:36.000000', '1');
+INSERT INTO `vist_request` VALUES (1, '租客1', '3355', '天堂港小区', '2020-03-02 18:59:32', '2020-03-04 18:59:36', '1');
 
 SET FOREIGN_KEY_CHECKS = 1;

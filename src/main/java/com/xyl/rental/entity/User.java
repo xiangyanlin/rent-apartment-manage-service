@@ -8,11 +8,11 @@ import java.io.Serializable;
  * (User)实体类
  *
  * @author makejava
- * @since 2020-03-22 16:50:58
+ * @since 2020-03-29 00:35:18
  */
 @Data
 public class User implements Serializable {
-    private static final long serialVersionUID = -95495178821986018L;
+    private static final long serialVersionUID = -54898739848195339L;
     /**
     * 主键ID
     */
@@ -25,6 +25,10 @@ public class User implements Serializable {
     * 密码
     */
     private String password;
+    /**
+    * 头像路径
+    */
+    private String avatar;
     /**
     * 邮箱
     */
@@ -65,5 +69,7 @@ public class User implements Serializable {
     * 0未认证，1已认证
     */
     private String identify;
+
+
 
 }

@@ -8,6 +8,9 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import java.awt.*;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * (User)表控制层
@@ -43,28 +46,37 @@ public class UserController {
     @RequestMapping("login")
     @ResponseBody
     public R Login(User loginUser, HttpServletRequest request){
+        Map<String,Object> map=new HashMap<String,Object>();
         User user = userService.queryByUser(loginUser);
-        System.out.println(user);
+        //System.out.println(user);
         if(null!=user){
             request.getSession().setAttribute("user", user.getUserName());
-            return R.success(user);
+            if(user.getRole().equals("1")){
+                map.put("currentAuthority","admin");
+            }else{
+                map.put("currentAuthority","user");
+            }
+            map.put("currentUser",user.getUserName());
+            map.put("status","ok");
         }else {
-            return R.failed("用户名或密码错误");
+            map.put("currentAuthority","guest");
+            map.put("status","error");
         }
-
+        return R.success(map);
     }
 
     /**
      * 获取当前登录用户
-     * @param request
+     * @param userName
      * @return
      */
     @RequestMapping("currentUser")
     @ResponseBody
-    public R getCurrentUser(HttpServletRequest request){
+    public R getCurrentUser(@RequestParam(name = "userName")String userName){
+        User condition=new User();
+        condition.setUserName(userName);
 
-
-        Object currentUser = request.getSession().getAttribute("user");
+        Object currentUser = userService.queryByUser(condition);
         return R.success(currentUser);
     }
 

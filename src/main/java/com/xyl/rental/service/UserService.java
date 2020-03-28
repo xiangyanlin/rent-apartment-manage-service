@@ -61,7 +61,7 @@ public interface UserService {
     boolean deleteById(Integer id);
 
     /**
-     * 登录
+     * 根据实体查询
      * @param condition
      * @return
      */
