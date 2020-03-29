@@ -11,7 +11,7 @@
  Target Server Version : 50726
  File Encoding         : 65001
 
- Date: 29/03/2020 00:45:49
+ Date: 29/03/2020 20:31:58
 */
 
 SET NAMES utf8mb4;
@@ -197,7 +197,7 @@ CREATE TABLE `user`  (
   `house_num` int(10) NULL DEFAULT NULL COMMENT '房源数量',
   `identify` varchar(10) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '0未认证，1已认证',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 6 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 9 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Records of user
@@ -207,6 +207,9 @@ INSERT INTO `user` VALUES (2, 'Jack', '123456', 'https://gw.alipayobjects.com/zo
 INSERT INTO `user` VALUES (3, 'Tom', '123456', NULL, 'test3@baomidou.com', '13122223333', '1', 'Tom', '631265199101026522', '文员', '本科', '2', 0, '0');
 INSERT INTO `user` VALUES (4, 'Sandy', '123456', NULL, 'test4@baomidou.com', '13233334444', '2', 'Sandy', '631265199101026533', '教师', '硕士', '3', 4, '1');
 INSERT INTO `user` VALUES (5, 'Billie', '123456', NULL, 'test5@baomidou.com', '13455556666', '1', 'Billie', '631265199101026514', '研究员', '硕士', '3', 9, '1');
+INSERT INTO `user` VALUES (6, 'admin', '123456', NULL, '2356150341@qq.com', '13627441292', NULL, NULL, NULL, NULL, NULL, '2', NULL, NULL);
+INSERT INTO `user` VALUES (7, 'test', '123456', NULL, '2356150341@qq.com', '13627441292', NULL, NULL, NULL, NULL, NULL, '2', NULL, NULL);
+INSERT INTO `user` VALUES (8, 'tiaozhuan', '123456', NULL, '0341@qq.com', '13627441292', NULL, NULL, NULL, NULL, NULL, '2', NULL, NULL);
 
 -- ----------------------------
 -- Table structure for vist_request

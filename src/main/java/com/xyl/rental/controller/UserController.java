@@ -50,7 +50,7 @@ public class UserController {
         User user = userService.queryByUser(loginUser);
         //System.out.println(user);
         if(null!=user){
-            request.getSession().setAttribute("user", user.getUserName());
+            //request.getSession().setAttribute("user", user.getUserName());
             if(user.getRole().equals("1")){
                 map.put("currentAuthority","admin");
             }else{
@@ -77,7 +77,12 @@ public class UserController {
         condition.setUserName(userName);
 
         Object currentUser = userService.queryByUser(condition);
-        return R.success(currentUser);
+        if(null!=currentUser){
+            return R.success(currentUser);
+        }else{
+            return  R.failed("null");
+        }
+
     }
 
     /**
@@ -100,17 +105,9 @@ public class UserController {
     @RequestMapping("register")
     @ResponseBody
     public R register(@RequestBody User user){
-        User byName=new User();
-        String userName = user.getUserName();
-        byName.setUserName(userName);
-//        System.out.println(byName);
-        if(null==userService.queryByUser(byName)){
-            userService.insert(user);
-            return R.success(user);
-        }else{
-            return R.failed("用户名重复");
-        }
-
+        user.setRole("2");
+        User insert = userService.insert(user);
+        return R.success(insert);
     }
 
     /**
