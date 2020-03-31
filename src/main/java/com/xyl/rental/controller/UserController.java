@@ -73,15 +73,21 @@ public class UserController {
     @RequestMapping("currentUser")
     @ResponseBody
     public R getCurrentUser(@RequestParam(name = "userName")String userName){
-        User condition=new User();
-        condition.setUserName(userName);
+        System.out.println(userName);
+        if(null!=userName&&userName.length()>0){
+            User condition=new User();
+            condition.setUserName(userName);
 
-        Object currentUser = userService.queryByUser(condition);
-        if(null!=currentUser){
-            return R.success(currentUser);
+            Object currentUser = userService.queryByUser(condition);
+            if(null!=currentUser){
+                return R.success(currentUser);
+            }else{
+                return  R.failed("null");
+            }
         }else{
-            return  R.failed("null");
+            return  R.failed("userName为空");
         }
+
 
     }
 
