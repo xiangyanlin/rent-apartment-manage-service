@@ -24,7 +24,10 @@ import java.util.Date;
 public class PicUploadFileServiceImpl implements PicUploadFileService {
     // 允许上传的格式
     private static final String[] IMAGE_TYPE = new String[]{".bmp", ".jpg", ".jpeg", ".gif", ".png"};
-
+    /**
+     * @Value("${spring. servlet . multipart. location}")
+     */
+    private String path = System.getProperty("user.dir") + File.separator + "file";
 
 
     public PicUploadResult upload(MultipartFile uploadFile) {
@@ -46,10 +49,9 @@ public class PicUploadFileServiceImpl implements PicUploadFileService {
         String fileName = uploadFile.getOriginalFilename();
         String filePath = getFilePath(fileName);
         // 生成图片的绝对引用地址
-        String picUrl = StringUtils.replace(StringUtils.substringAfter(filePath,
-                "D:\\code\\xyl-rental\\upload"),
-                "\\", "/");
-        fileUploadResult.setName("http://127.0.0.1:8080/common/getImage?filename="+picUrl);
+        String picUrl = StringUtils.replace(StringUtils.substringAfter(filePath, path),
+                "\\","/");
+        fileUploadResult.setName(picUrl);
         File newFile = new File(filePath);
         // 写文件到磁盘
         try {
@@ -66,7 +68,7 @@ public class PicUploadFileServiceImpl implements PicUploadFileService {
     }
 
     private String getFilePath(String sourceFileName) {
-        String baseFolder = "D:\\code\\xyl-rental\\upload" + File.separator
+        String baseFolder = path + File.separator
                 + "images";
         Date nowDate = new Date();
         // yyyy/MM/dd
@@ -88,18 +90,18 @@ public class PicUploadFileServiceImpl implements PicUploadFileService {
     }
 
     //从本地读取文件并返回到网页中
-    public void getImage(String filename, HttpServletResponse response){
+    public void getImage(String filename, HttpServletResponse response) {
         FileInputStream in = null;
         ServletOutputStream out = null;
         try {
             File file = new File(
-                    "D:\\code\\xyl-rental\\upload"+filename);
+                    path + filename);
             in = new FileInputStream(file);
             out = response.getOutputStream();
             byte[] bytes = new byte[1024 * 10];
             int len = 0;
             while ((len = in.read(bytes)) != -1) {
-                out.write(bytes,0,len);
+                out.write(bytes, 0, len);
             }
             out.flush();
         } catch (IOException e) {
