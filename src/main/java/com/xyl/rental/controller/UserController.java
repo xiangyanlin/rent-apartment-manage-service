@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import java.awt.*;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -73,7 +74,7 @@ public class UserController {
     @RequestMapping("currentUser")
     @ResponseBody
     public R getCurrentUser(@RequestParam(name = "userName")String userName){
-        System.out.println(userName);
+        //System.out.println(userName);
         if(null!=userName&&userName.length()>0){
             User condition=new User();
             condition.setUserName(userName);
@@ -116,6 +117,17 @@ public class UserController {
         return R.success(insert);
     }
 
+    /**
+     * 修改用户信息
+     * @param user
+     * @return
+     */
+    @RequestMapping("update")
+    public R updateHouseResources(@RequestBody User user) {
+
+        User update = userService.update(user);
+        return R.success(update);
+    }
     /**
      * 分页条件关键字查询
      * @param currentPage
