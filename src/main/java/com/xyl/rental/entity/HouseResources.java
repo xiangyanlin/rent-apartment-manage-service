@@ -8,18 +8,22 @@ import java.io.Serializable;
 /**
  * 房源表(HouseResources)实体类
  *
- * @author makejava
- * @since 2020-03-16 23:18:22
+ * @author xyl
+ * @since 2020-04-05 14:42:41
  */
 @Data
 public class HouseResources implements Serializable {
-    private static final long serialVersionUID = -34065935107935087L;
+    private static final long serialVersionUID = 496665713830088798L;
     
     private Integer id;
     /**
     * 房源标题
     */
     private String title;
+    /**
+    * 房东编号
+    */
+    private Integer ownerId;
     /**
     * 楼盘id
     */
@@ -41,7 +45,7 @@ public class HouseResources implements Serializable {
     */
     private String used;
     /**
-    * 房屋状态1待租，3租出
+    * 房屋状态1待租，2租出
     */
     private String status;
     /**
@@ -108,9 +112,13 @@ public class HouseResources implements Serializable {
     * 物业费
     */
     private String propertyCost;
-    
+    /**
+    * 创建时间
+    */
     private Date created;
-    
+    /**
+    * 更新时间
+    */
     private Date updated;
 
 

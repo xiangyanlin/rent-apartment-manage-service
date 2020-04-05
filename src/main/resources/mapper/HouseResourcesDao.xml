@@ -5,6 +5,7 @@
     <resultMap type="com.xyl.rental.entity.HouseResources" id="HouseResourcesMap">
         <result property="id" column="id" jdbcType="INTEGER"/>
         <result property="title" column="title" jdbcType="VARCHAR"/>
+        <result property="ownerId" column="owner_id" jdbcType="INTEGER"/>
         <result property="estateId" column="estate_id" jdbcType="INTEGER"/>
         <result property="buildingNum" column="building_num" jdbcType="VARCHAR"/>
         <result property="buildingUnit" column="building_unit" jdbcType="VARCHAR"/>
@@ -34,7 +35,7 @@
     <!--查询单个-->
     <select id="queryById" resultMap="HouseResourcesMap">
         select
-          id, title, estate_id, building_num, building_unit, building_floor_num, used, status, rent, rent_method, payment_method, house_type, covered_area, use_area, floor, orientation, decoration, facilities, pic, house_desc, contact, mobile, time, property_cost, created, updated
+          id, title, owner_id, estate_id, building_num, building_unit, building_floor_num, used, status, rent, rent_method, payment_method, house_type, covered_area, use_area, floor, orientation, decoration, facilities, pic, house_desc, contact, mobile, time, property_cost, created, updated
         from rental.house_resources
         where id = #{id}
     </select>
@@ -42,7 +43,7 @@
     <!--查询指定行数据-->
     <select id="queryAllByLimit" resultMap="HouseResourcesMap">
         select
-          id, title, estate_id, building_num, building_unit, building_floor_num, used, status, rent, rent_method, payment_method, house_type, covered_area, use_area, floor, orientation, decoration, facilities, pic, house_desc, contact, mobile, time, property_cost, created, updated
+          id, title, owner_id, estate_id, building_num, building_unit, building_floor_num, used, status, rent, rent_method, payment_method, house_type, covered_area, use_area, floor, orientation, decoration, facilities, pic, house_desc, contact, mobile, time, property_cost, created, updated
         from rental.house_resources
         limit #{offset}, #{limit}
     </select>
@@ -50,7 +51,7 @@
     <!--通过实体作为筛选条件查询-->
     <select id="queryAll" resultMap="HouseResourcesMap">
         select
-          id, title, estate_id, building_num, building_unit, building_floor_num, used, status, rent, rent_method, payment_method, house_type, covered_area, use_area, floor, orientation, decoration, facilities, pic, house_desc, contact, mobile, time, property_cost, created, updated
+          id, title, owner_id, estate_id, building_num, building_unit, building_floor_num, used, status, rent, rent_method, payment_method, house_type, covered_area, use_area, floor, orientation, decoration, facilities, pic, house_desc, contact, mobile, time, property_cost, created, updated
         from rental.house_resources
         <where>
             <if test="id != null">
@@ -58,6 +59,9 @@
             </if>
             <if test="title != null and title != ''">
                 and title = #{title}
+            </if>
+            <if test="ownerId != null">
+                and owner_id = #{ownerId}
             </if>
             <if test="estateId != null">
                 and estate_id = #{estateId}
@@ -136,8 +140,8 @@
 
     <!--新增所有列-->
     <insert id="insert" keyProperty="id" useGeneratedKeys="true">
-        insert into rental.house_resources(title, estate_id, building_num, building_unit, building_floor_num, used, status, rent, rent_method, payment_method, house_type, covered_area, use_area, floor, orientation, decoration, facilities, pic, house_desc, contact, mobile, time, property_cost, created, updated)
-        values (#{title}, #{estateId}, #{buildingNum}, #{buildingUnit}, #{buildingFloorNum}, #{used}, #{status}, #{rent}, #{rentMethod}, #{paymentMethod}, #{houseType}, #{coveredArea}, #{useArea}, #{floor}, #{orientation}, #{decoration}, #{facilities}, #{pic}, #{houseDesc}, #{contact}, #{mobile}, #{time}, #{propertyCost}, #{created}, #{updated})
+        insert into rental.house_resources(title, owner_id, estate_id, building_num, building_unit, building_floor_num, used, status, rent, rent_method, payment_method, house_type, covered_area, use_area, floor, orientation, decoration, facilities, pic, house_desc, contact, mobile, time, property_cost, created, updated)
+        values (#{title}, #{ownerId}, #{estateId}, #{buildingNum}, #{buildingUnit}, #{buildingFloorNum}, #{used}, #{status}, #{rent}, #{rentMethod}, #{paymentMethod}, #{houseType}, #{coveredArea}, #{useArea}, #{floor}, #{orientation}, #{decoration}, #{facilities}, #{pic}, #{houseDesc}, #{contact}, #{mobile}, #{time}, #{propertyCost}, #{created}, #{updated})
     </insert>
 
     <!--通过主键修改数据-->
@@ -146,6 +150,9 @@
         <set>
             <if test="title != null and title != ''">
                 title = #{title},
+            </if>
+            <if test="ownerId != null">
+                owner_id = #{ownerId},
             </if>
             <if test="estateId != null">
                 estate_id = #{estateId},
@@ -229,13 +236,16 @@
     </delete>
     <!-- 查询条数 -->
     <select id="countTotal" resultType="int"  >
-    SELECT count(*) FROM rental.house_resources
+        SELECT count(*) FROM rental.house_resources
         <where>
             <if test="houseResources.id != null">
                 and id like CONCAT('%',#{houseResources.id},'%')
             </if>
             <if test="houseResources.title != null and houseResources.title != ''">
                 and title like CONCAT('%',#{houseResources.title},'%')
+            </if>
+            <if test="houseResources.ownerId != null ">
+                and owner_id = #{houseResources.ownerId}
             </if>
             <if test="houseResources.status != null and houseResources.status != ''">
                 and status = #{houseResources.status}
@@ -258,12 +268,21 @@
             <if test="houseResources.decoration != null">
                 and decoration = #{houseResources.decoration}
             </if>
+            <if test="keyWord != null and keyWord != ''">
+                and (id like CONCAT('%',#{keyWord},'%')
+                or title like CONCAT('%',#{keyWord},'%')
+                or house_type like CONCAT('%',#{keyWord},'%')
+                or mobile like CONCAT('%',#{keyWord},'%')
+                or rent like CONCAT('%',#{keyWord},'%')
+                or orientation like CONCAT('%',#{keyWord},'%')
+                or house_desc like CONCAT('%',#{keyWord},'%'))
+            </if>
         </where>
     </select>
     <!--分页条件查询-->
     <select id="queryPage" resultMap="HouseResourcesMap">
         select
-        id, title, estate_id, building_num, building_unit, building_floor_num, rent, rent_method, payment_method, house_type, covered_area, use_area, floor, orientation, decoration, facilities, pic, house_desc, contact, mobile, time, property_cost, created, updated
+        id, title, owner_id, estate_id, building_num, building_unit, building_floor_num, used, status, rent, rent_method, payment_method, house_type, covered_area, use_area, floor, orientation, decoration, facilities, pic, house_desc, contact, mobile, time, property_cost, created, updated
         from rental.house_resources
         <where>
             <if test="houseResources.id != null">
@@ -272,6 +291,9 @@
             <if test="houseResources.title != null and houseResources.title != ''">
                 and title like CONCAT('%',#{houseResources.title},'%')
             </if>
+            <if test="houseResources.ownerId != null ">
+                and owner_id = #{houseResources.ownerId}
+            </if>
             <if test="houseResources.status != null and houseResources.status != ''">
                 and status = #{houseResources.status}
             </if>
@@ -292,6 +314,15 @@
             </if>
             <if test="houseResources.decoration != null">
                 and decoration = #{houseResources.decoration}
+            </if>
+            <if test="keyWord != null and keyWord != ''">
+                and (id like CONCAT('%',#{keyWord},'%')
+                or title like CONCAT('%',#{keyWord},'%')
+                or house_type like CONCAT('%',#{keyWord},'%')
+                or mobile like CONCAT('%',#{keyWord},'%')
+                or rent like CONCAT('%',#{keyWord},'%')
+                or orientation like CONCAT('%',#{keyWord},'%')
+                or house_desc like CONCAT('%',#{keyWord},'%'))
             </if>
         </where>
         limit #{offset}, #{limit}

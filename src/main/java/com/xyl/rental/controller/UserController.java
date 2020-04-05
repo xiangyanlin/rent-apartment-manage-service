@@ -124,7 +124,7 @@ public class UserController {
      */
     @RequestMapping("update")
     public R updateHouseResources(@RequestBody User user) {
-
+        //System.out.println(user);
         User update = userService.update(user);
         return R.success(update);
     }

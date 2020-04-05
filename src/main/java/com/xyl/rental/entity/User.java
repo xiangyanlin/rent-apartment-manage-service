@@ -7,12 +7,12 @@ import java.io.Serializable;
 /**
  * (User)实体类
  *
- * @author makejava
- * @since 2020-03-29 00:35:18
+ * @author xyl
+ * @since 2020-04-04 22:42:57
  */
 @Data
 public class User implements Serializable {
-    private static final long serialVersionUID = -54898739848195339L;
+    private static final long serialVersionUID = 115938023056064776L;
     /**
     * 主键ID
     */
@@ -54,7 +54,7 @@ public class User implements Serializable {
     */
     private String profession;
     /**
-    * 学历
+    * 学历1大专以下，2大专，3本科，4研究生，5研究生以上
     */
     private String education;
     /**
@@ -69,6 +69,7 @@ public class User implements Serializable {
     * 0未认证，1已认证
     */
     private String identify;
+
 
 
 

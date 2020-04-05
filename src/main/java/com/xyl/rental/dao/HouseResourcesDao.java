@@ -40,7 +40,7 @@ public interface HouseResourcesDao {
      * @param maxRent
      * @return
      */
-    List<HouseResources> queryPage(@Param("offset") int offset, @Param("limit") int limit,HouseResources houseResources, Integer minRent, Integer maxRent);
+    List<HouseResources> queryPage(@Param("offset") int offset, @Param("limit") int limit,HouseResources houseResources,String keyWord, Integer minRent, Integer maxRent);
 
 
     /**
@@ -79,5 +79,5 @@ public interface HouseResourcesDao {
      *
      * @return
      */
-    int countTotal(HouseResources houseResources, Integer minRent, Integer maxRent);
+    int countTotal(HouseResources houseResources, String keyWord,Integer minRent, Integer maxRent);
 }
