@@ -2,10 +2,12 @@ package com.xyl.rental.controller;
 
 import com.xyl.rental.entity.VistRequest;
 import com.xyl.rental.service.VistRequestService;
+import com.xyl.rental.utils.R;
 import com.xyl.rental.vo.TableResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import java.util.Date;
 
 /**
  * (VistRequest)表控制层
@@ -31,6 +33,19 @@ public class VistRequestController {
     @GetMapping("selectOne")
     public VistRequest selectOne(Integer id) {
         return this.vistRequestService.queryById(id);
+    }
+
+    /**
+     * 新增看房请求
+     * @param vistRequest
+     * @return
+     */
+    @RequestMapping("save")
+    @ResponseBody
+    public R saveHouseResources(@RequestBody VistRequest vistRequest) {
+       // vistRequest.setCreated(new Date());
+        VistRequest insert = vistRequestService.insert(vistRequest);
+        return R.success(insert);
     }
 
     /**
