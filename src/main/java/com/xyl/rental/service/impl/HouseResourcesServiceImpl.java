@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import javax.annotation.Resource;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 /**
  * 房源表(HouseResources)表服务实现类
@@ -102,5 +103,32 @@ public class HouseResourcesServiceImpl implements HouseResourcesService {
     @Override
     public boolean deleteById(Integer id) {
         return this.houseResourcesDao.deleteById(id) > 0;
+    }
+
+    /**
+     * 联合楼盘查询
+     * @param currentPage
+     * @param pageSize
+     * @param queryCondition
+     * @param keyWord
+     * @param minRent
+     * @param maxRent
+     * @return
+     */
+    @Override
+    public TableResult queryPageAndEstate(int currentPage, int pageSize, HouseResources queryCondition, String keyWord, Integer minRent, Integer maxRent) {
+        TableResult tr=new TableResult();
+        Pagination pagination=new Pagination();
+        int start=(currentPage-1)*pageSize;
+        int total=houseResourcesDao.countTotal(queryCondition,keyWord,minRent,maxRent);
+
+        List<Map> maps = houseResourcesDao.queryPageAndEstate(
+                start, pageSize, queryCondition, keyWord, minRent, maxRent);
+        pagination.setCurrent(currentPage);
+        pagination.setPageSize(pageSize);
+        pagination.setTotal(total);
+        tr.setList(maps);
+        tr.setPagination(pagination);
+        return tr;
     }
 }

@@ -93,4 +93,26 @@ public class HouseResourcesController {
         return tableResult;
     }
 
+    /**
+     * 联合楼盘查询
+     * @param currentPage
+     * @param pageSize
+     * @param queryCondition
+     * @param keyWord
+     * @param minRent
+     * @param maxRent
+     * @return
+     */
+    @GetMapping("andEstateList")
+    @ResponseBody
+    public TableResult andEstateList(@RequestParam(name = "currentPage", defaultValue = "1") int currentPage,
+                            @RequestParam(name = "pageSize", defaultValue = "10") int pageSize,
+                            HouseResources queryCondition,String keyWord,Integer minRent, Integer maxRent){
+
+        // System.out.println(queryCondition);
+        TableResult tableResult = this.houseResourcesService.queryPageAndEstate(
+                currentPage, pageSize,queryCondition,keyWord,minRent,maxRent);
+        return tableResult;
+    }
+
 }

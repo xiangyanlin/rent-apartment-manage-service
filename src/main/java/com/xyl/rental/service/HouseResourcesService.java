@@ -64,4 +64,17 @@ public interface HouseResourcesService {
      */
     boolean deleteById(Integer id);
 
+    /**
+     * 联合楼盘查询
+     * @param currentPage
+     * @param pageSize
+     * @param queryCondition
+     * @param keyWord
+     * @param minRent
+     * @param maxRent
+     * @return
+     */
+    TableResult queryPageAndEstate(int currentPage, int pageSize,HouseResources queryCondition,
+                                   String keyWord,Integer minRent, Integer maxRent);
+
 }

@@ -4,6 +4,7 @@ import com.xyl.rental.entity.HouseResources;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import java.util.List;
+import java.util.Map;
 
 /**
  * 房源表(HouseResources)表数据库访问层
@@ -80,4 +81,6 @@ public interface HouseResourcesDao {
      * @return
      */
     int countTotal(HouseResources houseResources, String keyWord,Integer minRent, Integer maxRent);
+
+    List<Map> queryPageAndEstate(int offset, int limit, HouseResources houseResources, String keyWord, Integer minRent, Integer maxRent);
 }
