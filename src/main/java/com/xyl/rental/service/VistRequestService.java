@@ -62,4 +62,12 @@ public interface VistRequestService {
      */
     boolean deleteById(Integer id);
 
+    /**
+     * 请求列表联合楼盘表
+     * @param currentPage
+     * @param pageSize
+     * @return
+     */
+    TableResult queryRequestListByPage(int currentPage, int pageSize);
+
 }

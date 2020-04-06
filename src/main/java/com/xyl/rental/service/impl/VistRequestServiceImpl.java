@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import java.util.List;
+import java.util.Map;
 
 /**
  * (VistRequest)表服务实现类
@@ -99,5 +100,28 @@ public class VistRequestServiceImpl implements VistRequestService {
     @Override
     public boolean deleteById(Integer id) {
         return this.vistRequestDao.deleteById(id) > 0;
+    }
+
+    /**
+     * 请求列表
+     * @param currentPage
+     * @param pageSize
+     * @return
+     */
+    @Override
+    public TableResult queryRequestListByPage(int currentPage, int pageSize) {
+        TableResult tr=new TableResult();
+        Pagination pagination=new Pagination();
+        int start=(currentPage-1)*pageSize;
+        int total=vistRequestDao.countTotal();
+
+        List<Map> maps = vistRequestDao.queryRequestListByPage(
+                start, pageSize);
+        pagination.setCurrent(currentPage);
+        pagination.setPageSize(pageSize);
+        pagination.setTotal(total);
+        tr.setList(maps);
+        tr.setPagination(pagination);
+        return tr;
     }
 }

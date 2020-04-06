@@ -4,6 +4,7 @@ import com.xyl.rental.entity.VistRequest;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import java.util.List;
+import java.util.Map;
 
 /**
  * (VistRequest)表数据库访问层
@@ -77,4 +78,12 @@ public interface VistRequestDao {
      * @return
      */
     int countTotal();
+
+    /**
+     * 请求列表联合楼盘表
+     * @param offset
+     * @param limit
+     * @return
+     */
+    List<Map> queryRequestListByPage(@Param("offset") int offset, @Param("limit") int limit);
 }

@@ -66,4 +66,21 @@ public class VistRequestController {
         return tableResult;
     }
 
+    /**
+     * 看房请求
+     * @param currentPage
+     * @param pageSize
+     * @return
+     */
+    @GetMapping("requestList")
+    @ResponseBody
+    public TableResult requestList(@RequestParam(name = "currentPage", defaultValue = "1") int currentPage,
+                            @RequestParam(name = "pageSize", defaultValue = "10") int pageSize){
+
+        // System.out.println(queryCondition);
+        TableResult tableResult = this.vistRequestService.queryRequestListByPage(
+                currentPage, pageSize);
+        return tableResult;
+    }
+
 }
