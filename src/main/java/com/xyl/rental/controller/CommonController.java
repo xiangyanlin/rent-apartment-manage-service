@@ -37,7 +37,7 @@ public class CommonController {
     @RequestMapping(value = "/getImage", method = RequestMethod.GET, produces = "application/json;charset=utf-8")
     public void getImage(@RequestParam(value = "filename", required = false)
                                      String filename, HttpServletResponse response){
-        log.info("路径："+filename);
+        //log.info("路径："+filename);
         //String fiepath=filename.split("=")[1];
         //log.info("地址："+fiepath);
         picUploadFileService.getImage(filename,response);

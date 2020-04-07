@@ -48,21 +48,28 @@ public class UserController {
     @ResponseBody
     public R Login(User loginUser, HttpServletRequest request){
         Map<String,Object> map=new HashMap<String,Object>();
-        User user = userService.queryByUser(loginUser);
-        //System.out.println(user);
-        if(null!=user){
-            //request.getSession().setAttribute("user", user.getUserName());
-            if(user.getRole().equals("1")){
-                map.put("currentAuthority","admin");
-            }else{
-                map.put("currentAuthority","user");
+        if(null!=loginUser.getUserName()&&null!=loginUser.getPassword()){
+            User user = userService.queryByUser(loginUser);
+            //System.out.println(user);
+            if(null!=user){
+                //request.getSession().setAttribute("user", user.getUserName());
+                if(user.getRole().equals("1")){
+                    map.put("currentAuthority","admin");
+                }else{
+                    map.put("currentAuthority","user");
+                }
+                map.put("currentUser",user.getUserName());
+                map.put("status","ok");
+            }else {
+                map.put("currentAuthority","guest");
+                map.put("status","error");
             }
-            map.put("currentUser",user.getUserName());
-            map.put("status","ok");
-        }else {
+        }else{
             map.put("currentAuthority","guest");
             map.put("status","error");
         }
+
+
         return R.success(map);
     }
 
