@@ -11,7 +11,7 @@
  Target Server Version : 50726
  File Encoding         : 65001
 
- Date: 06/04/2020 22:05:42
+ Date: 07/04/2020 21:42:59
 */
 
 SET NAMES utf8mb4;
@@ -205,9 +205,9 @@ CREATE TABLE `user`  (
 INSERT INTO `user` VALUES (1, 'Jone', '123456', NULL, 'test1@baomidou.com', '13627441292', '1', 'Jone', '13226519910506112x', '工人', '1', '1', 0, '0');
 INSERT INTO `user` VALUES (2, 'Jack', '123456', '', 'test2@baomidou.com', '13611112222', '1', 'Jack', '132265199101026522', '工人', '2', '2', 0, '0');
 INSERT INTO `user` VALUES (3, 'Tom', '123456', NULL, 'test3@baomidou.com', '13122223333', '1', 'Tom', '631265199101026522', '文员', '3', '2', 0, '0');
-INSERT INTO `user` VALUES (4, 'Sandy', '123456', NULL, 'test4@baomidou.com', '13233334444', '2', 'Sandy', '631265199101026533', '教师', '4', '3', 4, '1');
-INSERT INTO `user` VALUES (5, 'Billie', '123456', NULL, 'test5@baomidou.com', '13455556666', '1', 'Billie', '631265199101026514', '研究员', '5', '3', 9, '1');
-INSERT INTO `user` VALUES (6, 'admin', '123456', '/images/2020/04/03/202004030847246910255.jpg', '2356150341@qq.com', '13627441292', '2', NULL, NULL, '管理员', '5', '2', NULL, NULL);
+INSERT INTO `user` VALUES (4, 'Sandy', '123456', NULL, 'test4@baomidou.com', '13233334444', '2', 'Sandy', '631265199101026533', '教师', '4', '2', 4, '1');
+INSERT INTO `user` VALUES (5, 'Billie', '123456', NULL, 'test5@baomidou.com', '13455556666', '1', 'Billie', '631265199101026514', '研究员', '5', '2', 9, '1');
+INSERT INTO `user` VALUES (6, 'admin', '123456', '/images/2020/04/03/202004030847246910255.jpg', '2356150341@qq.com', '13627441292', '2', NULL, NULL, '管理员', '5', '1', NULL, NULL);
 INSERT INTO `user` VALUES (7, 'test', '123456', NULL, '2356150341@qq.com', '13627441292', NULL, NULL, NULL, NULL, NULL, '2', NULL, NULL);
 INSERT INTO `user` VALUES (8, 'tiaozhuan', '123456', NULL, '0341@qq.com', '13627441292', NULL, NULL, NULL, NULL, NULL, '2', NULL, NULL);
 
