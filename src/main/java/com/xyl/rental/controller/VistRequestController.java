@@ -49,6 +49,19 @@ public class VistRequestController {
     }
 
     /**
+     * 修改看房请求
+     * @param vistRequest
+     * @return
+     */
+    @RequestMapping("update")
+    @ResponseBody
+    public R updateHouseResources(@RequestBody VistRequest vistRequest) {
+        System.out.println(vistRequest);
+        VistRequest update = vistRequestService.update(vistRequest);
+        return R.success(update);
+    }
+
+    /**
      * 请求列表
      * @param currentPage
      * @param pageSize
@@ -58,11 +71,12 @@ public class VistRequestController {
     @GetMapping("list")
     @ResponseBody
     public TableResult list(@RequestParam(name = "currentPage", defaultValue = "1") int currentPage,
-                            @RequestParam(name = "pageSize", defaultValue = "10") int pageSize){
+                            @RequestParam(name = "pageSize", defaultValue = "10") int pageSize,
+                            VistRequest queryCondition, String keyWord){
 
         // System.out.println(queryCondition);
         TableResult tableResult = this.vistRequestService.queryByPage(
-                currentPage, pageSize);
+                currentPage, pageSize,  queryCondition,  keyWord);
         return tableResult;
     }
 
@@ -75,11 +89,12 @@ public class VistRequestController {
     @GetMapping("requestList")
     @ResponseBody
     public TableResult requestList(@RequestParam(name = "currentPage", defaultValue = "1") int currentPage,
-                            @RequestParam(name = "pageSize", defaultValue = "10") int pageSize){
+                                    @RequestParam(name = "pageSize", defaultValue = "10") int pageSize,
+                                    VistRequest queryCondition, String keyWord){
 
         // System.out.println(queryCondition);
         TableResult tableResult = this.vistRequestService.queryRequestListByPage(
-                currentPage, pageSize);
+                currentPage, pageSize,  queryCondition,  keyWord);
         return tableResult;
     }
 

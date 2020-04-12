@@ -71,13 +71,13 @@ public interface VistRequestDao {
      * @param limit
      * @return
      */
-    List<VistRequest> queryPage(@Param("offset") int offset, @Param("limit") int limit);
+    List<VistRequest> queryPage(@Param("offset") int offset, @Param("limit") int limit, VistRequest queryCondition, String keyWord);
 
     /**
      * 查询总数
      * @return
      */
-    int countTotal();
+    int countTotal( VistRequest queryCondition, String keyWord);
 
     /**
      * 请求列表联合楼盘表
@@ -85,5 +85,5 @@ public interface VistRequestDao {
      * @param limit
      * @return
      */
-    List<Map> queryRequestListByPage(@Param("offset") int offset, @Param("limit") int limit);
+    List<Map> queryRequestListByPage(@Param("offset") int offset, @Param("limit") int limit, VistRequest queryCondition, String keyWord);
 }

@@ -8,12 +8,12 @@ import java.io.Serializable;
 /**
  * (VistRequest)实体类
  *
- * @author 向延琳
- * @since 2020-04-06 21:46:36
+ * @author xyl
+ * @since 2020-04-12 21:56:56
  */
 @Data
 public class VistRequest implements Serializable {
-    private static final long serialVersionUID = 501036519148209019L;
+    private static final long serialVersionUID = 450985897089013629L;
     /**
     * 请求编号
     */
@@ -26,6 +26,10 @@ public class VistRequest implements Serializable {
     * 租客电话
     */
     private String mobile;
+    /**
+    * 房东编号
+    */
+    private Integer ownerId;
     /**
     * 楼盘编号
     */

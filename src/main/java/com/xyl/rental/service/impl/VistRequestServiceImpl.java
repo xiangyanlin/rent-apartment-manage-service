@@ -52,13 +52,13 @@ public class VistRequestServiceImpl implements VistRequestService {
      * @return
      */
     @Override
-    public TableResult queryByPage(int currentPage, int pageSize) {
+    public TableResult queryByPage(int currentPage, int pageSize, VistRequest queryCondition, String keyWord) {
         TableResult tr=new TableResult();
         Pagination pagination=new Pagination();
         int start=(currentPage-1)*pageSize;
-        int total=vistRequestDao.countTotal();
+        int total=vistRequestDao.countTotal(  queryCondition,  keyWord);
         List<VistRequest> list = vistRequestDao.queryPage(
-                start, pageSize);
+                start, pageSize,  queryCondition,  keyWord);
         pagination.setCurrent(currentPage);
         pagination.setPageSize(pageSize);
         pagination.setTotal(total);
@@ -109,14 +109,14 @@ public class VistRequestServiceImpl implements VistRequestService {
      * @return
      */
     @Override
-    public TableResult queryRequestListByPage(int currentPage, int pageSize) {
+    public TableResult queryRequestListByPage(int currentPage, int pageSize, VistRequest queryCondition, String keyWord) {
         TableResult tr=new TableResult();
         Pagination pagination=new Pagination();
         int start=(currentPage-1)*pageSize;
-        int total=vistRequestDao.countTotal();
+        int total=vistRequestDao.countTotal(  queryCondition,  keyWord);
 
         List<Map> maps = vistRequestDao.queryRequestListByPage(
-                start, pageSize);
+                start, pageSize,  queryCondition,  keyWord);
         pagination.setCurrent(currentPage);
         pagination.setPageSize(pageSize);
         pagination.setTotal(total);

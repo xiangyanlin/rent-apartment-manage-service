@@ -1,7 +1,7 @@
 /*
  Navicat Premium Data Transfer
 
- Source Server         : xyl
+ Source Server         : xiangyanlin
  Source Server Type    : MySQL
  Source Server Version : 50726
  Source Host           : localhost:3306
@@ -11,7 +11,7 @@
  Target Server Version : 50726
  File Encoding         : 65001
 
- Date: 10/04/2020 16:19:05
+ Date: 12/04/2020 22:55:49
 */
 
 SET NAMES utf8mb4;
@@ -219,17 +219,19 @@ CREATE TABLE `vist_request`  (
   `id` int(10) NOT NULL AUTO_INCREMENT COMMENT '请求编号',
   `tenant_name` varchar(10) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '租客姓名',
   `mobile` varchar(20) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '租客电话',
+  `owner_id` int(11) NULL DEFAULT NULL COMMENT '房东编号',
   `estate_id` int(10) NULL DEFAULT NULL COMMENT '楼盘编号',
-  `remark` varchar(10) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '备注信息',
+  `remark` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '备注信息',
   `request_time` datetime(0) NULL DEFAULT NULL COMMENT '请求时间',
   `vist_time` datetime(0) NULL DEFAULT NULL COMMENT '看房时间',
   `status` varchar(10) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '请求状态,1已完成,2待确认,3待看房,4已取消',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 10 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 11 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Records of vist_request
 -- ----------------------------
-INSERT INTO `vist_request` VALUES (9, 'Jack', '13611112222', 1005, '真心想租', '2020-04-06 22:02:39', '2020-04-08 22:02:21', '2');
+INSERT INTO `vist_request` VALUES (9, 'Jack', '13611112222', 4, 1005, '真心想租，要求去看下房', '2020-04-06 22:02:39', '2020-04-08 22:02:21', '2');
+INSERT INTO `vist_request` VALUES (10, 'Jone', '13627441292', 5, 1002, '房子真不错，希望看房', '2020-04-12 22:43:10', '2020-04-15 08:00:00', '2');
 
 SET FOREIGN_KEY_CHECKS = 1;

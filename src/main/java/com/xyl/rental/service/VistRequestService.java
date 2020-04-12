@@ -37,7 +37,7 @@ public interface VistRequestService {
      * @param pageSize
      * @return
      */
-    TableResult queryByPage(int currentPage, int pageSize);
+    TableResult queryByPage(int currentPage, int pageSize, VistRequest queryCondition, String keyWord);
     /**
      * 新增数据
      *
@@ -68,6 +68,6 @@ public interface VistRequestService {
      * @param pageSize
      * @return
      */
-    TableResult queryRequestListByPage(int currentPage, int pageSize);
+    TableResult queryRequestListByPage(int currentPage, int pageSize, VistRequest queryCondition, String keyWord);
 
 }
