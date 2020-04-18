@@ -11,7 +11,7 @@
  Target Server Version : 50726
  File Encoding         : 65001
 
- Date: 12/04/2020 22:55:49
+ Date: 18/04/2020 23:00:04
 */
 
 SET NAMES utf8mb4;
@@ -50,23 +50,26 @@ CREATE TABLE `estate`  (
   `area` varchar(10) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '所在区',
   `address` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '具体地址',
   `year` varchar(10) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '建筑年代',
-  `type` varchar(10) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '建筑类型',
+  `type` varchar(10) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '建筑类型1塔楼，2板楼',
   `property_cost` varchar(10) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '物业费',
   `property_company` varchar(20) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '物业公司',
   `developers` varchar(20) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '开发商',
   `created` datetime(6) NULL DEFAULT NULL COMMENT '创建时间',
   `updated` datetime(6) NULL DEFAULT NULL COMMENT '更新时间',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1006 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '楼盘表' ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 1009 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '楼盘表' ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Records of estate
 -- ----------------------------
-INSERT INTO `estate` VALUES (1001, '中远两湾城', '上海市', '上海市', '普陀区', '远景路97弄', '2001', '塔楼/板楼', '1.5', '上海中远物业管理发展有限公司', '上海万业企业股份有限公司', '2018-11-06 23:00:20.000000', '2018-11-06 23:00:23.000000');
-INSERT INTO `estate` VALUES (1002, '上海康城', '上海市', '上海市', '闵行区', '莘松路958弄', '2001', '塔楼/板楼', '1.5', '盛孚物业', '闵行房地产', '2018-11-06 23:02:30.000000', '2018-11-27 23:02:33.000000');
-INSERT INTO `estate` VALUES (1003, '保利西子湾', '上海市', '上海市', '松江区', '广富林路1188弄', '2008', '塔楼/板楼', '1.75', '上海保利物业管理', '上海城乾房地产开发有限公司', '2018-11-06 23:04:22.000000', '2018-11-06 23:04:25.000000');
-INSERT INTO `estate` VALUES (1004, '万科城市花园', '上海市', '上海市', '松江区', '广富林路1188弄', '2002', '塔楼/板楼', '1.5', '上海保利物业管理', '上海城乾房地产开发有限公司', '2018-11-13 16:43:40.000000', '2018-11-13 16:43:42.000000');
-INSERT INTO `estate` VALUES (1005, '上海阳城', '上海市', '上海市', '闵行区', '罗锦路888弄', '2002', '塔楼/板楼', '1.5', '上海莲阳物业管理有限公司', '上海莲城房地产开发有限公司', '2018-11-06 23:23:52.000000', '2018-11-06 23:23:55.000000');
+INSERT INTO `estate` VALUES (1001, '中远两湾城', '上海市', '上海市', '普陀区', '远景路97弄', '2001', '1', '1.5', '上海中远物业管理发展有限公司', '上海万业企业股份有限公司', '2018-11-06 23:00:20.000000', '2018-11-06 23:00:23.000000');
+INSERT INTO `estate` VALUES (1002, '上海康城', '上海市', '上海市', '闵行区', '莘松路958弄', '2001', '1', '1.5', '盛孚物业', '闵行房地产', '2018-11-06 23:02:30.000000', '2018-11-27 23:02:33.000000');
+INSERT INTO `estate` VALUES (1003, '保利西子湾', '上海市', '上海市', '松江区', '广富林路1188弄', '2008', '2', '1.75', '上海保利物业管理', '上海城乾房地产开发有限公司', '2018-11-06 23:04:22.000000', '2018-11-06 23:04:25.000000');
+INSERT INTO `estate` VALUES (1004, '万科城市花园', '上海市', '上海市', '松江区', '广富林路1188弄', '2002', '2', '1.5', '上海保利物业管理', '上海城乾房地产开发有限公司', '2018-11-13 16:43:40.000000', '2018-11-13 16:43:42.000000');
+INSERT INTO `estate` VALUES (1005, '上海阳城', '上海市', '上海市', '闵行区', '罗锦路888弄', '2002', '1', '1.5', '上海莲阳物业管理有限公司', '上海莲城房地产开发有限公司', '2018-11-06 23:23:52.000000', '2018-11-06 23:23:55.000000');
+INSERT INTO `estate` VALUES (1006, '乐山十一村', '上海市', '上海市', '普陀区', '远景路97弄', '2001', '2', '1.5', '上海中远物业管理发展有限公司', '上海万业企业股份有限公司', '2018-11-06 23:00:20.000000', '2018-11-06 23:00:23.000000');
+INSERT INTO `estate` VALUES (1007, '韦斯特花园', '湖南省', '张家界市', '永定区', '高铁站旁', '2019', '1', '5', '测试新增', '测试新增', '2020-04-18 21:53:14.440000', '2020-04-18 21:53:14.440000');
+INSERT INTO `estate` VALUES (1008, '世纪之城', '天津市', '市辖区', '和平区', '包子街', '1990', '2', '5', 'test', 'test', '2020-04-18 22:07:44.626000', '2020-04-18 22:07:44.626000');
 
 -- ----------------------------
 -- Table structure for house_resources
@@ -81,7 +84,7 @@ CREATE TABLE `house_resources`  (
   `building_unit` varchar(5) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '单元号',
   `building_floor_num` varchar(5) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '门牌号',
   `used` varchar(10) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '房屋用处1住宅，2商住两用',
-  `status` varchar(10) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '房屋状态1待租，2租出',
+  `status` varchar(10) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '房屋状态0待审核，1待租，2租出',
   `rent` int(10) NULL DEFAULT NULL COMMENT '租金',
   `rent_method` int(4) NULL DEFAULT NULL COMMENT '租赁方式，1-整租，2-合租',
   `payment_method` int(4) NULL DEFAULT NULL COMMENT '支付方式，1-付一押一，2-付三押一，3-付六押一，4-年付押一，5-其它',
@@ -101,7 +104,7 @@ CREATE TABLE `house_resources`  (
   `created` datetime(0) NULL DEFAULT NULL COMMENT '创建时间',
   `updated` datetime(0) NULL DEFAULT NULL COMMENT '更新时间',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 27 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '房源表' ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 28 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '房源表' ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Records of house_resources
@@ -111,13 +114,13 @@ INSERT INTO `house_resources` VALUES (5, '凌海明珠', 5, 1002, '4', '2', '526
 INSERT INTO `house_resources` VALUES (6, '天堂湾', 4, 1003, '4', '1', '633', '2', '1', 3500, 1, 1, '4室3厅2卫2厨3阳台', '200', '180', '6/20', '南', 1, '1,2,3,8,7,5,4,6', '/images/2020/04/03/2020040301083499802121.jpg,/images/2020/04/03/2020040301084018201672.jpg,/images/2020/04/03/2020040301084778608648.jpg,/images/2020/04/03/2020040301085304209064.jpg,/images/2020/04/03/2020040301085955608826.jpg', '设备齐全，带车库', '李元霸', '13144445555', 5, '5', NULL, '2020-04-03 13:09:01');
 INSERT INTO `house_resources` VALUES (17, '峥嵘岁月', 4, 1002, '1', '1', '1', '1', '1', 1000, 1, 2, '1室1厅1卫1厨1阳台', '100', '92', '6/12', '南', 1, '1,2,3', '/images/2020/04/03/2020040301094711507383.jpg,/images/2020/04/03/202004030109538350376.jpg,/images/2020/04/03/2020040301100065709627.jpg,/images/2020/04/03/2020040301100691603734.jpg,/images/2020/04/03/2020040301101775602394.jpg', '11', '张三', '18774062479', 5, '5', '2020-03-18 20:13:06', '2020-04-03 13:10:21');
 INSERT INTO `house_resources` VALUES (18, '整租·乐山十一村 2室1厅 ', 5, 1002, '4', '2', '526', '1', '1', 6000, 1, 2, '2室1厅1卫1厨1阳台', '80', '70', '5/12', '南', 1, '1,2,3,6,7', '/images/2020/04/03/2020040301142973901258.jpg,/images/2020/04/03/2020040301143364506145.jpg,/images/2020/04/03/2020040301143690303981.jpg,/images/2020/04/03/2020040301144075405744.jpg,/images/2020/04/03/2020040301144479302801.jpg', '位置好，交通便利啊，价格实惠', '李四', '13122226666', 5, '5', '2020-04-03 13:14:56', '2020-04-03 13:15:24');
-INSERT INTO `house_resources` VALUES (19, '整租·打浦路1000弄 ', NULL, 1005, '3', '2', '526', '1', '1', 7000, 1, 1, '3室1厅1卫1厨1阳台', '120', '100', '5/12', '南', 1, '1,2,3,4,5,6,7', '/images/2020/04/03/2020040301173072709898.jpg,/images/2020/04/03/2020040301173405304742.jpg,/images/2020/04/03/2020040301173857904733.jpg,/images/2020/04/03/202004030117424220192.jpg,/images/2020/04/03/2020040301174573602327.jpg', '面积广，价格好。值得组', '李四', '13122226666', 1, '3', '2020-04-03 13:17:53', NULL);
-INSERT INTO `house_resources` VALUES (20, '整租·梅陇一百村 ', NULL, 1002, '4', '6', '526', '1', '1', 8000, 1, 1, '3室2厅1卫1厨2阳台', '120', '100', '5/12', '南', 1, '1,2,3,4,5,6,7', '/images/2020/04/03/2020040301173405304742.jpg,/images/2020/04/03/2020040301173072709898.jpg,/images/2020/04/03/2020040301173857904733.jpg,/images/2020/04/03/202004030117424220192.jpg,/images/2020/04/03/2020040301174573602327.jpg', '物美价廉，好', '李四', '13122226666', 1, '1', '2020-04-03 13:26:52', NULL);
-INSERT INTO `house_resources` VALUES (21, '整租·梅陇一百零-村 ', NULL, 1002, '1', '1', '526', '1', '1', 8000, 1, 4, '3室2厅1卫1厨2阳台', '120', '100', '5/12', '南', 1, '1,2,4,6,7', '/images/2020/04/03/2020040301285324807936.jpg,/images/2020/04/03/2020040301285668603141.jpg,/images/2020/04/03/2020040301290049806878.jpg,/images/2020/04/03/2020040301290395805852.jpg,/images/2020/04/03/2020040301290784706432.jpg', '物美价廉，好得很', '李四', '13122226666', 1, '1', '2020-04-03 13:29:09', NULL);
-INSERT INTO `house_resources` VALUES (22, '整租·万龙小区 ', NULL, 1005, '1', '1', '526', '1', '1', 8000, 1, 4, '3室2厅1卫1厨2阳台', '120', '100', '5/12', '南', 1, '1,2,4,6,7', '/images/2020/04/03/2020040301285668603141.jpg,/images/2020/04/03/2020040301290049806878.jpg,/images/2020/04/03/2020040301290395805852.jpg,/images/2020/04/03/2020040301290784706432.jpg,/images/2020/04/03/2020040301293790608938.jpg', '物美价廉，好得很', '李四', '13122226666', 1, '1', '2020-04-03 13:30:20', NULL);
-INSERT INTO `house_resources` VALUES (23, '整租·新何三百村 ', NULL, 1005, '1', '1', '526', '1', '1', 8000, 1, 4, '3室2厅1卫1厨2阳台', '120', '100', '5/12', '南', 1, '1,2,4,6,7', '/images/2020/04/03/2020040301290049806878.jpg,/images/2020/04/03/2020040301290784706432.jpg,/images/2020/04/03/2020040301293790608938.jpg,/images/2020/04/03/2020040301304306302773.jpg,/images/2020/04/03/2020040301304720408126.jpg', '物美价廉，好得很', '李四', '13122226666', 1, '1', '2020-04-03 13:31:26', NULL);
-INSERT INTO `house_resources` VALUES (24, '整租·新何三百村 ', NULL, 1005, '1', '1', '526', '1', '1', 8000, 1, 4, '3室2厅1卫1厨2阳台', '120', '100', '5/12', '南', 1, '1,2,4,6,7', '/images/2020/04/03/2020040301030860001359.jpg,/images/2020/04/03/2020040301030440607986.jpg,/images/2020/04/03/2020040301031231505514.jpg,/images/2020/04/03/2020040301031618008001.jpg,/images/2020/04/03/2020040301031945401321.jpg', '物美价廉，好得很', '李四', '13122226666', 1, '1', '2020-04-03 13:32:46', NULL);
-INSERT INTO `house_resources` VALUES (25, '整租·美好家园', NULL, 1005, '1', '1', '526', '1', '1', 8000, 1, 4, '3室2厅1卫1厨2阳台', '120', '100', '5/12', '南', 1, '1,2,4,6,7', '/images/2020/04/03/2020040301031945401321.jpg,/images/2020/04/03/2020040301030860001359.jpg,/images/2020/04/03/2020040301030440607986.jpg,/images/2020/04/03/2020040301031231505514.jpg,/images/2020/04/03/2020040301031618008001.jpg', '物美价廉，好得很', '李四', '13122226666', 1, '1', '2020-04-03 13:34:32', NULL);
+INSERT INTO `house_resources` VALUES (19, '整租·打浦路1000弄 ', 5, 1005, '3', '2', '526', '1', '1', 7000, 1, 1, '3室1厅1卫1厨1阳台', '120', '100', '5/12', '南', 1, '1,2,3,4,5,6,7', '/images/2020/04/03/2020040301173072709898.jpg,/images/2020/04/03/2020040301173405304742.jpg,/images/2020/04/03/2020040301173857904733.jpg,/images/2020/04/03/202004030117424220192.jpg,/images/2020/04/03/2020040301174573602327.jpg', '面积广，价格好。值得组', '李四', '13122226666', 1, '3', '2020-04-03 13:17:53', NULL);
+INSERT INTO `house_resources` VALUES (20, '整租·梅陇一百村 ', 5, 1002, '4', '6', '526', '1', '1', 8000, 1, 1, '3室2厅1卫1厨2阳台', '120', '100', '5/12', '南', 1, '1,2,3,4,5,6,7', '/images/2020/04/03/2020040301173405304742.jpg,/images/2020/04/03/2020040301173072709898.jpg,/images/2020/04/03/2020040301173857904733.jpg,/images/2020/04/03/202004030117424220192.jpg,/images/2020/04/03/2020040301174573602327.jpg', '物美价廉，好', '李四', '13122226666', 1, '1', '2020-04-03 13:26:52', NULL);
+INSERT INTO `house_resources` VALUES (21, '整租·梅陇一百零-村 ', 5, 1002, '1', '1', '526', '1', '1', 8000, 1, 4, '3室2厅1卫1厨2阳台', '120', '100', '5/12', '南', 1, '1,2,4,6,7', '/images/2020/04/03/2020040301285324807936.jpg,/images/2020/04/03/2020040301285668603141.jpg,/images/2020/04/03/2020040301290049806878.jpg,/images/2020/04/03/2020040301290395805852.jpg,/images/2020/04/03/2020040301290784706432.jpg', '物美价廉，好得很', '李四', '13122226666', 1, '1', '2020-04-03 13:29:09', NULL);
+INSERT INTO `house_resources` VALUES (22, '整租·万龙小区 ', 4, 1005, '1', '1', '526', '1', '1', 8000, 1, 4, '3室2厅1卫1厨2阳台', '120', '100', '5/12', '南', 1, '1,2,4,6,7', '/images/2020/04/03/2020040301285668603141.jpg,/images/2020/04/03/2020040301290049806878.jpg,/images/2020/04/03/2020040301290395805852.jpg,/images/2020/04/03/2020040301290784706432.jpg,/images/2020/04/03/2020040301293790608938.jpg', '物美价廉，好得很', '李四', '13122226666', 1, '1', '2020-04-03 13:30:20', NULL);
+INSERT INTO `house_resources` VALUES (23, '整租·新何三百村 ', 4, 1005, '1', '1', '526', '1', '1', 8000, 1, 4, '3室2厅1卫1厨2阳台', '120', '100', '5/12', '南', 1, '1,2,4,6,7', '/images/2020/04/03/2020040301290049806878.jpg,/images/2020/04/03/2020040301290784706432.jpg,/images/2020/04/03/2020040301293790608938.jpg,/images/2020/04/03/2020040301304306302773.jpg,/images/2020/04/03/2020040301304720408126.jpg', '物美价廉，好得很', '李四', '13122226666', 1, '1', '2020-04-03 13:31:26', NULL);
+INSERT INTO `house_resources` VALUES (24, '整租·新何三百村 ', 4, 1005, '1', '1', '526', '1', '1', 8000, 1, 4, '3室2厅1卫1厨2阳台', '120', '100', '5/12', '南', 1, '1,2,4,6,7', '/images/2020/04/03/2020040301030860001359.jpg,/images/2020/04/03/2020040301030440607986.jpg,/images/2020/04/03/2020040301031231505514.jpg,/images/2020/04/03/2020040301031618008001.jpg,/images/2020/04/03/2020040301031945401321.jpg', '物美价廉，好得很', '李四', '13122226666', 1, '1', '2020-04-03 13:32:46', NULL);
+INSERT INTO `house_resources` VALUES (25, '整租·美好家园', 5, 1005, '1', '1', '526', '1', '1', 8000, 1, 4, '3室2厅1卫1厨2阳台', '120', '100', '5/12', '南', 1, '1,2,4,6,7', '/images/2020/04/03/2020040301031945401321.jpg,/images/2020/04/03/2020040301030860001359.jpg,/images/2020/04/03/2020040301030440607986.jpg,/images/2020/04/03/2020040301031231505514.jpg,/images/2020/04/03/2020040301031618008001.jpg', '物美价廉，好得很', '李四', '13122226666', 1, '1', '2020-04-03 13:34:32', NULL);
 INSERT INTO `house_resources` VALUES (26, 'test', NULL, 1002, '1', '1', '1', '1', '1', 1, 1, 1, '3室2厅2卫2厨2阳台', '2000', '100', '6/2', '南', 1, '1,2,3', '', '111', '张三', '18774062479', 1, '5', '2020-04-06 16:07:54', NULL);
 
 -- ----------------------------
@@ -224,14 +227,16 @@ CREATE TABLE `vist_request`  (
   `remark` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '备注信息',
   `request_time` datetime(0) NULL DEFAULT NULL COMMENT '请求时间',
   `vist_time` datetime(0) NULL DEFAULT NULL COMMENT '看房时间',
-  `status` varchar(10) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '请求状态,1已完成,2待确认,3待看房,4已取消',
+  `status` varchar(10) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '请求状态,1已完成,2待确认,3待看房,4已取消,5已拒绝',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 11 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 13 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Records of vist_request
 -- ----------------------------
 INSERT INTO `vist_request` VALUES (9, 'Jack', '13611112222', 4, 1005, '真心想租，要求去看下房', '2020-04-06 22:02:39', '2020-04-08 22:02:21', '2');
-INSERT INTO `vist_request` VALUES (10, 'Jone', '13627441292', 5, 1002, '房子真不错，希望看房', '2020-04-12 22:43:10', '2020-04-15 08:00:00', '2');
+INSERT INTO `vist_request` VALUES (10, 'Jone', '13627441292', 5, 1002, '房子真不错，希望看房', '2020-04-12 22:43:10', '2020-04-15 08:00:00', '3');
+INSERT INTO `vist_request` VALUES (11, 'Jack', '13611112222', 5, 1002, '我要看房', '2020-04-15 23:20:44', '2020-04-17 23:20:27', '5');
+INSERT INTO `vist_request` VALUES (12, 'Jack', '13611112222', 5, 1002, NULL, '2020-04-15 23:24:15', '2020-04-17 23:00:59', '5');
 
 SET FOREIGN_KEY_CHECKS = 1;

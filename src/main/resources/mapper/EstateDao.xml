@@ -138,4 +138,121 @@
         delete from rental.estate where id = #{id}
     </delete>
 
+    <!-- 查询条数 -->
+    <select id="countTotal" resultType="int"  >
+        SELECT count(*) FROM  rental.estate
+        <where>
+            <if test="queryCondition.id != null">
+                and id = #{queryCondition.id}
+            </if>
+            <if test="queryCondition.name != null and queryCondition.name != ''">
+                and name like  CONCAT('%',#{queryCondition.name},'%')
+            </if>
+            <if test="queryCondition.province != null and queryCondition.province != ''">
+                and province like  CONCAT('%',#{queryCondition.province},'%')
+            </if>
+            <if test="queryCondition.city != null and queryCondition.city != ''">
+                and city like CONCAT('%',#{queryCondition.city},'%')
+            </if>
+            <if test="queryCondition.area != null and queryCondition.area != ''">
+                and area like CONCAT('%',#{queryCondition.area},'%')
+            </if>
+            <if test="queryCondition.address != null and queryCondition.address != ''">
+                and address like CONCAT('%',#{queryCondition.address},'%')
+            </if>
+            <if test="queryCondition.year != null and queryCondition.year != ''">
+                and year like CONCAT('%',#{queryCondition.year},'%')
+            </if>
+            <if test="queryCondition.type != null and queryCondition.type != ''">
+                and type like CONCAT('%',#{queryCondition.type},'%')
+            </if>
+            <if test="queryCondition.propertyCost != null and queryCondition.propertyCost != ''">
+                and property_cost = #{propertyCost}
+            </if>
+            <if test="queryCondition.propertyCompany != null and queryCondition.propertyCompany != ''">
+                and property_company like CONCAT('%',#{queryCondition.propertyCompany},'%')
+            </if>
+            <if test="queryCondition.developers != null and queryCondition.developers != ''">
+                and developers like CONCAT('%',#{queryCondition.developers},'%')
+            </if>
+            <if test="queryCondition.created != null">
+                and created = #{created}
+            </if>
+            <if test="queryCondition.updated != null">
+                and updated = #{updated}
+            </if>
+            <if test="keyWord != null and keyWord != ''">
+                and (id like CONCAT('%',#{keyWord},'%')
+                or name like CONCAT('%',#{keyWord},'%')
+                or province like CONCAT('%',#{keyWord},'%')
+                or city like CONCAT('%',#{keyWord},'%')
+                or area like CONCAT('%',#{keyWord},'%')
+                or address like CONCAT('%',#{keyWord},'%')
+                or year like CONCAT('%',#{keyWord},'%')
+                or type like CONCAT('%',#{keyWord},'%')
+                or property_company like CONCAT('%',#{keyWord},'%')
+                or developers like CONCAT('%',#{keyWord},'%'))
+            </if>
+        </where>
+    </select>
+    <!--分页条件查询-->
+    <select id="queryPage" resultMap="EstateMap">
+        select
+        id, name ,province, city, area, address, year, type, property_cost, property_company, developers, created, updated
+        from  rental.estate
+        <where>
+            <if test="queryCondition.id != null">
+                and id = #{queryCondition.id}
+            </if>
+            <if test="queryCondition.name != null and queryCondition.name != ''">
+                and name like  CONCAT('%',#{queryCondition.name},'%')
+            </if>
+            <if test="queryCondition.province != null and queryCondition.province != ''">
+                and province like  CONCAT('%',#{queryCondition.province},'%')
+            </if>
+            <if test="queryCondition.city != null and queryCondition.city != ''">
+                and city like CONCAT('%',#{queryCondition.city},'%')
+            </if>
+            <if test="queryCondition.area != null and queryCondition.area != ''">
+                and area like CONCAT('%',#{queryCondition.area},'%')
+            </if>
+            <if test="queryCondition.address != null and queryCondition.address != ''">
+                and address like CONCAT('%',#{queryCondition.address},'%')
+            </if>
+            <if test="queryCondition.year != null and queryCondition.year != ''">
+                and year like CONCAT('%',#{queryCondition.year},'%')
+            </if>
+            <if test="queryCondition.type != null and queryCondition.type != ''">
+                and type like CONCAT('%',#{queryCondition.type},'%')
+            </if>
+            <if test="queryCondition.propertyCost != null and queryCondition.propertyCost != ''">
+                and property_cost = #{propertyCost}
+            </if>
+            <if test="queryCondition.propertyCompany != null and queryCondition.propertyCompany != ''">
+                and property_company like CONCAT('%',#{queryCondition.propertyCompany},'%')
+            </if>
+            <if test="queryCondition.developers != null and queryCondition.developers != ''">
+                and developers like CONCAT('%',#{queryCondition.developers},'%')
+            </if>
+            <if test="queryCondition.created != null">
+                and created = #{created}
+            </if>
+            <if test="queryCondition.updated != null">
+                and updated = #{updated}
+            </if>
+            <if test="keyWord != null and keyWord != ''">
+                and (id like CONCAT('%',#{keyWord},'%')
+                or name like CONCAT('%',#{keyWord},'%')
+                or province like CONCAT('%',#{keyWord},'%')
+                or city like CONCAT('%',#{keyWord},'%')
+                or area like CONCAT('%',#{keyWord},'%')
+                or address like CONCAT('%',#{keyWord},'%')
+                or year like CONCAT('%',#{keyWord},'%')
+                or type like CONCAT('%',#{keyWord},'%')
+                or property_company like CONCAT('%',#{keyWord},'%')
+                or developers like CONCAT('%',#{keyWord},'%'))
+            </if>
+        </where>
+        limit #{offset}, #{limit}
+    </select>
 </mapper>

@@ -1,6 +1,8 @@
 package com.xyl.rental.service;
 
 import com.xyl.rental.entity.Estate;
+import com.xyl.rental.vo.TableResult;
+
 import java.util.List;
 import java.util.Map;
 
@@ -58,4 +60,13 @@ public interface EstateService {
      */
     boolean deleteById(Integer id);
 
+    /**
+     * 楼盘列表
+     * @param currentPage
+     * @param pageSize
+     * @param queryCondition
+     * @param keyWord
+     * @return
+     */
+    TableResult queryByPage(int currentPage, int pageSize, Estate queryCondition, String keyWord);
 }

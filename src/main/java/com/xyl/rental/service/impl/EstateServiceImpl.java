@@ -3,6 +3,8 @@ package com.xyl.rental.service.impl;
 import com.xyl.rental.entity.Estate;
 import com.xyl.rental.dao.EstateDao;
 import com.xyl.rental.service.EstateService;
+import com.xyl.rental.vo.Pagination;
+import com.xyl.rental.vo.TableResult;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -95,5 +97,29 @@ public class EstateServiceImpl implements EstateService {
     @Override
     public boolean deleteById(Integer id) {
         return this.estateDao.deleteById(id) > 0;
+    }
+
+    /**
+     * 楼盘列表
+     * @param currentPage
+     * @param pageSize
+     * @param queryCondition
+     * @param keyWord
+     * @return
+     */
+    @Override
+    public TableResult queryByPage(int currentPage, int pageSize, Estate queryCondition, String keyWord) {
+        TableResult tr=new TableResult();
+        Pagination pagination=new Pagination();
+        int start=(currentPage-1)*pageSize;
+        int total=estateDao.countTotal(  queryCondition,  keyWord);
+        List<Estate> list = estateDao.queryPage(
+                start, pageSize,  queryCondition,  keyWord);
+        pagination.setCurrent(currentPage);
+        pagination.setPageSize(pageSize);
+        pagination.setTotal(total);
+        tr.setList(list);
+        tr.setPagination(pagination);
+        return tr;
     }
 }

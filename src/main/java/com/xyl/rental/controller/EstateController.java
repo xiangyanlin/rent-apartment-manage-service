@@ -3,6 +3,7 @@ package com.xyl.rental.controller;
 import com.xyl.rental.entity.Estate;
 import com.xyl.rental.service.EstateService;
 import com.xyl.rental.utils.R;
+import com.xyl.rental.vo.TableResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
@@ -44,6 +45,31 @@ public class EstateController {
     public R selectAll(){
         List estates = this.estateService.queryAll(null);
         return R.success(estates);
+    }
+
+    /**
+     * 新增楼盘
+     *
+     * @return
+     */
+    @RequestMapping("save")
+    @ResponseBody
+    public R saveEstate(@RequestBody Estate estate) {
+        //houseResources.setCreated(new Date());
+        Estate insert = estateService.insert(estate);
+        return R.success(insert);
+    }
+
+    @GetMapping("list")
+    @ResponseBody
+    public TableResult list(@RequestParam(name = "currentPage", defaultValue = "1") int currentPage,
+                            @RequestParam(name = "pageSize", defaultValue = "10") int pageSize,
+                            Estate queryCondition, String keyWord){
+
+        // System.out.println(queryCondition);
+        TableResult tableResult = this.estateService.queryByPage(
+                currentPage, pageSize,queryCondition,keyWord);
+        return tableResult;
     }
 
 }

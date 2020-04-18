@@ -64,4 +64,21 @@ public interface EstateDao {
      */
     int deleteById(Integer id);
 
+    /**
+     * 查询总数
+     * @param queryCondition
+     * @param keyWord
+     * @return
+     */
+    int countTotal( Estate queryCondition, String keyWord);
+
+    /**
+     * 楼盘列表分页条件查询
+     * @param offset
+     * @param limit
+     * @param queryCondition
+     * @param keyWord
+     * @return
+     */
+    List<Estate> queryPage(@Param("offset") int offset, @Param("limit") int limit, Estate queryCondition, String keyWord);
 }
