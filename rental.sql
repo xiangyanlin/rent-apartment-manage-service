@@ -11,7 +11,7 @@
  Target Server Version : 50726
  File Encoding         : 65001
 
- Date: 18/04/2020 23:00:04
+ Date: 19/04/2020 21:37:38
 */
 
 SET NAMES utf8mb4;
@@ -220,8 +220,7 @@ INSERT INTO `user` VALUES (8, 'tiaozhuan', '123456', NULL, '0341@qq.com', '13627
 DROP TABLE IF EXISTS `vist_request`;
 CREATE TABLE `vist_request`  (
   `id` int(10) NOT NULL AUTO_INCREMENT COMMENT '请求编号',
-  `tenant_name` varchar(10) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '租客姓名',
-  `mobile` varchar(20) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '租客电话',
+  `tenant_id` int(10) NULL DEFAULT NULL COMMENT '租客编号',
   `owner_id` int(11) NULL DEFAULT NULL COMMENT '房东编号',
   `estate_id` int(10) NULL DEFAULT NULL COMMENT '楼盘编号',
   `remark` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '备注信息',
@@ -229,14 +228,15 @@ CREATE TABLE `vist_request`  (
   `vist_time` datetime(0) NULL DEFAULT NULL COMMENT '看房时间',
   `status` varchar(10) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '请求状态,1已完成,2待确认,3待看房,4已取消,5已拒绝',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 13 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 14 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Records of vist_request
 -- ----------------------------
-INSERT INTO `vist_request` VALUES (9, 'Jack', '13611112222', 4, 1005, '真心想租，要求去看下房', '2020-04-06 22:02:39', '2020-04-08 22:02:21', '2');
-INSERT INTO `vist_request` VALUES (10, 'Jone', '13627441292', 5, 1002, '房子真不错，希望看房', '2020-04-12 22:43:10', '2020-04-15 08:00:00', '3');
-INSERT INTO `vist_request` VALUES (11, 'Jack', '13611112222', 5, 1002, '我要看房', '2020-04-15 23:20:44', '2020-04-17 23:20:27', '5');
-INSERT INTO `vist_request` VALUES (12, 'Jack', '13611112222', 5, 1002, NULL, '2020-04-15 23:24:15', '2020-04-17 23:00:59', '5');
+INSERT INTO `vist_request` VALUES (9, 2, 4, 1005, '真心想租，要求去看下房', '2020-04-06 22:02:39', '2020-04-08 22:02:21', '4');
+INSERT INTO `vist_request` VALUES (10, 2, 5, 1002, '房子真不错，希望看房', '2020-04-12 22:43:10', '2020-04-15 08:00:00', '1');
+INSERT INTO `vist_request` VALUES (11, 3, 5, 1002, '我要看房', '2020-04-15 23:20:44', '2020-04-17 23:20:27', '5');
+INSERT INTO `vist_request` VALUES (12, 3, 5, 1002, NULL, '2020-04-15 23:24:15', '2020-04-17 23:00:59', '5');
+INSERT INTO `vist_request` VALUES (13, 2, 4, 1002, '请允许我看房', '2020-04-19 21:00:41', '2020-04-21 21:00:20', '2');
 
 SET FOREIGN_KEY_CHECKS = 1;

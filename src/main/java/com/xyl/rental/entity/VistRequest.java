@@ -9,23 +9,19 @@ import java.io.Serializable;
  * (VistRequest)实体类
  *
  * @author xyl
- * @since 2020-04-12 21:56:56
+ * @since 2020-04-19 20:37:56
  */
 @Data
 public class VistRequest implements Serializable {
-    private static final long serialVersionUID = 450985897089013629L;
+    private static final long serialVersionUID = 186257770572694513L;
     /**
     * 请求编号
     */
     private Integer id;
     /**
-    * 租客姓名
+    * 租客编号
     */
-    private String tenantName;
-    /**
-    * 租客电话
-    */
-    private String mobile;
+    private Integer tenantId;
     /**
     * 房东编号
     */
@@ -47,10 +43,17 @@ public class VistRequest implements Serializable {
     */
     private Date vistTime;
     /**
-    * 请求状态,1已完成,2待确认,3待看房,4已取消
+    * 请求状态,1已完成,2待确认,3待看房,4已取消,5已拒绝
     */
     private String status;
 
 
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
 
 }
