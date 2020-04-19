@@ -8,7 +8,7 @@ import java.util.List;
 /**
  * 房源表(HouseResources)表服务接口
  *
- * @author makejava
+ * @author xyl
  * @since 2020-03-05 14:00:15
  */
 

@@ -9,7 +9,7 @@ import java.util.Map;
 /**
  * (RentRecord)表数据库访问层
  *
- * @author makejava
+ * @author xyl
  * @since 2020-03-15 22:52:32
  */
 @Mapper

@@ -5,7 +5,7 @@ import java.io.Serializable;
 /**
  * (RentRecord)实体类
  *
- * @author makejava
+ * @author xyl
  * @since 2020-03-18 21:01:40
  */
 public class RentRecord implements Serializable {

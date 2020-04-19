@@ -11,7 +11,7 @@ import java.util.List;
 /**
  * (DictType)表服务实现类
  *
- * @author makejava
+ * @author xyl
  * @since 2020-04-19 22:26:35
  */
 @Service("dictTypeService")

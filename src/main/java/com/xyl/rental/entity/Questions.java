@@ -8,7 +8,7 @@ import java.io.Serializable;
 /**
  * (Questions)实体类
  *
- * @author makejava
+ * @author xyl
  * @since 2020-03-23 22:32:24
  */
 @Data

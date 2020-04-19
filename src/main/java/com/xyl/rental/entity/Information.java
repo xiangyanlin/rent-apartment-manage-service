@@ -6,7 +6,7 @@ import java.io.Serializable;
 /**
  * (Information)实体类
  *
- * @author makejava
+ * @author xyl
  * @since 2020-03-15 23:10:02
  */
 public class Information implements Serializable {

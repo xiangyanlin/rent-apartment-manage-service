@@ -8,7 +8,7 @@ import java.util.List;
 /**
  * (Contract)表服务接口
  *
- * @author makejava
+ * @author xyl
  * @since 2020-03-15 23:03:42
  */
 public interface ContractService {

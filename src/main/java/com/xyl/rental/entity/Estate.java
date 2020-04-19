@@ -6,7 +6,7 @@ import java.io.Serializable;
 /**
  * 楼盘表(Estate)实体类
  *
- * @author makejava
+ * @author xyl
  * @since 2020-03-05 11:00:21
  */
 public class Estate implements Serializable {

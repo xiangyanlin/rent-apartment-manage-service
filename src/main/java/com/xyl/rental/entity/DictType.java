@@ -5,7 +5,7 @@ import java.io.Serializable;
 /**
  * (DictType)实体类
  *
- * @author makejava
+ * @author xyl
  * @since 2020-04-19 22:26:35
  */
 public class DictType implements Serializable {

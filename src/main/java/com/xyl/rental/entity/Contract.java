@@ -8,7 +8,7 @@ import java.io.Serializable;
 /**
  * (Contract)实体类
  *
- * @author makejava
+ * @author xyl
  * @since 2020-03-23 17:02:01
  */
 @Data

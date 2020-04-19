@@ -15,7 +15,7 @@ import java.util.Map;
 /**
  * (RentRecord)表服务实现类
  *
- * @author makejava
+ * @author xyl
  * @since 2020-03-15 22:52:32
  */
 @Service("rentRecordService")

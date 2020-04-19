@@ -7,7 +7,7 @@ import java.util.List;
 /**
  * (Dict)表数据库访问层
  *
- * @author makejava
+ * @author xyl
  * @since 2020-04-19 22:26:17
  */
 public interface DictDao {

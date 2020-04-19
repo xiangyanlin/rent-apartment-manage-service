@@ -16,7 +16,7 @@ import java.util.Map;
 /**
  * 房源表(HouseResources)表服务实现类
  *
- * @author makejava
+ * @author xyl
  * @since 2020-03-05 14:00:15
  */
 @Service("houseResourcesService")

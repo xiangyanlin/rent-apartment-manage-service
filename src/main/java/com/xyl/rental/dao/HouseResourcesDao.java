@@ -9,7 +9,7 @@ import java.util.Map;
 /**
  * 房源表(HouseResources)表数据库访问层
  *
- * @author makejava
+ * @author xyl
  * @since 2020-03-05 14:00:15
  */
 @Mapper
