@@ -55,6 +55,7 @@ public class HouseResourcesController {
      * @return
      */
     @RequestMapping("update")
+    @ResponseBody
     public R updateHouseResources(@RequestBody HouseResources houseResources) {
         Date date=new Date();
         houseResources.setUpdated(date);

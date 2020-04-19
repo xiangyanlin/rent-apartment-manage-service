@@ -60,6 +60,40 @@ public class EstateController {
         return R.success(insert);
     }
 
+    /**
+     * 修改楼盘信息
+     * @param estate
+     * @return
+     */
+    @RequestMapping("update")
+    @ResponseBody
+    public R updateEstate(@RequestBody Estate estate) {
+
+        //System.err.println(date);
+        Estate update = estateService.update(estate);
+        return R.success(update);
+    }
+
+    /**
+     * 根据ID删除楼盘
+     * @param id
+     * @return
+     */
+    @DeleteMapping("delete")
+    @ResponseBody
+    public R deleteHouseResources(@RequestParam("id") int id) {
+        //System.err.println(id);
+        boolean b = estateService.deleteById(id);
+        return R.success(b,"success");
+    }
+    /**
+     * 楼盘列表
+     * @param currentPage
+     * @param pageSize
+     * @param queryCondition
+     * @param keyWord
+     * @return
+     */
     @GetMapping("list")
     @ResponseBody
     public TableResult list(@RequestParam(name = "currentPage", defaultValue = "1") int currentPage,
