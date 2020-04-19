@@ -11,7 +11,7 @@
  Target Server Version : 50726
  File Encoding         : 65001
 
- Date: 19/04/2020 21:37:38
+ Date: 19/04/2020 22:29:05
 */
 
 SET NAMES utf8mb4;
@@ -37,6 +37,31 @@ CREATE TABLE `contract`  (
 -- Records of contract
 -- ----------------------------
 INSERT INTO `contract` VALUES (1, '3', '湖南长沙', 3, '张三', '李四', '2020-01-01', '2020-03-18');
+
+-- ----------------------------
+-- Table structure for dict
+-- ----------------------------
+DROP TABLE IF EXISTS `dict`;
+CREATE TABLE `dict`  (
+  `id` int(10) NOT NULL COMMENT '字典编号',
+  `dict_type_id` int(10) NULL DEFAULT NULL COMMENT '字典类型编号',
+  `dict_name` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '字典名',
+  `dict_value` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '字典值',
+  `dict_sort` int(20) NULL DEFAULT NULL COMMENT '字典排序号',
+  `is_default` varchar(10) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '是否默认值，0不是，1是',
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Table structure for dict_type
+-- ----------------------------
+DROP TABLE IF EXISTS `dict_type`;
+CREATE TABLE `dict_type`  (
+  `id` int(10) NOT NULL AUTO_INCREMENT COMMENT '字典类型编号',
+  `dict_type_name` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '字典类型名',
+  `dict_type_desc` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '字典类型描述',
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Table structure for estate
