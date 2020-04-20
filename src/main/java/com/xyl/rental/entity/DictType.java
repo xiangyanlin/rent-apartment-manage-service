@@ -1,5 +1,7 @@
 package com.xyl.rental.entity;
 
+import lombok.Data;
+
 import java.io.Serializable;
 
 /**
@@ -8,6 +10,7 @@ import java.io.Serializable;
  * @author xyl
  * @since 2020-04-19 22:26:35
  */
+@Data
 public class DictType implements Serializable {
     private static final long serialVersionUID = 743389506414629017L;
     /**
@@ -24,28 +27,5 @@ public class DictType implements Serializable {
     private String dictTypeDesc;
 
 
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public String getDictTypeName() {
-        return dictTypeName;
-    }
-
-    public void setDictTypeName(String dictTypeName) {
-        this.dictTypeName = dictTypeName;
-    }
-
-    public String getDictTypeDesc() {
-        return dictTypeDesc;
-    }
-
-    public void setDictTypeDesc(String dictTypeDesc) {
-        this.dictTypeDesc = dictTypeDesc;
-    }
 
 }

@@ -11,7 +11,7 @@
  Target Server Version : 50726
  File Encoding         : 65001
 
- Date: 19/04/2020 22:29:05
+ Date: 20/04/2020 23:51:54
 */
 
 SET NAMES utf8mb4;
@@ -45,9 +45,9 @@ DROP TABLE IF EXISTS `dict`;
 CREATE TABLE `dict`  (
   `id` int(10) NOT NULL COMMENT '字典编号',
   `dict_type_id` int(10) NULL DEFAULT NULL COMMENT '字典类型编号',
-  `dict_name` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '字典名',
-  `dict_value` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '字典值',
-  `dict_sort` int(20) NULL DEFAULT NULL COMMENT '字典排序号',
+  `name` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '字典名',
+  `value` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '字典值',
+  `sort` int(20) NULL DEFAULT NULL COMMENT '字典排序号',
   `is_default` varchar(10) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '是否默认值，0不是，1是',
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
@@ -61,7 +61,13 @@ CREATE TABLE `dict_type`  (
   `dict_type_name` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '字典类型名',
   `dict_type_desc` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '字典类型描述',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of dict_type
+-- ----------------------------
+INSERT INTO `dict_type` VALUES (1, '性别', '性别');
+INSERT INTO `dict_type` VALUES (2, '状态', '状态');
 
 -- ----------------------------
 -- Table structure for estate
@@ -82,19 +88,18 @@ CREATE TABLE `estate`  (
   `created` datetime(6) NULL DEFAULT NULL COMMENT '创建时间',
   `updated` datetime(6) NULL DEFAULT NULL COMMENT '更新时间',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1009 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '楼盘表' ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 1010 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '楼盘表' ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Records of estate
 -- ----------------------------
-INSERT INTO `estate` VALUES (1001, '中远两湾城', '上海市', '上海市', '普陀区', '远景路97弄', '2001', '1', '1.5', '上海中远物业管理发展有限公司', '上海万业企业股份有限公司', '2018-11-06 23:00:20.000000', '2018-11-06 23:00:23.000000');
+INSERT INTO `estate` VALUES (1001, '中远两湾城', '上海市', '上海市', '普陀区', '上海市上海市普陀区上海市上海市普陀区远景路97弄', '2000', '1', '1.5', '上海中远物业管理发展有限公司', '上海万业企业股份有限公司', '2018-11-06 23:00:20.000000', '2018-11-06 23:00:23.000000');
 INSERT INTO `estate` VALUES (1002, '上海康城', '上海市', '上海市', '闵行区', '莘松路958弄', '2001', '1', '1.5', '盛孚物业', '闵行房地产', '2018-11-06 23:02:30.000000', '2018-11-27 23:02:33.000000');
 INSERT INTO `estate` VALUES (1003, '保利西子湾', '上海市', '上海市', '松江区', '广富林路1188弄', '2008', '2', '1.75', '上海保利物业管理', '上海城乾房地产开发有限公司', '2018-11-06 23:04:22.000000', '2018-11-06 23:04:25.000000');
 INSERT INTO `estate` VALUES (1004, '万科城市花园', '上海市', '上海市', '松江区', '广富林路1188弄', '2002', '2', '1.5', '上海保利物业管理', '上海城乾房地产开发有限公司', '2018-11-13 16:43:40.000000', '2018-11-13 16:43:42.000000');
 INSERT INTO `estate` VALUES (1005, '上海阳城', '上海市', '上海市', '闵行区', '罗锦路888弄', '2002', '1', '1.5', '上海莲阳物业管理有限公司', '上海莲城房地产开发有限公司', '2018-11-06 23:23:52.000000', '2018-11-06 23:23:55.000000');
 INSERT INTO `estate` VALUES (1006, '乐山十一村', '上海市', '上海市', '普陀区', '远景路97弄', '2001', '2', '1.5', '上海中远物业管理发展有限公司', '上海万业企业股份有限公司', '2018-11-06 23:00:20.000000', '2018-11-06 23:00:23.000000');
 INSERT INTO `estate` VALUES (1007, '韦斯特花园', '湖南省', '张家界市', '永定区', '高铁站旁', '2019', '1', '5', '测试新增', '测试新增', '2020-04-18 21:53:14.440000', '2020-04-18 21:53:14.440000');
-INSERT INTO `estate` VALUES (1008, '世纪之城', '天津市', '市辖区', '和平区', '包子街', '1990', '2', '5', 'test', 'test', '2020-04-18 22:07:44.626000', '2020-04-18 22:07:44.626000');
 
 -- ----------------------------
 -- Table structure for house_resources
@@ -261,7 +266,5 @@ CREATE TABLE `vist_request`  (
 INSERT INTO `vist_request` VALUES (9, 2, 4, 1005, '真心想租，要求去看下房', '2020-04-06 22:02:39', '2020-04-08 22:02:21', '4');
 INSERT INTO `vist_request` VALUES (10, 2, 5, 1002, '房子真不错，希望看房', '2020-04-12 22:43:10', '2020-04-15 08:00:00', '1');
 INSERT INTO `vist_request` VALUES (11, 3, 5, 1002, '我要看房', '2020-04-15 23:20:44', '2020-04-17 23:20:27', '5');
-INSERT INTO `vist_request` VALUES (12, 3, 5, 1002, NULL, '2020-04-15 23:24:15', '2020-04-17 23:00:59', '5');
-INSERT INTO `vist_request` VALUES (13, 2, 4, 1002, '请允许我看房', '2020-04-19 21:00:41', '2020-04-21 21:00:20', '2');
 
 SET FOREIGN_KEY_CHECKS = 1;

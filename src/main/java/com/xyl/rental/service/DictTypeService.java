@@ -1,6 +1,8 @@
 package com.xyl.rental.service;
 
 import com.xyl.rental.entity.DictType;
+import com.xyl.rental.vo.TableResult;
+
 import java.util.List;
 
 /**
@@ -52,4 +54,19 @@ public interface DictTypeService {
      */
     boolean deleteById(Integer id);
 
+    /**
+     * 字典类型
+     * @param currentPage
+     * @param pageSize
+     * @param queryCondition
+     * @param keyWord
+     * @return
+     */
+    TableResult queryByPage(int currentPage, int pageSize, DictType queryCondition, String keyWord);
+
+    /**
+     * 查询所有
+     * @return
+     */
+    public List queryAll(DictType dictType);
 }

@@ -3,6 +3,7 @@ package com.xyl.rental.service.impl;
 import com.xyl.rental.entity.DictType;
 import com.xyl.rental.dao.DictTypeDao;
 import com.xyl.rental.service.DictTypeService;
+import com.xyl.rental.vo.TableResult;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -75,5 +76,28 @@ public class DictTypeServiceImpl implements DictTypeService {
     @Override
     public boolean deleteById(Integer id) {
         return this.dictTypeDao.deleteById(id) > 0;
+    }
+
+    /**
+     * 分页条件查询
+     * @param currentPage
+     * @param pageSize
+     * @param queryCondition
+     * @param keyWord
+     * @return
+     */
+    @Override
+    public TableResult queryByPage(int currentPage, int pageSize, DictType queryCondition, String keyWord) {
+        return null;
+    }
+
+    /**
+     * 查询所有
+     * @param dictType
+     * @return
+     */
+    @Override
+    public List queryAll(DictType dictType) {
+        return dictTypeDao.queryAll(dictType);
     }
 }

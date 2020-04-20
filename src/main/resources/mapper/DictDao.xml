@@ -5,16 +5,16 @@
     <resultMap type="com.xyl.rental.entity.Dict" id="DictMap">
         <result property="id" column="id" jdbcType="INTEGER"/>
         <result property="dictTypeId" column="dict_type_id" jdbcType="INTEGER"/>
-        <result property="dictName" column="dict_name" jdbcType="VARCHAR"/>
-        <result property="dictValue" column="dict_value" jdbcType="VARCHAR"/>
-        <result property="dictSort" column="dict_sort" jdbcType="INTEGER"/>
+        <result property="name" column="name" jdbcType="VARCHAR"/>
+        <result property="value" column="value" jdbcType="VARCHAR"/>
+        <result property="sort" column="sort" jdbcType="INTEGER"/>
         <result property="isDefault" column="is_default" jdbcType="VARCHAR"/>
     </resultMap>
 
     <!--查询单个-->
     <select id="queryById" resultMap="DictMap">
         select
-          id, dict_type_id, dict_name, dict_value, dict_sort, is_default
+          id, dict_type_id, name, value, sort, is_default
         from rental.dict
         where id = #{id}
     </select>
@@ -22,7 +22,7 @@
     <!--查询指定行数据-->
     <select id="queryAllByLimit" resultMap="DictMap">
         select
-          id, dict_type_id, dict_name, dict_value, dict_sort, is_default
+          id, dict_type_id, name, value, sort, is_default
         from rental.dict
         limit #{offset}, #{limit}
     </select>
@@ -30,7 +30,7 @@
     <!--通过实体作为筛选条件查询-->
     <select id="queryAll" resultMap="DictMap">
         select
-          id, dict_type_id, dict_name, dict_value, dict_sort, is_default
+          id, dict_type_id, name, value, sort, is_default
         from rental.dict
         <where>
             <if test="id != null">
@@ -39,14 +39,14 @@
             <if test="dictTypeId != null">
                 and dict_type_id = #{dictTypeId}
             </if>
-            <if test="dictName != null and dictName != ''">
-                and dict_name = #{dictName}
+            <if test="name != null and name != ''">
+                and name = #{name}
             </if>
-            <if test="dictValue != null and dictValue != ''">
-                and dict_value = #{dictValue}
+            <if test="value != null and value != ''">
+                and value = #{value}
             </if>
-            <if test="dictSort != null">
-                and dict_sort = #{dictSort}
+            <if test="sort != null">
+                and sort = #{sort}
             </if>
             <if test="isDefault != null and isDefault != ''">
                 and is_default = #{isDefault}
@@ -56,8 +56,8 @@
 
     <!--新增所有列-->
     <insert id="insert" keyProperty="id" useGeneratedKeys="true">
-        insert into rental.dict(dict_type_id, dict_name, dict_value, dict_sort, is_default)
-        values (#{dictTypeId}, #{dictName}, #{dictValue}, #{dictSort}, #{isDefault})
+        insert into rental.dict(dict_type_id, name, value, sort, is_default)
+        values (#{dictTypeId}, #{name}, #{value}, #{sort}, #{isDefault})
     </insert>
 
     <!--通过主键修改数据-->
@@ -67,14 +67,14 @@
             <if test="dictTypeId != null">
                 dict_type_id = #{dictTypeId},
             </if>
-            <if test="dictName != null and dictName != ''">
-                dict_name = #{dictName},
+            <if test="name != null and name != ''">
+                name = #{name},
             </if>
-            <if test="dictValue != null and dictValue != ''">
-                dict_value = #{dictValue},
+            <if test="value != null and value != ''">
+                value = #{value},
             </if>
-            <if test="dictSort != null">
-                dict_sort = #{dictSort},
+            <if test="sort != null">
+                sort = #{sort},
             </if>
             <if test="isDefault != null and isDefault != ''">
                 is_default = #{isDefault},
@@ -88,4 +88,71 @@
         delete from rental.dict where id = #{id}
     </delete>
 
+    <!-- 查询条数 -->
+    <select id="countTotal" resultType="int"  >
+        SELECT count(*) FROM  rental.dict
+        <where>
+            <if test="queryCondition.id != null">
+                and id = #{queryCondition.id}
+            </if>
+            <if test="queryCondition.dictTypeId != null and queryCondition.dictTypeId != ''">
+                and dict_type_id =  =#{queryCondition.dictTypeId}
+            </if>
+            <if test="queryCondition.name != null and queryCondition.name != ''">
+                and name =  #{queryCondition.name}
+            </if>
+            <if test="queryCondition.value != null and queryCondition.value != ''">
+                and value = #{queryCondition.value}
+            </if>
+            <if test="queryCondition.sort != null and queryCondition.sort != ''">
+                and sort = #{queryCondition.sort}
+            </if>
+            <if test="queryCondition.isDefault != null and queryCondition.isDefault != ''">
+                and is_default = =#{queryCondition.isDefault}
+            </if>
+
+            <if test="keyWord != null and keyWord != ''">
+                and (id like CONCAT('%',#{keyWord},'%')
+                or name like CONCAT('%',#{keyWord},'%')
+                or value like CONCAT('%',#{keyWord},'%')
+                or sort like CONCAT('%',#{keyWord},'%')
+                or is_default like CONCAT('%',#{keyWord},'%'))
+            </if>
+        </where>
+    </select>
+    <!--分页条件查询-->
+    <select id="queryPage" resultMap="DictMap">
+        select
+        id, dict_type_id, name, value, sort, is_default
+        from  rental.dict
+        <where>
+            <if test="queryCondition.id != null">
+                and id = #{queryCondition.id}
+            </if>
+            <if test="queryCondition.dictTypeId != null and queryCondition.dictTypeId != ''">
+                and dict_type_id =  =#{queryCondition.dictTypeId}
+            </if>
+            <if test="queryCondition.name != null and queryCondition.name != ''">
+                and name =  #{queryCondition.name}
+            </if>
+            <if test="queryCondition.value != null and queryCondition.value != ''">
+                and value = #{queryCondition.value}
+            </if>
+            <if test="queryCondition.sort != null and queryCondition.sort != ''">
+                and sort = #{queryCondition.sort}
+            </if>
+            <if test="queryCondition.isDefault != null and queryCondition.isDefault != ''">
+                and is_default = =#{queryCondition.isDefault}
+            </if>
+
+            <if test="keyWord != null and keyWord != ''">
+                and (id like CONCAT('%',#{keyWord},'%')
+                or name like CONCAT('%',#{keyWord},'%')
+                or value like CONCAT('%',#{keyWord},'%')
+                or sort like CONCAT('%',#{keyWord},'%')
+                or is_default like CONCAT('%',#{keyWord},'%'))
+            </if>
+        </where>
+        limit #{offset}, #{limit}
+    </select>
 </mapper>

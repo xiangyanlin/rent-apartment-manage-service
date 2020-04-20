@@ -62,4 +62,23 @@ public interface DictDao {
      */
     int deleteById(Integer id);
 
+
+    /**
+     * 查询总数
+     * @param queryCondition
+     * @param keyWord
+     * @return
+     */
+    int countTotal( Dict queryCondition, String keyWord);
+
+    /**
+     * 楼盘列表分页条件查询
+     * @param offset
+     * @param limit
+     * @param queryCondition
+     * @param keyWord
+     * @return
+     */
+    List<Dict> queryPage(@Param("offset") int offset, @Param("limit") int limit, Dict queryCondition, String keyWord);
+
 }

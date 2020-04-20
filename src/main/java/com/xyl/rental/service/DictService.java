@@ -1,6 +1,8 @@
 package com.xyl.rental.service;
 
 import com.xyl.rental.entity.Dict;
+import com.xyl.rental.vo.TableResult;
+
 import java.util.List;
 
 /**
@@ -52,4 +54,13 @@ public interface DictService {
      */
     boolean deleteById(Integer id);
 
+    /**
+     * 字典列表分页条件查询
+     * @param currentPage
+     * @param pageSize
+     * @param queryCondition
+     * @param keyWord
+     * @return
+     */
+    TableResult queryByPage(int currentPage, int pageSize, Dict queryCondition, String keyWord);
 }
