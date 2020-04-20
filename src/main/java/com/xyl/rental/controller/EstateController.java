@@ -81,7 +81,7 @@ public class EstateController {
      */
     @DeleteMapping("delete")
     @ResponseBody
-    public R deleteHouseResources(@RequestParam("id") int id) {
+    public R deleteEstate(@RequestParam("id") int id) {
         //System.err.println(id);
         boolean b = estateService.deleteById(id);
         return R.success(b,"success");

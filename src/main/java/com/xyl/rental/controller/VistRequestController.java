@@ -42,10 +42,23 @@ public class VistRequestController {
      */
     @RequestMapping("save")
     @ResponseBody
-    public R saveHouseResources(@RequestBody VistRequest vistRequest) {
+    public R saveVistRequest(@RequestBody VistRequest vistRequest) {
        // vistRequest.setCreated(new Date());
         VistRequest insert = vistRequestService.insert(vistRequest);
         return R.success(insert);
+    }
+
+    /**
+     * 删除看房请求
+     * @param id
+     * @return
+     */
+    @DeleteMapping("delete")
+    @ResponseBody
+    public R deleteVistRequest(@RequestParam("id") int id) {
+        //System.err.println(id);
+        boolean b = vistRequestService.deleteById(id);
+        return R.success(b,"success");
     }
 
     /**
