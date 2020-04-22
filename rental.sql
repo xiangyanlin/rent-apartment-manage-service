@@ -11,7 +11,7 @@
  Target Server Version : 50726
  File Encoding         : 65001
 
- Date: 20/04/2020 23:51:54
+ Date: 23/04/2020 00:06:57
 */
 
 SET NAMES utf8mb4;
@@ -53,6 +53,13 @@ CREATE TABLE `dict`  (
 ) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
+-- Records of dict
+-- ----------------------------
+INSERT INTO `dict` VALUES (1, 1, '男', '1', 0, '1');
+INSERT INTO `dict` VALUES (2, 1, '女', '2', 1, '0');
+INSERT INTO `dict` VALUES (3, 1, '未知', '0', 2, '0');
+
+-- ----------------------------
 -- Table structure for dict_type
 -- ----------------------------
 DROP TABLE IF EXISTS `dict_type`;
@@ -61,13 +68,15 @@ CREATE TABLE `dict_type`  (
   `dict_type_name` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '字典类型名',
   `dict_type_desc` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '字典类型描述',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 6 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of dict_type
 -- ----------------------------
 INSERT INTO `dict_type` VALUES (1, '性别', '性别');
 INSERT INTO `dict_type` VALUES (2, '状态', '状态');
+INSERT INTO `dict_type` VALUES (3, '学历', '用户学历');
+INSERT INTO `dict_type` VALUES (4, '认证', '用户实名认证');
 
 -- ----------------------------
 -- Table structure for estate

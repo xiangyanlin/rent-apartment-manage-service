@@ -96,7 +96,7 @@
                 and id = #{queryCondition.id}
             </if>
             <if test="queryCondition.dictTypeId != null and queryCondition.dictTypeId != ''">
-                and dict_type_id =  =#{queryCondition.dictTypeId}
+                and dict_type_id =#{queryCondition.dictTypeId}
             </if>
             <if test="queryCondition.name != null and queryCondition.name != ''">
                 and name =  #{queryCondition.name}
@@ -130,7 +130,7 @@
                 and id = #{queryCondition.id}
             </if>
             <if test="queryCondition.dictTypeId != null and queryCondition.dictTypeId != ''">
-                and dict_type_id =  =#{queryCondition.dictTypeId}
+                and dict_type_id = #{queryCondition.dictTypeId}
             </if>
             <if test="queryCondition.name != null and queryCondition.name != ''">
                 and name =  #{queryCondition.name}
