@@ -5,15 +5,18 @@
     <resultMap type="com.xyl.rental.entity.Information" id="InformationMap">
         <result property="id" column="id" jdbcType="INTEGER"/>
         <result property="title" column="title" jdbcType="VARCHAR"/>
+        <result property="summary" column="summary" jdbcType="VARCHAR"/>
         <result property="content" column="content" jdbcType="VARCHAR"/>
+        <result property="pic" column="pic" jdbcType="VARCHAR"/>
         <result property="readNum" column="read_num" jdbcType="INTEGER"/>
         <result property="publishTime" column="publish_time" jdbcType="TIMESTAMP"/>
+        <result property="updateTime" column="update_time" jdbcType="TIMESTAMP"/>
     </resultMap>
 
     <!--查询单个-->
     <select id="queryById" resultMap="InformationMap">
         select
-          id, title, content, read_num, publish_time
+          id, title, summary, content, pic, read_num, publish_time, update_time
         from rental.information
         where id = #{id}
     </select>
@@ -21,7 +24,7 @@
     <!--查询指定行数据-->
     <select id="queryAllByLimit" resultMap="InformationMap">
         select
-          id, title, content, read_num, publish_time
+          id, title, summary, content, pic, read_num, publish_time, update_time
         from rental.information
         limit #{offset}, #{limit}
     </select>
@@ -29,7 +32,7 @@
     <!--通过实体作为筛选条件查询-->
     <select id="queryAll" resultMap="InformationMap">
         select
-          id, title, content, read_num, publish_time
+          id, title, summary, content, pic, read_num, publish_time, update_time
         from rental.information
         <where>
             <if test="id != null">
@@ -38,8 +41,14 @@
             <if test="title != null and title != ''">
                 and title = #{title}
             </if>
+            <if test="summary != null and summary != ''">
+                and summary = #{summary}
+            </if>
             <if test="content != null and content != ''">
                 and content = #{content}
+            </if>
+            <if test="pic != null and pic != ''">
+                and pic = #{pic}
             </if>
             <if test="readNum != null">
                 and read_num = #{readNum}
@@ -47,13 +56,16 @@
             <if test="publishTime != null">
                 and publish_time = #{publishTime}
             </if>
+            <if test="updateTime != null">
+                and update_time = #{updateTime}
+            </if>
         </where>
     </select>
 
     <!--新增所有列-->
     <insert id="insert" keyProperty="id" useGeneratedKeys="true">
-        insert into rental.information(title, content, read_num, publish_time)
-        values (#{title}, #{content}, #{readNum}, #{publishTime})
+        insert into rental.information(title, summary, content, pic, read_num, publish_time, update_time)
+        values (#{title}, #{summary}, #{content}, #{pic}, #{readNum}, #{publishTime}, #{updateTime})
     </insert>
 
     <!--通过主键修改数据-->
@@ -63,14 +75,23 @@
             <if test="title != null and title != ''">
                 title = #{title},
             </if>
+            <if test="summary != null and summary != ''">
+                summary = #{summary},
+            </if>
             <if test="content != null and content != ''">
                 content = #{content},
+            </if>
+            <if test="pic != null and pic != ''">
+                pic = #{pic},
             </if>
             <if test="readNum != null">
                 read_num = #{readNum},
             </if>
             <if test="publishTime != null">
                 publish_time = #{publishTime},
+            </if>
+            <if test="updateTime != null">
+                update_time = #{updateTime},
             </if>
         </set>
         where id = #{id}
@@ -80,6 +101,7 @@
     <delete id="deleteById">
         delete from rental.information where id = #{id}
     </delete>
+
 
     <!-- 查询条数 -->
     <select id="countTotal" resultType="int"  >
@@ -91,8 +113,14 @@
             <if test="condition.title != null and condition.title != ''">
                 and title like CONCAT('%',#{condition.title},'%')
             </if>
+            <if test="condition.summary != null and condition.summary != ''">
+                and summary like CONCAT('%',#{condition.summary},'%')
+            </if>
             <if test="condition.content != null and condition.content != ''">
                 and content like CONCAT('%',#{condition.content},'%')
+            </if>
+            <if test="condition.pic != null">
+                and pic =#{condition.pic}
             </if>
             <if test="condition.readNum != null">
                 and read_num =#{condition.readNum}
@@ -100,17 +128,22 @@
             <if test="condition.publishTime != null">
                 and publish_time = #{condition.publishTime}
             </if>
+            <if test="condition.updateTime != null">
+                and update_time = #{condition.updateTime}
+            </if>
             <if test="keyWord != null and keyWord != ''">
                 and (id like CONCAT('%',#{keyWord},'%')
                 or title like CONCAT('%',#{keyWord},'%')
+                or summary like CONCAT('%',#{keyWord},'%')
                 or content like CONCAT('%',#{keyWord},'%'))
             </if>
         </where>
     </select>
+
     <!--分页条件查询-->
     <select id="queryPage" resultMap="InformationMap">
         select
-      id, title, content, read_num, publish_time
+        id, title, summary, content, pic, read_num, publish_time, update_time
         from rental.information
         <where>
             <if test="condition.id != null">
@@ -119,8 +152,14 @@
             <if test="condition.title != null and condition.title != ''">
                 and title like CONCAT('%',#{condition.title},'%')
             </if>
+            <if test="condition.summary != null and condition.summary != ''">
+                and summary like CONCAT('%',#{condition.summary},'%')
+            </if>
             <if test="condition.content != null and condition.content != ''">
                 and content like CONCAT('%',#{condition.content},'%')
+            </if>
+            <if test="condition.pic != null">
+                and pic =#{condition.pic}
             </if>
             <if test="condition.readNum != null">
                 and read_num =#{condition.readNum}
@@ -128,9 +167,13 @@
             <if test="condition.publishTime != null">
                 and publish_time = #{condition.publishTime}
             </if>
+            <if test="condition.updateTime != null">
+                and update_time = #{condition.updateTime}
+            </if>
             <if test="keyWord != null and keyWord != ''">
                 and (id like CONCAT('%',#{keyWord},'%')
                 or title like CONCAT('%',#{keyWord},'%')
+                or summary like CONCAT('%',#{keyWord},'%')
                 or content like CONCAT('%',#{keyWord},'%'))
             </if>
         </where>

@@ -34,6 +34,32 @@ public class InformationController {
         return this.informationService.queryById(id);
     }
 
+
+    /**
+     * 新增资讯
+     * @param information
+     * @return
+     */
+    @RequestMapping("save")
+    @ResponseBody
+    public R saveInformation(@RequestBody Information information) {
+        Information insert = informationService.insert(information);
+        return R.success(insert);
+    }
+
+    /**
+     * 修改资讯
+     * @param information
+     * @return
+     */
+    @RequestMapping("update")
+    @ResponseBody
+    public R updateInformation(@RequestBody Information information) {
+
+        Information update = informationService.update(information);
+        return R.success(update);
+    }
+
     /**
      * 删除资讯
      * @param id

@@ -11,7 +11,7 @@
  Target Server Version : 50726
  File Encoding         : 65001
 
- Date: 25/04/2020 17:12:48
+ Date: 25/04/2020 23:43:37
 */
 
 SET NAMES utf8mb4;
@@ -176,16 +176,20 @@ DROP TABLE IF EXISTS `information`;
 CREATE TABLE `information`  (
   `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '资讯编号',
   `title` varchar(20) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '资讯标题',
+  `summary` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '资讯简介',
   `content` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '资讯内容',
+  `pic` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '资讯图片',
   `read_num` int(10) NULL DEFAULT NULL COMMENT '阅读量',
-  `publish_time` datetime(6) NULL DEFAULT NULL COMMENT '发布时间',
+  `publish_time` datetime(0) NULL DEFAULT NULL COMMENT '发布时间',
+  `update_time` datetime(0) NULL DEFAULT NULL COMMENT '修改时间',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Records of information
 -- ----------------------------
-INSERT INTO `information` VALUES (1, '房价上涨', '上涨了0.7个百分点', 65241, '2020-03-15 23:09:28.000000');
+INSERT INTO `information` VALUES (1, '房价上涨', '上涨了0.7个百分点', '3月，70个大中城市新房、二手房房价环比上涨数量均大幅增加。新房方面，38个城市房价上涨，较2月增加17城；二手房方面，二手房房价上涨城市增加至32个，较2月增加18城。', NULL, 65241, '2020-03-15 23:09:28', NULL);
+INSERT INTO `information` VALUES (2, '房价继续上涨了', '又上涨了0.4个百分点', '中原地产首席分析师张大伟认为，在多方面因素刺激下，包括深圳、杭州等在内的多个城市房价出现了恢复，成为房价上涨的领先城市。', NULL, 65241, '2020-03-15 23:09:28', NULL);
 
 -- ----------------------------
 -- Table structure for questions
