@@ -11,7 +11,7 @@
  Target Server Version : 50726
  File Encoding         : 65001
 
- Date: 23/04/2020 00:06:57
+ Date: 25/04/2020 17:12:48
 */
 
 SET NAMES utf8mb4;
@@ -43,14 +43,14 @@ INSERT INTO `contract` VALUES (1, '3', '湖南长沙', 3, '张三', '李四', '2
 -- ----------------------------
 DROP TABLE IF EXISTS `dict`;
 CREATE TABLE `dict`  (
-  `id` int(10) NOT NULL COMMENT '字典编号',
+  `id` int(10) NOT NULL AUTO_INCREMENT COMMENT '字典编号',
   `dict_type_id` int(10) NULL DEFAULT NULL COMMENT '字典类型编号',
   `name` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '字典名',
   `value` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '字典值',
   `sort` int(20) NULL DEFAULT NULL COMMENT '字典排序号',
   `is_default` varchar(10) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '是否默认值，0不是，1是',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 15 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of dict
@@ -58,6 +58,13 @@ CREATE TABLE `dict`  (
 INSERT INTO `dict` VALUES (1, 1, '男', '1', 0, '1');
 INSERT INTO `dict` VALUES (2, 1, '女', '2', 1, '0');
 INSERT INTO `dict` VALUES (3, 1, '未知', '0', 2, '0');
+INSERT INTO `dict` VALUES (4, 4, '未认证', '0', 0, '1');
+INSERT INTO `dict` VALUES (5, 4, '已认证', '1', 1, '0');
+INSERT INTO `dict` VALUES (7, 3, '大专以下', '1', NULL, '0');
+INSERT INTO `dict` VALUES (8, 3, '大专', '2', NULL, '0');
+INSERT INTO `dict` VALUES (9, 3, '本科', '3', NULL, '1');
+INSERT INTO `dict` VALUES (10, 3, '研究生', '4', NULL, '0');
+INSERT INTO `dict` VALUES (11, 3, '研究生以上', '5', NULL, '0');
 
 -- ----------------------------
 -- Table structure for dict_type
@@ -68,13 +75,13 @@ CREATE TABLE `dict_type`  (
   `dict_type_name` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '字典类型名',
   `dict_type_desc` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '字典类型描述',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 6 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 8 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of dict_type
 -- ----------------------------
 INSERT INTO `dict_type` VALUES (1, '性别', '性别');
-INSERT INTO `dict_type` VALUES (2, '状态', '状态');
+INSERT INTO `dict_type` VALUES (2, '角色', '用户角色');
 INSERT INTO `dict_type` VALUES (3, '学历', '用户学历');
 INSERT INTO `dict_type` VALUES (4, '认证', '用户实名认证');
 

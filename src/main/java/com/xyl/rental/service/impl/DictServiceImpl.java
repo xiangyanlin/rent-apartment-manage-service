@@ -1,14 +1,18 @@
 package com.xyl.rental.service.impl;
 
+import com.xyl.rental.dao.DictTypeDao;
 import com.xyl.rental.entity.Dict;
 import com.xyl.rental.dao.DictDao;
+import com.xyl.rental.entity.DictType;
 import com.xyl.rental.service.DictService;
 import com.xyl.rental.vo.Pagination;
 import com.xyl.rental.vo.TableResult;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * (Dict)表服务实现类
@@ -20,6 +24,9 @@ import java.util.List;
 public class DictServiceImpl implements DictService {
     @Resource
     private DictDao dictDao;
+
+    @Resource
+    private DictTypeDao dictTypeDao;
 
     /**
      * 通过ID查询单条数据
@@ -102,5 +109,24 @@ public class DictServiceImpl implements DictService {
         tr.setList(list);
         tr.setPagination(pagination);
         return tr;
+    }
+
+    @Override
+    public Map<Object, Object> queryDict(List<Integer> typeIds) {
+        Map<Object, Object> maps=new HashMap<Object, Object>();
+        Dict condition =new Dict();
+        if(null!=typeIds&&typeIds.size()>0 ){
+            for (int typeId: typeIds) {
+                DictType dictType = dictTypeDao.queryById(typeId);
+                Map<Object, Object> map=new HashMap<Object, Object>();
+                condition.setDictTypeId(typeId);
+                List<Dict> dicts = dictDao.queryAll(condition);
+                map.put(dictType.getDictTypeName(),dicts);
+                maps.putAll(map);
+            }
+        }else{
+
+        }
+        return maps;
     }
 }

@@ -72,7 +72,7 @@ public interface DictDao {
     int countTotal( Dict queryCondition, String keyWord);
 
     /**
-     * 楼盘列表分页条件查询
+     * 字典列表分页条件查询
      * @param offset
      * @param limit
      * @param queryCondition

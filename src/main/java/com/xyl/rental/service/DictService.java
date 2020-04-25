@@ -4,6 +4,7 @@ import com.xyl.rental.entity.Dict;
 import com.xyl.rental.vo.TableResult;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * (Dict)表服务接口
@@ -63,4 +64,6 @@ public interface DictService {
      * @return
      */
     TableResult queryByPage(int currentPage, int pageSize, Dict queryCondition, String keyWord);
+
+    Map<Object,Object> queryDict (List<Integer> typeIds);
 }

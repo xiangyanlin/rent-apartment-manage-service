@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import java.util.List;
+import java.util.Map;
 
 /**
  * (Dict)表控制层
@@ -93,5 +94,10 @@ public class DictController {
         return tableResult;
     }
 
-
+    @RequestMapping("getDicts")
+    @ResponseBody
+    public R queryDic(@RequestBody List<Integer> typeIds){
+        Map<Object, Object> dicts = dictService.queryDict(typeIds);
+        return  R.success(dicts);
+    }
 }
