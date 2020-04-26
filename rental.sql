@@ -11,7 +11,7 @@
  Target Server Version : 50726
  File Encoding         : 65001
 
- Date: 25/04/2020 23:43:37
+ Date: 26/04/2020 22:27:22
 */
 
 SET NAMES utf8mb4;
@@ -50,7 +50,7 @@ CREATE TABLE `dict`  (
   `sort` int(20) NULL DEFAULT NULL COMMENT '字典排序号',
   `is_default` varchar(10) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '是否默认值，0不是，1是',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 15 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 12 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of dict
@@ -75,7 +75,7 @@ CREATE TABLE `dict_type`  (
   `dict_type_name` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '字典类型名',
   `dict_type_desc` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '字典类型描述',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 8 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 5 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of dict_type
@@ -104,7 +104,7 @@ CREATE TABLE `estate`  (
   `created` datetime(6) NULL DEFAULT NULL COMMENT '创建时间',
   `updated` datetime(6) NULL DEFAULT NULL COMMENT '更新时间',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1010 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '楼盘表' ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 1008 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '楼盘表' ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Records of estate
@@ -150,7 +150,7 @@ CREATE TABLE `house_resources`  (
   `created` datetime(0) NULL DEFAULT NULL COMMENT '创建时间',
   `updated` datetime(0) NULL DEFAULT NULL COMMENT '更新时间',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 28 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '房源表' ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 27 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '房源表' ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Records of house_resources
@@ -179,17 +179,20 @@ CREATE TABLE `information`  (
   `summary` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '资讯简介',
   `content` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '资讯内容',
   `pic` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '资讯图片',
+  `publisher` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '发布人',
   `read_num` int(10) NULL DEFAULT NULL COMMENT '阅读量',
   `publish_time` datetime(0) NULL DEFAULT NULL COMMENT '发布时间',
   `update_time` datetime(0) NULL DEFAULT NULL COMMENT '修改时间',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 6 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Records of information
 -- ----------------------------
-INSERT INTO `information` VALUES (1, '房价上涨', '上涨了0.7个百分点', '3月，70个大中城市新房、二手房房价环比上涨数量均大幅增加。新房方面，38个城市房价上涨，较2月增加17城；二手房方面，二手房房价上涨城市增加至32个，较2月增加18城。', NULL, 65241, '2020-03-15 23:09:28', NULL);
-INSERT INTO `information` VALUES (2, '房价继续上涨了', '又上涨了0.4个百分点', '中原地产首席分析师张大伟认为，在多方面因素刺激下，包括深圳、杭州等在内的多个城市房价出现了恢复，成为房价上涨的领先城市。', NULL, 65241, '2020-03-15 23:09:28', NULL);
+INSERT INTO `information` VALUES (1, '房价上涨', '上涨了0.7个百分点', '3月，70个大中城市新房、二手房房价环比上涨数量均大幅增加。新房方面，38个城市房价上涨，较2月增加17城；二手房方面，二手房房价上涨城市增加至32个，较2月增加18城。', NULL, NULL, 65241, '2020-03-15 23:09:28', NULL);
+INSERT INTO `information` VALUES (2, '房价继续上涨了', '又上涨了0.4个百分点', '中原地产首席分析师张大伟认为，在多方面因素刺激下，包括深圳、杭州等在内的多个城市房价出现了恢复，成为房价上涨的领先城市。', NULL, NULL, 65241, '2020-03-15 23:09:28', NULL);
+INSERT INTO `information` VALUES (4, '公租房违规首入征信系统', '“公租房管理面临收租难、清退难等问题。”省住房城乡建设厅相关负责人表示，为解决公租房相关问题，这是广东首次将公租房违规行为纳入人民银行征信系统。', '对违规申请和享受公租房和租赁补贴，或存在转租转借、空置、擅自装修等违规使用的家庭，住房保障主管部门除依据《公共租赁住房管理办法》《广东省城镇住房保障办法》等规定予以行政处罚外，还将其处罚信息纳入人民银行征信系统。\n“一旦纳入，将影响违规对象后续5年的金融行为。接下来，拒不缴交公租房租金等违规行为也将纳入征信系统。”省住房城乡建设厅相关负责人表示。', '/images/2020/04/26/202004260923239950125.jpg,/images/2020/04/26/2020042609232974008472.jpg', NULL, NULL, '2020-04-26 21:23:31', NULL);
+INSERT INTO `information` VALUES (5, '1111', '111', '11111', '', 'admin', NULL, '2020-04-26 22:19:16', NULL);
 
 -- ----------------------------
 -- Table structure for questions
@@ -278,7 +281,7 @@ CREATE TABLE `vist_request`  (
   `vist_time` datetime(0) NULL DEFAULT NULL COMMENT '看房时间',
   `status` varchar(10) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '请求状态,1已完成,2待确认,3待看房,4已取消,5已拒绝',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 14 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 12 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Records of vist_request
