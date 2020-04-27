@@ -11,7 +11,7 @@
  Target Server Version : 50726
  File Encoding         : 65001
 
- Date: 26/04/2020 23:35:34
+ Date: 27/04/2020 23:27:57
 */
 
 SET NAMES utf8mb4;
@@ -189,9 +189,9 @@ CREATE TABLE `information`  (
 -- ----------------------------
 -- Records of information
 -- ----------------------------
-INSERT INTO `information` VALUES (1, '房价上涨', '上涨了0.7个百分点', '3月，70个大中城市新房、二手房房价环比上涨数量均大幅增加。新房方面，38个城市房价上涨，较2月增加17城；二手房方面，二手房房价上涨城市增加至32个，较2月增加18城。', '/images/2020/04/26/2020042611031792502616.jpg', NULL, 65241, '2020-03-15 23:09:28', '2020-04-26 23:03:20');
-INSERT INTO `information` VALUES (2, '房价继续上涨了', '又上涨了0.4个百分点', '中原地产首席分析师张大伟认为，在多方面因素刺激下，包括深圳、杭州等在内的多个城市房价出现了恢复，成为房价上涨的领先城市。', '/images/2020/04/26/2020042611133591502717.jpg', NULL, 65241, '2020-03-15 23:09:28', '2020-04-26 23:13:38');
-INSERT INTO `information` VALUES (4, '公租房违规首入征信系统', '“公租房管理面临收租难、清退难等问题。”省住房城乡建设厅相关负责人表示，为解决公租房相关问题，这是广东首次将公租房违规行为纳入人民银行征信系统。', '对违规申请和享受公租房和租赁补贴，或存在转租转借、空置、擅自装修等违规使用的家庭，住房保障主管部门除依据《公共租赁住房管理办法》《广东省城镇住房保障办法》等规定予以行政处罚外，还将其处罚信息纳入人民银行征信系统。\n“一旦纳入，将影响违规对象后续5年的金融行为。接下来，拒不缴交公租房租金等违规行为也将纳入征信系统。”省住房城乡建设厅相关负责人表示。', '/images/2020/04/26/202004260923239950125.jpg,/images/2020/04/26/2020042609232974008472.jpg', NULL, 654, '2020-04-26 21:23:31', NULL);
+INSERT INTO `information` VALUES (1, '房价上涨', '上涨了0.7个百分点', '3月，70个大中城市新房、二手房房价环比上涨数量均大幅增加。新房方面，38个城市房价上涨，较2月增加17城；二手房方面，二手房房价上涨城市增加至32个，较2月增加18城。', '/images/2020/04/26/2020042611031792502616.jpg', '资讯管理员', 65241, '2020-03-15 23:09:28', '2020-04-26 23:03:20');
+INSERT INTO `information` VALUES (2, '房价继续上涨了', '又上涨了0.4个百分点', '中原地产首席分析师张大伟认为，在多方面因素刺激下，包括深圳、杭州等在内的多个城市房价出现了恢复，成为房价上涨的领先城市。', '/images/2020/04/26/2020042611133591502717.jpg', '资讯管理员', 65242, '2020-03-15 23:09:28', '2020-04-26 23:13:38');
+INSERT INTO `information` VALUES (4, '公租房违规首入征信系统', '“公租房管理面临收租难、清退难等问题。”省住房城乡建设厅相关负责人表示，为解决公租房相关问题，这是广东首次将公租房违规行为纳入人民银行征信系统。', '对违规申请和享受公租房和租赁补贴，或存在转租转借、空置、擅自装修等违规使用的家庭，住房保障主管部门除依据《公共租赁住房管理办法》《广东省城镇住房保障办法》等规定予以行政处罚外，还将其处罚信息纳入人民银行征信系统。\n“一旦纳入，将影响违规对象后续5年的金融行为。接下来，拒不缴交公租房租金等违规行为也将纳入征信系统。”省住房城乡建设厅相关负责人表示。', '/images/2020/04/26/202004260923239950125.jpg,/images/2020/04/26/2020042609232974008472.jpg', '资讯管理员', 656, '2020-04-26 21:23:31', NULL);
 INSERT INTO `information` VALUES (5, '1111', '111', '11111', '', 'admin', 1472, '2020-04-26 22:19:16', NULL);
 
 -- ----------------------------
@@ -199,20 +199,21 @@ INSERT INTO `information` VALUES (5, '1111', '111', '11111', '', 'admin', 1472, 
 -- ----------------------------
 DROP TABLE IF EXISTS `questions`;
 CREATE TABLE `questions`  (
-  `id` int(11) NOT NULL COMMENT '问答编号',
-  `title` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '问答标题',
-  `content` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '问答内容',
-  `publisher` varchar(10) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '发布者',
-  `read_num` int(10) NULL DEFAULT NULL COMMENT '阅读量',
-  `reply_num` int(10) NULL DEFAULT NULL COMMENT '回复量',
-  `publish_time` datetime(0) NULL DEFAULT NULL COMMENT '发布时间',
+  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '问答编号',
+  `questions` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '问题',
+  `answer` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '回答',
+  `questioner_id` int(10) NULL DEFAULT NULL COMMENT '提问者编号',
+  `answerer_id` int(10) NULL DEFAULT NULL COMMENT '回答者编号',
+  `status` varchar(10) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '问题状态',
+  `quiz_time` datetime(0) NULL DEFAULT NULL COMMENT '提问时间',
+  `answer_time` datetime(0) NULL DEFAULT NULL COMMENT '回答时间',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of questions
 -- ----------------------------
-INSERT INTO `questions` VALUES (1, '交通位置', '房子所处交通位置方便吗', '大红', 125, 11, '2019-12-03 22:30:47');
+INSERT INTO `questions` VALUES (1, '交通位置', '房子所处交通位置方便吗', 2, 1, NULL, '2019-12-03 22:30:47', NULL);
 
 -- ----------------------------
 -- Table structure for rent_record

@@ -9,39 +9,42 @@ import java.io.Serializable;
  * (Questions)实体类
  *
  * @author xyl
- * @since 2020-03-23 22:32:24
+ * @since 2020-04-27 22:49:56
  */
 @Data
 public class Questions implements Serializable {
-    private static final long serialVersionUID = -11657474566461866L;
+    private static final long serialVersionUID = 720101915912860417L;
     /**
     * 问答编号
     */
     private Integer id;
     /**
-    * 问答标题
+    * 问题
     */
-    private String title;
+    private String questions;
     /**
-    * 问答内容
+    * 回答
     */
-    private String content;
+    private String answer;
     /**
-    * 发布者
+    * 提问者编号
     */
-    private String publisher;
+    private Integer questionerId;
     /**
-    * 阅读量
+    * 回答者编号
     */
-    private Integer readNum;
+    private Integer answererId;
     /**
-    * 回复量
+    * 问题状态
     */
-    private Integer replyNum;
+    private String status;
     /**
-    * 发布时间
+    * 提问时间
     */
-    private Date publishTime;
-
+    private Date quizTime;
+    /**
+    * 回答时间
+    */
+    private Date answerTime;
 
 }

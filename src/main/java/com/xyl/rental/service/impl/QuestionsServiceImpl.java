@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import java.util.List;
+import java.util.Map;
 
 /**
  * (Questions)表服务实现类
@@ -99,6 +100,31 @@ public class QuestionsServiceImpl implements QuestionsService {
         pagination.setPageSize(pageSize);
         pagination.setTotal(total);
         tr.setList(list);
+        tr.setPagination(pagination);
+        return tr;
+    }
+
+
+    /**
+     *
+     * @param currentPage
+     * @param pageSize
+     * @param condition
+     * @param keyWord
+     * @return
+     */
+    @Override
+    public TableResult queryPageAndUser(int currentPage, int pageSize, Questions condition, String keyWord) {
+        TableResult tr=new TableResult();
+        Pagination pagination=new Pagination();
+        int start=(currentPage-1)*pageSize;
+        int total=questionsDao.countTotal(condition,keyWord);
+        List<Map<String, Object>> maps = questionsDao.queryPageAndUser(
+                start, pageSize, condition, keyWord);
+        pagination.setCurrent(currentPage);
+        pagination.setPageSize(pageSize);
+        pagination.setTotal(total);
+        tr.setList(maps);
         tr.setPagination(pagination);
         return tr;
     }

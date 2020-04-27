@@ -60,4 +60,14 @@ public interface QuestionsService {
      * @return
      */
     TableResult queryByPage(int currentPage, int pageSize, Questions condition, String keyWord);
+
+    /**
+     * 联合用户名以及头像
+     * @param currentPage
+     * @param pageSize
+     * @param condition
+     * @param keyWord
+     * @return
+     */
+    TableResult queryPageAndUser(int currentPage, int pageSize, Questions condition, String keyWord);
 }

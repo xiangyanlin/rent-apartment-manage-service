@@ -35,6 +35,31 @@ public class QuestionsController {
     }
 
     /**
+     * 新增问答
+     * @param questions
+     * @return
+     */
+    @RequestMapping("save")
+    @ResponseBody
+    public R saveQuestions(@RequestBody Questions questions) {
+        Questions insert = questionsService.insert(questions);
+        return R.success(insert);
+    }
+
+    /**
+     * 修改问答
+     * @param questions
+     * @return
+     */
+    @RequestMapping("update")
+    @ResponseBody
+    public R updateQuestions(@RequestBody Questions questions) {
+
+        Questions update = questionsService.update(questions);
+        return R.success(update);
+    }
+
+    /**
      * 根据id删除问答
      * @param id
      */
@@ -64,5 +89,24 @@ public class QuestionsController {
                 currentPage, pageSize,condition,keyWord);
         return tableResult;
     }
+
+    /**
+     * 联合用户名以及用户头像
+     * @param currentPage
+     * @param pageSize
+     * @param condition
+     * @param keyWord
+     * @return
+     */
+    @GetMapping("qa")
+    @ResponseBody
+    public TableResult qa(@RequestParam(name = "currentPage", defaultValue = "1") int currentPage,
+                            @RequestParam(name = "pageSize", defaultValue = "10") int pageSize,
+                            Questions condition, String keyWord){
+        TableResult tableResult = this.questionsService.queryPageAndUser(
+                currentPage, pageSize,condition,keyWord);
+        return tableResult;
+    }
+
 
 }

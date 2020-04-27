@@ -4,18 +4,19 @@
 
     <resultMap type="com.xyl.rental.entity.Questions" id="QuestionsMap">
         <result property="id" column="id" jdbcType="INTEGER"/>
-        <result property="title" column="title" jdbcType="VARCHAR"/>
-        <result property="content" column="content" jdbcType="VARCHAR"/>
-        <result property="publisher" column="publisher" jdbcType="VARCHAR"/>
-        <result property="readNum" column="read_num" jdbcType="INTEGER"/>
-        <result property="replyNum" column="reply_num" jdbcType="INTEGER"/>
-        <result property="publishTime" column="publish_time" jdbcType="TIMESTAMP"/>
+        <result property="questions" column="questions" jdbcType="VARCHAR"/>
+        <result property="answer" column="answer" jdbcType="VARCHAR"/>
+        <result property="questionerId" column="questioner_id" jdbcType="INTEGER"/>
+        <result property="answererId" column="answerer_id" jdbcType="INTEGER"/>
+        <result property="status" column="status" jdbcType="VARCHAR"/>
+        <result property="quizTime" column="quiz_time" jdbcType="TIMESTAMP"/>
+        <result property="answerTime" column="answer_time" jdbcType="TIMESTAMP"/>
     </resultMap>
 
     <!--查询单个-->
     <select id="queryById" resultMap="QuestionsMap">
         select
-          id, title, content, publisher, read_num, reply_num, publish_time
+          id, questions, answer, questioner_id, answerer_id, status, quiz_time, answer_time
         from rental.questions
         where id = #{id}
     </select>
@@ -23,7 +24,7 @@
     <!--查询指定行数据-->
     <select id="queryAllByLimit" resultMap="QuestionsMap">
         select
-          id, title, content, publisher, read_num, reply_num, publish_time
+          id, questions, answer, questioner_id, answerer_id, status, quiz_time, answer_time
         from rental.questions
         limit #{offset}, #{limit}
     </select>
@@ -31,60 +32,66 @@
     <!--通过实体作为筛选条件查询-->
     <select id="queryAll" resultMap="QuestionsMap">
         select
-          id, title, content, publisher, read_num, reply_num, publish_time
+          id, questions, answer, questioner_id, answerer_id, status, quiz_time, answer_time
         from rental.questions
         <where>
             <if test="id != null">
                 and id = #{id}
             </if>
-            <if test="title != null and title != ''">
-                and title = #{title}
+            <if test="questions != null and questions != ''">
+                and questions = #{questions}
             </if>
-            <if test="content != null and content != ''">
-                and content = #{content}
+            <if test="answer != null and answer != ''">
+                and answer = #{answer}
             </if>
-            <if test="publisher != null and publisher != ''">
-                and publisher = #{publisher}
+            <if test="questionerId != null">
+                and questioner_id = #{questionerId}
             </if>
-            <if test="readNum != null">
-                and read_num = #{readNum}
+            <if test="answererId != null">
+                and answerer_id = #{answererId}
             </if>
-            <if test="replyNum != null">
-                and reply_num = #{replyNum}
+            <if test="status != null and status != ''">
+                and status = #{status}
             </if>
-            <if test="publishTime != null">
-                and publish_time = #{publishTime}
+            <if test="quizTime != null">
+                and quiz_time = #{quizTime}
+            </if>
+            <if test="answerTime != null">
+                and answer_time = #{answerTime}
             </if>
         </where>
     </select>
 
     <!--新增所有列-->
     <insert id="insert" keyProperty="id" useGeneratedKeys="true">
-        insert into rental.questions(title, content, publisher, read_num, reply_num, publish_time)
-        values (#{title}, #{content}, #{publisher}, #{readNum}, #{replyNum}, #{publishTime})
+        insert into rental.questions(questions, answer, questioner_id, answerer_id, status, quiz_time, answer_time)
+        values (#{questions}, #{answer}, #{questionerId}, #{answererId}, #{status}, #{quizTime}, #{answerTime})
     </insert>
 
     <!--通过主键修改数据-->
     <update id="update">
         update rental.questions
         <set>
-            <if test="title != null and title != ''">
-                title = #{title},
+            <if test="questions != null and questions != ''">
+                questions = #{questions},
             </if>
-            <if test="content != null and content != ''">
-                content = #{content},
+            <if test="answer != null and answer != ''">
+                answer = #{answer},
             </if>
-            <if test="publisher != null and publisher != ''">
-                publisher = #{publisher},
+            <if test="questionerId != null">
+                questioner_id = #{questionerId},
             </if>
-            <if test="readNum != null">
-                read_num = #{readNum},
+            <if test="answererId != null">
+                answerer_id = #{answererId},
             </if>
-            <if test="replyNum != null">
-                reply_num = #{replyNum},
+            <if test="status != null and status != ''">
+                status = #{status},
             </if>
-            <if test="publishTime != null">
-                publish_time = #{publishTime},
+            <if test="quizTime != null">
+                quiz_time = #{quizTime},
+            </if>
+            <if test="answerTime != null">
+                answer_time = #{answerTime},
             </if>
         </set>
         where id = #{id}
@@ -102,66 +109,107 @@
             <if test="condition.id != null">
                 and id like CONCAT('%',#{condition.id},'%')
             </if>
-            <if test="condition.title != null and condition.title != ''">
-                and title like CONCAT('%',#{condition.title},'%')
+            <if test="condition.questions != null and condition.questions != ''">
+                and questions like CONCAT('%',#{condition.questions},'%')
             </if>
-            <if test="condition.content != null and condition.content != ''">
-                and content like CONCAT('%',#{condition.content},'%')
+            <if test="condition.questionerId != null ">
+                and questioner_id = #{condition.questionerId}
             </if>
-            <if test="condition.publisher != null and condition.publisher != ''">
-                and publisher like CONCAT('%',#{condition.publisher},'%')
+            <if test="condition.answererId != null ">
+                and answerer_id = #{condition.answererId}
             </if>
-            <if test="condition.readNum != null">
-                and read_num = #{condition.readNum}
+            <if test="condition.status != null ">
+                and status = #{condition.status}
             </if>
-            <if test="condition.replyNum != null">
-                and reply_num = #{condition.replyNum}
+            <if test="condition.quizTime != null">
+                and quiz_time = #{condition.quizTime}
             </if>
-            <if test="condition.publishTime != null">
-                and publish_time = #{condition.publishTime}
+            <if test="condition.answerTime != null">
+                and answer_time = #{condition.answerTime}
             </if>
             <if test="keyWord != null and keyWord != ''">
                 and (id like CONCAT('%',#{keyWord},'%')
-                or title like CONCAT('%',#{keyWord},'%')
-                or content like CONCAT('%',#{keyWord},'%')
-                or publisher like CONCAT('%',#{keyWord},'%'))
+                or questions like CONCAT('%',#{keyWord},'%')
+                or answer like CONCAT('%',#{keyWord},'%'))
             </if>
         </where>
     </select>
+
     <!--分页条件查询-->
     <select id="queryPage" resultMap="QuestionsMap">
         select
-        id, title, content, publisher, read_num, reply_num, publish_time
+        id, questions, answer, questioner_id, answerer_id, status, quiz_time, answer_time
         from rental.questions
         <where>
             <if test="condition.id != null">
                 and id like CONCAT('%',#{condition.id},'%')
             </if>
-            <if test="condition.title != null and condition.title != ''">
-                and title like CONCAT('%',#{condition.title},'%')
+            <if test="condition.questions != null and condition.questions != ''">
+                and questions like CONCAT('%',#{condition.questions},'%')
             </if>
-            <if test="condition.content != null and condition.content != ''">
-                and content like CONCAT('%',#{condition.content},'%')
+            <if test="condition.questionerId != null ">
+                and questioner_id = #{condition.questionerId}
             </if>
-            <if test="condition.publisher != null and condition.publisher != ''">
-                and publisher like CONCAT('%',#{condition.publisher},'%')
+            <if test="condition.answererId != null ">
+                and answerer_id = #{condition.answererId}
             </if>
-            <if test="condition.readNum != null">
-                and read_num = #{condition.readNum}
+            <if test="condition.status != null ">
+                and status = #{condition.status}
             </if>
-            <if test="condition.replyNum != null">
-                and reply_num = #{condition.replyNum}
+            <if test="condition.quizTime != null">
+                and quiz_time = #{condition.quizTime}
             </if>
-            <if test="condition.publishTime != null">
-                and publish_time = #{condition.publishTime}
+            <if test="condition.answerTime != null">
+                and answer_time = #{condition.answerTime}
             </if>
             <if test="keyWord != null and keyWord != ''">
                 and (id like CONCAT('%',#{keyWord},'%')
-                or title like CONCAT('%',#{keyWord},'%')
-                or content like CONCAT('%',#{keyWord},'%')
-                or publisher like CONCAT('%',#{keyWord},'%'))
+                or questions like CONCAT('%',#{keyWord},'%')
+                or answer like CONCAT('%',#{keyWord},'%'))
             </if>
         </where>
+        limit #{offset}, #{limit}
+    </select>
+
+    <!--问答以及关联用户信息-->
+    <select id="queryPageAndUser" resultType="map">
+        select b.*,u.user_name answerer,u.avatar answererAvatar
+        from
+           ( select a.*,u.user_name questioner, u.avatar questionerAvatar
+            from
+            (select
+                id, questions, answer, questioner_id, answerer_id, status, quiz_time, answer_time
+                from rental.questions
+                <where>
+                    <if test="condition.id != null">
+                        and id like CONCAT('%',#{condition.id},'%')
+                    </if>
+                    <if test="condition.questions != null and condition.questions != ''">
+                        and questions like CONCAT('%',#{condition.questions},'%')
+                    </if>
+                    <if test="condition.questionerId != null ">
+                        and questioner_id = #{condition.questionerId}
+                    </if>
+                    <if test="condition.answererId != null ">
+                        and answerer_id = #{condition.answererId}
+                    </if>
+                    <if test="condition.status != null ">
+                        and status = #{condition.status}
+                    </if>
+                    <if test="condition.quizTime != null">
+                        and quiz_time = #{condition.quizTime}
+                    </if>
+                    <if test="condition.answerTime != null">
+                        and answer_time = #{condition.answerTime}
+                    </if>
+                    <if test="keyWord != null and keyWord != ''">
+                        and (id like CONCAT('%',#{keyWord},'%')
+                        or questions like CONCAT('%',#{keyWord},'%')
+                        or answer like CONCAT('%',#{keyWord},'%'))
+                    </if>
+                </where>)a
+                left join user u on a.questioner_id=u.id)b
+        left join user u on b.answerer_id=u.id
         limit #{offset}, #{limit}
     </select>
 </mapper>

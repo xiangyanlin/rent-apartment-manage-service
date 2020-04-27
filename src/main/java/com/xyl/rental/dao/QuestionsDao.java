@@ -4,6 +4,7 @@ import com.xyl.rental.entity.Questions;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import java.util.List;
+import java.util.Map;
 
 /**
  * (Questions)表数据库访问层
@@ -76,5 +77,7 @@ public interface QuestionsDao {
      * @return
      */
     int countTotal(Questions condition,String keyWord);
+
+    List<Map<String,Object>> queryPageAndUser(@Param("offset") int offset, @Param("limit") int limit, Questions condition, String keyWord);
 
 }
