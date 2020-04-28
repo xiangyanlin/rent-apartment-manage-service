@@ -11,7 +11,7 @@
  Target Server Version : 50726
  File Encoding         : 65001
 
- Date: 27/04/2020 23:27:57
+ Date: 28/04/2020 23:38:26
 */
 
 SET NAMES utf8mb4;
@@ -201,6 +201,7 @@ DROP TABLE IF EXISTS `questions`;
 CREATE TABLE `questions`  (
   `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '问答编号',
   `questions` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '问题',
+  `summary` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '问题描述',
   `answer` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '回答',
   `questioner_id` int(10) NULL DEFAULT NULL COMMENT '提问者编号',
   `answerer_id` int(10) NULL DEFAULT NULL COMMENT '回答者编号',
@@ -208,12 +209,13 @@ CREATE TABLE `questions`  (
   `quiz_time` datetime(0) NULL DEFAULT NULL COMMENT '提问时间',
   `answer_time` datetime(0) NULL DEFAULT NULL COMMENT '回答时间',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of questions
 -- ----------------------------
-INSERT INTO `questions` VALUES (1, '交通位置', '房子所处交通位置方便吗', 2, 1, NULL, '2019-12-03 22:30:47', NULL);
+INSERT INTO `questions` VALUES (1, '买房办理贷款需要什么资料？', NULL, '您好！需要准备的都是常规性的资料：1、身份证原件和复印件（已婚提供夫妻双方）；2、户口本复印件（首页+本人，已婚提供夫妻双方）；3、婚姻证明复印件（结婚证、离婚证、离婚协议书或离婚终审判决书）；4、收入证明和月还款2倍的银行流水（银行盖章）', 2, 1, '1', '2019-12-03 22:30:47', NULL);
+INSERT INTO `questions` VALUES (2, '在租房里为什么有的没有联系人和电话？这样我应该怎么联系他们？', NULL, NULL, 6, NULL, '1', '2020-04-28 23:36:35', NULL);
 
 -- ----------------------------
 -- Table structure for rent_record
