@@ -194,7 +194,7 @@
         ( select a.*,u.user_name questioner, u.avatar questionerAvatar
         from
         (select
-        id, questions, answer, questioner_id, answerer_id, status, quiz_time, answer_time
+        id, questions, summary, answer, questioner_id, answerer_id, status, quiz_time, answer_time
         from rental.questions
         <where>
             <if test="condition.id != null">
