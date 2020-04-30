@@ -11,7 +11,7 @@
  Target Server Version : 50726
  File Encoding         : 65001
 
- Date: 30/04/2020 13:53:33
+ Date: 30/04/2020 17:29:53
 */
 
 SET NAMES utf8mb4;
@@ -289,14 +289,14 @@ CREATE TABLE `user`  (
 -- ----------------------------
 -- Records of user
 -- ----------------------------
-INSERT INTO `user` VALUES (1, NULL, 'Jone', '123456', NULL, 'test1@baomidou.com', '13627441292', '1', 'Jone', '13226519910506112x', '工人', '1', 0, '1', NULL, '1');
-INSERT INTO `user` VALUES (2, NULL, 'Jack', '123456', '/images/2020/04/29/2020042908412034305944.png', 'test2@baomidou.com', '13611112222', '1', 'Jack', '132265199101026522', '工人', '2', 0, '1', NULL, '2');
-INSERT INTO `user` VALUES (3, NULL, 'Tom', '123456', '/images/2020/04/29/2020042908412034305944.png', 'test3@baomidou.com', '13122223333', '1', 'Tom', '631265199101026522', '文员', '3', 0, '1', NULL, '2');
-INSERT INTO `user` VALUES (4, NULL, 'Sandy', '123456', '/images/2020/04/29/2020042908430135306713.jpg', 'test4@baomidou.com', '13233334444', '2', 'Sandy', '631265199101026533', '教师', '4', 4, '1', NULL, '3');
-INSERT INTO `user` VALUES (5, NULL, 'Billie', '123456', NULL, 'test5@baomidou.com', '13455556666', '1', 'Billie', '631265199101026514', '研究员', '5', 9, '1', NULL, '3');
+INSERT INTO `user` VALUES (1, 3, 'Jone', '123456', NULL, 'test1@baomidou.com', '13627441292', '1', 'Jone', '13226519910506112x', '工人', '1', 0, '1', NULL, '1');
+INSERT INTO `user` VALUES (2, 2, 'Jack', '123456', '/images/2020/04/29/2020042908412034305944.png', 'test2@baomidou.com', '13611112222', '1', 'Jack', '132265199101026522', '工人', '2', 0, '1', NULL, '2');
+INSERT INTO `user` VALUES (3, 3, 'Tom', '123456', '/images/2020/04/29/2020042908412034305944.png', 'test3@baomidou.com', '13122223333', '1', 'Tom', '631265199101026522', '文员', '3', 0, '1', NULL, '2');
+INSERT INTO `user` VALUES (4, 3, 'Sandy', '123456', '/images/2020/04/29/2020042908430135306713.jpg', 'test4@baomidou.com', '13233334444', '2', 'Sandy', '631265199101026533', '教师', '4', 4, '1', NULL, '3');
+INSERT INTO `user` VALUES (5, 3, 'Billie', '123456', NULL, 'test5@baomidou.com', '13455556666', '1', 'Billie', '631265199101026514', '研究员', '5', 9, '1', NULL, '3');
 INSERT INTO `user` VALUES (6, 1, 'admin', '123456', '/images/2020/04/09/2020040911204753004770.jpg', '2356150341@qq.com', '13627441292', '2', '张三', '49025419950356251x', '管理员', '5', NULL, '1', NULL, '1');
-INSERT INTO `user` VALUES (7, NULL, 'Ada', '123456', '/images/2020/04/29/2020042908461147607859.jpg', '2356150341@qq.com', '13627441292', '2', '艾达', NULL, '记者', '3', NULL, '0', NULL, '2');
-INSERT INTO `user` VALUES (8, NULL, 'tiaozhuan', '123456', NULL, '0341@qq.com', '13627441292', NULL, NULL, NULL, NULL, NULL, NULL, '0', NULL, '2');
+INSERT INTO `user` VALUES (7, 2, 'Ada', '123456', '/images/2020/04/29/2020042908461147607859.jpg', '2356150341@qq.com', '13627441292', '2', '艾达', NULL, '记者', '3', NULL, '0', NULL, '2');
+INSERT INTO `user` VALUES (8, 2, 'tiaozhuan', '123456', NULL, '0341@qq.com', '13627441292', NULL, NULL, NULL, NULL, NULL, NULL, '0', NULL, '2');
 
 -- ----------------------------
 -- Table structure for vist_request
