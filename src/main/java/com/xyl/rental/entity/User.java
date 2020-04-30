@@ -2,21 +2,26 @@ package com.xyl.rental.entity;
 
 import lombok.Data;
 
+import java.util.Date;
 import java.io.Serializable;
 
 /**
  * (User)实体类
  *
  * @author xyl
- * @since 2020-04-04 22:42:57
+ * @since 2020-04-30 13:30:38
  */
 @Data
 public class User implements Serializable {
-    private static final long serialVersionUID = 115938023056064776L;
+    private static final long serialVersionUID = 841883806522098105L;
     /**
     * 主键ID
     */
     private Integer id;
+    /**
+    * 角色编号
+    */
+    private Integer roleId;
     /**
     * 用户名
     */
@@ -58,10 +63,6 @@ public class User implements Serializable {
     */
     private String education;
     /**
-    * 1管理员，2租客，3房东
-    */
-    private String role;
-    /**
     * 房源数量
     */
     private Integer houseNum;
@@ -69,8 +70,13 @@ public class User implements Serializable {
     * 0未认证，1已认证
     */
     private String identify;
-
-
-
+    /**
+    * 创建时间
+    */
+    private Date createTime;
+    /**
+    * 备注信息
+    */
+    private String remark;
 
 }

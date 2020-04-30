@@ -1,6 +1,8 @@
 package com.xyl.rental.controller;
 
+import com.xyl.rental.entity.Role;
 import com.xyl.rental.entity.User;
+import com.xyl.rental.service.RoleService;
 import com.xyl.rental.service.UserService;
 import com.xyl.rental.utils.R;
 import com.xyl.rental.vo.TableResult;
@@ -27,6 +29,8 @@ public class UserController {
      */
     @Resource
     private UserService userService;
+    @Resource
+    private RoleService roleService;
 
     /**
      * 通过主键查询单条数据
@@ -37,6 +41,44 @@ public class UserController {
     @GetMapping("selectOne")
     public User selectOne(Integer id) {
         return this.userService.queryById(id);
+    }
+
+    /**
+     * 新增用户
+     * @param user
+     * @return
+     */
+    @RequestMapping("save")
+    @ResponseBody
+    public R saveUser(@RequestBody User user) {
+        User insert = userService.insert(user);
+        return R.success(insert);
+    }
+
+    /**
+     * 根据id删除用户
+     * @param id
+     * @return
+     */
+    @DeleteMapping("delete")
+    @ResponseBody
+    public R removeUser(@RequestParam("id") int id) {
+//        System.err.println(id);
+        boolean b = userService.deleteById(id);
+        return R.success(b,"success");
+    }
+
+    /**
+     * 修改用户信息
+     * @param user
+     * @return
+     */
+    @RequestMapping("update")
+    @ResponseBody
+    public R updateUser(@RequestBody User user) {
+
+        User update = userService.update(user);
+        return R.success(update);
     }
 
     /**
@@ -52,12 +94,8 @@ public class UserController {
             User user = userService.queryByUser(loginUser);
             //System.out.println(user);
             if(null!=user){
-                //request.getSession().setAttribute("user", user.getUserName());
-                if(user.getRole().equals("1")){
-                    map.put("currentAuthority","admin");
-                }else{
-                    map.put("currentAuthority","user");
-                }
+                Role role = roleService.queryById(user.getRoleId());
+                map.put("currentAuthority",role.getRoleKey());
                 map.put("currentUser",user.getUserName());
                 map.put("status","ok");
             }else {
@@ -68,8 +106,6 @@ public class UserController {
             map.put("currentAuthority","guest");
             map.put("status","error");
         }
-
-
         return R.success(map);
     }
 
@@ -119,22 +155,12 @@ public class UserController {
     @RequestMapping("register")
     @ResponseBody
     public R register(@RequestBody User user){
-        user.setRole("2");
+        user.setRoleId(2);
         User insert = userService.insert(user);
         return R.success(insert);
     }
 
-    /**
-     * 修改用户信息
-     * @param user
-     * @return
-     */
-    @RequestMapping("update")
-    public R updateHouseResources(@RequestBody User user) {
-        System.out.println(user);
-        User update = userService.update(user);
-        return R.success(update);
-    }
+
     /**
      * 分页条件关键字查询
      * @param currentPage

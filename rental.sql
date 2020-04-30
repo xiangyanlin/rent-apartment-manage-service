@@ -11,7 +11,7 @@
  Target Server Version : 50726
  File Encoding         : 65001
 
- Date: 30/04/2020 13:12:05
+ Date: 30/04/2020 13:53:33
 */
 
 SET NAMES utf8mb4;
@@ -258,8 +258,9 @@ CREATE TABLE `role`  (
 -- ----------------------------
 -- Records of role
 -- ----------------------------
-INSERT INTO `role` VALUES (1, '管理员', 'admin', 1, '0', '0', 'admin', '2018-03-16 11:33:00', 'ry', '2018-03-16 11:33:00', '管理员');
-INSERT INTO `role` VALUES (2, '普通用户', 'user', 2, '0', '0', 'admin', '2018-03-16 11:33:00', 'ry', '2018-03-16 11:33:00', '普通角色');
+INSERT INTO `role` VALUES (1, '超级管理员', 'admin', 1, '0', '0', 'admin', '2018-03-16 11:33:00', '', '2018-03-16 11:33:00', '管理员');
+INSERT INTO `role` VALUES (2, '租客', 'user', 2, '0', '0', 'admin', '2018-03-16 11:33:00', '', '2018-03-16 11:33:00', '租客用户');
+INSERT INTO `role` VALUES (3, '房东', 'user', 3, '0', '0', 'admin', '2020-04-30 13:47:05', '', '2020-04-30 13:47:17', '房东用户');
 
 -- ----------------------------
 -- Table structure for user
@@ -267,6 +268,7 @@ INSERT INTO `role` VALUES (2, '普通用户', 'user', 2, '0', '0', 'admin', '201
 DROP TABLE IF EXISTS `user`;
 CREATE TABLE `user`  (
   `id` int(10) NOT NULL AUTO_INCREMENT COMMENT '主键ID',
+  `role_id` int(11) NULL DEFAULT NULL COMMENT '角色编号',
   `user_name` varchar(30) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '用户名',
   `password` varchar(10) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '密码',
   `avatar` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '头像路径',
@@ -277,23 +279,24 @@ CREATE TABLE `user`  (
   `id_card` varchar(20) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '身份证号',
   `profession` varchar(10) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '职业',
   `education` varchar(4) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '学历1大专以下，2大专，3本科，4研究生，5研究生以上',
-  `role` varchar(4) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '1管理员，2租客，3房东',
   `house_num` int(10) NULL DEFAULT NULL COMMENT '房源数量',
   `identify` varchar(10) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '0未认证，1已认证',
+  `create_time` datetime(0) NULL DEFAULT NULL COMMENT '创建时间',
+  `remark` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '备注信息',
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 9 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Records of user
 -- ----------------------------
-INSERT INTO `user` VALUES (1, 'Jone', '123456', NULL, 'test1@baomidou.com', '13627441292', '1', 'Jone', '13226519910506112x', '工人', '1', '1', 0, '1');
-INSERT INTO `user` VALUES (2, 'Jack', '123456', '/images/2020/04/29/2020042908412034305944.png', 'test2@baomidou.com', '13611112222', '1', 'Jack', '132265199101026522', '工人', '2', '2', 0, '1');
-INSERT INTO `user` VALUES (3, 'Tom', '123456', '/images/2020/04/29/2020042908412034305944.png', 'test3@baomidou.com', '13122223333', '1', 'Tom', '631265199101026522', '文员', '3', '2', 0, '1');
-INSERT INTO `user` VALUES (4, 'Sandy', '123456', '/images/2020/04/29/2020042908430135306713.jpg', 'test4@baomidou.com', '13233334444', '2', 'Sandy', '631265199101026533', '教师', '4', '3', 4, '1');
-INSERT INTO `user` VALUES (5, 'Billie', '123456', NULL, 'test5@baomidou.com', '13455556666', '1', 'Billie', '631265199101026514', '研究员', '5', '3', 9, '1');
-INSERT INTO `user` VALUES (6, 'admin', '123456', '/images/2020/04/09/2020040911204753004770.jpg', '2356150341@qq.com', '13627441292', '2', '张三', '49025419950356251x', '管理员', '5', '1', NULL, '1');
-INSERT INTO `user` VALUES (7, 'Ada', '123456', '/images/2020/04/29/2020042908461147607859.jpg', '2356150341@qq.com', '13627441292', '2', '艾达', NULL, '记者', '3', '2', NULL, '0');
-INSERT INTO `user` VALUES (8, 'tiaozhuan', '123456', NULL, '0341@qq.com', '13627441292', NULL, NULL, NULL, NULL, NULL, '2', NULL, '0');
+INSERT INTO `user` VALUES (1, NULL, 'Jone', '123456', NULL, 'test1@baomidou.com', '13627441292', '1', 'Jone', '13226519910506112x', '工人', '1', 0, '1', NULL, '1');
+INSERT INTO `user` VALUES (2, NULL, 'Jack', '123456', '/images/2020/04/29/2020042908412034305944.png', 'test2@baomidou.com', '13611112222', '1', 'Jack', '132265199101026522', '工人', '2', 0, '1', NULL, '2');
+INSERT INTO `user` VALUES (3, NULL, 'Tom', '123456', '/images/2020/04/29/2020042908412034305944.png', 'test3@baomidou.com', '13122223333', '1', 'Tom', '631265199101026522', '文员', '3', 0, '1', NULL, '2');
+INSERT INTO `user` VALUES (4, NULL, 'Sandy', '123456', '/images/2020/04/29/2020042908430135306713.jpg', 'test4@baomidou.com', '13233334444', '2', 'Sandy', '631265199101026533', '教师', '4', 4, '1', NULL, '3');
+INSERT INTO `user` VALUES (5, NULL, 'Billie', '123456', NULL, 'test5@baomidou.com', '13455556666', '1', 'Billie', '631265199101026514', '研究员', '5', 9, '1', NULL, '3');
+INSERT INTO `user` VALUES (6, 1, 'admin', '123456', '/images/2020/04/09/2020040911204753004770.jpg', '2356150341@qq.com', '13627441292', '2', '张三', '49025419950356251x', '管理员', '5', NULL, '1', NULL, '1');
+INSERT INTO `user` VALUES (7, NULL, 'Ada', '123456', '/images/2020/04/29/2020042908461147607859.jpg', '2356150341@qq.com', '13627441292', '2', '艾达', NULL, '记者', '3', NULL, '0', NULL, '2');
+INSERT INTO `user` VALUES (8, NULL, 'tiaozhuan', '123456', NULL, '0341@qq.com', '13627441292', NULL, NULL, NULL, NULL, NULL, NULL, '0', NULL, '2');
 
 -- ----------------------------
 -- Table structure for vist_request

@@ -4,6 +4,7 @@
 
     <resultMap type="com.xyl.rental.entity.User" id="UserMap">
         <result property="id" column="id" jdbcType="INTEGER"/>
+        <result property="roleId" column="role_id" jdbcType="INTEGER"/>
         <result property="userName" column="user_name" jdbcType="VARCHAR"/>
         <result property="password" column="password" jdbcType="VARCHAR"/>
         <result property="avatar" column="avatar" jdbcType="VARCHAR"/>
@@ -14,15 +15,16 @@
         <result property="idCard" column="id_card" jdbcType="VARCHAR"/>
         <result property="profession" column="profession" jdbcType="VARCHAR"/>
         <result property="education" column="education" jdbcType="VARCHAR"/>
-        <result property="role" column="role" jdbcType="VARCHAR"/>
         <result property="houseNum" column="house_num" jdbcType="INTEGER"/>
         <result property="identify" column="identify" jdbcType="VARCHAR"/>
+        <result property="createTime" column="create_time" jdbcType="TIMESTAMP"/>
+        <result property="remark" column="remark" jdbcType="VARCHAR"/>
     </resultMap>
 
     <!--查询单个-->
     <select id="queryById" resultMap="UserMap">
         select
-          id, user_name, password, avatar, email, mobile, sex, real_name, id_card, profession, education, role, house_num, identify
+          id, role_id, user_name, password, avatar, email, mobile, sex, real_name, id_card, profession, education, house_num, identify, create_time, remark
         from rental.user
         where id = #{id}
     </select>
@@ -30,7 +32,7 @@
     <!--查询指定行数据-->
     <select id="queryAllByLimit" resultMap="UserMap">
         select
-          id, user_name, password, avatar, email, mobile, sex, real_name, id_card, profession, education, role, house_num, identify
+          id, role_id, user_name, password, avatar, email, mobile, sex, real_name, id_card, profession, education, house_num, identify, create_time, remark
         from rental.user
         limit #{offset}, #{limit}
     </select>
@@ -38,11 +40,14 @@
     <!--通过实体作为筛选条件查询-->
     <select id="queryAll" resultMap="UserMap">
         select
-          id, user_name, password, avatar, email, mobile, sex, real_name, id_card, profession, education, role, house_num, identify
+          id, role_id, user_name, password, avatar, email, mobile, sex, real_name, id_card, profession, education, house_num, identify, create_time, remark
         from rental.user
         <where>
             <if test="id != null">
                 and id = #{id}
+            </if>
+            <if test="roleId != null">
+                and role_id = #{roleId}
             </if>
             <if test="userName != null and userName != ''">
                 and user_name = #{userName}
@@ -74,28 +79,34 @@
             <if test="education != null and education != ''">
                 and education = #{education}
             </if>
-            <if test="role != null and role != ''">
-                and role = #{role}
-            </if>
             <if test="houseNum != null">
                 and house_num = #{houseNum}
             </if>
             <if test="identify != null and identify != ''">
                 and identify = #{identify}
             </if>
+            <if test="createTime != null">
+                and create_time = #{createTime}
+            </if>
+            <if test="remark != null and remark != ''">
+                and remark = #{remark}
+            </if>
         </where>
     </select>
 
     <!--新增所有列-->
     <insert id="insert" keyProperty="id" useGeneratedKeys="true">
-        insert into rental.user(user_name, password, avatar, email, mobile, sex, real_name, id_card, profession, education, role, house_num, identify)
-        values (#{userName}, #{password}, #{avatar}, #{email}, #{mobile}, #{sex}, #{realName}, #{idCard}, #{profession}, #{education}, #{role}, #{houseNum}, #{identify})
+        insert into rental.user(role_id, user_name, password, avatar, email, mobile, sex, real_name, id_card, profession, education, house_num, identify, create_time, remark)
+        values (#{roleId}, #{userName}, #{password}, #{avatar}, #{email}, #{mobile}, #{sex}, #{realName}, #{idCard}, #{profession}, #{education}, #{houseNum}, #{identify}, #{createTime}, #{remark})
     </insert>
 
     <!--通过主键修改数据-->
     <update id="update">
         update rental.user
         <set>
+            <if test="roleId != null">
+                role_id = #{roleId},
+            </if>
             <if test="userName != null and userName != ''">
                 user_name = #{userName},
             </if>
@@ -126,14 +137,17 @@
             <if test="education != null and education != ''">
                 education = #{education},
             </if>
-            <if test="role != null and role != ''">
-                role = #{role},
-            </if>
             <if test="houseNum != null">
                 house_num = #{houseNum},
             </if>
             <if test="identify != null and identify != ''">
                 identify = #{identify},
+            </if>
+            <if test="createTime != null">
+                create_time = #{createTime},
+            </if>
+            <if test="remark != null and remark != ''">
+                remark = #{remark},
             </if>
         </set>
         where id = #{id}
@@ -143,70 +157,23 @@
     <delete id="deleteById">
         delete from rental.user where id = #{id}
     </delete>
+
     <!-- 查询条数 -->
     <select id="countTotal" resultType="int"  >
         SELECT count(*) FROM rental.user
-        <where>
-            <if test="queryCondition.id != null">
-                and id like CONCAT('%',#{queryCondition.id},'%')
-            </if>
-            <if test="queryCondition.userName != null and queryCondition.userName != ''">
-                and user_name like  CONCAT('%',#{queryCondition.userName},'%')
-            </if>
-            <if test="queryCondition.password != null and queryCondition.password != ''">
-                and password = #{queryCondition.password}
-            </if>
-            <if test="queryCondition.email != null and queryCondition.email != ''">
-                and email like CONCAT('%',#{queryCondition.email},'%')
-            </if>
-            <if test="queryCondition.mobile != null and queryCondition.mobile != ''">
-                and mobile like CONCAT('%',#{queryCondition.mobile},'%')
-            </if>
-            <if test="queryCondition.sex != null and queryCondition.sex != ''">
-                and sex = #{queryCondition.sex}
-            </if>
-            <if test="queryCondition.realName != null and queryCondition.realName != ''">
-                and real_name like CONCAT('%',#{queryCondition.email},'%')
-            </if>
-            <if test="queryCondition.idCard != null and queryCondition.idCard != ''">
-                and id_card like CONCAT('%',#{queryCondition.idCard},'%')
-            </if>
-            <if test="queryCondition.profession != null and queryCondition.profession != ''">
-                and profession like CONCAT('%',#{queryCondition.profession},'%')
-            </if>
-            <if test="queryCondition.education != null and queryCondition.education != ''">
-                and education like CONCAT('%',#{queryCondition.education},'%')
-            </if>
-            <if test="queryCondition.role != null and queryCondition.role != ''">
-                and role = #{queryCondition.role}
-            </if>
-            <if test="queryCondition.houseNum != null">
-                and house_num = #{queryCondition.houseNum}
-            </if>
-            <if test="queryCondition.identify != null and queryCondition.identify != ''">
-                and identify = #{queryCondition.identify}
-            </if>
-            <if test="keyWord != null and keyWord != ''">
-                and (id like CONCAT('%',#{keyWord},'%')
-                or user_name like CONCAT('%',#{keyWord},'%')
-                or email like CONCAT('%',#{keyWord},'%')
-                or mobile like CONCAT('%',#{keyWord},'%')
-                or real_name like CONCAT('%',#{keyWord},'%')
-                or id_card like CONCAT('%',#{keyWord},'%')
-                or profession like CONCAT('%',#{keyWord},'%')
-                or education like CONCAT('%',#{keyWord},'%'))
-            </if>
-        </where>
     </select>
     <!--分页条件查询-->
     <select id="queryPage" resultMap="UserMap">
         select
-        id, user_name, password, avatar, email, mobile, sex, real_name, id_card, profession, education, role, house_num, identify
+        id, role_id, user_name, password, avatar, email, mobile, sex, real_name, id_card, profession, education, house_num, identify, create_time, remark
         from rental.user
         <where>
             <if test="queryCondition.id != null">
                 and id like CONCAT('%',#{queryCondition.id},'%')
             </if>
+            <if test="queryCondition.roleId != null">
+                and role_id like CONCAT('%',#{queryCondition.roleId},'%')
+            </if>
             <if test="queryCondition.userName != null and queryCondition.userName != ''">
                 and user_name like  CONCAT('%',#{queryCondition.userName},'%')
             </if>
@@ -234,14 +201,17 @@
             <if test="queryCondition.education != null and queryCondition.education != ''">
                 and education like CONCAT('%',#{queryCondition.education},'%')
             </if>
-            <if test="queryCondition.role != null and queryCondition.role != ''">
-                and role = #{queryCondition.role}
-            </if>
             <if test="queryCondition.houseNum != null">
                 and house_num = #{queryCondition.houseNum}
             </if>
             <if test="queryCondition.identify != null and queryCondition.identify != ''">
                 and identify = #{queryCondition.identify}
+            </if>
+            <if test="queryCondition.createTime != null">
+                and create_time like CONCAT('%',#{queryCondition.createtime},'%')
+            </if>
+            <if test="queryCondition.remark != null and queryCondition.remark != ''">
+                and remark = #{queryCondition.remark}
             </if>
             <if test="keyWord != null and keyWord != ''">
                 and (id like CONCAT('%',#{keyWord},'%')
@@ -251,7 +221,8 @@
                 or real_name like CONCAT('%',#{keyWord},'%')
                 or id_card like CONCAT('%',#{keyWord},'%')
                 or profession like CONCAT('%',#{keyWord},'%')
-                or education like CONCAT('%',#{keyWord},'%'))
+                or education like CONCAT('%',#{keyWord},'%')
+                or remark like CONCAT('%',#{keyWord},'%'))
             </if>
         </where>
         limit #{offset}, #{limit}
