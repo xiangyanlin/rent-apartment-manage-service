@@ -1,7 +1,7 @@
 /*
  Navicat Premium Data Transfer
 
- Source Server         : xiangyanlin
+ Source Server         : xyl
  Source Server Type    : MySQL
  Source Server Version : 50726
  Source Host           : localhost:3306
@@ -11,7 +11,7 @@
  Target Server Version : 50726
  File Encoding         : 65001
 
- Date: 29/04/2020 23:24:43
+ Date: 30/04/2020 13:12:05
 */
 
 SET NAMES utf8mb4;
@@ -167,7 +167,7 @@ INSERT INTO `house_resources` VALUES (22, '整租·万龙小区 ', 4, 1005, '1',
 INSERT INTO `house_resources` VALUES (23, '整租·新何三百村 ', 4, 1005, '1', '1', '526', '1', '1', 8000, 1, 4, '3室2厅1卫1厨2阳台', '120', '100', '5/12', '南', 1, '1,2,4,6,7', '/images/2020/04/03/2020040301290049806878.jpg,/images/2020/04/03/2020040301290784706432.jpg,/images/2020/04/03/2020040301293790608938.jpg,/images/2020/04/03/2020040301304306302773.jpg,/images/2020/04/03/2020040301304720408126.jpg', '物美价廉，好得很', '李四', '13122226666', 1, '1', '2020-04-03 13:31:26', NULL);
 INSERT INTO `house_resources` VALUES (24, '整租·新何三百村 ', 4, 1005, '1', '1', '526', '1', '1', 8000, 1, 4, '3室2厅1卫1厨2阳台', '120', '100', '5/12', '南', 1, '1,2,4,6,7', '/images/2020/04/03/2020040301030860001359.jpg,/images/2020/04/03/2020040301030440607986.jpg,/images/2020/04/03/2020040301031231505514.jpg,/images/2020/04/03/2020040301031618008001.jpg,/images/2020/04/03/2020040301031945401321.jpg', '物美价廉，好得很', '李四', '13122226666', 1, '1', '2020-04-03 13:32:46', NULL);
 INSERT INTO `house_resources` VALUES (25, '整租·美好家园', 5, 1005, '1', '1', '526', '1', '1', 8000, 1, 4, '3室2厅1卫1厨2阳台', '120', '100', '5/12', '南', 1, '1,2,4,6,7', '/images/2020/04/03/2020040301031945401321.jpg,/images/2020/04/03/2020040301030860001359.jpg,/images/2020/04/03/2020040301030440607986.jpg,/images/2020/04/03/2020040301031231505514.jpg,/images/2020/04/03/2020040301031618008001.jpg', '物美价廉，好得很', '李四', '13122226666', 1, '1', '2020-04-03 13:34:32', NULL);
-INSERT INTO `house_resources` VALUES (26, 'test', NULL, 1002, '1', '1', '1', '1', '1', 1, 1, 1, '3室2厅2卫2厨2阳台', '2000', '100', '6/2', '南', 1, '1,2,3', '', '111', '张三', '18774062479', 1, '5', '2020-04-06 16:07:54', NULL);
+INSERT INTO `house_resources` VALUES (26, 'test1', NULL, 1002, '1', '1', '1', '1', '1', 1, 1, 1, '3室2厅2卫2厨2阳台', '2000', '100', '6/2', '南', 1, '1,2,3', '', '111', '张三', '18774062479', 1, '5', '2020-04-06 16:07:54', '2020-04-30 10:29:40');
 
 -- ----------------------------
 -- Table structure for information
@@ -189,7 +189,7 @@ CREATE TABLE `information`  (
 -- ----------------------------
 -- Records of information
 -- ----------------------------
-INSERT INTO `information` VALUES (1, '房价上涨', '上涨了0.7个百分点', '3月，70个大中城市新房、二手房房价环比上涨数量均大幅增加。新房方面，38个城市房价上涨，较2月增加17城；二手房方面，二手房房价上涨城市增加至32个，较2月增加18城。', '/images/2020/04/26/2020042611031792502616.jpg', '资讯管理员', 65243, '2020-03-15 23:09:28', '2020-04-26 23:03:20');
+INSERT INTO `information` VALUES (1, '房价上涨', '上涨了0.7个百分点', '3月，70个大中城市新房、二手房房价环比上涨数量均大幅增加。新房方面，38个城市房价上涨，较2月增加17城；二手房方面，二手房房价上涨城市增加至32个，较2月增加18城。', '/images/2020/04/26/2020042611031792502616.jpg', '资讯管理员', 65244, '2020-03-15 23:09:28', '2020-04-26 23:03:20');
 INSERT INTO `information` VALUES (2, '房价继续上涨了', '又上涨了0.4个百分点', '中原地产首席分析师张大伟认为，在多方面因素刺激下，包括深圳、杭州等在内的多个城市房价出现了恢复，成为房价上涨的领先城市。', '/images/2020/04/26/2020042611133591502717.jpg', '资讯管理员', 65243, '2020-03-15 23:09:28', '2020-04-26 23:13:38');
 INSERT INTO `information` VALUES (4, '公租房违规首入征信系统', '“公租房管理面临收租难、清退难等问题。”省住房城乡建设厅相关负责人表示，为解决公租房相关问题，这是广东首次将公租房违规行为纳入人民银行征信系统。', '对违规申请和享受公租房和租赁补贴，或存在转租转借、空置、擅自装修等违规使用的家庭，住房保障主管部门除依据《公共租赁住房管理办法》《广东省城镇住房保障办法》等规定予以行政处罚外，还将其处罚信息纳入人民银行征信系统。\n“一旦纳入，将影响违规对象后续5年的金融行为。接下来，拒不缴交公租房租金等违规行为也将纳入征信系统。”省住房城乡建设厅相关负责人表示。', '/images/2020/04/26/202004260923239950125.jpg,/images/2020/04/26/2020042609232974008472.jpg', '资讯管理员', 658, '2020-04-26 21:23:31', NULL);
 INSERT INTO `information` VALUES (5, '1111', '111', '11111', '', 'admin', 1474, '2020-04-26 22:19:16', NULL);
@@ -214,8 +214,8 @@ CREATE TABLE `questions`  (
 -- ----------------------------
 -- Records of questions
 -- ----------------------------
-INSERT INTO `questions` VALUES (1, '买房办理贷款需要什么资料？', '还款卡、个人征信报告要不要？', '您好！需要准备的都是常规性的资料：1、身份证原件和复印件（已婚提供夫妻双方）；2、户口本复印件（首页+本人，已婚提供夫妻双方）；3、婚姻证明复印件（结婚证、离婚证、离婚协议书或离婚终审判决书）；4、收入证明和月还款2倍的银行流水（银行盖章）', 2, 4, '1', '2019-12-03 22:30:47', '2020-04-29 21:14:28');
-INSERT INTO `questions` VALUES (2, '在租房里为什么有的没有联系人和电话？这样我应该怎么联系他们？', NULL, NULL, 6, NULL, '1', '2020-04-28 23:36:35', NULL);
+INSERT INTO `questions` VALUES (1, '买房办理贷款需要什么资料？', '还款卡、个人征信报告要不要？', '您好！需要准备的都是常规性的资料：1、身份证原件和复印件（已婚提供夫妻双方）；2、户口本复印件（首页+本人，已婚提供夫妻双方）；3、婚姻证明复印件（结婚证、离婚证、离婚协议书或离婚终审判决书）；4、收入证明和月还款2倍的银行流水（银行盖章）', 2, 4, '2', '2019-12-03 22:30:47', '2020-04-29 21:14:28');
+INSERT INTO `questions` VALUES (2, '在租房里为什么有的没有联系人和电话？这样我应该怎么联系他们？', NULL, '您好，很高兴为您解答。在我们网站，您可以点击到具体的一个租房房源页面，屏幕正下方会有一个“看房请求”的选项，点击进去可以直联系房东。祝您生活愉快。', 6, 6, '2', '2020-04-28 23:36:35', '2020-04-30 09:42:11');
 
 -- ----------------------------
 -- Table structure for rent_record
@@ -235,6 +235,31 @@ CREATE TABLE `rent_record`  (
 -- Records of rent_record
 -- ----------------------------
 INSERT INTO `rent_record` VALUES (1, 5, 2, 5, 1, '1');
+
+-- ----------------------------
+-- Table structure for role
+-- ----------------------------
+DROP TABLE IF EXISTS `role`;
+CREATE TABLE `role`  (
+  `id` int(20) NOT NULL AUTO_INCREMENT COMMENT '角色ID',
+  `role_name` varchar(30) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '角色名称',
+  `role_key` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '角色权限字符串',
+  `role_sort` int(4) NOT NULL COMMENT '显示顺序',
+  `status` char(1) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '角色状态（0正常 1停用）',
+  `del_flag` char(1) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '0' COMMENT '删除标志（0代表存在 2代表删除）',
+  `create_by` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '' COMMENT '创建者',
+  `create_time` datetime(0) NULL DEFAULT NULL COMMENT '创建时间',
+  `update_by` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '' COMMENT '更新者',
+  `update_time` datetime(0) NULL DEFAULT NULL COMMENT '更新时间',
+  `remark` varchar(500) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '备注',
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 100 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '角色信息表' ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of role
+-- ----------------------------
+INSERT INTO `role` VALUES (1, '管理员', 'admin', 1, '0', '0', 'admin', '2018-03-16 11:33:00', 'ry', '2018-03-16 11:33:00', '管理员');
+INSERT INTO `role` VALUES (2, '普通用户', 'user', 2, '0', '0', 'admin', '2018-03-16 11:33:00', 'ry', '2018-03-16 11:33:00', '普通角色');
 
 -- ----------------------------
 -- Table structure for user

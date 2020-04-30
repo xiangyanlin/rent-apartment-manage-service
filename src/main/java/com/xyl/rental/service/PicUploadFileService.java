@@ -14,7 +14,7 @@ public interface PicUploadFileService {
     /**
      * 图片上传
      * @param uploadFile
-     * @return
+     * @returnn
      */
     public PicUploadResult upload(MultipartFile uploadFile);
 
