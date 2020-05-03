@@ -64,4 +64,10 @@ public interface RoleService {
      */
     TableResult queryByPage(int currentPage, int pageSize, Role condition, String keyWord);
 
+    /**
+     * 查询所有
+     * @return
+     */
+    public List queryAll(Role role);
+
 }

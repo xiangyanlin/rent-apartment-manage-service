@@ -95,4 +95,10 @@ public class RoleServiceImpl implements RoleService {
                 start, pageSize,condition,keyWord);
         return PageUtils.page(start,total,list,currentPage,pageSize);
     }
+
+
+    @Override
+    public List queryAll(Role role) {
+        return roleDao.queryAll(role);
+    }
 }

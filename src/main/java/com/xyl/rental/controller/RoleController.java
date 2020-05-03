@@ -7,6 +7,7 @@ import com.xyl.rental.vo.TableResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 /**
  * 角色信息表(Role)表控制层
@@ -92,4 +93,10 @@ public class RoleController {
         return tableResult;
     }
 
+    @ResponseBody
+    @RequestMapping("selectAll")
+    public R selectAll(){
+        List estates = this.roleService.queryAll(null);
+        return R.success(estates);
+    }
 }
