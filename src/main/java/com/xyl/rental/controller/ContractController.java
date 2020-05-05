@@ -2,6 +2,7 @@ package com.xyl.rental.controller;
 
 import com.xyl.rental.entity.Contract;
 import com.xyl.rental.service.ContractService;
+import com.xyl.rental.utils.R;
 import com.xyl.rental.vo.TableResult;
 import org.springframework.web.bind.annotation.*;
 
@@ -31,6 +32,43 @@ public class ContractController {
     @GetMapping("selectOne")
     public Contract selectOne(Integer id) {
         return this.contractService.queryById(id);
+    }
+
+    /**
+     * 新增合同
+     * @param contract
+     * @return
+     */
+    @RequestMapping("save")
+    @ResponseBody
+    public R saveRContract(@RequestBody Contract contract) {
+        Contract insert = contractService.insert(contract);
+        return R.success(insert);
+    }
+
+    /**
+     * 根据ID删除和同
+     * @param id
+     * @return
+     */
+    @DeleteMapping("delete")
+    @ResponseBody
+    public R removeRole(@RequestParam("id") int id) {
+        boolean b = contractService.deleteById(id);
+        return R.success(b,"success");
+    }
+
+    /**
+     * 修改合同
+     * @param contract
+     * @return
+     */
+    @RequestMapping("update")
+    @ResponseBody
+    public R updateContract(@RequestBody Contract contract) {
+
+        Contract update = contractService.update(contract);
+        return R.success(update);
     }
 
     /**

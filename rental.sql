@@ -1,7 +1,7 @@
 /*
  Navicat Premium Data Transfer
 
- Source Server         : xyl
+ Source Server         : xiangyanlin
  Source Server Type    : MySQL
  Source Server Version : 50726
  Source Host           : localhost:3306
@@ -11,7 +11,7 @@
  Target Server Version : 50726
  File Encoding         : 65001
 
- Date: 30/04/2020 17:29:53
+ Date: 05/05/2020 23:17:55
 */
 
 SET NAMES utf8mb4;
@@ -31,12 +31,13 @@ CREATE TABLE `contract`  (
   `start_time` date NULL DEFAULT NULL COMMENT '签约日期',
   `end_time` date NULL DEFAULT NULL COMMENT '到期日期',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Records of contract
 -- ----------------------------
 INSERT INTO `contract` VALUES (1, '3', '湖南长沙', 3, '张三', '李四', '2020-01-01', '2020-03-18');
+INSERT INTO `contract` VALUES (3, '2', '湖南省长沙市', 2, '李白', '王伟', '2020-05-05', '2020-05-15');
 
 -- ----------------------------
 -- Table structure for dict
@@ -150,7 +151,7 @@ CREATE TABLE `house_resources`  (
   `created` datetime(0) NULL DEFAULT NULL COMMENT '创建时间',
   `updated` datetime(0) NULL DEFAULT NULL COMMENT '更新时间',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 27 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '房源表' ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 28 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '房源表' ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Records of house_resources
@@ -168,6 +169,7 @@ INSERT INTO `house_resources` VALUES (23, '整租·新何三百村 ', 4, 1005, '
 INSERT INTO `house_resources` VALUES (24, '整租·新何三百村 ', 4, 1005, '1', '1', '526', '1', '1', 8000, 1, 4, '3室2厅1卫1厨2阳台', '120', '100', '5/12', '南', 1, '1,2,4,6,7', '/images/2020/04/03/2020040301030860001359.jpg,/images/2020/04/03/2020040301030440607986.jpg,/images/2020/04/03/2020040301031231505514.jpg,/images/2020/04/03/2020040301031618008001.jpg,/images/2020/04/03/2020040301031945401321.jpg', '物美价廉，好得很', '李四', '13122226666', 1, '1', '2020-04-03 13:32:46', NULL);
 INSERT INTO `house_resources` VALUES (25, '整租·美好家园', 5, 1005, '1', '1', '526', '1', '1', 8000, 1, 4, '3室2厅1卫1厨2阳台', '120', '100', '5/12', '南', 1, '1,2,4,6,7', '/images/2020/04/03/2020040301031945401321.jpg,/images/2020/04/03/2020040301030860001359.jpg,/images/2020/04/03/2020040301030440607986.jpg,/images/2020/04/03/2020040301031231505514.jpg,/images/2020/04/03/2020040301031618008001.jpg', '物美价廉，好得很', '李四', '13122226666', 1, '1', '2020-04-03 13:34:32', NULL);
 INSERT INTO `house_resources` VALUES (26, 'test1', NULL, 1002, '1', '1', '1', '1', '1', 1, 1, 1, '3室2厅2卫2厨2阳台', '2000', '100', '6/2', '南', 1, '1,2,3', '', '111', '张三', '18774062479', 1, '5', '2020-04-06 16:07:54', '2020-04-30 10:29:40');
+INSERT INTO `house_resources` VALUES (27, '乐山十一村法莱雅公寓', NULL, 1006, '8', '2', '621', '1', '0', 9000, 1, 2, '4室2厅2卫2厨2阳台', '200', '180', '6/20', '南', 1, '1,2,3', '/images/2020/05/04/2020050410425883703187.jpg,/images/2020/05/04/2020050410431086204918.jpg,/images/2020/05/04/2020050410432068102608.jpg,/images/2020/05/04/2020050410433048008514.jpg,/images/2020/05/04/2020050410433531503535.jpg', '面积大，装修好', '张三', '18774062411', 1, '5', '2020-05-04 22:47:58', NULL);
 
 -- ----------------------------
 -- Table structure for information
@@ -175,7 +177,7 @@ INSERT INTO `house_resources` VALUES (26, 'test1', NULL, 1002, '1', '1', '1', '1
 DROP TABLE IF EXISTS `information`;
 CREATE TABLE `information`  (
   `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '资讯编号',
-  `title` varchar(20) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '资讯标题',
+  `title` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '资讯标题',
   `summary` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '资讯简介',
   `content` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '资讯内容',
   `pic` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '资讯图片',
@@ -184,15 +186,16 @@ CREATE TABLE `information`  (
   `publish_time` datetime(0) NULL DEFAULT NULL COMMENT '发布时间',
   `update_time` datetime(0) NULL DEFAULT NULL COMMENT '修改时间',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 6 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 7 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Records of information
 -- ----------------------------
-INSERT INTO `information` VALUES (1, '房价上涨', '上涨了0.7个百分点', '3月，70个大中城市新房、二手房房价环比上涨数量均大幅增加。新房方面，38个城市房价上涨，较2月增加17城；二手房方面，二手房房价上涨城市增加至32个，较2月增加18城。', '/images/2020/04/26/2020042611031792502616.jpg', '资讯管理员', 65244, '2020-03-15 23:09:28', '2020-04-26 23:03:20');
-INSERT INTO `information` VALUES (2, '房价继续上涨了', '又上涨了0.4个百分点', '中原地产首席分析师张大伟认为，在多方面因素刺激下，包括深圳、杭州等在内的多个城市房价出现了恢复，成为房价上涨的领先城市。', '/images/2020/04/26/2020042611133591502717.jpg', '资讯管理员', 65243, '2020-03-15 23:09:28', '2020-04-26 23:13:38');
-INSERT INTO `information` VALUES (4, '公租房违规首入征信系统', '“公租房管理面临收租难、清退难等问题。”省住房城乡建设厅相关负责人表示，为解决公租房相关问题，这是广东首次将公租房违规行为纳入人民银行征信系统。', '对违规申请和享受公租房和租赁补贴，或存在转租转借、空置、擅自装修等违规使用的家庭，住房保障主管部门除依据《公共租赁住房管理办法》《广东省城镇住房保障办法》等规定予以行政处罚外，还将其处罚信息纳入人民银行征信系统。\n“一旦纳入，将影响违规对象后续5年的金融行为。接下来，拒不缴交公租房租金等违规行为也将纳入征信系统。”省住房城乡建设厅相关负责人表示。', '/images/2020/04/26/202004260923239950125.jpg,/images/2020/04/26/2020042609232974008472.jpg', '资讯管理员', 658, '2020-04-26 21:23:31', NULL);
-INSERT INTO `information` VALUES (5, '1111', '111', '11111', '', 'admin', 1474, '2020-04-26 22:19:16', NULL);
+INSERT INTO `information` VALUES (1, '房价上涨', '上涨了0.7个百分点', '3月，70个大中城市新房、二手房房价环比上涨数量均大幅增加。新房方面，38个城市房价上涨，较2月增加17城；二手房方面，二手房房价上涨城市增加至32个，较2月增加18城。', '/images/2020/04/26/2020042611031792502616.jpg', '资讯管理员', 65246, '2020-03-15 23:09:28', '2020-04-26 23:03:20');
+INSERT INTO `information` VALUES (2, '房价继续上涨了', '又上涨了0.4个百分点', '中原地产首席分析师张大伟认为，在多方面因素刺激下，包括深圳、杭州等在内的多个城市房价出现了恢复，成为房价上涨的领先城市。', '/images/2020/04/26/2020042611133591502717.jpg', '资讯管理员', 65244, '2020-03-15 23:09:28', '2020-04-26 23:13:38');
+INSERT INTO `information` VALUES (4, '公租房违规首入征信系统', '“公租房管理面临收租难、清退难等问题。”省住房城乡建设厅相关负责人表示，为解决公租房相关问题，这是广东首次将公租房违规行为纳入人民银行征信系统。', '对违规申请和享受公租房和租赁补贴，或存在转租转借、空置、擅自装修等违规使用的家庭，住房保障主管部门除依据《公共租赁住房管理办法》《广东省城镇住房保障办法》等规定予以行政处罚外，还将其处罚信息纳入人民银行征信系统。\n“一旦纳入，将影响违规对象后续5年的金融行为。接下来，拒不缴交公租房租金等违规行为也将纳入征信系统。”省住房城乡建设厅相关负责人表示。', '/images/2020/04/26/202004260923239950125.jpg,/images/2020/04/26/2020042609232974008472.jpg', '资讯管理员', 660, '2020-04-26 21:23:31', NULL);
+INSERT INTO `information` VALUES (5, '1111', '111', '11111', '', 'admin', 1475, '2020-04-26 22:19:16', '2020-05-03 00:05:30');
+INSERT INTO `information` VALUES (6, '又是一年逃离北上广，北京群租房大清退，多少人希望而来无奈而归', '北京的楼市高压在2017全年的调控之中终于是回归平静了，房地产市场的火热也降到了历史的冰点，可虽然房价已经止涨，但是对于无数打拼在北京的无房族来说，好像也没有任何意义，因为眼下最重要的是找到安身之所。', '逃离北上广伴随着每一年的春运时期开始，而今年可能会更加深刻，目前北京在大力清退群租房，无数的租客又被动面临着解决住房问题。由于北京的消费高、租金贵，很多年轻人或者普通收入的上班族都不得不多人租住在一起分摊。\n\n如今面临着被清退的困境，大多数人都得先想办法解决眼前落脚的问题，但是有很多人都是形单影只的北漂族，一时半会儿也找不到那么多人搭伙租房，而退出群租房将要面临着巨大的住房压力。', '/images/2020/05/04/2020050411453852507154.jpg,/images/2020/05/04/2020050411454354406494.jpg', 'admin', NULL, '2020-05-04 23:45:45', NULL);
 
 -- ----------------------------
 -- Table structure for questions
@@ -243,17 +246,17 @@ DROP TABLE IF EXISTS `role`;
 CREATE TABLE `role`  (
   `id` int(20) NOT NULL AUTO_INCREMENT COMMENT '角色ID',
   `role_name` varchar(30) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '角色名称',
-  `role_key` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '角色权限字符串',
-  `role_sort` int(4) NOT NULL COMMENT '显示顺序',
-  `status` char(1) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '角色状态（0正常 1停用）',
-  `del_flag` char(1) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '0' COMMENT '删除标志（0代表存在 2代表删除）',
+  `role_key` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '角色权限字符串',
+  `role_sort` int(10) NULL DEFAULT NULL COMMENT '显示顺序',
+  `status` varchar(4) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '角色状态（0正常 1停用）',
+  `del_flag` varchar(4) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '0' COMMENT '删除标志（0代表存在 2代表删除）',
   `create_by` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '' COMMENT '创建者',
   `create_time` datetime(0) NULL DEFAULT NULL COMMENT '创建时间',
   `update_by` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '' COMMENT '更新者',
   `update_time` datetime(0) NULL DEFAULT NULL COMMENT '更新时间',
   `remark` varchar(500) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '备注',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 100 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '角色信息表' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 102 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '角色信息表' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of role
@@ -261,6 +264,8 @@ CREATE TABLE `role`  (
 INSERT INTO `role` VALUES (1, '超级管理员', 'admin', 1, '0', '0', 'admin', '2018-03-16 11:33:00', '', '2018-03-16 11:33:00', '管理员');
 INSERT INTO `role` VALUES (2, '租客', 'user', 2, '0', '0', 'admin', '2018-03-16 11:33:00', '', '2018-03-16 11:33:00', '租客用户');
 INSERT INTO `role` VALUES (3, '房东', 'user', 3, '0', '0', 'admin', '2020-04-30 13:47:05', '', '2020-04-30 13:47:17', '房东用户');
+INSERT INTO `role` VALUES (100, '房源管理员', 'dashboard,house', NULL, '0', NULL, 'admin', '2020-04-30 22:51:25', 'admin', '2020-04-30 23:51:08', NULL);
+INSERT INTO `role` VALUES (101, '房东管理员', 'dashboard,owner', NULL, '0', NULL, 'admin', '2020-04-30 23:23:48', 'admin', '2020-04-30 23:51:58', NULL);
 
 -- ----------------------------
 -- Table structure for user
@@ -284,19 +289,21 @@ CREATE TABLE `user`  (
   `create_time` datetime(0) NULL DEFAULT NULL COMMENT '创建时间',
   `remark` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '备注信息',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 9 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 14 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Records of user
 -- ----------------------------
-INSERT INTO `user` VALUES (1, 3, 'Jone', '123456', NULL, 'test1@baomidou.com', '13627441292', '1', 'Jone', '13226519910506112x', '工人', '1', 0, '1', NULL, '1');
+INSERT INTO `user` VALUES (1, 3, 'Jone', '123456', NULL, 'test1@baomidou.com', '13627441292', '2', 'Jone', '430102199003071031', '工人', '1', 2, '1', NULL, '1');
 INSERT INTO `user` VALUES (2, 2, 'Jack', '123456', '/images/2020/04/29/2020042908412034305944.png', 'test2@baomidou.com', '13611112222', '1', 'Jack', '132265199101026522', '工人', '2', 0, '1', NULL, '2');
 INSERT INTO `user` VALUES (3, 3, 'Tom', '123456', '/images/2020/04/29/2020042908412034305944.png', 'test3@baomidou.com', '13122223333', '1', 'Tom', '631265199101026522', '文员', '3', 0, '1', NULL, '2');
 INSERT INTO `user` VALUES (4, 3, 'Sandy', '123456', '/images/2020/04/29/2020042908430135306713.jpg', 'test4@baomidou.com', '13233334444', '2', 'Sandy', '631265199101026533', '教师', '4', 4, '1', NULL, '3');
 INSERT INTO `user` VALUES (5, 3, 'Billie', '123456', NULL, 'test5@baomidou.com', '13455556666', '1', 'Billie', '631265199101026514', '研究员', '5', 9, '1', NULL, '3');
 INSERT INTO `user` VALUES (6, 1, 'admin', '123456', '/images/2020/04/09/2020040911204753004770.jpg', '2356150341@qq.com', '13627441292', '2', '张三', '49025419950356251x', '管理员', '5', NULL, '1', NULL, '1');
 INSERT INTO `user` VALUES (7, 2, 'Ada', '123456', '/images/2020/04/29/2020042908461147607859.jpg', '2356150341@qq.com', '13627441292', '2', '艾达', NULL, '记者', '3', NULL, '0', NULL, '2');
-INSERT INTO `user` VALUES (8, 2, 'tiaozhuan', '123456', NULL, '0341@qq.com', '13627441292', NULL, NULL, NULL, NULL, NULL, NULL, '0', NULL, '2');
+INSERT INTO `user` VALUES (8, 100, 'test', '123456', NULL, '0341@qq.com', '13627441292', NULL, '测试', NULL, NULL, NULL, NULL, '0', NULL, '2');
+INSERT INTO `user` VALUES (12, 2, 'xyl', '123456', NULL, '0341@qq.com', '18774062479', '1', 'hello', '110101199003074872', '记者', '1', NULL, NULL, NULL, NULL);
+INSERT INTO `user` VALUES (13, 2, '测试编辑', '123456', NULL, '2356150341@qq.com', '18774062479', '1', '测试编辑', '111', '记者', '1', NULL, NULL, NULL, NULL);
 
 -- ----------------------------
 -- Table structure for vist_request
