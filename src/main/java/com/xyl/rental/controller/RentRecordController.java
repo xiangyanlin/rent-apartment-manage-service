@@ -2,6 +2,7 @@ package com.xyl.rental.controller;
 
 import com.xyl.rental.entity.RentRecord;
 import com.xyl.rental.service.RentRecordService;
+import com.xyl.rental.utils.R;
 import com.xyl.rental.vo.TableResult;
 import org.springframework.web.bind.annotation.*;
 
@@ -31,6 +32,38 @@ public class RentRecordController {
     @GetMapping("selectOne")
     public RentRecord selectOne(Integer id) {
         return this.rentRecordService.queryById(id);
+    }
+
+    /**
+     * 新增记录
+     * @param rentRecord
+     * @return
+     */
+    @RequestMapping("save")
+    @ResponseBody
+    public R saveRecord(@RequestBody RentRecord rentRecord) {
+        RentRecord insert = rentRecordService.insert(rentRecord);
+        return R.success(insert);
+    }
+
+    /**
+     * 根据id删除记录
+     * @param id
+     * @return
+     */
+    @DeleteMapping("delete")
+    @ResponseBody
+    public R removeRecord(@RequestParam("id") int id) {
+        boolean b = rentRecordService.deleteById(id);
+        return R.success(b,"success");
+    }
+
+    @RequestMapping("update")
+    @ResponseBody
+    public R updateRecord(@RequestBody RentRecord rentRecord) {
+
+        RentRecord update = rentRecordService.update(rentRecord);
+        return R.success(update);
     }
 
     /**

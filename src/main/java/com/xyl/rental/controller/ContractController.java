@@ -53,7 +53,7 @@ public class ContractController {
      */
     @DeleteMapping("delete")
     @ResponseBody
-    public R removeRole(@RequestParam("id") int id) {
+    public R removeContract(@RequestParam("id") int id) {
         boolean b = contractService.deleteById(id);
         return R.success(b,"success");
     }

@@ -11,7 +11,7 @@
  Target Server Version : 50726
  File Encoding         : 65001
 
- Date: 05/05/2020 23:17:55
+ Date: 08/05/2020 00:31:10
 */
 
 SET NAMES utf8mb4;
@@ -31,13 +31,14 @@ CREATE TABLE `contract`  (
   `start_time` date NULL DEFAULT NULL COMMENT '签约日期',
   `end_time` date NULL DEFAULT NULL COMMENT '到期日期',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 6 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Records of contract
 -- ----------------------------
 INSERT INTO `contract` VALUES (1, '3', '湖南长沙', 3, '张三', '李四', '2020-01-01', '2020-03-18');
 INSERT INTO `contract` VALUES (3, '2', '湖南省长沙市', 2, '李白', '王伟', '2020-05-05', '2020-05-15');
+INSERT INTO `contract` VALUES (5, '2', '湖南岳阳', 2, '吴用', '宋江', '2020-05-06', '2020-05-16');
 
 -- ----------------------------
 -- Table structure for dict
@@ -51,7 +52,7 @@ CREATE TABLE `dict`  (
   `sort` int(20) NULL DEFAULT NULL COMMENT '字典排序号',
   `is_default` varchar(10) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '是否默认值，0不是，1是',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 12 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 14 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of dict
@@ -66,6 +67,8 @@ INSERT INTO `dict` VALUES (8, 3, '大专', '2', NULL, '0');
 INSERT INTO `dict` VALUES (9, 3, '本科', '3', NULL, '1');
 INSERT INTO `dict` VALUES (10, 3, '研究生', '4', NULL, '0');
 INSERT INTO `dict` VALUES (11, 3, '研究生以上', '5', NULL, '0');
+INSERT INTO `dict` VALUES (12, 5, '正常', '0', NULL, '1');
+INSERT INTO `dict` VALUES (13, 5, '停用', '2', NULL, '0');
 
 -- ----------------------------
 -- Table structure for dict_type
@@ -76,7 +79,7 @@ CREATE TABLE `dict_type`  (
   `dict_type_name` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '字典类型名',
   `dict_type_desc` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '字典类型描述',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 5 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 6 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of dict_type
@@ -85,6 +88,7 @@ INSERT INTO `dict_type` VALUES (1, '性别', '性别');
 INSERT INTO `dict_type` VALUES (2, '角色', '用户角色');
 INSERT INTO `dict_type` VALUES (3, '学历', '用户学历');
 INSERT INTO `dict_type` VALUES (4, '认证', '用户实名认证');
+INSERT INTO `dict_type` VALUES (5, '角色状态', '角色的状态');
 
 -- ----------------------------
 -- Table structure for estate
@@ -232,12 +236,13 @@ CREATE TABLE `rent_record`  (
   `contract_id` int(10) NULL DEFAULT NULL COMMENT '合同id',
   `status` varchar(10) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '租房状态1，已确认2，待确认3，待付款',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Records of rent_record
 -- ----------------------------
 INSERT INTO `rent_record` VALUES (1, 5, 2, 5, 1, '1');
+INSERT INTO `rent_record` VALUES (2, 6, 2, 5, 2, '2');
 
 -- ----------------------------
 -- Table structure for role
@@ -289,7 +294,7 @@ CREATE TABLE `user`  (
   `create_time` datetime(0) NULL DEFAULT NULL COMMENT '创建时间',
   `remark` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '备注信息',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 14 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 15 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Records of user
@@ -304,6 +309,7 @@ INSERT INTO `user` VALUES (7, 2, 'Ada', '123456', '/images/2020/04/29/2020042908
 INSERT INTO `user` VALUES (8, 100, 'test', '123456', NULL, '0341@qq.com', '13627441292', NULL, '测试', NULL, NULL, NULL, NULL, '0', NULL, '2');
 INSERT INTO `user` VALUES (12, 2, 'xyl', '123456', NULL, '0341@qq.com', '18774062479', '1', 'hello', '110101199003074872', '记者', '1', NULL, NULL, NULL, NULL);
 INSERT INTO `user` VALUES (13, 2, '测试编辑', '123456', NULL, '2356150341@qq.com', '18774062479', '1', '测试编辑', '111', '记者', '1', NULL, NULL, NULL, NULL);
+INSERT INTO `user` VALUES (14, 101, 'ownerAdmin', '123456', NULL, '1144150341@qq.com', '13455556666', '1', '赵云', '410102199003073711', '管理员', '3', NULL, NULL, NULL, NULL);
 
 -- ----------------------------
 -- Table structure for vist_request

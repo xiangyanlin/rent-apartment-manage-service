@@ -103,46 +103,29 @@
 
     <!--租房记录-->
     <select id="recordList" resultType="map">
-            SELECT b.id id,
-            b.house_name houseName,
-            b.tenan_name tenanName,
-            b.mobile,
-            c.start_time startTime,c.end_time endTime,
-            b.rent,
-            b.status
+            SELECT b.*,
+            c.start_time startTime,c.end_time endTime
             from( SELECT
-            a.id id,
-            a.house_name,
-            u.user_name tenan_name,
-            u.mobile,
-            a.contract_id,
-            a.rent,
-            a.status
-            from(select  r.id id,h.title house_name,r.tenan_id ,r.contract_id,h.rent,r.status
+            a.*,
+            u.user_name tenanName,
+            u.mobile
+            from(select  r.*,h.rent,h.title houseName
             from rent_record r
             LEFT JOIN  house_resources h on r.house_id=h.id)a
             LEFT JOIN  user u on a.tenan_id=u.id)b
             LEFT JOIN  contract c on b.contract_id=c.id
             limit #{offset}, #{limit}
      </select>
+
     <select id="recordTotal" resultType="int">
           select count(*) from
-          (  SELECT b.id id,
-            b.house_name,
-            b.tenan_name,
-            b.mobile,
-            c.start_time,c.end_time,
-            b.rent,
-            b.status
+          (             SELECT b.*,
+            c.start_time startTime,c.end_time endTime
             from( SELECT
-            a.id id,
-            a.house_name,
-            u.user_name tenan_name,
-            u.mobile,
-            a.contract_id,
-            a.rent,
-            a.status
-            from(select  r.id id,h.title house_name,r.tenan_id ,r.contract_id,h.rent,h.status
+            a.*,
+            u.user_name tenanName,
+            u.mobile
+            from(select  r.*,h.rent,h.title houseName
             from rent_record r
             LEFT JOIN  house_resources h on r.house_id=h.id)a
             LEFT JOIN  user u on a.tenan_id=u.id)b
