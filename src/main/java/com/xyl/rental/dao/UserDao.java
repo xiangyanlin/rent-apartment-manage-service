@@ -77,4 +77,10 @@ public interface UserDao {
      */
     int countTotal(User queryCondition,String keyWord);
 
+    /**
+     * 查询用户总数
+     * @return
+     */
+    int countUserTotal();
+
 }
