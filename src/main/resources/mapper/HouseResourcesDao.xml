@@ -383,4 +383,13 @@
         SELECT count(*) FROM rental.house_resources
 
     </select>
+
+    <!-- 查询总数 -->
+    <select id="countHouseByO" resultType="map"  >
+        select  h.orientation x,
+        COUNT(*) y
+        from house_resources h
+        GROUP BY
+        h.orientation
+    </select>
 </mapper>

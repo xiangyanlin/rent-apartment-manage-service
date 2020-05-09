@@ -159,4 +159,13 @@ public class HouseResourcesServiceImpl implements HouseResourcesService {
         double f1 = bg.setScale(2, BigDecimal.ROUND_HALF_UP).doubleValue();
         return f1;
     }
+
+    /**
+     * 按朝向统计房源
+     * @return
+     */
+    @Override
+    public List<Map<Object, Object>> countHouseByO() {
+        return houseResourcesDao.countHouseByO();
+    }
 }

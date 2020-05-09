@@ -89,4 +89,10 @@ public interface HouseResourcesDao {
      * @return
      */
     int countHouseTotal();
+
+    /**
+     * 按朝向统计房源
+     * @return
+     */
+    List<Map<Object,Object>> countHouseByO();
 }

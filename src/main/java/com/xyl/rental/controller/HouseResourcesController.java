@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import java.util.Date;
+import java.util.List;
+import java.util.Map;
 
 /**
  * 房源表(HouseResources)表控制层
@@ -137,5 +139,16 @@ public class HouseResourcesController {
     public R decorationProp(){
         Double prop = houseResourcesService.decorationProp();
         return R.success(prop);
+    }
+
+    /**
+     * 按朝向查找
+     * @return
+     */
+    @GetMapping("countByO")
+    @ResponseBody
+    public R countByO(){
+        List<Map<Object, Object>> maps = houseResourcesService.countHouseByO();
+        return R.success(maps);
     }
 }

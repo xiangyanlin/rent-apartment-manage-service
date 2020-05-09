@@ -4,6 +4,7 @@ import com.xyl.rental.entity.HouseResources;
 import com.xyl.rental.vo.TableResult;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * 房源表(HouseResources)表服务接口
@@ -89,5 +90,12 @@ public interface HouseResourcesService {
      * @return
      */
     Double decorationProp();
+
+
+    /**
+     * 按朝向统计房源
+     * @return
+     */
+    List<Map<Object,Object>> countHouseByO();
 
 }
