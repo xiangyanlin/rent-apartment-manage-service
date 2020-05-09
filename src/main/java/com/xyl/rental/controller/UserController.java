@@ -181,4 +181,15 @@ public class UserController {
         return tableResult;
     }
 
+    /**
+     * 统计用户总数
+     * @return
+     */
+    @GetMapping("total")
+    @ResponseBody
+    public R countUserTotal(){
+        int users = userService.countUserTotal();
+        return R.success(users);
+    }
+
 }

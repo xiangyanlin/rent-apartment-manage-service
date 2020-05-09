@@ -161,6 +161,64 @@
     <!-- 查询条数 -->
     <select id="countTotal" resultType="int"  >
         SELECT count(*) FROM rental.user
+        <where>
+            <if test="queryCondition.id != null">
+                and id like CONCAT('%',#{queryCondition.id},'%')
+            </if>
+            <if test="queryCondition.roleId != null">
+                and role_id like CONCAT('%',#{queryCondition.roleId},'%')
+            </if>
+            <if test="queryCondition.userName != null and queryCondition.userName != ''">
+                and user_name like  CONCAT('%',#{queryCondition.userName},'%')
+            </if>
+            <if test="queryCondition.password != null and queryCondition.password != ''">
+                and password = #{queryCondition.password}
+            </if>
+            <if test="queryCondition.email != null and queryCondition.email != ''">
+                and email like CONCAT('%',#{queryCondition.email},'%')
+            </if>
+            <if test="queryCondition.mobile != null and queryCondition.mobile != ''">
+                and mobile like CONCAT('%',#{queryCondition.mobile},'%')
+            </if>
+            <if test="queryCondition.sex != null and queryCondition.sex != ''">
+                and sex = #{queryCondition.sex}
+            </if>
+            <if test="queryCondition.realName != null and queryCondition.realName != ''">
+                and real_name like CONCAT('%',#{queryCondition.email},'%')
+            </if>
+            <if test="queryCondition.idCard != null and queryCondition.idCard != ''">
+                and id_card like CONCAT('%',#{queryCondition.idCard},'%')
+            </if>
+            <if test="queryCondition.profession != null and queryCondition.profession != ''">
+                and profession like CONCAT('%',#{queryCondition.profession},'%')
+            </if>
+            <if test="queryCondition.education != null and queryCondition.education != ''">
+                and education like CONCAT('%',#{queryCondition.education},'%')
+            </if>
+            <if test="queryCondition.houseNum != null">
+                and house_num = #{queryCondition.houseNum}
+            </if>
+            <if test="queryCondition.identify != null and queryCondition.identify != ''">
+                and identify = #{queryCondition.identify}
+            </if>
+            <if test="queryCondition.createTime != null">
+                and create_time like CONCAT('%',#{queryCondition.createtime},'%')
+            </if>
+            <if test="queryCondition.remark != null and queryCondition.remark != ''">
+                and remark = #{queryCondition.remark}
+            </if>
+            <if test="keyWord != null and keyWord != ''">
+                and (id like CONCAT('%',#{keyWord},'%')
+                or user_name like CONCAT('%',#{keyWord},'%')
+                or email like CONCAT('%',#{keyWord},'%')
+                or mobile like CONCAT('%',#{keyWord},'%')
+                or real_name like CONCAT('%',#{keyWord},'%')
+                or id_card like CONCAT('%',#{keyWord},'%')
+                or profession like CONCAT('%',#{keyWord},'%')
+                or education like CONCAT('%',#{keyWord},'%')
+                or remark like CONCAT('%',#{keyWord},'%'))
+            </if>
+        </where>
     </select>
     <!--分页条件查询-->
     <select id="queryPage" resultMap="UserMap">
@@ -226,5 +284,11 @@
             </if>
         </where>
         limit #{offset}, #{limit}
+    </select>
+
+
+    <!-- 查询总数 -->
+    <select id="countUserTotal" resultType="int"  >
+        SELECT count(*) FROM rental.user
     </select>
 </mapper>

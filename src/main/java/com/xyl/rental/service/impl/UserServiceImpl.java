@@ -113,4 +113,13 @@ public class UserServiceImpl implements UserService {
 
         return user;
     }
+
+    /**
+     * 统计用户总数
+     * @return
+     */
+    @Override
+    public int countUserTotal() {
+        return userDao.countUserTotal();
+    }
 }

@@ -66,4 +66,10 @@ public interface UserService {
      * @return
      */
     User queryByUser(User condition);
+
+    /**
+     * 统计用户总数
+     * @return
+     */
+    int countUserTotal();
 }
