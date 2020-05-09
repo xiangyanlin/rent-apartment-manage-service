@@ -377,4 +377,10 @@
 
         limit #{offset}, #{limit}
     </select>
+
+    <!-- 查询总数 -->
+    <select id="countHouseTotal" resultType="int"  >
+        SELECT count(*) FROM rental.house_resources
+
+    </select>
 </mapper>

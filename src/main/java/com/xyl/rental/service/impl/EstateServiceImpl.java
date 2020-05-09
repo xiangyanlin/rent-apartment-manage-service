@@ -2,6 +2,7 @@ package com.xyl.rental.service.impl;
 
 import com.xyl.rental.entity.Estate;
 import com.xyl.rental.dao.EstateDao;
+import com.xyl.rental.entity.HouseResources;
 import com.xyl.rental.service.EstateService;
 import com.xyl.rental.vo.Pagination;
 import com.xyl.rental.vo.TableResult;
@@ -122,4 +123,10 @@ public class EstateServiceImpl implements EstateService {
         tr.setPagination(pagination);
         return tr;
     }
+
+    @Override
+    public int countEstateTotal() {
+        return estateDao.countEstateTotal();
+    }
+
 }

@@ -106,4 +106,15 @@ public class EstateController {
         return tableResult;
     }
 
+    /**
+     * 统计楼盘总数
+     * @return
+     */
+    @GetMapping("total")
+    @ResponseBody
+    public R countEstateTotal(){
+        int users = estateService.countEstateTotal();
+        return R.success(users);
+    }
+
 }

@@ -77,4 +77,17 @@ public interface HouseResourcesService {
     TableResult queryPageAndEstate(int currentPage, int pageSize,HouseResources queryCondition,
                                    String keyWord,Integer minRent, Integer maxRent);
 
+    /**
+     * 统计房源总数
+     * @return
+     */
+    int countHouseTotal();
+
+
+    /**
+     * 精装房占比
+     * @return
+     */
+    Double decorationProp();
+
 }

@@ -116,4 +116,26 @@ public class HouseResourcesController {
         return tableResult;
     }
 
+    /**
+     * 统计房源总量
+     * @return
+     */
+    @GetMapping("total")
+    @ResponseBody
+    public R countHouseTotal(){
+        int houses = houseResourcesService.countHouseTotal();
+        return R.success(houses);
+    }
+
+
+    /**
+     * 精装房占比
+     * @return
+     */
+    @GetMapping("decorationProp")
+    @ResponseBody
+    public R decorationProp(){
+        Double prop = houseResourcesService.decorationProp();
+        return R.success(prop);
+    }
 }

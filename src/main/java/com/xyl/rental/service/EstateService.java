@@ -69,4 +69,12 @@ public interface EstateService {
      * @return
      */
     TableResult queryByPage(int currentPage, int pageSize, Estate queryCondition, String keyWord);
+
+    /**
+     * 统计楼盘总数
+     * @return
+     */
+    int countEstateTotal();
+
+
 }

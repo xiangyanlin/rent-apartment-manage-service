@@ -255,4 +255,10 @@
         </where>
         limit #{offset}, #{limit}
     </select>
+
+    <!-- 查询总数 -->
+    <select id="countEstateTotal" resultType="int"  >
+        SELECT count(*) FROM  rental.estate
+
+    </select>
 </mapper>

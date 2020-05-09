@@ -83,4 +83,10 @@ public interface HouseResourcesDao {
     int countTotal(HouseResources houseResources, String keyWord,Integer minRent, Integer maxRent);
 
     List<Map> queryPageAndEstate(int offset, int limit, HouseResources houseResources, String keyWord, Integer minRent, Integer maxRent);
+
+    /**
+     * 统计房源组数
+     * @return
+     */
+    int countHouseTotal();
 }

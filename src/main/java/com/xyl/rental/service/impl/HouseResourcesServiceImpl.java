@@ -9,6 +9,8 @@ import com.xyl.rental.vo.TableResult;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.math.BigDecimal;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -130,5 +132,31 @@ public class HouseResourcesServiceImpl implements HouseResourcesService {
         tr.setList(maps);
         tr.setPagination(pagination);
         return tr;
+    }
+
+    /**
+     * 统计房源总数
+     * @return
+     */
+    @Override
+    public int countHouseTotal() {
+        return houseResourcesDao.countHouseTotal();
+    }
+
+
+    /**
+     * 精装房占比
+     * @return
+     */
+    @Override
+    public Double decorationProp() {
+        HouseResources condition=new HouseResources();
+        condition.setDecoration(1);
+        int total = houseResourcesDao.countHouseTotal();
+        int i = houseResourcesDao.countTotal(condition, "", null, null);
+        Double prop=(i/Double.valueOf(total))*100;
+        BigDecimal bg = new BigDecimal(prop);
+        double f1 = bg.setScale(2, BigDecimal.ROUND_HALF_UP).doubleValue();
+        return f1;
     }
 }

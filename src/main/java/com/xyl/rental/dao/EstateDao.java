@@ -81,4 +81,10 @@ public interface EstateDao {
      * @return
      */
     List<Estate> queryPage(@Param("offset") int offset, @Param("limit") int limit, Estate queryCondition, String keyWord);
+
+    /**
+     * 统计楼盘总数
+     * @return
+     */
+    int countEstateTotal();
 }
