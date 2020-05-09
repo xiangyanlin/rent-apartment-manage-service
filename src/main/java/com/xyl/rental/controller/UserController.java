@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import java.awt.*;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -190,6 +191,17 @@ public class UserController {
     public R countUserTotal(){
         int users = userService.countUserTotal();
         return R.success(users);
+    }
+
+    /**
+     * 按月统计用户数量
+     * @return
+     */
+    @GetMapping("countByMon")
+    @ResponseBody
+    public R countUserByMon(){
+        List<Map<Object, Object>> maps = userService.countUserByMon();
+        return R.success(maps);
     }
 
 }

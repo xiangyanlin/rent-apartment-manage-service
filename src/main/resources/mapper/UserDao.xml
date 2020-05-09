@@ -291,4 +291,13 @@
     <select id="countUserTotal" resultType="int"  >
         SELECT count(*) FROM rental.user
     </select>
+
+    <!-- 按钮查询用户数量 -->
+    <select id="countUserByMon" resultType="map"  >
+        select LEFT(u.create_time,7) x,
+        COUNT(*) y
+        from user u
+        GROUP BY
+        LEFT(u.create_time,7)
+    </select>
 </mapper>

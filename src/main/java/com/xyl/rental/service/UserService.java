@@ -4,6 +4,7 @@ import com.xyl.rental.entity.User;
 import com.xyl.rental.vo.TableResult;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * (User)表服务接口
@@ -72,4 +73,10 @@ public interface UserService {
      * @return
      */
     int countUserTotal();
+
+    /**
+     * 按月查询用户数量
+     * @return
+     */
+    List<Map<Object, Object>> countUserByMon();
 }

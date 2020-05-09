@@ -3,7 +3,10 @@ package com.xyl.rental.dao;
 import com.xyl.rental.entity.User;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
+import org.omg.CORBA.OBJ_ADAPTER;
+
 import java.util.List;
+import java.util.Map;
 
 /**
  * (User)表数据库访问层
@@ -82,5 +85,12 @@ public interface UserDao {
      * @return
      */
     int countUserTotal();
+
+    /**
+     * 按月查询用户数量
+     * @return
+     */
+    List<Map<Object, Object>> countUserByMon();
+
 
 }

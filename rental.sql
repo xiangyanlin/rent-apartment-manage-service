@@ -1,7 +1,7 @@
 /*
  Navicat Premium Data Transfer
 
- Source Server         : xiangyanlin
+ Source Server         : xyl
  Source Server Type    : MySQL
  Source Server Version : 50726
  Source Host           : localhost:3306
@@ -11,7 +11,7 @@
  Target Server Version : 50726
  File Encoding         : 65001
 
- Date: 08/05/2020 00:31:10
+ Date: 09/05/2020 17:12:32
 */
 
 SET NAMES utf8mb4;
@@ -299,17 +299,17 @@ CREATE TABLE `user`  (
 -- ----------------------------
 -- Records of user
 -- ----------------------------
-INSERT INTO `user` VALUES (1, 3, 'Jone', '123456', NULL, 'test1@baomidou.com', '13627441292', '2', 'Jone', '430102199003071031', '工人', '1', 2, '1', NULL, '1');
-INSERT INTO `user` VALUES (2, 2, 'Jack', '123456', '/images/2020/04/29/2020042908412034305944.png', 'test2@baomidou.com', '13611112222', '1', 'Jack', '132265199101026522', '工人', '2', 0, '1', NULL, '2');
-INSERT INTO `user` VALUES (3, 3, 'Tom', '123456', '/images/2020/04/29/2020042908412034305944.png', 'test3@baomidou.com', '13122223333', '1', 'Tom', '631265199101026522', '文员', '3', 0, '1', NULL, '2');
-INSERT INTO `user` VALUES (4, 3, 'Sandy', '123456', '/images/2020/04/29/2020042908430135306713.jpg', 'test4@baomidou.com', '13233334444', '2', 'Sandy', '631265199101026533', '教师', '4', 4, '1', NULL, '3');
-INSERT INTO `user` VALUES (5, 3, 'Billie', '123456', NULL, 'test5@baomidou.com', '13455556666', '1', 'Billie', '631265199101026514', '研究员', '5', 9, '1', NULL, '3');
-INSERT INTO `user` VALUES (6, 1, 'admin', '123456', '/images/2020/04/09/2020040911204753004770.jpg', '2356150341@qq.com', '13627441292', '2', '张三', '49025419950356251x', '管理员', '5', NULL, '1', NULL, '1');
-INSERT INTO `user` VALUES (7, 2, 'Ada', '123456', '/images/2020/04/29/2020042908461147607859.jpg', '2356150341@qq.com', '13627441292', '2', '艾达', NULL, '记者', '3', NULL, '0', NULL, '2');
-INSERT INTO `user` VALUES (8, 100, 'test', '123456', NULL, '0341@qq.com', '13627441292', NULL, '测试', NULL, NULL, NULL, NULL, '0', NULL, '2');
-INSERT INTO `user` VALUES (12, 2, 'xyl', '123456', NULL, '0341@qq.com', '18774062479', '1', 'hello', '110101199003074872', '记者', '1', NULL, NULL, NULL, NULL);
-INSERT INTO `user` VALUES (13, 2, '测试编辑', '123456', NULL, '2356150341@qq.com', '18774062479', '1', '测试编辑', '111', '记者', '1', NULL, NULL, NULL, NULL);
-INSERT INTO `user` VALUES (14, 101, 'ownerAdmin', '123456', NULL, '1144150341@qq.com', '13455556666', '1', '赵云', '410102199003073711', '管理员', '3', NULL, NULL, NULL, NULL);
+INSERT INTO `user` VALUES (1, 3, 'Jone', '123456', NULL, 'test1@baomidou.com', '13627441292', '2', 'Jone', '430102199003071031', '工人', '1', 2, '1', '2019-01-01 15:34:20', '1');
+INSERT INTO `user` VALUES (2, 2, 'Jack', '123456', '/images/2020/04/29/2020042908412034305944.png', 'test2@baomidou.com', '13611112222', '1', 'Jack', '132265199101026522', '工人', '2', 0, '1', '2020-05-01 15:43:48', '2');
+INSERT INTO `user` VALUES (3, 3, 'Tom', '123456', '/images/2020/04/29/2020042908412034305944.png', 'test3@baomidou.com', '13122223333', '1', 'Tom', '631265199101026522', '文员', '3', 0, '1', '2019-03-12 15:44:11', '2');
+INSERT INTO `user` VALUES (4, 3, 'Sandy', '123456', '/images/2020/04/29/2020042908430135306713.jpg', 'test4@baomidou.com', '13233334444', '2', 'Sandy', '631265199101026533', '教师', '4', 4, '1', '2019-12-11 15:44:23', '3');
+INSERT INTO `user` VALUES (5, 3, 'Billie', '123456', NULL, 'test5@baomidou.com', '13455556666', '1', 'Billie', '631265199101026514', '研究员', '5', 9, '1', '2019-04-09 15:44:33', '3');
+INSERT INTO `user` VALUES (6, 1, 'admin', '123456', '/images/2020/04/09/2020040911204753004770.jpg', '2356150341@qq.com', '13627441292', '2', '张三', '49025419950356251x', '管理员', '5', NULL, '1', '2019-10-15 15:44:42', '1');
+INSERT INTO `user` VALUES (7, 2, 'Ada', '123456', '/images/2020/04/29/2020042908461147607859.jpg', '2356150341@qq.com', '13627441292', '2', '艾达', NULL, '记者', '3', NULL, '0', '2019-12-10 15:44:51', '2');
+INSERT INTO `user` VALUES (8, 100, 'test', '123456', NULL, '0341@qq.com', '13627441292', NULL, '测试', NULL, NULL, NULL, NULL, '0', '2019-06-04 15:44:57', '2');
+INSERT INTO `user` VALUES (12, 2, 'xyl', '123456', NULL, '0341@qq.com', '18774062479', '1', 'hello', '110101199003074872', '记者', '1', NULL, NULL, '2019-09-03 15:45:20', NULL);
+INSERT INTO `user` VALUES (13, 2, '测试编辑', '123456', NULL, '2356150341@qq.com', '18774062479', '1', '测试编辑', '111', '记者', '1', NULL, NULL, '2019-02-15 15:45:11', NULL);
+INSERT INTO `user` VALUES (14, 101, 'ownerAdmin', '123456', NULL, '1144150341@qq.com', '13455556666', '1', '赵云', '410102199003073711', '管理员', '3', NULL, NULL, '2019-10-08 15:45:29', NULL);
 
 -- ----------------------------
 -- Table structure for vist_request

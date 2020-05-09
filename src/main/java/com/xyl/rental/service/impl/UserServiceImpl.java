@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import java.util.List;
+import java.util.Map;
 
 /**
  * (User)表服务实现类
@@ -121,5 +122,14 @@ public class UserServiceImpl implements UserService {
     @Override
     public int countUserTotal() {
         return userDao.countUserTotal();
+    }
+
+    /**
+     * 按月查询用户数量
+     * @return
+     */
+    @Override
+    public List<Map<Object, Object>> countUserByMon() {
+        return userDao.countUserByMon();
     }
 }
