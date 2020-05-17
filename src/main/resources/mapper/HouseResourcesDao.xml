@@ -247,6 +247,9 @@
             <if test="houseResources.ownerId != null ">
                 and owner_id = #{houseResources.ownerId}
             </if>
+            <if test="houseResources.rentMethod != null ">
+                and rent_method = #{houseResources.rentMethod}
+            </if>
             <if test="houseResources.status != null and houseResources.status != ''">
                 and status = #{houseResources.status}
             </if>
@@ -279,6 +282,7 @@
             </if>
         </where>
     </select>
+
     <!--分页条件查询-->
     <select id="queryPage" resultMap="HouseResourcesMap">
         select
@@ -293,6 +297,9 @@
             </if>
             <if test="houseResources.ownerId != null ">
                 and owner_id = #{houseResources.ownerId}
+            </if>
+            <if test="houseResources.rentMethod != null ">
+                and rent_method = #{houseResources.rentMethod}
             </if>
             <if test="houseResources.status != null and houseResources.status != ''">
                 and status = #{houseResources.status}
