@@ -1,6 +1,6 @@
 package com.xyl.rental.dao;
 
-import com.xyl.query.HouseQuery;
+import com.xyl.rental.query.HouseQuery;
 import com.xyl.rental.entity.HouseResources;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;

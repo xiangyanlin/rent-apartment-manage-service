@@ -1,18 +1,15 @@
 package com.xyl.rental.service.impl;
 
-import com.xyl.query.HouseQuery;
+import com.xyl.rental.query.HouseQuery;
 import com.xyl.rental.entity.HouseResources;
 import com.xyl.rental.dao.HouseResourcesDao;
 import com.xyl.rental.service.HouseResourcesService;
-import com.xyl.rental.vo.PageInfo;
 import com.xyl.rental.vo.Pagination;
 import com.xyl.rental.vo.TableResult;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import java.math.BigDecimal;
-import java.text.DecimalFormat;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 

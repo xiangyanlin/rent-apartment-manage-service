@@ -236,7 +236,7 @@
     </delete>
 
     <!-- 查询条数 -->
-    <select id="countTotal" resultType="int" parameterType="com.xyl.query.HouseQuery">
+    <select id="countTotal" resultType="int" parameterType="com.xyl.rental.query.HouseQuery">
         SELECT count(*) FROM rental.house_resources
         <where>
             <if test="id != null">

@@ -1,6 +1,6 @@
 package com.xyl.rental.service;
 
-import com.xyl.query.HouseQuery;
+import com.xyl.rental.query.HouseQuery;
 import com.xyl.rental.entity.HouseResources;
 import com.xyl.rental.vo.TableResult;
 

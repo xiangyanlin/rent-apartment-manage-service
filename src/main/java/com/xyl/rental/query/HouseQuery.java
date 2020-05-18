@@ -1,4 +1,4 @@
-package com.xyl.query;
+package com.xyl.rental.query;
 
 import lombok.Data;
 
