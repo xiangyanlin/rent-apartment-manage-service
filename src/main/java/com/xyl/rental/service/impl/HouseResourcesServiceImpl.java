@@ -1,5 +1,6 @@
 package com.xyl.rental.service.impl;
 
+import com.xyl.rental.dto.HouseEatateDto;
 import com.xyl.rental.query.HouseQuery;
 import com.xyl.rental.entity.HouseResources;
 import com.xyl.rental.dao.HouseResourcesDao;
@@ -118,12 +119,12 @@ public class HouseResourcesServiceImpl implements HouseResourcesService {
         int start=(currentPage-1)*pageSize;
         int total=houseResourcesDao.countTotal(queryCondition);
 
-        List<Map> maps = houseResourcesDao.queryPageAndEstate(
+        List<HouseEatateDto> houseEatateDtos = houseResourcesDao.queryPageAndEstate(
                 start, pageSize, queryCondition);
         pagination.setCurrent(currentPage);
         pagination.setPageSize(pageSize);
         pagination.setTotal(total);
-        tr.setList(maps);
+        tr.setList(houseEatateDtos);
         tr.setPagination(pagination);
         return tr;
     }

@@ -356,8 +356,9 @@
         limit #{offset}, #{limit}
     </select>
 
-    <select id="queryPageAndEstate" resultType="map">
-        select a.*,e.name estateName
+    <select id="queryPageAndEstate" resultType="com.xyl.rental.dto.HouseEatateDto">
+        select a.*,e.name estateName,e.province,e.city,e.area,e.address
+        from
        ( select
         id, title, owner_id, estate_id, building_num, building_unit, building_floor_num, used, status, rent, rent_method, payment_method, house_type, covered_area, use_area, floor, orientation, decoration, facilities, pic, house_desc, contact, mobile, time, property_cost, created, updated
         from rental.house_resources
@@ -371,35 +372,48 @@
             <if test="houseResources.ownerId != null ">
                 and owner_id = #{houseResources.ownerId}
             </if>
+            <if test="houseResources.rentMethod != null ">
+                and rent_method = #{houseResources.rentMethod}
+            </if>
+            <if test="houseResources.paymentMethod != null and houseResources.paymentMethod.size>0 ">
+                and payment_method in <foreach collection="houseResources.paymentMethod" item="item" index="index"
+                                               open="(" separator="," close=")">#{item}</foreach>
+            </if>
             <if test="houseResources.status != null and houseResources.status != ''">
                 and status = #{houseResources.status}
             </if>
             <if test="houseResources.used != null and houseResources.used != ''">
                 and used = #{houseResources.used}
             </if>
-            <if test=" minRent!= null">
-                and rent <![CDATA[ >= ]]> #{minRent}
+            <if test=" houseResources.minRent!= null">
+                and rent <![CDATA[ >= ]]> #{houseResources.minRent}
             </if>
-            <if test="maxRent != null">
-                and rent <![CDATA[ <= ]]> #{maxRent}
+            <if test="houseResources.maxRent != null">
+                and rent <![CDATA[ <= ]]> #{houseResources.maxRent}
             </if>
-            <if test="houseResources.houseType != null and houseResources.houseType != ''">
-                and house_type like  CONCAT('%',#{houseResources.houseType},'%')
+            <if test="houseResources.houseType != null and houseResources.houseType.size>0">
+                and <foreach collection="houseResources.houseType" item="item" index="index"
+                             separator="OR"> house_type like CONCAT('%',#{item},'%')</foreach>
             </if>
-            <if test="houseResources.orientation != null and houseResources.orientation != ''">
-                and orientation like CONCAT('%',#{houseResources.orientation},'%')
+            <if test="houseResources.orientation != null and houseResources.orientation.size >0">
+                and orientation in <foreach collection="houseResources.orientation" item="item" index="index"
+                                            open="(" separator="," close=")">#{item}</foreach>
             </if>
             <if test="houseResources.decoration != null">
                 and decoration = #{houseResources.decoration}
             </if>
-            <if test="keyWord != null and keyWord != ''">
-                and (id like CONCAT('%',#{keyWord},'%')
-                or title like CONCAT('%',#{keyWord},'%')
-                or house_type like CONCAT('%',#{keyWord},'%')
-                or mobile like CONCAT('%',#{keyWord},'%')
-                or rent like CONCAT('%',#{keyWord},'%')
-                or orientation like CONCAT('%',#{keyWord},'%')
-                or house_desc like CONCAT('%',#{keyWord},'%'))
+            <if test="houseResources.time != null and houseResources.time.size>0">
+                and decoration in <foreach collection="houseResources.time" item="item" index="index"
+                                           open="(" separator="," close=")">#{item}</foreach>
+            </if>
+            <if test="houseResources.keyWord != null and houseResources.keyWord != ''">
+                and (id like CONCAT('%',#{houseResources.keyWord},'%')
+                or title like CONCAT('%',#{houseResources.keyWord},'%')
+                or house_type like CONCAT('%',#{houseResources.keyWord},'%')
+                or mobile like CONCAT('%',#{houseResources.keyWord},'%')
+                or rent like CONCAT('%',#{houseResources.keyWord},'%')
+                or orientation like CONCAT('%',#{houseResources.keyWord},'%')
+                or house_desc like CONCAT('%',#{houseResources.keyWord},'%'))
             </if>
         </where>)a left join estate e on a.estate_id=e.id
 

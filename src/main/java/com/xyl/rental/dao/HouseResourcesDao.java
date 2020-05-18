@@ -1,5 +1,6 @@
 package com.xyl.rental.dao;
 
+import com.xyl.rental.dto.HouseEatateDto;
 import com.xyl.rental.query.HouseQuery;
 import com.xyl.rental.entity.HouseResources;
 import org.apache.ibatis.annotations.Mapper;
@@ -81,7 +82,7 @@ public interface HouseResourcesDao {
      */
     int countTotal(HouseQuery houseResources);
 
-    List<Map> queryPageAndEstate(int offset, int limit, HouseQuery houseResources);
+    List<HouseEatateDto> queryPageAndEstate(int offset, int limit, HouseQuery houseResources);
 
     /**
      * 统计房源组数
