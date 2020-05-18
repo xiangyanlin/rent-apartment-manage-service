@@ -1,5 +1,6 @@
 package com.xyl.rental.service.impl;
 
+import com.xyl.query.HouseQuery;
 import com.xyl.rental.entity.HouseResources;
 import com.xyl.rental.dao.HouseResourcesDao;
 import com.xyl.rental.service.HouseResourcesService;
@@ -56,14 +57,13 @@ public class HouseResourcesServiceImpl implements HouseResourcesService {
      * @return
      */
     @Override
-    public TableResult queryByPage(int currentPage, int pageSize,HouseResources queryCondition,
-                                   String keyWord,Integer minRent, Integer maxRent) {
+    public TableResult queryByPage(int currentPage, int pageSize, HouseQuery queryCondition) {
         TableResult tr=new TableResult();
         Pagination pagination=new Pagination();
         int start=(currentPage-1)*pageSize;
-        int total=houseResourcesDao.countTotal(queryCondition,keyWord,minRent,maxRent);
+        int total=houseResourcesDao.countTotal(queryCondition);
         List<HouseResources> list = houseResourcesDao.queryPage(
-                start, pageSize,queryCondition,keyWord,minRent,maxRent);
+                start, pageSize,queryCondition);
         pagination.setCurrent(currentPage);
         pagination.setPageSize(pageSize);
         pagination.setTotal(total);
@@ -112,20 +112,17 @@ public class HouseResourcesServiceImpl implements HouseResourcesService {
      * @param currentPage
      * @param pageSize
      * @param queryCondition
-     * @param keyWord
-     * @param minRent
-     * @param maxRent
      * @return
      */
     @Override
-    public TableResult queryPageAndEstate(int currentPage, int pageSize, HouseResources queryCondition, String keyWord, Integer minRent, Integer maxRent) {
+    public TableResult queryPageAndEstate(int currentPage, int pageSize, HouseQuery queryCondition) {
         TableResult tr=new TableResult();
         Pagination pagination=new Pagination();
         int start=(currentPage-1)*pageSize;
-        int total=houseResourcesDao.countTotal(queryCondition,keyWord,minRent,maxRent);
+        int total=houseResourcesDao.countTotal(queryCondition);
 
         List<Map> maps = houseResourcesDao.queryPageAndEstate(
-                start, pageSize, queryCondition, keyWord, minRent, maxRent);
+                start, pageSize, queryCondition);
         pagination.setCurrent(currentPage);
         pagination.setPageSize(pageSize);
         pagination.setTotal(total);
@@ -150,10 +147,10 @@ public class HouseResourcesServiceImpl implements HouseResourcesService {
      */
     @Override
     public Double decorationProp() {
-        HouseResources condition=new HouseResources();
+        HouseQuery condition=new HouseQuery();
         condition.setDecoration(1);
         int total = houseResourcesDao.countHouseTotal();
-        int i = houseResourcesDao.countTotal(condition, "", null, null);
+        int i = houseResourcesDao.countTotal(condition);
         Double prop=(i/Double.valueOf(total))*100;
         BigDecimal bg = new BigDecimal(prop);
         double f1 = bg.setScale(2, BigDecimal.ROUND_HALF_UP).doubleValue();

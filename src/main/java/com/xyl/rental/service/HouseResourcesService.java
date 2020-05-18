@@ -1,5 +1,6 @@
 package com.xyl.rental.service;
 
+import com.xyl.query.HouseQuery;
 import com.xyl.rental.entity.HouseResources;
 import com.xyl.rental.vo.TableResult;
 
@@ -39,7 +40,7 @@ public interface HouseResourcesService {
      * @param queryCondition
      * @return
      */
-    TableResult queryByPage(int currentPage, int pageSize,HouseResources queryCondition,String keyWord,Integer minRent, Integer maxRent);
+    TableResult queryByPage(int currentPage, int pageSize, HouseQuery queryCondition);
 
     /**
      * 新增数据
@@ -70,13 +71,9 @@ public interface HouseResourcesService {
      * @param currentPage
      * @param pageSize
      * @param queryCondition
-     * @param keyWord
-     * @param minRent
-     * @param maxRent
      * @return
      */
-    TableResult queryPageAndEstate(int currentPage, int pageSize,HouseResources queryCondition,
-                                   String keyWord,Integer minRent, Integer maxRent);
+    TableResult queryPageAndEstate(int currentPage, int pageSize,HouseQuery queryCondition);
 
     /**
      * 统计房源总数

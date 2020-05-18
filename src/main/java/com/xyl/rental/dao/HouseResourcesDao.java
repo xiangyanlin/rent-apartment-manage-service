@@ -1,5 +1,6 @@
 package com.xyl.rental.dao;
 
+import com.xyl.query.HouseQuery;
 import com.xyl.rental.entity.HouseResources;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
@@ -37,11 +38,9 @@ public interface HouseResourcesDao {
      * @param offset
      * @param limit
      * @param houseResources
-     * @param minRent
-     * @param maxRent
      * @return
      */
-    List<HouseResources> queryPage(@Param("offset") int offset, @Param("limit") int limit,HouseResources houseResources,String keyWord, Integer minRent, Integer maxRent);
+    List<HouseResources> queryPage(@Param("offset") int offset, @Param("limit") int limit, HouseQuery houseResources);
 
 
     /**
@@ -80,9 +79,9 @@ public interface HouseResourcesDao {
      *
      * @return
      */
-    int countTotal(HouseResources houseResources, String keyWord,Integer minRent, Integer maxRent);
+    int countTotal(HouseQuery houseResources);
 
-    List<Map> queryPageAndEstate(int offset, int limit, HouseResources houseResources, String keyWord, Integer minRent, Integer maxRent);
+    List<Map> queryPageAndEstate(int offset, int limit, HouseQuery houseResources);
 
     /**
      * 统计房源组数

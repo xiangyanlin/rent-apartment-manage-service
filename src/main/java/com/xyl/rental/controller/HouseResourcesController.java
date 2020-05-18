@@ -1,5 +1,6 @@
 package com.xyl.rental.controller;
 
+import com.xyl.query.HouseQuery;
 import com.xyl.rental.entity.HouseResources;
 import com.xyl.rental.service.HouseResourcesService;
 import com.xyl.rental.utils.R;
@@ -88,11 +89,9 @@ public class HouseResourcesController {
     @ResponseBody
     public TableResult list(@RequestParam(name = "currentPage", defaultValue = "1") int currentPage,
                             @RequestParam(name = "pageSize", defaultValue = "10") int pageSize,
-                            HouseResources queryCondition,String keyWord,Integer minRent, Integer maxRent){
-
-       // System.out.println(queryCondition);
+                            HouseQuery queryCondition){
         TableResult tableResult = this.houseResourcesService.queryByPage(
-                currentPage, pageSize,queryCondition,keyWord,minRent,maxRent);
+                currentPage, pageSize,queryCondition);
         return tableResult;
     }
 
@@ -101,20 +100,16 @@ public class HouseResourcesController {
      * @param currentPage
      * @param pageSize
      * @param queryCondition
-     * @param keyWord
-     * @param minRent
-     * @param maxRent
      * @return
      */
     @GetMapping("andEstateList")
     @ResponseBody
     public TableResult andEstateList(@RequestParam(name = "currentPage", defaultValue = "1") int currentPage,
                             @RequestParam(name = "pageSize", defaultValue = "10") int pageSize,
-                            HouseResources queryCondition,String keyWord,Integer minRent, Integer maxRent){
+                            HouseQuery queryCondition){
 
-        // System.out.println(queryCondition);
         TableResult tableResult = this.houseResourcesService.queryPageAndEstate(
-                currentPage, pageSize,queryCondition,keyWord,minRent,maxRent);
+                currentPage, pageSize,queryCondition);
         return tableResult;
     }
 
