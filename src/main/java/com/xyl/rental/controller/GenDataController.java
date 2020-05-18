@@ -43,10 +43,13 @@ public class GenDataController {
             user.setUserName(RandomDataUtil.getStringRandom(len));
             user.setPassword("123456");
             user.setAvatar("/images/2020/04/29/2020042908412034305944.png");
+            user.setProfession(RandomDataUtil.getProfession());
             user.setRealName(RandomDataUtil.getChineseFamilyName() + RandomDataUtil.getRandomName());
+            user.setIdCard(RandomDataUtil.getRandomIdCard());
             user.setEmail(RandomDataUtil.getRandomEmail());
+            user.setEducation(String.valueOf(RandomDataUtil.getRandomNum(1, 5)));
             user.setRoleId(1);
-            user.setCreateTime(RandomDataUtil.getRandomDate("2018-01-01", "2020-05-01"));
+            user.setCreateTime(RandomDataUtil.getRandomDate("2018-01-01", "2020-07-01"));
             user.setSex(String.valueOf(RandomDataUtil.getRandomNum(0, 2)));
             user.setIdentify("1");
             user.setMobile(RandomDataUtil.getRandomTel());
