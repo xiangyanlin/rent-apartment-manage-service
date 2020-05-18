@@ -300,4 +300,17 @@
         GROUP BY
         LEFT(u.create_time,7)
     </select>
+
+    <insert id="insertBatch">
+        insert into rental.user(
+        role_id, user_name, password, avatar, email, mobile, sex, real_name, id_card, profession,
+         education, house_num, identify, create_time, remark)
+        values
+        <foreach collection="list" item="entity" index="index" separator=",">
+            (#{entity.roleId}, #{entity.userName}, #{entity.password}, #{entity.avatar},
+             #{entity.email}, #{entity.mobile}, #{entity.sex}, #{entity.realName}, #{entity.idCard},
+             #{entity.profession}, #{entity.education}, #{entity.houseNum}, #{entity.identify}, #{entity.createTime}, #{entity.remark}
+            )
+        </foreach>
+    </insert>
 </mapper>

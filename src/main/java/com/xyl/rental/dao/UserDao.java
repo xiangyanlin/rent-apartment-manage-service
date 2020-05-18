@@ -92,5 +92,10 @@ public interface UserDao {
      */
     List<Map<Object, Object>> countUserByMon();
 
-
+    /**
+     * 批量插入
+     * @param userList
+     * @return
+     */
+    int insertBatch(List<User> userList);
 }
