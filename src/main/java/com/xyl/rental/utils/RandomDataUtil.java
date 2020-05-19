@@ -183,7 +183,7 @@ public class RandomDataUtil {
 
                 "毋丘", "贺兰", "綦毋", "屋庐", "独孤", "南郭", "北宫", "王孙"};
 
-        int index = random.nextInt(Surname.length - 1);
+        int index = random.nextInt(Surname.length );
 
         str = Surname[index]; //获得一个随机的姓氏
 
@@ -201,7 +201,7 @@ public class RandomDataUtil {
                 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', 'A', 'B', 'C', 'D',
                 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X',
                 'Y', 'Z'};
-        int index = random.nextInt(Surname.length - 1);
+        int index = random.nextInt(Surname.length );
 
         char ch = Surname[index]; //获得一个随机的字符
 
@@ -217,7 +217,7 @@ public class RandomDataUtil {
 
         char[] Surname = {'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j',
                 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'};
-        int index = random.nextInt(Surname.length - 1);
+        int index = random.nextInt(Surname.length );
 
         char ch = Surname[index]; //获得一个随机的字符
 
@@ -234,7 +234,7 @@ public class RandomDataUtil {
         char[] Surname = {'A', 'B', 'C', 'D',
                 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X',
                 'Y', 'Z'};
-        int index = random.nextInt(Surname.length - 1);
+        int index = random.nextInt(Surname.length );
 
         char ch = Surname[index]; //获得一个随机的字符
 
