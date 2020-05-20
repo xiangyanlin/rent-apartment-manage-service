@@ -45,9 +45,9 @@ public class HouseQuery implements Serializable {
      */
     private String used;
     /**
-     * 房屋状态0待审核，1待租，2租出
+     * 房屋状态0待审核，1待租，2租出,3停用
      */
-    private String status;
+    private List<String> status;
     /**
      * 最小租金
      */

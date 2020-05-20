@@ -5,6 +5,7 @@ import com.xyl.rental.query.HouseQuery;
 import com.xyl.rental.entity.HouseResources;
 import com.xyl.rental.dao.HouseResourcesDao;
 import com.xyl.rental.service.HouseResourcesService;
+import com.xyl.rental.utils.PageUtils;
 import com.xyl.rental.vo.Pagination;
 import com.xyl.rental.vo.TableResult;
 import org.springframework.stereotype.Service;
@@ -13,6 +14,8 @@ import javax.annotation.Resource;
 import java.math.BigDecimal;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 /**
  * 房源表(HouseResources)表服务实现类
@@ -56,18 +59,12 @@ public class HouseResourcesServiceImpl implements HouseResourcesService {
      */
     @Override
     public TableResult queryByPage(int currentPage, int pageSize, HouseQuery queryCondition) {
-        TableResult tr=new TableResult();
-        Pagination pagination=new Pagination();
         int start=(currentPage-1)*pageSize;
         int total=houseResourcesDao.countTotal(queryCondition);
         List<HouseResources> list = houseResourcesDao.queryPage(
                 start, pageSize,queryCondition);
-        pagination.setCurrent(currentPage);
-        pagination.setPageSize(pageSize);
-        pagination.setTotal(total);
-        tr.setList(list);
-        tr.setPagination(pagination);
-        return tr;
+       // List<HouseResources> resourcesStream = list.stream().filter(item -> !("0".equals(item.getStatus()))).collect(Collectors.toList());
+        return PageUtils.page(start,total,list,currentPage,pageSize);
     }
 
     /**
