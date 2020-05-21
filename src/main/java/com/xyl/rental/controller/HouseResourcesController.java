@@ -5,6 +5,8 @@ import com.xyl.rental.entity.HouseResources;
 import com.xyl.rental.service.HouseResourcesService;
 import com.xyl.rental.utils.R;
 import com.xyl.rental.vo.TableResult;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
 
@@ -19,6 +21,7 @@ import java.util.Map;
  * @author xyl
  * @since 2020-03-05 14:00:15
  */
+@Api(description = "房源操作接口")
 @RestController
 @RequestMapping("houseResources")
 @Slf4j
@@ -35,6 +38,7 @@ public class HouseResourcesController {
      * @param id 主键
      * @return 单条数据
      */
+    @ApiOperation(value = "获取房源", notes="通过id获取单个房源")
     @GetMapping("selectOne")
     public HouseResources selectOne(Integer id) {
         return this.houseResourcesService.queryById(id);
@@ -45,6 +49,7 @@ public class HouseResourcesController {
      *
      * @return
      */
+    @ApiOperation(value = "新增房源")
     @RequestMapping("save")
     public R saveHouseResources(@RequestBody HouseResources houseResources) {
         houseResources.setCreated(new Date());
@@ -57,6 +62,7 @@ public class HouseResourcesController {
      * @param houseResources
      * @return
      */
+    @ApiOperation(value = "修改房源信息", notes="传入房源实体")
     @RequestMapping("update")
     @ResponseBody
     public R updateHouseResources(@RequestBody HouseResources houseResources) {
@@ -71,6 +77,7 @@ public class HouseResourcesController {
      * 根据id删除房源
      * @param id
      */
+    @ApiOperation(value = "删除房源", notes="通过id删除单个房源")
     @DeleteMapping("delete")
     @ResponseBody
     public R deleteHouseResources(@RequestParam("id") int id) {
@@ -85,6 +92,7 @@ public class HouseResourcesController {
      * @param pageSize
      * @return
      */
+    @ApiOperation(value = "分页查询房源列表", notes="条件关键字查询")
     @GetMapping("list")
     @ResponseBody
     public TableResult list(@RequestParam(name = "currentPage", defaultValue = "1") int currentPage,
@@ -102,6 +110,7 @@ public class HouseResourcesController {
      * @param queryCondition
      * @return
      */
+    @ApiOperation(value = "分页查询房源列表", notes="联合楼盘查询")
     @GetMapping("andEstateList")
     @ResponseBody
     public TableResult andEstateList(@RequestParam(name = "currentPage", defaultValue = "1") int currentPage,
