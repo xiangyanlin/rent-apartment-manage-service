@@ -2,13 +2,15 @@ package com.xyl.rental.controller;
 
 import com.xyl.rental.service.PicUploadFileService;
 import com.xyl.rental.vo.PicUploadResult;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletResponse;
-
+@Api(description = "公共接口")
 @RestController
 @RequestMapping("common")
 @Slf4j
@@ -21,6 +23,7 @@ public class CommonController {
      * * @return
      ** @throws Exception
      * */
+    @ApiOperation(value = "文件上传")
     @PostMapping("picUpload")
     @ResponseBody
     public PicUploadResult upload(
@@ -33,6 +36,7 @@ public class CommonController {
      * @param filename
      * @param response
      */
+    @ApiOperation(value = "获取图片", notes="读取上传的图片")
     @ResponseBody
     @RequestMapping(value = "/getImage", method = RequestMethod.GET, produces = "application/json;charset=utf-8")
     public void getImage(@RequestParam(value = "filename", required = false)

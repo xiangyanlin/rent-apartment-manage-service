@@ -126,6 +126,7 @@ public class HouseResourcesController {
      * 统计房源总量
      * @return
      */
+    @ApiOperation(value = "统计房源总量")
     @GetMapping("total")
     @ResponseBody
     public R countHouseTotal(){
@@ -138,6 +139,7 @@ public class HouseResourcesController {
      * 精装房占比
      * @return
      */
+    @ApiOperation(value = "精装房占比", notes="精装房占房源总数的比例")
     @GetMapping("decorationProp")
     @ResponseBody
     public R decorationProp(){
@@ -149,6 +151,7 @@ public class HouseResourcesController {
      * 按朝向查找
      * @return
      */
+    @ApiOperation(value = "按朝向查找", notes="按朝向查找房源")
     @GetMapping("countByO")
     @ResponseBody
     public R countByO(){

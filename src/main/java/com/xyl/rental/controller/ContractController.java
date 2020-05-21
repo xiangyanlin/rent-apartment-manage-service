@@ -4,6 +4,8 @@ import com.xyl.rental.entity.Contract;
 import com.xyl.rental.service.ContractService;
 import com.xyl.rental.utils.R;
 import com.xyl.rental.vo.TableResult;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
@@ -14,6 +16,7 @@ import javax.annotation.Resource;
  * @author xyl
  * @since 2020-03-15 23:03:42
  */
+@Api(description = "合约操作接口")
 @RestController
 @RequestMapping("contract")
 public class ContractController {
@@ -29,6 +32,7 @@ public class ContractController {
      * @param id 主键
      * @return 单条数据
      */
+    @ApiOperation(value = "通过id查找合约", notes="通过id查找单个合约")
     @GetMapping("selectOne")
     public Contract selectOne(Integer id) {
         return this.contractService.queryById(id);
@@ -39,6 +43,7 @@ public class ContractController {
      * @param contract
      * @return
      */
+    @ApiOperation(value = "新增合约", notes="新增合约")
     @RequestMapping("save")
     @ResponseBody
     public R saveRContract(@RequestBody Contract contract) {
@@ -51,6 +56,7 @@ public class ContractController {
      * @param id
      * @return
      */
+    @ApiOperation(value = "删除合约", notes="通过id删除单个合约")
     @DeleteMapping("delete")
     @ResponseBody
     public R removeContract(@RequestParam("id") int id) {
@@ -63,6 +69,7 @@ public class ContractController {
      * @param contract
      * @return
      */
+    @ApiOperation(value = "修改合约", notes="通过实体修改合约")
     @RequestMapping("update")
     @ResponseBody
     public R updateContract(@RequestBody Contract contract) {
@@ -77,6 +84,7 @@ public class ContractController {
      * @param pageSize
      * @return
      */
+    @ApiOperation(value = "分页查询合约", notes="分页条件关键字查询")
     @GetMapping("list")
     @ResponseBody
     public TableResult list(@RequestParam(name = "currentPage", defaultValue = "1") int currentPage,

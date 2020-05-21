@@ -4,6 +4,8 @@ import com.xyl.rental.dao.UserDao;
 import com.xyl.rental.entity.User;
 import com.xyl.rental.service.UserService;
 import com.xyl.rental.utils.RandomDataUtil;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,6 +22,7 @@ import java.util.Map;
  * @version 1.0
  * @date 2020/5/18 20:12
  */
+@Api(description = "数据生成操作接口")
 @RestController
 @RequestMapping("gen")
 public class GenDataController {
@@ -31,6 +34,10 @@ public class GenDataController {
     @Resource
     private UserDao userDao;
 
+    /**
+     * 随机生成用户列表
+     */
+    @ApiOperation(value = "随机生成用户列表")
     @RequestMapping("user")
     @ResponseBody
     public void randomGenUserData() {

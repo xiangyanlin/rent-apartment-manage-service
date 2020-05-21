@@ -4,6 +4,8 @@ import com.xyl.rental.entity.RentRecord;
 import com.xyl.rental.service.RentRecordService;
 import com.xyl.rental.utils.R;
 import com.xyl.rental.vo.TableResult;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
@@ -14,6 +16,7 @@ import javax.annotation.Resource;
  * @author xyl
  * @since 2020-03-15 22:52:32
  */
+@Api(description = "租房记录操作接口")
 @RestController
 @RequestMapping("rentRecord")
 public class RentRecordController {
@@ -29,6 +32,7 @@ public class RentRecordController {
      * @param id 主键
      * @return 单条数据
      */
+    @ApiOperation(value = "通过主键查询单条租房记录数据")
     @GetMapping("selectOne")
     public RentRecord selectOne(Integer id) {
         return this.rentRecordService.queryById(id);
@@ -39,6 +43,7 @@ public class RentRecordController {
      * @param rentRecord
      * @return
      */
+    @ApiOperation(value = "新增租房记录")
     @RequestMapping("save")
     @ResponseBody
     public R saveRecord(@RequestBody RentRecord rentRecord) {
@@ -51,6 +56,7 @@ public class RentRecordController {
      * @param id
      * @return
      */
+    @ApiOperation(value = "根据id删除租房记录", notes="根据id删除单个租房记录")
     @DeleteMapping("delete")
     @ResponseBody
     public R removeRecord(@RequestParam("id") int id) {
@@ -58,6 +64,12 @@ public class RentRecordController {
         return R.success(b,"success");
     }
 
+    /**
+     * 修改租房记录
+     * @param rentRecord
+     * @return
+     */
+    @ApiOperation(value = "修改租房记录")
     @RequestMapping("update")
     @ResponseBody
     public R updateRecord(@RequestBody RentRecord rentRecord) {
@@ -72,6 +84,7 @@ public class RentRecordController {
      * @param pageSize
      * @return
      */
+    @ApiOperation(value = "分页查询租房巨鹿列表", notes="分页条件关键字查询租房记录列表")
     @GetMapping("list")
     @ResponseBody
     public TableResult list(@RequestParam(name = "currentPage", defaultValue = "1") int currentPage,
@@ -88,6 +101,7 @@ public class RentRecordController {
      * @param pageSize
      * @return
      */
+    @ApiOperation(value = "分页查询租房管理列表", notes="联表查询")
     @GetMapping("manage")
     @ResponseBody
     public TableResult manage(@RequestParam(name = "currentPage", defaultValue = "1") int currentPage,

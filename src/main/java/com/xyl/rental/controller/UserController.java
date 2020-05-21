@@ -6,6 +6,8 @@ import com.xyl.rental.service.RoleService;
 import com.xyl.rental.service.UserService;
 import com.xyl.rental.utils.R;
 import com.xyl.rental.vo.TableResult;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
@@ -22,6 +24,7 @@ import java.util.Map;
  * @author xyl
  * @since 2020-03-15 19:55:28
  */
+@Api(description = "用户操作接口")
 @RestController
 @RequestMapping("user")
 public class UserController {
@@ -39,6 +42,7 @@ public class UserController {
      * @param id 主键
      * @return 单条数据
      */
+    @ApiOperation(value = "通过主键查询单条用户数据")
     @GetMapping("selectOne")
     public User selectOne(Integer id) {
         return this.userService.queryById(id);
@@ -49,6 +53,7 @@ public class UserController {
      * @param user
      * @return
      */
+    @ApiOperation(value = "新增用户")
     @RequestMapping("save")
     @ResponseBody
     public R saveUser(@RequestBody User user) {
@@ -61,6 +66,7 @@ public class UserController {
      * @param id
      * @return
      */
+    @ApiOperation(value = "根据id删除用户")
     @DeleteMapping("delete")
     @ResponseBody
     public R removeUser(@RequestParam("id") int id) {
@@ -74,6 +80,7 @@ public class UserController {
      * @param user
      * @return
      */
+    @ApiOperation(value = "修改用户信息")
     @RequestMapping("update")
     @ResponseBody
     public R updateUser(@RequestBody User user) {
@@ -87,6 +94,7 @@ public class UserController {
      * @param loginUser
      * @return
      */
+    @ApiOperation(value = "登录")
     @RequestMapping("login")
     @ResponseBody
     public R Login(User loginUser, HttpServletRequest request){
@@ -115,6 +123,7 @@ public class UserController {
      * @param userName
      * @return
      */
+    @ApiOperation(value = "获取当前登录用户")
     @RequestMapping("currentUser")
     @ResponseBody
     public R getCurrentUser(@RequestParam(name = "userName")String userName){
@@ -153,6 +162,7 @@ public class UserController {
      * @param user
      * @return
      */
+    @ApiOperation(value = "注册")
     @RequestMapping("register")
     @ResponseBody
     public R register(@RequestBody User user){
@@ -170,6 +180,7 @@ public class UserController {
      * @param keyWord
      * @return
      */
+    @ApiOperation(value = "分页查询用户列表", notes="分页条件关键字查询用户列表")
     @GetMapping("list")
     @ResponseBody
     public TableResult list(@RequestParam(name = "currentPage", defaultValue = "1") int currentPage,
@@ -186,6 +197,7 @@ public class UserController {
      * 统计用户总数
      * @return
      */
+    @ApiOperation(value = "统计用户总数")
     @GetMapping("total")
     @ResponseBody
     public R countUserTotal(){
@@ -197,6 +209,7 @@ public class UserController {
      * 按月统计用户数量
      * @return
      */
+    @ApiOperation(value = "按月统计用户数量")
     @GetMapping("countByMon")
     @ResponseBody
     public R countUserByMon(){
