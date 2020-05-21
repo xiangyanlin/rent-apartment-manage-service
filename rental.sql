@@ -11,7 +11,7 @@
  Target Server Version : 50726
  File Encoding         : 65001
 
- Date: 18/05/2020 22:39:33
+ Date: 21/05/2020 00:29:47
 */
 
 SET NAMES utf8mb4;
@@ -135,7 +135,7 @@ CREATE TABLE `house_resources`  (
   `building_unit` varchar(5) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '单元号',
   `building_floor_num` varchar(5) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '门牌号',
   `used` varchar(10) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '房屋用处1住宅，2商住两用',
-  `status` varchar(10) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '房屋状态0待审核，1待租，2租出',
+  `status` varchar(10) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '房屋状态0待审核，1待租，2租出，3停用',
   `rent` int(10) NULL DEFAULT NULL COMMENT '租金',
   `rent_method` int(4) NULL DEFAULT NULL COMMENT '租赁方式，1-整租，2-合租',
   `payment_method` int(4) NULL DEFAULT NULL COMMENT '支付方式，1-付一押一，2-付三押一，3-付六押一，4-年付押一，5-其它',
@@ -172,7 +172,7 @@ INSERT INTO `house_resources` VALUES (22, '整租·万龙小区 ', 4, 1005, '1',
 INSERT INTO `house_resources` VALUES (23, '整租·新何三百村 ', 4, 1005, '1', '1', '526', '1', '1', 8000, 1, 4, '3室2厅1卫1厨2阳台', '120', '100', '5/12', '东', 1, '1,2,4,6,7', '/images/2020/04/03/2020040301290049806878.jpg,/images/2020/04/03/2020040301290784706432.jpg,/images/2020/04/03/2020040301293790608938.jpg,/images/2020/04/03/2020040301304306302773.jpg,/images/2020/04/03/2020040301304720408126.jpg', '物美价廉，好得很', '李四', '13122226666', 1, '1', '2020-04-03 13:31:26', NULL);
 INSERT INTO `house_resources` VALUES (24, '整租·新何三百村 ', 4, 1005, '1', '1', '526', '1', '1', 8000, 1, 4, '3室2厅1卫1厨2阳台', '120', '100', '5/12', '南', 1, '1,2,4,6,7', '/images/2020/04/03/2020040301030860001359.jpg,/images/2020/04/03/2020040301030440607986.jpg,/images/2020/04/03/2020040301031231505514.jpg,/images/2020/04/03/2020040301031618008001.jpg,/images/2020/04/03/2020040301031945401321.jpg', '物美价廉，好得很', '李四', '13122226666', 1, '1', '2020-04-03 13:32:46', NULL);
 INSERT INTO `house_resources` VALUES (25, '整租·美好家园', 5, 1005, '1', '1', '526', '1', '1', 8000, 1, 4, '3室2厅1卫1厨2阳台', '120', '100', '5/12', '北', 1, '1,2,4,6,7', '/images/2020/04/03/2020040301031945401321.jpg,/images/2020/04/03/2020040301030860001359.jpg,/images/2020/04/03/2020040301030440607986.jpg,/images/2020/04/03/2020040301031231505514.jpg,/images/2020/04/03/2020040301031618008001.jpg', '物美价廉，好得很', '李四', '13122226666', 1, '1', '2020-04-03 13:34:32', NULL);
-INSERT INTO `house_resources` VALUES (26, 'test1', NULL, 1002, '1', '1', '1', '1', '1', 1, 1, 1, '3室2厅2卫2厨2阳台', '2000', '100', '6/2', '西', 1, '1,2,3', '', '111', '张三', '18774062479', 1, '5', '2020-04-06 16:07:54', '2020-04-30 10:29:40');
+INSERT INTO `house_resources` VALUES (26, 'test1', NULL, 1002, '1', '1', '1', '1', '0', 1, 1, 1, '3室2厅2卫2厨2阳台', '2000', '100', '6/2', '西', 1, '1,2,3', '', '111', '张三', '18774062479', 1, '5', '2020-04-06 16:07:54', '2020-05-21 00:29:13');
 INSERT INTO `house_resources` VALUES (27, '乐山十一村法莱雅公寓', NULL, 1006, '8', '2', '621', '1', '0', 9000, 1, 2, '4室2厅2卫2厨2阳台', '200', '180', '6/20', '东', 1, '1,2,3', '/images/2020/05/04/2020050410425883703187.jpg,/images/2020/05/04/2020050410431086204918.jpg,/images/2020/05/04/2020050410432068102608.jpg,/images/2020/05/04/2020050410433048008514.jpg,/images/2020/05/04/2020050410433531503535.jpg', '面积大，装修好', '张三', '18774062411', 1, '5', '2020-05-04 22:47:58', NULL);
 
 -- ----------------------------

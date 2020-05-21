@@ -255,8 +255,9 @@
                 and payment_method in <foreach collection="paymentMethod" item="item" index="index"
                                                open="(" separator="," close=")">#{item}</foreach>
             </if>
-            <if test="status != null and status != ''">
-                and status = #{status}
+            <if test="status != null and status.size != 0">
+                and status in <foreach collection="status" item="item" index="index"
+                                       open="(" separator="," close=")">#{item}</foreach>
             </if>
             <if test="used != null and used != ''">
                 and used = #{used}
@@ -316,8 +317,9 @@
                 and payment_method in <foreach collection="houseResources.paymentMethod" item="item" index="index"
                          open="(" separator="," close=")">#{item}</foreach>
             </if>
-            <if test="houseResources.status != null and houseResources.status != ''">
-                and status = #{houseResources.status}
+            <if test="houseResources.status != null and houseResources.status.size!=0">
+                and status  in <foreach collection="houseResources.status" item="item" index="index"
+                                         open="(" separator="," close=")">#{item}</foreach>
             </if>
             <if test="houseResources.used != null and houseResources.used != ''">
                 and used = #{houseResources.used}
@@ -379,8 +381,9 @@
                 and payment_method in <foreach collection="houseResources.paymentMethod" item="item" index="index"
                                                open="(" separator="," close=")">#{item}</foreach>
             </if>
-            <if test="houseResources.status != null and houseResources.status != ''">
-                and status = #{houseResources.status}
+            <if test="houseResources.status != null and houseResources.status.size!=0">
+                and status = in <foreach collection="houseResources.status" item="item" index="index"
+                                         open="(" separator="," close=")">#{item}</foreach>
             </if>
             <if test="houseResources.used != null and houseResources.used != ''">
                 and used = #{houseResources.used}
