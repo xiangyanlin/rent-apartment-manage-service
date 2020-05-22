@@ -3,6 +3,7 @@ package com.xyl.rental.service;
 import com.xyl.rental.entity.User;
 import com.xyl.rental.vo.TableResult;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -78,5 +79,5 @@ public interface UserService {
      * 按月查询用户数量
      * @return
      */
-    List<Map<Object, Object>> countUserByMon();
+    List<Map<Object, Object>> countUserByMon(Date startTime, Date endTime);
 }

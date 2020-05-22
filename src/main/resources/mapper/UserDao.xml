@@ -297,6 +297,14 @@
         select LEFT(u.create_time,7) x,
         COUNT(*) y
         from user u
+        <where>
+            <if test="startTime != null">
+                and create_time <![CDATA[ >= ]]> #{startTime}
+            </if>
+            <if test="endTime != null">
+                and create_time  <![CDATA[ <= ]]>#{endTime}
+            </if>
+        </where>
         GROUP BY
         LEFT(u.create_time,7)
     </select>

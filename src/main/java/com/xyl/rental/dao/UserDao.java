@@ -3,8 +3,8 @@ package com.xyl.rental.dao;
 import com.xyl.rental.entity.User;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
-import org.omg.CORBA.OBJ_ADAPTER;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -90,7 +90,7 @@ public interface UserDao {
      * 按月查询用户数量
      * @return
      */
-    List<Map<Object, Object>> countUserByMon();
+    List<Map<Object, Object>> countUserByMon(Date startTime,Date endTime);
 
     /**
      * 批量插入

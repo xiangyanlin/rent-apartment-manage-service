@@ -8,6 +8,7 @@ import com.xyl.rental.vo.TableResult;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -129,7 +130,7 @@ public class UserServiceImpl implements UserService {
      * @return
      */
     @Override
-    public List<Map<Object, Object>> countUserByMon() {
-        return userDao.countUserByMon();
+    public List<Map<Object, Object>> countUserByMon(Date startTime, Date endTime) {
+        return userDao.countUserByMon(startTime,endTime);
     }
 }

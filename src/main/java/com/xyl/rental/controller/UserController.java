@@ -12,7 +12,8 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
-import java.awt.*;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -212,8 +213,11 @@ public class UserController {
     @ApiOperation(value = "按月统计用户数量")
     @GetMapping("countByMon")
     @ResponseBody
-    public R countUserByMon(){
-        List<Map<Object, Object>> maps = userService.countUserByMon();
+    public R countUserByMon(String startTime,String endTime) throws ParseException {
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        Date start = simpleDateFormat.parse(startTime);
+        Date end = simpleDateFormat.parse(endTime);
+        List<Map<Object, Object>> maps = userService.countUserByMon(start,end);
         return R.success(maps);
     }
 
