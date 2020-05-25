@@ -16,7 +16,7 @@ import javax.annotation.Resource;
  * @author xyl
  * @since 2020-03-15 23:10:02
  */
-@Api(description = "资讯操作接口")
+@Api(tags  = "资讯操作接口")
 @RestController
 @RequestMapping("information")
 public class InformationController {

@@ -25,7 +25,7 @@ import java.util.Map;
  * @author xyl
  * @since 2020-03-15 19:55:28
  */
-@Api(description = "用户操作接口")
+@Api(tags  = "用户操作接口")
 @RestController
 @RequestMapping("user")
 public class UserController {

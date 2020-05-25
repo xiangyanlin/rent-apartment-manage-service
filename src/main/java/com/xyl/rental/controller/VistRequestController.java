@@ -17,7 +17,7 @@ import java.util.Date;
  * @author xyl
  * @since 2020-03-15 18:56:10
  */
-@Api(description = "看房请求操作接口")
+@Api(tags  = "看房请求操作接口")
 @RestController
 @RequestMapping("vistRequest")
 public class VistRequestController {

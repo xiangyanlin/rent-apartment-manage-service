@@ -18,7 +18,7 @@ import java.util.Map;
  * @author xyl
  * @since 2020-03-05 11:00:29
  */
-@Api(description = "楼盘操作接口")
+@Api(tags  = "楼盘操作接口")
 @RestController
 @RequestMapping("estate")
 public class EstateController {

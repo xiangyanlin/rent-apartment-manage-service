@@ -16,7 +16,7 @@ import javax.annotation.Resource;
  * @author xyl
  * @since 2020-03-15 23:03:42
  */
-@Api(description = "合约操作接口")
+@Api(tags  = "合约操作接口")
 @RestController
 @RequestMapping("contract")
 public class ContractController {

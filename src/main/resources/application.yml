@@ -43,15 +43,7 @@ spring:
         url-pattern: /druid/*
         reset-enable: true
 
-
-
-
-  servlet:
-    multipart:
-      location: D:/file
-      max-file-size: 100MB
-
-
 mybatis:
   mapper-locations: classpath:/mapper/*Dao.xml
   typeAliasesPackage: com.xyl.rental.entity
+

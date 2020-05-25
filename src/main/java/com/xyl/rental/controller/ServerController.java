@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @author xyl
  * @create 2020/4/29 9:42
  */
-@Api(description = "服务监控操作接口")
+@Api(tags  = "服务监控操作接口")
 @RestController
 @RequestMapping("/monitor/server")
 public class ServerController {

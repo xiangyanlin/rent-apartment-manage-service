@@ -21,7 +21,7 @@ import java.util.Map;
  * @author xyl
  * @since 2020-03-05 14:00:15
  */
-@Api(description = "房源操作接口")
+@Api(tags  = "房源操作接口")
 @RestController
 @RequestMapping("houseResources")
 @Slf4j

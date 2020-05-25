@@ -18,7 +18,7 @@ import java.util.Map;
  * @author xyl
  * @since 2020-04-19 22:26:17
  */
-@Api(description = "字典操作接口")
+@Api(tags  = "字典操作接口")
 @RestController
 @RequestMapping("dict")
 public class DictController {

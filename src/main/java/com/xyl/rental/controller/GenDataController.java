@@ -22,7 +22,7 @@ import java.util.Map;
  * @version 1.0
  * @date 2020/5/18 20:12
  */
-@Api(description = "数据生成操作接口")
+@Api(tags  = "数据生成操作接口")
 @RestController
 @RequestMapping("gen")
 public class GenDataController {

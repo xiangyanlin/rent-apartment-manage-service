@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletResponse;
-@Api(description = "公共接口")
+@Api(tags  = "公共接口")
 @RestController
 @RequestMapping("common")
 @Slf4j

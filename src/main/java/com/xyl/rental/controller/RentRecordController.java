@@ -16,7 +16,7 @@ import javax.annotation.Resource;
  * @author xyl
  * @since 2020-03-15 22:52:32
  */
-@Api(description = "租房记录操作接口")
+@Api(tags  = "租房记录操作接口")
 @RestController
 @RequestMapping("rentRecord")
 public class RentRecordController {
