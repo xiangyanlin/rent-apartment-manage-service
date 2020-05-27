@@ -43,6 +43,20 @@ spring:
         url-pattern: /druid/*
         reset-enable: true
 
+  #Redis连接配置
+  redis:
+    database: 0
+    host: 59.110.228.218
+    port: 6379
+    timeout: 20000
+    jedis:
+      pool:
+        max-active: 8
+        min-idle: 0
+        max-idle: 8
+        max-wait: -1
+
+
 mybatis:
   mapper-locations: classpath:/mapper/*Dao.xml
   typeAliasesPackage: com.xyl.rental.entity
