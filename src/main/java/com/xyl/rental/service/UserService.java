@@ -1,6 +1,7 @@
 package com.xyl.rental.service;
 
 import com.xyl.rental.entity.User;
+import com.xyl.rental.utils.R;
 import com.xyl.rental.vo.TableResult;
 
 import java.util.Date;
@@ -80,4 +81,12 @@ public interface UserService {
      * @return
      */
     List<Map<Object, Object>> countUserByMon(Date startTime, Date endTime);
+
+    /**
+     * 发送邮箱验证码
+     * @param user
+     * @param operation
+     * @return
+     */
+    R<Map<String, Object>> sendVerification(User user, String operation);
 }

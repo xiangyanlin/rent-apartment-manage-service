@@ -1,16 +1,21 @@
 package com.xyl.rental.service.impl;
 
+import com.xyl.rental.entity.Email;
 import com.xyl.rental.entity.User;
 import com.xyl.rental.dao.UserDao;
 import com.xyl.rental.service.UserService;
+import com.xyl.rental.utils.DateUtils;
+import com.xyl.rental.utils.MailUtil;
+import com.xyl.rental.utils.R;
 import com.xyl.rental.vo.Pagination;
 import com.xyl.rental.vo.TableResult;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
-import java.util.Date;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
+import java.util.concurrent.TimeUnit;
 
 /**
  * (User)表服务实现类
@@ -23,6 +28,11 @@ public class UserServiceImpl implements UserService {
     @Resource
     private UserDao userDao;
 
+    @Autowired
+    private StringRedisTemplate template;
+
+    @Autowired
+    private MailUtil mailUtil;
     /**
      * 通过ID查询单条数据
      *
@@ -132,5 +142,45 @@ public class UserServiceImpl implements UserService {
     @Override
     public List<Map<Object, Object>> countUserByMon(Date startTime, Date endTime) {
         return userDao.countUserByMon(startTime,endTime);
+    }
+
+    /**
+     * 发送验证码
+     * @param user
+     * @param operation
+     * @return
+     */
+    @Override
+    public R<Map<String, Object>> sendVerification(User user, String operation) {
+        Random random = new Random();
+        Map<String, Object> rmap = new HashMap<>(16);
+        Map<String, Object> map = new HashMap<>(16);
+        String content = "";
+        int retime = DateUtils.remainingTime();
+        for (int i = 0; i < 6; i++) {
+            int temp = random.nextInt(10);
+            content += temp;
+        }
+        if (operation == null) {
+            operation = "";
+        }
+        String key = user.getEmail() + operation + "check";
+        String check = template.opsForValue().get(key);
+        if (check != null) {
+            if (Integer.parseInt(check) >= 3) {
+                template.expire(key, retime, TimeUnit.SECONDS);
+                return R.failed("您今天已连续发送三次验证码，账号今天已锁定");
+            } else {
+                template.opsForValue().increment(key);
+            }
+        } else {
+            template.opsForValue().set(key, "1");
+        }
+        rmap.put(operation + "password", content);
+        rmap.put("count", "0");
+        template.opsForHash().putAll(user.getEmail(), rmap);
+        mailUtil.sendSimpleMail(new Email(user.getEmail(), "验证码邮件", "验证码为: " + content + " 五分钟内有效"));
+        template.expire(user.getEmail(), 300, TimeUnit.SECONDS);
+        return R.success(map, "信息发送成功");
     }
 }

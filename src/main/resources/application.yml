@@ -55,7 +55,17 @@ spring:
         min-idle: 0
         max-idle: 8
         max-wait: -1
-
+  mail:
+    host: smtpqq.com
+    username: 2356150341@qq.com
+    password: vtaxtgziczcdebhi
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+            required: true
 
 mybatis:
   mapper-locations: classpath:/mapper/*Dao.xml

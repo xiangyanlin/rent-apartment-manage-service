@@ -8,6 +8,7 @@ import com.xyl.rental.utils.R;
 import com.xyl.rental.vo.TableResult;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiParam;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
@@ -219,6 +220,23 @@ public class UserController {
         Date end = simpleDateFormat.parse(endTime);
         List<Map<Object, Object>> maps = userService.countUserByMon(start,end);
         return R.success(maps);
+    }
+
+    /**
+     * 发送邮箱验证码
+     * @param user
+     * @param operation
+     * @return
+     */
+    @ApiOperation(value = "发送邮箱验证码")
+    @GetMapping("/sendVerificationLogin")
+    @ResponseBody
+    public R<Map<String, Object>> sendVerification(User user,
+                                                            @ApiParam("操作") @RequestParam(required = false) String operation) {
+        if (user.getEmail() == null){
+            return R.failed("用户邮箱为空");
+        }
+        return userService.sendVerification(user, operation);
     }
 
 }
