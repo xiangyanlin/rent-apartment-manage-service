@@ -56,7 +56,7 @@ spring:
         max-idle: 8
         max-wait: -1
   mail:
-    host: smtpqq.com
+    host: smtp.qq.com
     username: 2356150341@qq.com
     password: vtaxtgziczcdebhi
     properties:

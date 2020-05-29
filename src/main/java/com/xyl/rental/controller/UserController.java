@@ -232,7 +232,7 @@ public class UserController {
     @GetMapping("/sendVerificationLogin")
     @ResponseBody
     public R<Map<String, Object>> sendVerification(User user,
-                                                            @ApiParam("操作") @RequestParam(required = false) String operation) {
+        @ApiParam("操作") @RequestParam(required = false) String operation) {
         if (user.getEmail() == null){
             return R.failed("用户邮箱为空");
         }
