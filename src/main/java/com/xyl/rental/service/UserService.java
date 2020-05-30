@@ -89,4 +89,19 @@ public interface UserService {
      * @return
      */
     R<Map<String, Object>> sendVerification(User user, String operation);
+
+    /**
+     * y邮箱验证码修改密码
+     * @param userId
+     * @param newPassword
+     * @return
+     */
+    R<Map<String, Object>> updatePWByVerificationCode(String userId, String newPassword);
+
+    /**
+     * 根据条件查询用户
+     * @param user
+     * @return
+     */
+    List<User> queryAllByCondition(User user);
 }

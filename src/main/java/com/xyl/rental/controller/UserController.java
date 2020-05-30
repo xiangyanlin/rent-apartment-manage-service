@@ -229,7 +229,7 @@ public class UserController {
      * @return
      */
     @ApiOperation(value = "发送邮箱验证码")
-    @GetMapping("/sendVerificationLogin")
+    @GetMapping("/sendVerification")
     @ResponseBody
     public R<Map<String, Object>> sendVerification(User user,
         @ApiParam("操作") @RequestParam(required = false) String operation) {
@@ -239,4 +239,35 @@ public class UserController {
         return userService.sendVerification(user, operation);
     }
 
+    @GetMapping("/updatePWByVerificationCode")
+    @ResponseBody
+    public R<Map<String, Object>> updatePWByVerificationCode(
+            @ApiParam("newPassword") @RequestParam("newPassword") String newPassword,
+            @ApiParam("userId") @RequestParam("userId") String userId
+    ) {
+        return this.userService.updatePWByVerificationCode(userId, newPassword);
+    }
+
+    /**
+     * 根据用户名和邮箱查询用户
+     *
+     * @param userName 用户名
+     * @param email 邮箱
+     * @return 单条数据
+     */
+    @GetMapping("/queryByUserNameAndEmail")
+    @ApiOperation("根据用户名和邮箱查询用户")
+    public R<User> queryByUserNameAndEmail(
+            @ApiParam("userName") @RequestParam("userName") String userName,
+            @ApiParam("email") @RequestParam("email") String email) {
+        User condiction = new User();
+        condiction.setUserName(userName);
+        condiction.setEmail(email);
+        final List<User> users = userService.queryAllByCondition(condiction);
+        if (users != null && users.size() == 1) {
+            return R.success(users.get(0));
+        } else {
+            return R.failed("没有找到对应信息");
+        }
+    }
 }

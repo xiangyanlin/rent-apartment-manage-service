@@ -183,4 +183,19 @@ public class UserServiceImpl implements UserService {
         template.expire(user.getEmail(), 300, TimeUnit.SECONDS);
         return R.success(map, "信息发送成功");
     }
+
+    @Override
+    public R<Map<String, Object>> updatePWByVerificationCode(String userId, String newPassword) {
+        return null;
+    }
+
+    /**
+     * 根据条件查询用户
+     * @param user
+     * @return
+     */
+    @Override
+    public List<User> queryAllByCondition(User user) {
+        return userDao.queryAll(user);
+    }
 }
