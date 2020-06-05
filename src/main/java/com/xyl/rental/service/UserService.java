@@ -91,12 +91,14 @@ public interface UserService {
     R<Map<String, Object>> sendVerification(User user, String operation);
 
     /**
-     * y邮箱验证码修改密码
-     * @param userId
+     * 邮箱验证码修改密码
+     * @param user
      * @param newPassword
+     * @param code
+     * @param operation
      * @return
      */
-    R<Map<String, Object>> updatePWByVerificationCode(String userId, String newPassword);
+    R<Map<String, Object>> updatePWByVerificationCode(User user, String newPassword,String code,String operation);
 
     /**
      * 根据条件查询用户

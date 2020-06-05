@@ -239,13 +239,20 @@ public class UserController {
         return userService.sendVerification(user, operation);
     }
 
+    /**
+     * 通过邮箱验证码修改密码
+     * @param newPassword
+     * @param user
+     * @param code
+     * @param operation
+     * @return
+     */
     @GetMapping("/updatePWByVerificationCode")
     @ResponseBody
     public R<Map<String, Object>> updatePWByVerificationCode(
-            @ApiParam("newPassword") @RequestParam("newPassword") String newPassword,
-            @ApiParam("userId") @RequestParam("userId") String userId
+            String newPassword, User user,String code,String operation
     ) {
-        return this.userService.updatePWByVerificationCode(userId, newPassword);
+        return this.userService.updatePWByVerificationCode(user, newPassword,code,operation);
     }
 
     /**

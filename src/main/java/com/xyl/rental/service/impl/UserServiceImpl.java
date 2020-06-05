@@ -184,10 +184,43 @@ public class UserServiceImpl implements UserService {
         return R.success(map, "信息发送成功");
     }
 
+    /**
+     * 通过邮箱验证码修改密码
+     * @param user
+     * @param newPassword
+     * @param code
+     * @return
+     */
     @Override
-    public R<Map<String, Object>> updatePWByVerificationCode(String userId, String newPassword) {
-        return null;
+    public R<Map<String, Object>> updatePWByVerificationCode(User user, String newPassword,String code,String operation) {
+       Map<String, Object> map=new HashMap<String, Object>();
+        String temp;
+        if (operation == null) {
+            operation = "";
+        }
+        String checkCode = (String) template.opsForHash().get(user.getEmail(), operation + "code");
+        if (checkCode != null) {
+            temp = (String) template.opsForHash().get(user.getEmail(), "count");
+            if (Integer.parseInt(temp) >= 2) {
+                template.delete(user.getEmail());
+                return R.failed("您已连续输错三次，验证码已失效");
+            } else if (code.equals(checkCode)) {
+                User updateUser=new User();
+                updateUser.setPassword(newPassword);
+                updateUser.setId(user.getId());
+                template.opsForValue().set(user.getEmail()+ operation + "check", "0");
+                userDao.update(updateUser);
+                map.put("user",this.queryById(user.getId()));
+                return R.success(map, "修改成功");
+            } else {
+                template.opsForHash().increment(user.getEmail(), "count", 1);
+                return R.failed("验证失败");
+            }
+        } else {
+            return R.failed("请输入验证码");
+        }
     }
+
 
     /**
      * 根据条件查询用户
@@ -225,7 +258,7 @@ public class UserServiceImpl implements UserService {
                 return R.failed("验证失败");
             }
         } else {
-            return R.failed("请输入验证码");
+            return R.failed("验证码超过5分钟已失效！");
         }
     }
 }
