@@ -104,4 +104,12 @@ public interface UserService {
      * @return
      */
     List<User> queryAllByCondition(User user);
+
+    /**
+     *邮箱验证码验证
+     * @param code
+     * @param operation
+     * @return
+     */
+    R<Map<String, Object>> verificationCheck(String email,String code, String operation);
 }

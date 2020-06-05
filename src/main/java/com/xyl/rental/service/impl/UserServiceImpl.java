@@ -176,7 +176,7 @@ public class UserServiceImpl implements UserService {
         } else {
             template.opsForValue().set(key, "1");
         }
-        rmap.put(operation + "password", content);
+        rmap.put(operation + "code", content);
         rmap.put("count", "0");
         template.opsForHash().putAll(user.getEmail(), rmap);
         mailUtil.sendSimpleMail(new Email(user.getEmail(), "验证码邮件", "验证码为: " + content + " 五分钟内有效"));
@@ -198,4 +198,35 @@ public class UserServiceImpl implements UserService {
     public List<User> queryAllByCondition(User user) {
         return userDao.queryAll(user);
     }
+
+    /**
+     * 邮箱验证码验证
+     * @param code
+     * @param operation
+     * @return
+     */
+    @Override
+    public R<Map<String, Object>> verificationCheck(String email,String code, String operation) {
+        String temp;
+        if (operation == null) {
+            operation = "";
+        }
+        String checkCode = (String) template.opsForHash().get(email, operation + "code");
+        if (checkCode != null) {
+            temp = (String) template.opsForHash().get(email, "count");
+            if (Integer.parseInt(temp) >= 2) {
+                template.delete(email);
+                return R.failed("您已连续输错三次，验证码已失效");
+            } else if (code.equals(checkCode)) {
+                template.opsForValue().set(email+ operation + "check", "0");
+                return R.success(null, "验证成功");
+            } else {
+                template.opsForHash().increment(email, "count", 1);
+                return R.failed("验证失败");
+            }
+        } else {
+            return R.failed("请输入验证码");
+        }
+    }
 }
+

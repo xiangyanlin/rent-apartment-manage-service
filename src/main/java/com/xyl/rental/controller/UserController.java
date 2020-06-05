@@ -270,4 +270,16 @@ public class UserController {
             return R.failed("没有找到对应信息");
         }
     }
+
+    /**
+     * 验证码验证
+     * @param code
+     * @param operation
+     * @return
+     */
+    @GetMapping("/verificationCheck")
+    public R<Map<String, Object>> verificationCheck(String email,String code,
+      @ApiParam("操作") @RequestParam(required = false) String operation) {
+        return userService.verificationCheck(email,code, operation);
+    }
 }
